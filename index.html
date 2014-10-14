@@ -1,0 +1,28 @@
+---
+layout: index
+title: 首页
+---
+
+<section id="blogbody">
+<div class="clearleft bloglooparea">
+    <div class="bloglists">
+{% for post in site.posts reversed %}
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">发布时间：{{ post.date | date_to_string }} | 标签：{% for tag in post.tags%} {{ tag }} {% endfor %} | 分类：{{ post.category }}</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                {{ post.excerpt }}
+            </div>
+    </div>
+{% endfor %}
+    </div>
+
+<div class="blogsidebar">
+</div>
+
+</div>
+</section>

@@ -1,0 +1,21 @@
+{% include header.html %}
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="#">{{ page.title }}</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">发布时间：{{ page.date | date_to_string }} | {% for tag in page.tags%} {{ tag }} {% endfor %} | 分类：{{ page.category }}</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+        <div class="blogsidebar">
+        </div>
+    </div>
+</section>
+{% include footer.html %}
