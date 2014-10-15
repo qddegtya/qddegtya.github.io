@@ -11,6 +11,7 @@
  * blogcontent.........blog content is very important
  * blogfooter..........blog footer
  * highlight...........code highlight
+ * sidebar.............side bar
  */
 
 /*-----------------------------*\
@@ -27,9 +28,13 @@ body{
     background-color: #f0f0f0;
     font-size: 1.0rem;
 }
-h1,span,ul,li,a,p,h2,table,th,tr,td,img{
+h1,span,ul,li,a,p,h2,table,th,tr,td,img,h3,i{
     margin: 0;
     padding: 0;
+}
+p,pre{
+    word-wrap: break-word;
+    word-break: break-all;
 }
 li{
     list-style: none;
@@ -146,6 +151,7 @@ li{
 }
 .bloglists{
     width: 60%;
+    float: left;
 }
 .blogbody__everyblog__header{
     background-color: #1abc9c;
@@ -172,6 +178,7 @@ li{
     color: #cccccc;
     font-weight: normal;
     font-size: 0.8rem;
+    line-height: 1.2rem;
 }
 .blogbody__everyblog__excerpt{
 
@@ -236,7 +243,8 @@ li{
 
 }
 .blogcontent ul,.blogcontent ol{
-    padding: 40px;
+    padding: 0 50px;
+    padding-bottom: 15px;
 }
 .blogcontent ul li{
     list-style: decimal;
@@ -274,9 +282,40 @@ li{
     background-color: #2C3E50;
     color: #ffffff;
 }
-
-
-
+.blogtag,.blogcat{
+    padding: 5px 15px;
+    color: #ffffff;
+    background-color: #1abc9c;
+}
+.blogbody__everyblog__footer{
+    background-color: #f9f9f9;
+    border: 1px solid #f0f0f0;
+    padding: 40px;
+}
+.footercopyright span{
+    display: block;
+    color: #333333;
+    font-size: 1.0rem;
+    line-height: 1.6rem;
+}
+.footercopyright{
+    margin-bottom: 10px;
+}
+.blogperlink{
+    overflow: auto;
+    background-color: #f0f0f0;
+    padding: 10px;
+    font-size: .8rem;
+    color: #666666;
+    display: block;
+    margin-top: 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    border: 1px solid #cccccc;
+}
+.blogbody__everyblog__tagcat{
+    margin-top: 30px;
+}
 
 
 /*-----------------------------*\
@@ -291,9 +330,60 @@ li{
 
 
 
+
+/*-----------------------------*\
+   $sidebar
+\*-----------------------------*/
+.blogsidebar{
+    /*padding: 200px 0;*/
+    width: 38%;
+    background-color: #ffffff;
+    float: right;
+    /*border-left: 1px dashed #f0f0f0;*/
+
+}
+.sidebar_item{
+    padding: 40px;
+    /*background-color: #f9f9f9;*/
+    /*border: 1px solid #f0f0f0;*/
+}
+.sidebar__title{
+    text-align: center;
+    padding: 30px 10px;
+    color: #333333;
+    background-color: #ffffff;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar__ul{
+    /*border: 1px solid #f0f0f0;*/
+}
+.sidebar__ul li{
+    border-bottom: 1px dashed #f0f0f0;
+    padding: 20px 10px;
+}
+.sidebar__ul li:hover{
+    background-color: #ffffff;
+    padding: 20px 20px;
+}
+.sidebar__ul li:hover a{
+    color: #333333;
+}
+.sidebar__ul li a{
+    color:#333333;
+    text-decoration: none;
+    font-size: 1.0rem;
+}
+
+
 /*-----------------------------*\
    $highlight
 \*-----------------------------*/
+pre{
+    overflow: auto;
+    width: 100%;
+}
 .highlight  { background: #ffffff; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */

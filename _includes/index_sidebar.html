@@ -1,0 +1,28 @@
+<div class="blogsidebar index__sidebar">
+    <div class="sidebar_item sidebar--about">
+        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
+        {% for category in site.categories %}
+        <ul class="sidebar__ul">
+            <li><a href="{{ site.url }}/{{ category | first }}">{{ category | first }}</a></li>
+        </ul>
+        {% endfor %}
+    </div>
+
+    <div class="sidebar_item sidebar--cat">
+            <h3 class="sidebar__title"><i class="fa fa-tags fa-lg"></i></h3>
+            {% for category in site.categories %}
+            <ul class="sidebar__ul">
+                <li><a href="{{ site.url }}/{{ category | first }}">{{ category | first }}</a></li>
+            </ul>
+            {% endfor %}
+    </div>
+
+    <div class="sidebar_item sidebar--tag">
+        <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
+        {% for category in site.categories %}
+        <ul class="sidebar__ul">
+            <li><a href="{{ site.url }}/{{ category | first }}">{{ category | first }}</a></li>
+        </ul>
+        {% endfor %}
+    </div>
+</div>

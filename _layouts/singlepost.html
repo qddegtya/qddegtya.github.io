@@ -4,18 +4,29 @@
         <div class="bloglists">
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="#">{{ page.title }}</a>
+                    <a href="{{ page.url }}">{{ page.title }}</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">发布时间：{{ page.date | date_to_string }} | {% for tag in page.tags%} {{ tag }} {% endfor %} | 分类：{{ page.category }}</span>
+                    <span class="blogbody__everyblog__metainfo">发布于 {{ page.date | date_to_string }}</span>
                 </div>
                 <div class="blogcontent blogbody__everyblog__excerpt">
                     {{ content }}
                 </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>警告:文章转载请注明出处.</span>
+                        <span class="blogperlink">{{ page.url }}</span>
+                    </div>
+                    <div class="blogbody__everyblog__tagcat">
+                        <span class="blogcat"><i class="fa fa-folder"></i> {{ page.category }}</span>
+                        {% for tag in page.tags%}
+                            <span class="blogtag"><i class="fa fa-tag"></i> {{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="blogsidebar">
-        </div>
+        {% include single_sidebar.html %}
     </div>
 </section>
 {% include footer.html %}
