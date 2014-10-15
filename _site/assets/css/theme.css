@@ -163,6 +163,7 @@ li{
     color: #ffffff;
     font-size: 1.4rem;
     line-height: 1.6em;
+    letter-spacing: 2px;
 }
 .blogbody__everyblog__header:hover{
     background-color: #1abc9c;
@@ -283,9 +284,12 @@ li{
     color: #ffffff;
 }
 .blogtag,.blogcat{
-    padding: 5px 15px;
+    padding: 8px 12px;
     color: #ffffff;
     background-color: #1abc9c;
+    letter-spacing: 2px;
+    font-size: 1.0rem;
+    line-height: 1.2rem;
 }
 .blogbody__everyblog__footer{
     background-color: #f9f9f9;
@@ -318,6 +322,9 @@ li{
 }
 
 
+
+
+
 /*-----------------------------*\
    $blogfooter
 \*-----------------------------*/
@@ -325,7 +332,6 @@ li{
         padding: 200px 0;
         background-color: #1abc9c;
 }
-
 
 
 
@@ -375,6 +381,9 @@ li{
     text-decoration: none;
     font-size: 1.0rem;
 }
+
+
+
 
 
 /*-----------------------------*\

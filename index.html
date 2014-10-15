@@ -12,7 +12,7 @@ title: 首页
             <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </div>
             <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">发布于 {{ post.date | date_to_string }}</span>
+                <span class="blogbody__everyblog__metainfo">{{ post.date | date:"%Y - %m - %d" }}</span>
             </div>
             <div class="blogcontent blogbody__everyblog__excerpt">
                 {{ post.excerpt }}
