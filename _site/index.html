@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Archer's Blog</title>
+    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.20"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.blog__nav').waypoint(function(direction){
+                if(direction == "down"){
+                    $('.blog__nav').addClass("fixedposition");
+                }
+                else if(direction == "up"){
+                    $('.blog__nav').removeClass("fixedposition");
+                }
+            })
+        })
+    </script>
+    
+
+    
+</head>
+<header id="blog__header">
+    <div class="blog__bighead">
+        <!-- blog title & description -->
+        <div class="blog__titlearea">
+            <h1 class="blogtitle title--blogtitle">KEEP CODING</h1>
+            <h2 class="blogtitle title--blogdescription">python,javascript,c,c++,html,css</h2>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item nav__current"><a href="#">HOME</a></li>
+            <li class="blog__nav__item"><a href="#">BLOG</a></li>
+            <li class="blog__nav__item"><a href="#">PROJECT</a></li>
+            <li class="blog__nav__item"><a href="#">DESIGN</a></li>
+            <li class="blog__nav__item"><a href="#">ABOUT</a></li>
+        </ul>
+    </div>
+
+    <!--首页-->
+
+</header>
+<body>
+
+<section id="blogbody">
+<div class="clearleft bloglooparea">
+    <div class="bloglists">
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E8%AE%BE%E8%AE%A1/2014/10/15/this-is-a-name/" title="分享图标一枚">分享图标一枚</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 15</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <h3 id="section">分享图标一枚</h3>
+
+<p>一开始是出于对calabash项目的热爱，后来，这种热爱化为动力。
+我决定使用python的BDD框架来驱动自动化测试项目。
+当我发现lettuce之后我显得很兴奋。
+这是一个非常优秀的BDD框架，完全采用python编写，有了lettuce之后，你几乎只要做一些附加工作就可以了。
+所以lub就是对lettuce的一剂润滑剂，但是lub是没有办法称之为一个完整的自动化测试框架的，至少目前是如此。
+所以，我在项目标题里打上了”demo”
+很显然，lub还有很多工作需要去做。</p>
+
+
+            </div>
+    </div>
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E6%9E%81%E5%AE%A2%E5%B7%A5%E5%85%B7/2014/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="玩转jekyll">玩转jekyll</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <h1 id="jekyll">关于jekyll</h1>
+
+<p>By Tom Preston-Werner, Nick Quaranto, Parker Moore, and many <a href="https://github.com/jekyll/jekyll/graphs/contributors">awesome contributors</a>!</p>
+
+<p>Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind <a href="http://pages.github.com">GitHub Pages</a>, which you can use to host sites right from your GitHub repositories.</p>
+
+
+            </div>
+    </div>
+
+    </div>
+
+<div class="blogsidebar index__sidebar">
+    <div class="sidebar_item sidebar--about">
+        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
+
+    </div>
+
+    <div class="sidebar_item sidebar--cat">
+            <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
+            
+            <ul class="sidebar__ul">
+                <li><a href="/极客工具">极客工具</a></li>
+            </ul>
+            
+            <ul class="sidebar__ul">
+                <li><a href="/c++">c++</a></li>
+            </ul>
+            
+            <ul class="sidebar__ul">
+                <li><a href="/python">python</a></li>
+            </ul>
+            
+            <ul class="sidebar__ul">
+                <li><a href="/设计">设计</a></li>
+            </ul>
+            
+    </div>
+
+    <div class="sidebar_item sidebar--followme">
+        <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
+
+    </div>
+
+</div>
+
+</div>
+</section>
+<footer id="blogfooter">
+    <div class="clearboth blogfooter">
+    </div>
+</footer>
+</body>
+</html>
