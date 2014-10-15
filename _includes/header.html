@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ site.url }}/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="{{ site.url }}/assets/css/theme.css?ver=1.0.20"/>
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/theme.css?ver=1.0.30"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
@@ -17,7 +17,17 @@
                 else if(direction == "up"){
                     $('.blog__nav').removeClass("fixedposition");
                 }
-            })
+            });
+
+            $('.single__sidebar').waypoint(function(direction){
+                if(direction == "down"){
+                    $('.single__sidebar').addClass("single--sidebar--fix");
+                }
+                else if(direction == "up"){
+                    $('.single__sidebar').removeClass("single--sidebar--fix");
+                }
+            });
+
         })
     </script>
     {% if site.posts.size > page.initItem %}

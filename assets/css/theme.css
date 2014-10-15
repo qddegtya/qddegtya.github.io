@@ -23,6 +23,9 @@
     -webkit-box-sizing: border-box;
 }
 body{
+    font-family: Arial,"Microsoft YaHei",sans-serif;
+}
+body{
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
@@ -195,8 +198,8 @@ li{
 .blogcontent{
     padding: 30px 0;
     color:#666666;
-    font-size: .8rem;
-    line-height: 1.6rem;
+    font-size: .9rem;
+    line-height: 1.8rem;
     letter-spacing: 1px;
 }
 .blogcontent p{
@@ -392,6 +395,14 @@ li{
 .fixedposition{
     position: fixed;
     top:0;
+}
+
+.single--sidebar--fix{
+    
+}
+.single__sidebar{
+    width: 40%;
+    border-left: 1px dashed #f0f0f0;
 }
 
 
