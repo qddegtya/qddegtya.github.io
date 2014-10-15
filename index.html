@@ -1,12 +1,15 @@
 ---
 layout: index
-title: 首页
+title: Archer's Blog
+initItem: 2
+perPageItem: 2
+pageLocation: 首页
 ---
 
 <section id="blogbody">
 <div class="clearleft bloglooparea">
     <div class="bloglists">
-{% for post in site.posts %}
+{% for post in site.posts limit:page.initItem %}
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
             <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
