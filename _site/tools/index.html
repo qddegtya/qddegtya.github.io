@@ -20,6 +20,10 @@
 
         $(document).ready(function(){
 
+            //fadeIn
+            $('.bloglists').fadeIn(1000);
+
+
             //nav waypoints
             $('.blog__nav').waypoint(function(direction){
                 if(direction == "down"){
@@ -117,7 +121,7 @@
     <div class="blog__bighead">
         <!-- blog title & description -->
         <div class="blog__titlearea">
-            <h1 class="blogtitle title--blogtitle">KEEP CODING</h1>
+            <h1 class="blogtitle title--blogtitle">TOOL'S GREAT</h1>
             <h2 class="blogtitle title--blogdescription">python,javascript,c,c++,html,css...</h2>
         </div>
     </div>
@@ -125,7 +129,7 @@
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current"><a href="#">HOME</a></li>
+            <li class="blog__nav__item nav__current"><a href="/">HOME</a></li>
             <li class="blog__nav__item"><a href="/blogs/">BLOGS</a></li>
             <li class="blog__nav__item"><a href="/projects/">PROJECTS</a></li>
             <li class="blog__nav__item"><a href="/experiments/">EXPERIMENTS</a></li>
