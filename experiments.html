@@ -1,0 +1,36 @@
+---
+layout: index
+title: 实验 - Archer's Blog
+initItem: 2
+perPageItem: 2
+thiscat: 实验
+---
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            {% for post in site.posts limit:page.initItem %}
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">{{ post.date | date:"%Y - %m - %d" }}</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt">
+                    {{ post.excerpt }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="loadingmore">
+                <span class="loadingmorespan">点击加载更多...</span>
+            </div>
+
+        </div>
+
+        {% include index_sidebar.html %}
+
+    </div>
+
+</section>
