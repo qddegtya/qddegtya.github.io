@@ -12,6 +12,7 @@
  * blogfooter..........blog footer
  * highlight...........code highlight
  * sidebar.............side bar
+ # lodingmore..........loadingmore
  */
 
 /*-----------------------------*\
@@ -398,13 +399,35 @@ li{
 }
 
 .single--sidebar--fix{
-    
+
 }
 .single__sidebar{
     width: 40%;
     border-left: 1px dashed #f0f0f0;
 }
 
+
+
+
+
+/*-----------------------------*\
+   $loadingmore
+\*-----------------------------*/
+.loadingmore{
+    padding: 20px;
+    background-color: #1abc9c;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 50px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.loadingmore:hover{
+    opacity: 1.0;
+}
+.loadingmorespan{
+    font-size: 1.4rem;
+}
 
 
 
