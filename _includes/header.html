@@ -8,6 +8,16 @@
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+        //Html编码获取Html转义实体
+        function htmlEncode(value){
+            return $('<div/>').text(value).html();
+        }
+        //Html解码获取Html实体
+        function htmlDecode(value){
+            return $('<div/>').html(value).text();
+        }
+
         $(document).ready(function(){
 
             //nav waypoints
@@ -50,6 +60,7 @@
             $('.loadingmore').click(function(){
 
                 $('.loadingmore').html("<span class='loadingmorespan'>正在加载...</span>");
+                //$('.bloglists').css('opacity','0.8');
 
                 //$('.blogfooter').waypoint('destroy');
 
@@ -71,7 +82,7 @@
                                 content += "<span class='blogbody__everyblog__metainfo'>"+ item.date +"</span>";
                                 content += "</div>";
                                 content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
-                                content += excerpt;
+                                content += htmlDecode(item.excerpt);
                                 content += "</div>";
                                 content += "</div>";
 
@@ -84,9 +95,10 @@
 
                         count += j; //现在的文章数目
                         $('.loadingmore').before(content);
+                        //$('.bloglists').css('opacity','1.0');
                         $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
                         if( count == data.length ){
-                            $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").fadeOut("slow");
+                            $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").fadeOut(2000);
                         }
 
                     });
@@ -95,7 +107,9 @@
 //
 //                }
             });
-
+            {% else %}
+            //否则不显示翻页
+            $('.loadingmore').css('display','none');
             {% endif %}
 
         })

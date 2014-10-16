@@ -8,6 +8,16 @@
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+        //Html编码获取Html转义实体
+        function htmlEncode(value){
+            return $('<div/>').text(value).html();
+        }
+        //Html解码获取Html实体
+        function htmlDecode(value){
+            return $('<div/>').html(value).text();
+        }
+
         $(document).ready(function(){
 
             //nav waypoints
@@ -40,6 +50,9 @@
 //                }
 //            },{ offset:300 });
 
+            
+            //否则不显示翻页
+            $('.loadingmore').css('display','none');
             
 
         })

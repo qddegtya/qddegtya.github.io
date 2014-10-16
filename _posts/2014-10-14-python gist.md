@@ -5,7 +5,9 @@ tags: python
 category: python
 ---
 
+fdsafdasfdasdsafa
 
+### 代码片段
 
 {% highlight python linenos %}
 import urllib
@@ -29,32 +31,9 @@ if __name__ == '__main__':
     print 'Start grab subdomain from i.links.cn...'
 {% endhighlight %}
 
+fdasfdasfadsfdasfsadsa
+fdasfdasfdsafdsaf
+dsafdsafdsafasdfdsa
+fdsafadssa
 
-{% highlight javascript linenos %}
-var b = 1;
-var c = true;
-
-function fade(){
-if(document.all);
-
-if(c == true) {
-b++;
-}
-if(b==100) {
-b--;
-c = false
-}
-
-if(b==10) {
-b++;
-c = true;
-}
-
-if(c == false) {
-b--;
-}
-u.width=150 + b;
-u.height=125 - b;
-setTimeout("fade()",50);
-}
-{% endhighlight %}
+### 测试一下
