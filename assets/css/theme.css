@@ -393,8 +393,31 @@ li{
     text-decoration: none;
     font-size: 1.0rem;
 }
+.aboutarcher {
+    padding: 50px;
+    text-align: center;
+}
 
+.myavatar{
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+}
 
+.archermeta{
+    text-align: center;
+}
+.archermeta li{
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #f0f0f0;
+    padding-bottom: 20px;
+}
+.archermeta--des{
+    letter-spacing: 2px;
+    font-size: 1.0rem;
+    color:#333333;
+    margin-left: 15px;
+}
 
 
 
