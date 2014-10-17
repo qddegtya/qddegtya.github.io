@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>博客 - Archer's Blog</title>
+    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.36"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        //Html编码获取Html转义实体
+        function htmlEncode(value){
+            return $('<div/>').text(value).html();
+        }
+        //Html解码获取Html实体
+        function htmlDecode(value){
+            return $('<div/>').html(value).text();
+        }
+
+        $(document).ready(function(){
+
+            //fadeIn
+            $('.bloglists').fadeIn(1000);
+
+
+            //nav waypoints
+            $('.blog__nav').waypoint(function(direction){
+                if(direction == "down"){
+                    $('.blog__nav').addClass("fixedposition");
+                }
+                else if(direction == "up"){
+                    $('.blog__nav').removeClass("fixedposition");
+                }
+            });
+
+            //内页目录waypoints
+            $('.single__sidebar').waypoint(function(direction){
+                if(direction == "down"){
+                    $('.single__sidebar').addClass("single--sidebar--fix");
+                }
+                else if(direction == "up"){
+                    $('.single__sidebar').removeClass("single--sidebar--fix");
+                }
+            });
+
+//            //翻页waypoints
+//            $('.loadingmore').waypoint(function(direction){
+//                if(direction == "down"){
+//                    $('.loadingmore').click();
+//                }
+//                else if(direction == "up"){
+//                    //TO DO
+//                }
+//            },{ offset:300 });
+
+            //分类,重新计算size
+            //var posts = [];
+            var totalsize = 0;
+
+            
+                
+                    
+                        totalsize = totalsize + 1;
+                    
+                
+                    
+                
+                    
+                        totalsize = totalsize + 1;
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+
+            if( totalsize > 1 ){
+
+                var bloglists = $('.bloglists');
+                var count = 1; //一开始的文章数目
+                var looptimes = 0; //计数器top
+
+                //ajax异步加载首页文章
+                $('.loadingmore').click(function () {
+
+                    $('.loadingmore').html("<span class='loadingmorespan'>正在加载...</span>");
+                    //$('.bloglists').css('opacity','0.8');
+
+                    //$('.blogfooter').waypoint('destroy');
+
+//                  if(direction == "down"){
+                    $.getJSON("../allposts.json", function (data) {
+                        var content = "";
+                        looptimes = count + 1; //初始化
+                    var j = 0; //采集loop了多少次
+
+                    $.each(data, function (i, item) {
+                        if (i >= count & i < looptimes) {
+                            if( "博客" != '首页' ){
+                            //只添加本分类的
+                            if (item.cat == "博客") {
+
+                                var excerpt = " + item.excerpt + ";
+
+                                content += "<div class='blogbody__everyblog'>";
+                                content += "<div class='blogbody__everyblog__header'>";
+                                content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                                content += "</div>";
+                                content += "<div class='blogbody__everyblog__meta'>";
+                                content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                                content += "</div>";
+                                content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                                content += htmlDecode(item.excerpt);
+                                content += "</div>";
+                                content += "</div>";
+
+                                //alert(content);
+
+                                j++;
+                            }
+                                else{
+                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
+                            }
+                        }
+                        else{
+
+                            var excerpt = " + item.excerpt + ";
+
+                            content += "<div class='blogbody__everyblog'>";
+                            content += "<div class='blogbody__everyblog__header'>";
+                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                            content += "</div>";
+                            content += "<div class='blogbody__everyblog__meta'>";
+                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                            content += "</div>";
+                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                            content += htmlDecode(item.excerpt);
+                            content += "</div>";
+                            content += "</div>";
+
+                            //alert(content);
+
+                            j++;
+
+                        }
+
+                        }
+
+                    });
+
+                    count += j; //现在的文章数目
+                    $('.loadingmore').before(content);
+                    //$('.bloglists').css('opacity','1.0');
+                    $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                    if (count == data.length) {
+                        $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").fadeOut(2000);
+                    }
+
+                });
+//                    }
+//                if(direction == "up"){
+//
+//                }
+            });
+        }
+            else{
+                //否则不显示翻页
+                $('.loadingmore').css('display', 'none');
+            }
+        });
+    </script>
+
+</head>
+<header id="blog__header">
+    <div class="blog__bighead">
+        <!-- blog title & description -->
+        <div class="blog__titlearea">
+            <h1 class="blogtitle title--blogtitle">LIFE'S GOOD</h1>
+            <h2 class="blogtitle title--blogdescription">python,javascript,c,c++,html,css...</h2>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item nav__current"><a href="/">HOME</a></li>
+            <li class="blog__nav__item"><a href="/blogs/">BLOGS</a></li>
+            <li class="blog__nav__item"><a href="/projects/">PROJECTS</a></li>
+            <li class="blog__nav__item"><a href="/experiments/">EXPERIMENTS</a></li>
+            <li class="blog__nav__item"><a href="/tools/">TOOLS</a></li>
+        </ul>
+    </div>
+
+    <!---->
+
+</header>
+<body>
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            
+            
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/%E5%8D%9A%E5%AE%A2/2014/10/15/this-is-a-name/" title="分享图标一枚">分享图标一枚</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 15</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt">
+                    <h3 id="section">分享图标一枚</h3>
+
+<p>一开始是出于对calabash项目的热爱，后来，这种热爱化为动力。
+我决定使用python的BDD框架来驱动自动化测试项目。
+当我发现lettuce之后我显得很兴奋。
+这是一个非常优秀的BDD框架，完全采用python编写，有了lettuce之后，你几乎只要做一些附加工作就可以了。
+所以lub就是对lettuce的一剂润滑剂，但是lub是没有办法称之为一个完整的自动化测试框架的，至少目前是如此。
+所以，我在项目标题里打上了”demo”
+很显然，lub还有很多工作需要去做。</p>
+
+
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/%E5%8D%9A%E5%AE%A2/2014/10/14/%E6%96%B0%E7%9A%84%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="新的一篇文章">新的一篇文章</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt">
+                    <h1 id="hacker-news-api">Hacker News API</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>In partnership with <a href="https://www.firebase.com">Firebase</a>, we’re making the public Hacker News data available in near real time. Firebase enables easy access from <a href="https://www.firebase.com/docs/android/">Android</a>, <a href="https://www.firebase.com/docs/ios/">iOS</a> and the <a href="https://www.firebase.com/docs/web/">web</a>. Servers aren’t left out; there’s also <a href="https://www.firebase.com/docs/rest/">REST</a> support.</p>
+
+<p>If you can use one of the many <a href="https://www.firebase.com/docs/">Firebase client libraries</a> you really should. The libraries handle networking efficiently and can raise events when things change. Be sure to check them out.</p>
+
+<p>Please email api@ycombinator.com if you find any bugs.</p>
+
+
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <div class="loadingmore">
+                <span class="loadingmorespan">点击加载更多...</span>
+            </div>
+
+        </div>
+
+        <div class="blogsidebar index__sidebar">
+    <div class="sidebar_item sidebar--about">
+        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
+
+    </div>
+
+    <div class="sidebar_item sidebar--cat">
+            <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
+            <ul class="sidebar__ul">
+                <li><a href="/blogs/" title="碎碎念">碎碎念</a></li>
+                <li><a href="/tools/" title="工具">工具</a></li>
+                <li><a href="/experiments/" title="做实验">做实验</a></li>
+                <li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>
+            </ul>
+    </div>
+
+    <div class="sidebar_item sidebar--followme">
+        <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
+
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+<footer id="blogfooter">
+    <div class="clearboth blogfooter">
+    </div>
+</footer>
+</body>
+</html>
