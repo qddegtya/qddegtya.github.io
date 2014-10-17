@@ -25,13 +25,37 @@
             var catposts = [];
 
             //首次载入便缓存下来
-            $.getJSON("../allposts.json", function (data) {
-                $.each(data, function (i, item) {
-                    if(item.cat == "项目"){
+            if("项目" != '首页'){
+
+                $.getJSON("../allposts.json", function (data) {
+                    $.each(data, function (i, item) {
+                        if(item.cat == "项目"){
                         catposts.push(item);
-                    }
+                        }
+                    });
+
+                    //添加
+                    $.each(catposts,function(j,item){
+                        var content = "";
+                        if(j < 1){
+                            //alert(j);
+                            var excerpt = " + item.excerpt + ";
+                            content += "<div class='blogbody__everyblog'>";
+                            content += "<div class='blogbody__everyblog__header'>";
+                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                            content += "</div>";
+                            content += "<div class='blogbody__everyblog__meta'>";
+                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                            content += "</div>";
+                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                            content += htmlDecode(item.excerpt);
+                            content += "</div>";
+                            content += "</div>";
+                            $('.loadingmore').before(content);
+                        }
+                    });
                 });
-            });
+            }
 
             //nav waypoints
             $('.blog__nav').waypoint(function(direction){
@@ -136,7 +160,7 @@
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
                             $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
-                            if (count == data.length) {
+                            if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
                         }
@@ -181,26 +205,10 @@
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
             <div class="loadingmore">
                 <span class="loadingmorespan">点击加载更多...</span>
             </div>
-
         </div>
-
         <div class="blogsidebar index__sidebar">
     <div class="sidebar_item sidebar--about">
         <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
@@ -223,9 +231,7 @@
     </div>
 
 </div>
-
     </div>
-
 </section>
 <footer id="blogfooter">
     <div class="clearboth blogfooter">

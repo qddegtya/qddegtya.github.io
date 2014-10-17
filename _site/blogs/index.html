@@ -25,13 +25,37 @@
             var catposts = [];
 
             //首次载入便缓存下来
-            $.getJSON("../allposts.json", function (data) {
-                $.each(data, function (i, item) {
-                    if(item.cat == "博客"){
+            if("博客" != '首页'){
+
+                $.getJSON("../allposts.json", function (data) {
+                    $.each(data, function (i, item) {
+                        if(item.cat == "博客"){
                         catposts.push(item);
-                    }
+                        }
+                    });
+
+                    //添加
+                    $.each(catposts,function(j,item){
+                        var content = "";
+                        if(j < 1){
+                            //alert(j);
+                            var excerpt = " + item.excerpt + ";
+                            content += "<div class='blogbody__everyblog'>";
+                            content += "<div class='blogbody__everyblog__header'>";
+                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                            content += "</div>";
+                            content += "<div class='blogbody__everyblog__meta'>";
+                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                            content += "</div>";
+                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                            content += htmlDecode(item.excerpt);
+                            content += "</div>";
+                            content += "</div>";
+                            $('.loadingmore').before(content);
+                        }
+                    });
                 });
-            });
+            }
 
             //nav waypoints
             $('.blog__nav').waypoint(function(direction){
@@ -140,7 +164,7 @@
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
                             $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
-                            if (count == data.length) {
+                            if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
                         }
@@ -185,38 +209,10 @@
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/%E5%8D%9A%E5%AE%A2/2014/10/15/this-is-a-name/" title="分享图标一枚">分享图标一枚</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 15</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h3 id="section">分享图标一枚</h3>
-
-<p>一开始是出于对calabash项目的热爱，后来，这种热爱化为动力。
-我决定使用python的BDD框架来驱动自动化测试项目。
-当我发现lettuce之后我显得很兴奋。
-这是一个非常优秀的BDD框架，完全采用python编写，有了lettuce之后，你几乎只要做一些附加工作就可以了。
-所以lub就是对lettuce的一剂润滑剂，但是lub是没有办法称之为一个完整的自动化测试框架的，至少目前是如此。
-所以，我在项目标题里打上了”demo”
-很显然，lub还有很多工作需要去做。</p>
-
-
-                </div>
-            </div>
-            
-            
-
             <div class="loadingmore">
                 <span class="loadingmorespan">点击加载更多...</span>
             </div>
-
         </div>
-
         <div class="blogsidebar index__sidebar">
     <div class="sidebar_item sidebar--about">
         <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
@@ -239,9 +235,7 @@
     </div>
 
 </div>
-
     </div>
-
 </section>
 <footer id="blogfooter">
     <div class="clearboth blogfooter">
