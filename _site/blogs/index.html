@@ -13,6 +13,7 @@
         function htmlEncode(value){
             return $('<div/>').text(value).html();
         }
+
         //Html解码获取Html实体
         function htmlDecode(value){
             return $('<div/>').html(value).text();
@@ -20,9 +21,17 @@
 
         $(document).ready(function(){
 
-            //fadeIn
-            //$('.bloglists').fadeIn(1000);
+            //缓存分类文章列表
+            var catposts = [];
 
+            //首次载入便缓存下来
+            $.getJSON("../allposts.json", function (data) {
+                $.each(data, function (i, item) {
+                    if(item.cat == "博客"){
+                        catposts.push(item);
+                    }
+                });
+            });
 
             //nav waypoints
             $('.blog__nav').waypoint(function(direction){
@@ -44,18 +53,6 @@
                 }
             });
 
-//            //翻页waypoints
-//            $('.loadingmore').waypoint(function(direction){
-//                if(direction == "down"){
-//                    $('.loadingmore').click();
-//                }
-//                else if(direction == "up"){
-//                    //TO DO
-//                }
-//            },{ offset:300 });
-
-            //分类,重新计算size
-            //var posts = [];
             var totalsize = 0;
 
             
@@ -78,101 +75,80 @@
                 
             
 
-            if( totalsize > 1 ){
+            if(totalsize > 1){
 
                 var bloglists = $('.bloglists');
                 var count = 1; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
-                //ajax异步加载首页文章
                 $('.loadingmore').click(function () {
 
                     $('.loadingmore').html("<span class='loadingmorespan'>正在加载...</span>");
-                    //$('.bloglists').css('opacity','0.8');
 
-                    //$('.blogfooter').waypoint('destroy');
-
-//                  if(direction == "down"){
                     $.getJSON("../allposts.json", function (data) {
+
                         var content = "";
                         looptimes = count + 1; //初始化
-                    var j = 0; //采集loop了多少次
-
-                    $.each(data, function (i, item) {
+                        var j = 0; //采集loop了多少次
 
                         if("博客" == '首页'){
+                            $.each(data, function (i, item) {
+                                if (i >= count & i < looptimes) {
+                                    var excerpt = " + item.excerpt + ";
+                                    content += "<div class='blogbody__everyblog'>";
+                                    content += "<div class='blogbody__everyblog__header'>";
+                                    content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                                    content += "</div>";
+                                    content += "<div class='blogbody__everyblog__meta'>";
+                                    content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                                    content += "</div>";
+                                    content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                                    content += htmlDecode(item.excerpt);
+                                    content += "</div>";
+                                    content += "</div>";
+                                    j++;
+                                }
+                            });
 
-                        if (i >= count & i < looptimes) {
-
-                            //只添加本分类的
-                            //if (item.cat == "博客") {
-
-                                var excerpt = " + item.excerpt + ";
-
-                                content += "<div class='blogbody__everyblog'>";
-                                content += "<div class='blogbody__everyblog__header'>";
-                                content += "<a href='" + item.url + "'>" + item.title + "</a>";
-                                content += "</div>";
-                                content += "<div class='blogbody__everyblog__meta'>";
-                                content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
-                                content += "</div>";
-                                content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
-                                content += htmlDecode(item.excerpt);
-                                content += "</div>";
-                                content += "</div>";
-
-                                //alert(content);
-
-                                j++;
-                            //}
-//                                else{
-//                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
-//                            }
+                            count += j; //现在的文章数目
+                            $('.loadingmore').before(content);
+                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            if (count == data.length) {
+                                $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
+
                         }
                         else{
+                            $.each(catposts, function (i, item) {
+                                if (i >= count & i < looptimes) {
+                                    var excerpt = " + item.excerpt + ";
+                                    content += "<div class='blogbody__everyblog'>";
+                                    content += "<div class='blogbody__everyblog__header'>";
+                                    content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                                    content += "</div>";
+                                    content += "<div class='blogbody__everyblog__meta'>";
+                                    content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                                    content += "</div>";
+                                    content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                                    content += htmlDecode(item.excerpt);
+                                    content += "</div>";
+                                    content += "</div>";
+                                    j++;
+                                }
+                            });
 
-                            if (item.cat == "博客") {
-
-                            var excerpt = " + item.excerpt + ";
-
-                            content += "<div class='blogbody__everyblog'>";
-                            content += "<div class='blogbody__everyblog__header'>";
-                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
-                            content += "</div>";
-                            content += "<div class='blogbody__everyblog__meta'>";
-                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
-                            content += "</div>";
-                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
-                            content += htmlDecode(item.excerpt);
-                            content += "</div>";
-                            content += "</div>";
-
-                            //alert(content);
-
-                            j++;
-
+                            count += j; //现在的文章数目
+                            $('.loadingmore').before(content);
+                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            if (count == data.length) {
+                                $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
-
                         }
-
                     });
-
-                    count += j; //现在的文章数目
-                    $('.loadingmore').before(content);
-                    //$('.bloglists').css('opacity','1.0');
-                    $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
-                    if (count == data.length) {
-                        $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
-                    }
-
                 });
-//                    }
-//                if(direction == "up"){
-//
-//                }
-            });
-        }
+            }
+
+            //如果totalsize<=初始值则不显示
             else{
                 //否则不显示翻页
                 $('.loadingmore').css('display', 'none');
