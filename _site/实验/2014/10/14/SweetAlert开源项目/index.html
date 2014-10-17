@@ -74,10 +74,10 @@
                 
             
 
-            if( totalsize >  ){
+            if( totalsize > 0 ){
 
                 var bloglists = $('.bloglists');
-                var count = ; //一开始的文章数目
+                var count = 0; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 //ajax异步加载首页文章
@@ -91,7 +91,7 @@
 //                  if(direction == "down"){
                     $.getJSON("../allposts.json", function (data) {
                         var content = "";
-                        looptimes = count + ; //初始化
+                        looptimes = count + 0; //初始化
                     var j = 0; //采集loop了多少次
 
                     $.each(data, function (i, item) {
