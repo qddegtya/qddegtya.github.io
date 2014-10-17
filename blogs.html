@@ -1,8 +1,8 @@
 ---
 layout: index
-title: 博客 - Archer's Blog
-initItem: 10
-perPageItem: 5
+title: 博客
+initItem: 1
+perPageItem: 1
 thiscat: 博客
 thisdes: LIFE'S GOOD
 ---
@@ -10,7 +10,8 @@ thisdes: LIFE'S GOOD
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            {% for post in site.posts limit:page.initItem %}
+            {% for post in site.posts %}
+            {% if post.category == page.thiscat %}
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
                     <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
@@ -22,6 +23,7 @@ thisdes: LIFE'S GOOD
                     {{ post.excerpt }}
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
 
             <div class="loadingmore">

@@ -1,8 +1,8 @@
 ---
 layout: index
-title: 工具 - Archer's Blog
-initItem: 2
-perPageItem: 2
+title: 工具
+initItem: 1
+perPageItem: 1
 thiscat: 工具
 thisdes: TOOL'S GREAT
 ---
@@ -10,7 +10,8 @@ thisdes: TOOL'S GREAT
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            {% for post in site.posts limit:page.initItem %}
+            {% for post in site.posts %}
+            {% if post.category == page.thiscat %}
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
                     <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
@@ -22,6 +23,7 @@ thisdes: TOOL'S GREAT
                     {{ post.excerpt }}
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
 
             <div class="loadingmore">

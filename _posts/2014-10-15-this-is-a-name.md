@@ -2,7 +2,7 @@
 layout: singlepost
 title: 分享图标一枚
 tags: 设计 图标
-category: 设计
+category: 博客
 ---
 
 ### 分享图标一枚

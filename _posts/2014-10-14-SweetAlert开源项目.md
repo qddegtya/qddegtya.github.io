@@ -2,7 +2,7 @@
 layout: singlepost
 title: SweetAlert
 tags: jekyll 博客
-category: 极客工具
+category: 实验
 ---
 
 #SweetAlert

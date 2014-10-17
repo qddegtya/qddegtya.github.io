@@ -8,5 +8,6 @@ layout: nil
     "url":"{{ site.url }}{{ post.url }}",
     "date":"{{ post.date | date:'%Y - %m - %d' }}",
     "tags":[{% for tag in post.tags %}"{{ tag }}"{% if forloop.last == false %} ,{% endif %}{% endfor %}],
+    "cat":"{{ post.category }}",
     "excerpt":"{{ post.excerpt | escape | strip | strip_newlines }}"}
 {% if forloop.last == false %},{% endif %}{% endfor %}]

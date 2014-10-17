@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>博客 - Archer's Blog</title>
+    <title>codes gist - Archer's Blog</title>
     <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.36"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -54,12 +54,120 @@
 //                }
 //            },{ offset:300 });
 
+            //分类,重新计算size
+            //var posts = [];
+            var totalsize = 0;
+
             
-            //否则不显示翻页
-            $('.loadingmore').css('display','none');
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
             
 
-        })
+            if( totalsize >  ){
+
+                var bloglists = $('.bloglists');
+                var count = ; //一开始的文章数目
+                var looptimes = 0; //计数器top
+
+                //ajax异步加载首页文章
+                $('.loadingmore').click(function () {
+
+                    $('.loadingmore').html("<span class='loadingmorespan'>正在加载...</span>");
+                    //$('.bloglists').css('opacity','0.8');
+
+                    //$('.blogfooter').waypoint('destroy');
+
+//                  if(direction == "down"){
+                    $.getJSON("../allposts.json", function (data) {
+                        var content = "";
+                        looptimes = count + ; //初始化
+                    var j = 0; //采集loop了多少次
+
+                    $.each(data, function (i, item) {
+                        if (i >= count & i < looptimes) {
+                            if( "" != '首页' ){
+                            //只添加本分类的
+                            if (item.cat == "") {
+
+                                var excerpt = " + item.excerpt + ";
+
+                                content += "<div class='blogbody__everyblog'>";
+                                content += "<div class='blogbody__everyblog__header'>";
+                                content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                                content += "</div>";
+                                content += "<div class='blogbody__everyblog__meta'>";
+                                content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                                content += "</div>";
+                                content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                                content += htmlDecode(item.excerpt);
+                                content += "</div>";
+                                content += "</div>";
+
+                                //alert(content);
+
+                                j++;
+                            }
+                                else{
+                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
+                            }
+                        }
+                        else{
+
+                            var excerpt = " + item.excerpt + ";
+
+                            content += "<div class='blogbody__everyblog'>";
+                            content += "<div class='blogbody__everyblog__header'>";
+                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                            content += "</div>";
+                            content += "<div class='blogbody__everyblog__meta'>";
+                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                            content += "</div>";
+                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                            content += htmlDecode(item.excerpt);
+                            content += "</div>";
+                            content += "</div>";
+
+                            //alert(content);
+
+                            j++;
+
+                        }
+
+                        }
+
+                    });
+
+                    count += j; //现在的文章数目
+                    $('.loadingmore').before(content);
+                    //$('.bloglists').css('opacity','1.0');
+                    $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                    if (count == data.length) {
+                        $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").fadeOut(2000);
+                    }
+
+                });
+//                    }
+//                if(direction == "up"){
+//
+//                }
+            });
+        }
+            else{
+                //否则不显示翻页
+                $('.loadingmore').css('display', 'none');
+            }
+        });
     </script>
 
 </head>
@@ -67,7 +175,7 @@
     <div class="blog__bighead">
         <!-- blog title & description -->
         <div class="blog__titlearea">
-            <h1 class="blogtitle title--blogtitle">LIFE'S GOOD</h1>
+            <h1 class="blogtitle title--blogtitle">THANKS FOR READING</h1>
             <h2 class="blogtitle title--blogdescription">python,javascript,c,c++,html,css...</h2>
         </div>
     </div>
@@ -79,7 +187,7 @@
             <li class="blog__nav__item"><a href="/blogs/">BLOGS</a></li>
             <li class="blog__nav__item"><a href="/projects/">PROJECTS</a></li>
             <li class="blog__nav__item"><a href="/experiments/">EXPERIMENTS</a></li>
-            <li class="blog__nav__item"><a href="/about/">ABOUT</a></li>
+            <li class="blog__nav__item"><a href="/tools/">TOOLS</a></li>
         </ul>
     </div>
 
@@ -91,115 +199,9 @@
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="/%E8%AE%BE%E8%AE%A1/2014/10/15/this-is-a-name/" title="分享图标一枚">分享图标一枚</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 15</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h3 id="section">分享图标一枚</h3>
-
-<p>一开始是出于对calabash项目的热爱，后来，这种热爱化为动力。
-我决定使用python的BDD框架来驱动自动化测试项目。
-当我发现lettuce之后我显得很兴奋。
-这是一个非常优秀的BDD框架，完全采用python编写，有了lettuce之后，你几乎只要做一些附加工作就可以了。
-所以lub就是对lettuce的一剂润滑剂，但是lub是没有办法称之为一个完整的自动化测试框架的，至少目前是如此。
-所以，我在项目标题里打上了”demo”
-很显然，lub还有很多工作需要去做。</p>
-
-
-                </div>
-            </div>
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/%E6%9E%81%E5%AE%A2%E5%B7%A5%E5%85%B7/2014/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="玩转jekyll">玩转jekyll</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h1 id="jekyll">关于jekyll</h1>
-
-<p>By Tom Preston-Werner, Nick Quaranto, Parker Moore, and many <a href="https://github.com/jekyll/jekyll/graphs/contributors">awesome contributors</a>!</p>
-
-<p>Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind <a href="http://pages.github.com">GitHub Pages</a>, which you can use to host sites right from your GitHub repositories.</p>
-
-
-                </div>
-            </div>
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/%E6%9E%81%E5%AE%A2%E5%B7%A5%E5%85%B7/2014/10/14/%E6%96%B0%E7%9A%84%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="新的一篇文章">新的一篇文章</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h1 id="hacker-news-api">Hacker News API</h1>
-
-<h2 id="overview">Overview</h2>
-
-<p>In partnership with <a href="https://www.firebase.com">Firebase</a>, we’re making the public Hacker News data available in near real time. Firebase enables easy access from <a href="https://www.firebase.com/docs/android/">Android</a>, <a href="https://www.firebase.com/docs/ios/">iOS</a> and the <a href="https://www.firebase.com/docs/web/">web</a>. Servers aren’t left out; there’s also <a href="https://www.firebase.com/docs/rest/">REST</a> support.</p>
-
-<p>If you can use one of the many <a href="https://www.firebase.com/docs/">Firebase client libraries</a> you really should. The libraries handle networking efficiently and can raise events when things change. Be sure to check them out.</p>
-
-<p>Please email api@ycombinator.com if you find any bugs.</p>
-
-
-                </div>
-            </div>
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/python/2014/10/14/python%20gist/" title="python gist">python gist</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <p>fdsafdasfdasdsafa</p>
-
-<h3 id="section">代码片段</h3>
-
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">urllib</span>
-<span class="lineno"> 2</span> <span class="kn">import</span> <span class="nn">urllib2</span>
-<span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">re</span>
-<span class="lineno"> 4</span> <span class="kn">import</span> <span class="nn">time</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="k">def</span> <span class="nf">grabSubdomain</span><span class="p">(</span><span class="n">popurl</span><span class="p">):</span>
-<span class="lineno"> 7</span>     <span class="c">#deal the popurl</span>
-<span class="lineno"> 8</span>     <span class="n">popurl</span> <span class="o">=</span> <span class="n">popurl</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="lineno"> 9</span>     <span class="k">if</span> <span class="p">(</span><span class="n">popurl</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;http:&#39;</span><span class="p">):</span>
-<span class="lineno">10</span>         <span class="n">popurl</span><span class="o">=</span><span class="n">popurl</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>     <span class="c">#get right URL</span>
-<span class="lineno">11</span>     <span class="n">numT</span> <span class="o">=</span> <span class="n">popurl</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
-<span class="lineno">12</span>     <span class="k">if</span> <span class="p">(</span><span class="n">numT</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-<span class="lineno">13</span>         <span class="n">popurl</span><span class="o">=</span><span class="n">popurl</span><span class="p">[:</span><span class="n">numT</span><span class="p">]</span>
-<span class="lineno">14</span>     <span class="n">numDot</span> <span class="o">=</span> <span class="n">popurl</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
-<span class="lineno">15</span>     <span class="n">popurl</span><span class="o">=</span><span class="n">popurl</span><span class="p">[</span><span class="n">numDot</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-<span class="lineno">16</span>  
-<span class="lineno">17</span>  
-<span class="lineno">18</span> <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-<span class="lineno">19</span>     <span class="k">print</span> <span class="s">&#39;Start grab subdomain from i.links.cn...&#39;</span></code></pre></div>
-
-<p>fdasfdasfadsfdasfsadsa
-fdasfdasfdsafdsaf
-dsafdsafdsafasdfdsa
-fdsafadssa</p>
-
-<h3 id="section-1">测试一下</h3>
-
-
-                </div>
-            </div>
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/c++/2014/10/14/c++%20gist/" title="codes gist">codes gist</a>
+                    <a href="/%E5%AE%9E%E9%AA%8C/2014/10/14/c++%20gist/">codes gist</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
                     <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
@@ -543,83 +545,26 @@ fdsafadssa</p>
 <span class="lineno">335</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno">336</span> <span class="p">}</span></code></pre></div>
 
-
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>警告! 转载时请注明本文出处:</span>
+                        <span class="blogperlink">http://qddegtya.github.io/%E5%AE%9E%E9%AA%8C/2014/10/14/c++%20gist/</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/%E6%9E%81%E5%AE%A2%E5%B7%A5%E5%85%B7/2014/10/14/SweetAlert%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" title="SweetAlert">SweetAlert</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h1 id="sweetalert">SweetAlert</h1>
-
-<p>1/2 An awesome replacement for JavaScript’s alert.</p>
-
-<p><a href="http://tristanedwards.me/sweetalert">See it in action!</a></p>
-
-<p><img src="http://ww4.sinaimg.cn/mw690/7cc829d3gw1el8siw95rjj20f00aaaat.jpg" alt="A success modal" /></p>
-
-<h1 id="usage">Usage</h1>
-
-<p>You can install SweetAlert through bower:</p>
-
-<p><code>bash
-bower install sweetalert
-</code></p>
-
-<p>Alternatively, download the package and reference the JavaScript and CSS files manually:</p>
-
-<p><code>html
-&lt;script src="lib/sweet-alert.min.js"&gt;&lt;/script&gt;
-&lt;link rel="stylesheet" type="text/css" href="lib/sweet-alert.css"&gt;
-</code></p>
-
-<h1 id="sass">SASS</h1>
-<p>The css is built with the <code>--style compressed</code> and <code>--sourcemap=none</code> options:</p>
-
-<pre><code>sass --style compressed --sourcemap=none sweet-alert.scss sweet-alert.css
-</code></pre>
-
-
-                </div>
-            </div>
-            
-
-            <div class="loadingmore">
-                <span class="loadingmorespan">点击加载更多...</span>
-            </div>
-
         </div>
+        <div class="blogsidebar single__sidebar">
 
-        <div class="blogsidebar index__sidebar">
-    <div class="sidebar_item sidebar--about">
-        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
-
-    </div>
-
-    <div class="sidebar_item sidebar--cat">
-            <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
-            <ul class="sidebar__ul">
-                <li><a href="/blogs/" title="碎碎念">碎碎念</a></li>
-                <li><a href="/tools/" title="工具">工具</a></li>
-                <li><a href="/experiments/" title="做实验">做实验</a></li>
-                <li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>
-            </ul>
-    </div>
-
-    <div class="sidebar_item sidebar--followme">
-        <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
-
+    <div class="sidebar_item sidebar--catcontent">
+        <h3 class="sidebar__title"><i class="fa fa-list-ol fa-lg"></i></h3>
+        <ul class="sidebar__ul">
+            <li><a href="#">目录 一</a></li>
+         </ul>
     </div>
 
 </div>
-
     </div>
-
 </section>
 <footer id="blogfooter">
     <div class="clearboth blogfooter">

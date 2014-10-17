@@ -2,7 +2,7 @@
 layout: singlepost
 title: python gist
 tags: python
-category: python
+category: 实验
 ---
 
 fdsafdasfdasdsafa

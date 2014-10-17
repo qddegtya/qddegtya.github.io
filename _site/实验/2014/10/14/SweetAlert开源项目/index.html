@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>工具 - Archer's Blog</title>
+    <title>SweetAlert - Archer's Blog</title>
     <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.36"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -63,8 +63,6 @@
                     
                 
                     
-                        totalsize = totalsize + 1;
-                    
                 
                     
                 
@@ -76,10 +74,10 @@
                 
             
 
-            if( totalsize > 1 ){
+            if( totalsize >  ){
 
                 var bloglists = $('.bloglists');
-                var count = 1; //一开始的文章数目
+                var count = ; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 //ajax异步加载首页文章
@@ -93,14 +91,14 @@
 //                  if(direction == "down"){
                     $.getJSON("../allposts.json", function (data) {
                         var content = "";
-                        looptimes = count + 1; //初始化
+                        looptimes = count + ; //初始化
                     var j = 0; //采集loop了多少次
 
                     $.each(data, function (i, item) {
                         if (i >= count & i < looptimes) {
-                            if( "工具" != '首页' ){
+                            if( "" != '首页' ){
                             //只添加本分类的
-                            if (item.cat == "工具") {
+                            if (item.cat == "") {
 
                                 var excerpt = " + item.excerpt + ";
 
@@ -177,7 +175,7 @@
     <div class="blog__bighead">
         <!-- blog title & description -->
         <div class="blog__titlearea">
-            <h1 class="blogtitle title--blogtitle">TOOL'S GREAT</h1>
+            <h1 class="blogtitle title--blogtitle">THANKS FOR READING</h1>
             <h2 class="blogtitle title--blogdescription">python,javascript,c,c++,html,css...</h2>
         </div>
     </div>
@@ -201,69 +199,63 @@
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            
-            
-            
-            
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="/%E5%B7%A5%E5%85%B7/2014/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="玩转jekyll">玩转jekyll</a>
+                    <a href="/%E5%AE%9E%E9%AA%8C/2014/10/14/SweetAlert%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">SweetAlert</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
                     <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
                 </div>
                 <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h1 id="jekyll">关于jekyll</h1>
+                    <h1 id="sweetalert">SweetAlert</h1>
 
-<p>By Tom Preston-Werner, Nick Quaranto, Parker Moore, and many <a href="https://github.com/jekyll/jekyll/graphs/contributors">awesome contributors</a>!</p>
+<p>1/2 An awesome replacement for JavaScript’s alert.</p>
 
-<p>Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind <a href="http://pages.github.com">GitHub Pages</a>, which you can use to host sites right from your GitHub repositories.</p>
+<p><a href="http://tristanedwards.me/sweetalert">See it in action!</a></p>
 
+<p><img src="http://ww4.sinaimg.cn/mw690/7cc829d3gw1el8siw95rjj20f00aaaat.jpg" alt="A success modal" /></p>
+
+<h1 id="usage">Usage</h1>
+
+<p>You can install SweetAlert through bower:</p>
+
+<p><code>bash
+bower install sweetalert
+</code></p>
+
+<p>Alternatively, download the package and reference the JavaScript and CSS files manually:</p>
+
+<p><code>html
+&lt;script src="lib/sweet-alert.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="lib/sweet-alert.css"&gt;
+</code></p>
+
+<h1 id="sass">SASS</h1>
+<p>The css is built with the <code>--style compressed</code> and <code>--sourcemap=none</code> options:</p>
+
+<pre><code>sass --style compressed --sourcemap=none sweet-alert.scss sweet-alert.css
+</code></pre>
 
                 </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>警告! 转载时请注明本文出处:</span>
+                        <span class="blogperlink">http://qddegtya.github.io/%E5%AE%9E%E9%AA%8C/2014/10/14/SweetAlert%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</span>
+                    </div>
+                </div>
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            <div class="loadingmore">
-                <span class="loadingmorespan">点击加载更多...</span>
-            </div>
-
         </div>
+        <div class="blogsidebar single__sidebar">
 
-        <div class="blogsidebar index__sidebar">
-    <div class="sidebar_item sidebar--about">
-        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
-
-    </div>
-
-    <div class="sidebar_item sidebar--cat">
-            <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
-            <ul class="sidebar__ul">
-                <li><a href="/blogs/" title="碎碎念">碎碎念</a></li>
-                <li><a href="/tools/" title="工具">工具</a></li>
-                <li><a href="/experiments/" title="做实验">做实验</a></li>
-                <li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>
-            </ul>
-    </div>
-
-    <div class="sidebar_item sidebar--followme">
-        <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
-
+    <div class="sidebar_item sidebar--catcontent">
+        <h3 class="sidebar__title"><i class="fa fa-list-ol fa-lg"></i></h3>
+        <ul class="sidebar__ul">
+            <li><a href="#">目录 一</a></li>
+         </ul>
     </div>
 
 </div>
-
     </div>
-
 </section>
 <footer id="blogfooter">
     <div class="clearboth blogfooter">
