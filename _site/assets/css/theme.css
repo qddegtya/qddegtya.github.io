@@ -430,8 +430,25 @@ img{
     margin-left: 15px;
     line-height: 1.6rem;
 }
-
-
+.learnmemore{
+    text-align: center;
+    padding: 10px;
+    background-color: #1abc9c;
+    border-radius: 50px;
+    opacity: 0.8;
+    margin-top:30px;
+}
+.learnmemore:hover{
+    opacity: 1.0;
+}
+.learnmemore a{
+    color: #ffffff;
+    font-size:1.4rem;
+    line-height: 2.0rem;
+    text-decoration: none;
+    letter-spacing: 3px;
+    cursor: help;
+}
 
 /*-----------------------------*\
    $for js
