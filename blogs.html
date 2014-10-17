@@ -11,7 +11,7 @@ thissectitle: Write down all interesting things in my life.
 <section id="blogbody">
     <div class="clearleft bloglooparea">
         <div class="bloglists">
-            {% for post in site.posts %}
+            {% for post in site.posts limit:page.initItem %}
             {% if post.category == page.thiscat %}
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">

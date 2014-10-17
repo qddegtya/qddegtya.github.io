@@ -83,10 +83,13 @@
                     var j = 0; //采集loop了多少次
 
                     $.each(data, function (i, item) {
+
+                        if("首页" == '首页'){
+
                         if (i >= count & i < looptimes) {
-                            if( "首页" != '首页' ){
+
                             //只添加本分类的
-                            if (item.cat == "首页") {
+                            //if (item.cat == "首页") {
 
                                 var excerpt = " + item.excerpt + ";
 
@@ -105,12 +108,15 @@
                                 //alert(content);
 
                                 j++;
-                            }
-                                else{
-                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
+                            //}
+//                                else{
+//                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
+//                            }
                             }
                         }
                         else{
+
+                            if (item.cat == "首页") {
 
                             var excerpt = " + item.excerpt + ";
 
@@ -130,7 +136,7 @@
 
                             j++;
 
-                        }
+                            }
 
                         }
 

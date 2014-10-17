@@ -99,10 +99,13 @@
                     var j = 0; //采集loop了多少次
 
                     $.each(data, function (i, item) {
+
+                        if("博客" == '首页'){
+
                         if (i >= count & i < looptimes) {
-                            if( "博客" != '首页' ){
+
                             //只添加本分类的
-                            if (item.cat == "博客") {
+                            //if (item.cat == "博客") {
 
                                 var excerpt = " + item.excerpt + ";
 
@@ -121,12 +124,15 @@
                                 //alert(content);
 
                                 j++;
-                            }
-                                else{
-                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
+                            //}
+//                                else{
+//                                    //$('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>");
+//                            }
                             }
                         }
                         else{
+
+                            if (item.cat == "博客") {
 
                             var excerpt = " + item.excerpt + ";
 
@@ -146,7 +152,7 @@
 
                             j++;
 
-                        }
+                            }
 
                         }
 
@@ -226,38 +232,6 @@
 
                 </div>
             </div>
-            
-            
-            
-            
-            
-            <div class="blogbody__everyblog">
-                <div class="blogbody__everyblog__header">
-                    <a href="/%E5%8D%9A%E5%AE%A2/2014/10/14/%E6%96%B0%E7%9A%84%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="新的一篇文章">新的一篇文章</a>
-                </div>
-                <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
-                </div>
-                <div class="blogcontent blogbody__everyblog__excerpt">
-                    <h1 id="hacker-news-api">Hacker News API</h1>
-
-<h2 id="overview">Overview</h2>
-
-<p>In partnership with <a href="https://www.firebase.com">Firebase</a>, we’re making the public Hacker News data available in near real time. Firebase enables easy access from <a href="https://www.firebase.com/docs/android/">Android</a>, <a href="https://www.firebase.com/docs/ios/">iOS</a> and the <a href="https://www.firebase.com/docs/web/">web</a>. Servers aren’t left out; there’s also <a href="https://www.firebase.com/docs/rest/">REST</a> support.</p>
-
-<p>If you can use one of the many <a href="https://www.firebase.com/docs/">Firebase client libraries</a> you really should. The libraries handle networking efficiently and can raise events when things change. Be sure to check them out.</p>
-
-<p>Please email api@ycombinator.com if you find any bugs.</p>
-
-
-                </div>
-            </div>
-            
-            
-            
-            
-            
-            
             
             
 
