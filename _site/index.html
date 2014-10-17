@@ -37,7 +37,7 @@
                     //添加
                     $.each(catposts,function(j,item){
                         var content = "";
-                        if(j < 1){
+                        if(j < 10){
                             //alert(j);
                             var excerpt = " + item.excerpt + ";
                             content += "<div class='blogbody__everyblog'>";
@@ -83,10 +83,10 @@
                 totalsize = 6;
             
 
-            if(totalsize > 1){
+            if(totalsize > 10){
 
                 var bloglists = $('.bloglists');
-                var count = 1; //一开始的文章数目
+                var count = 10; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 $('.loadingmore').click(function () {
@@ -96,7 +96,7 @@
                     $.getJSON("../allposts.json", function (data) {
 
                         var content = "";
-                        looptimes = count + 1; //初始化
+                        looptimes = count + 5; //初始化
                         var j = 0; //采集loop了多少次
 
                         if("首页" == '首页'){
@@ -212,6 +212,485 @@
 所以lub就是对lettuce的一剂润滑剂，但是lub是没有办法称之为一个完整的自动化测试框架的，至少目前是如此。
 所以，我在项目标题里打上了”demo”
 很显然，lub还有很多工作需要去做。</p>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E5%B7%A5%E5%85%B7/2014/10/14/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="玩转jekyll">玩转jekyll</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <h1 id="jekyll">关于jekyll</h1>
+
+<p>By Tom Preston-Werner, Nick Quaranto, Parker Moore, and many <a href="https://github.com/jekyll/jekyll/graphs/contributors">awesome contributors</a>!</p>
+
+<p>Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind <a href="http://pages.github.com">GitHub Pages</a>, which you can use to host sites right from your GitHub repositories.</p>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E5%8D%9A%E5%AE%A2/2014/10/14/%E6%96%B0%E7%9A%84%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="新的一篇文章">新的一篇文章</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <h1 id="hacker-news-api">Hacker News API</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>In partnership with <a href="https://www.firebase.com">Firebase</a>, we’re making the public Hacker News data available in near real time. Firebase enables easy access from <a href="https://www.firebase.com/docs/android/">Android</a>, <a href="https://www.firebase.com/docs/ios/">iOS</a> and the <a href="https://www.firebase.com/docs/web/">web</a>. Servers aren’t left out; there’s also <a href="https://www.firebase.com/docs/rest/">REST</a> support.</p>
+
+<p>If you can use one of the many <a href="https://www.firebase.com/docs/">Firebase client libraries</a> you really should. The libraries handle networking efficiently and can raise events when things change. Be sure to check them out.</p>
+
+<p>Please email api@ycombinator.com if you find any bugs.</p>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E5%AE%9E%E9%AA%8C/2014/10/14/python%20gist/" title="python gist">python gist</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <p>fdsafdasfdasdsafa</p>
+
+<h3 id="section">代码片段</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno"> 1</span> <span class="kn">import</span> <span class="nn">urllib</span>
+<span class="lineno"> 2</span> <span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="lineno"> 3</span> <span class="kn">import</span> <span class="nn">re</span>
+<span class="lineno"> 4</span> <span class="kn">import</span> <span class="nn">time</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="k">def</span> <span class="nf">grabSubdomain</span><span class="p">(</span><span class="n">popurl</span><span class="p">):</span>
+<span class="lineno"> 7</span>     <span class="c">#deal the popurl</span>
+<span class="lineno"> 8</span>     <span class="n">popurl</span> <span class="o">=</span> <span class="n">popurl</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="lineno"> 9</span>     <span class="k">if</span> <span class="p">(</span><span class="n">popurl</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;http:&#39;</span><span class="p">):</span>
+<span class="lineno">10</span>         <span class="n">popurl</span><span class="o">=</span><span class="n">popurl</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>     <span class="c">#get right URL</span>
+<span class="lineno">11</span>     <span class="n">numT</span> <span class="o">=</span> <span class="n">popurl</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="lineno">12</span>     <span class="k">if</span> <span class="p">(</span><span class="n">numT</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="lineno">13</span>         <span class="n">popurl</span><span class="o">=</span><span class="n">popurl</span><span class="p">[:</span><span class="n">numT</span><span class="p">]</span>
+<span class="lineno">14</span>     <span class="n">numDot</span> <span class="o">=</span> <span class="n">popurl</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+<span class="lineno">15</span>     <span class="n">popurl</span><span class="o">=</span><span class="n">popurl</span><span class="p">[</span><span class="n">numDot</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+<span class="lineno">16</span>  
+<span class="lineno">17</span>  
+<span class="lineno">18</span> <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="lineno">19</span>     <span class="k">print</span> <span class="s">&#39;Start grab subdomain from i.links.cn...&#39;</span></code></pre></div>
+
+<p>fdasfdasfadsfdasfsadsa
+fdasfdasfdsafdsaf
+dsafdsafdsafasdfdsa
+fdsafadssa</p>
+
+<h3 id="section-1">测试一下</h3>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E5%AE%9E%E9%AA%8C/2014/10/14/c++%20gist/" title="codes gist">codes gist</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="lineno">  1</span> <span class="c1">// main.cpp : 定义控制台应用程序的入口点。</span>
+<span class="lineno">  2</span> <span class="c1">//</span>
+<span class="lineno">  3</span> <span class="cp">#include &quot;stdafx.h&quot;</span>
+<span class="lineno">  4</span> <span class="cp">#include &lt;assert.h&gt;</span>
+<span class="lineno">  5</span> <span class="cp">#include &quot;acl_cpp/lib_acl.hpp&quot;</span>
+<span class="lineno">  6</span>  
+<span class="lineno">  7</span> <span class="k">using</span> <span class="k">namespace</span> <span class="n">acl</span><span class="p">;</span>
+<span class="lineno">  8</span>  
+<span class="lineno">  9</span> <span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="lineno"> 10</span>  
+<span class="lineno"> 11</span> <span class="k">class</span> <span class="nc">http_servlet</span> <span class="o">:</span> <span class="k">public</span> <span class="n">HttpServlet</span>
+<span class="lineno"> 12</span> <span class="p">{</span>
+<span class="lineno"> 13</span> <span class="k">public</span><span class="o">:</span>
+<span class="lineno"> 14</span>     <span class="n">http_servlet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="lineno"> 15</span>     <span class="p">{</span>
+<span class="lineno"> 16</span>         <span class="n">param1_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="lineno"> 17</span>         <span class="n">param2_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="lineno"> 18</span>         <span class="n">param3_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="lineno"> 19</span>         <span class="n">file1_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="lineno"> 20</span>         <span class="n">file2_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="lineno"> 21</span>         <span class="n">file3_</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="lineno"> 22</span>     <span class="p">}</span>
+<span class="lineno"> 23</span>  
+<span class="lineno"> 24</span>     <span class="o">~</span><span class="n">http_servlet</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="lineno"> 25</span>     <span class="p">{</span>
+<span class="lineno"> 26</span>     <span class="p">}</span>
+<span class="lineno"> 27</span>  
+<span class="lineno"> 28</span>     <span class="c1">// GET 方法</span>
+<span class="lineno"> 29</span>     <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">doGet</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">HttpServletResponse</span><span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span>
+<span class="lineno"> 30</span>     <span class="p">{</span>
+<span class="lineno"> 31</span>         <span class="k">return</span> <span class="n">doPost</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="lineno"> 32</span>     <span class="p">}</span>
+<span class="lineno"> 33</span>  
+<span class="lineno"> 34</span>     <span class="c1">// POST 方法</span>
+<span class="lineno"> 35</span>     <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">doPost</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">HttpServletResponse</span><span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span>
+<span class="lineno"> 36</span>     <span class="p">{</span>
+<span class="lineno"> 37</span>         <span class="c1">// 如果 session 项不存在，则设置</span>
+<span class="lineno"> 38</span>  
+<span class="lineno"> 39</span>         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">sid</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getSession</span><span class="p">().</span><span class="n">getAttribute</span><span class="p">(</span><span class="s">&quot;sid&quot;</span><span class="p">);</span>
+<span class="lineno"> 40</span>         <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">sid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno"> 41</span>             <span class="n">req</span><span class="p">.</span><span class="n">getSession</span><span class="p">().</span><span class="n">setAttribute</span><span class="p">(</span><span class="s">&quot;sid&quot;</span><span class="p">,</span> <span class="s">&quot;xxxxxx&quot;</span><span class="p">);</span>
+<span class="lineno"> 42</span>  
+<span class="lineno"> 43</span>         <span class="c1">// 创建 HTTP 响应头</span>
+<span class="lineno"> 44</span>                 <span class="n">res</span><span class="p">.</span><span class="n">addCookie</span><span class="p">(</span><span class="s">&quot;name1&quot;</span><span class="p">,</span> <span class="s">&quot;value1&quot;</span><span class="p">);</span>
+<span class="lineno"> 45</span>         <span class="n">res</span><span class="p">.</span><span class="n">addCookie</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">,</span> <span class="s">&quot;value2&quot;</span><span class="p">,</span> <span class="s">&quot;.test.com&quot;</span><span class="p">,</span> <span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span><span class="p">);</span>
+<span class="lineno"> 46</span> <span class="c1">//      res.setStatus(200);  // 可以设置返回的状态码</span>
+<span class="lineno"> 47</span>  
+<span class="lineno"> 48</span>         <span class="c1">// 两种方式都可以设置字符集</span>
+<span class="lineno"> 49</span>         <span class="k">if</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno"> 50</span>             <span class="n">res</span><span class="p">.</span><span class="n">setContentType</span><span class="p">(</span><span class="s">&quot;text/xml; charset=gb2312&quot;</span><span class="p">);</span>
+<span class="lineno"> 51</span>         <span class="k">else</span>
+<span class="lineno"> 52</span>         <span class="p">{</span>
+<span class="lineno"> 53</span>             <span class="n">res</span><span class="p">.</span><span class="n">setContentType</span><span class="p">(</span><span class="s">&quot;text/xml&quot;</span><span class="p">);</span>
+<span class="lineno"> 54</span>             <span class="n">res</span><span class="p">.</span><span class="n">setCharacterEncoding</span><span class="p">(</span><span class="s">&quot;gb2312&quot;</span><span class="p">);</span>
+<span class="lineno"> 55</span>         <span class="p">}</span>
+<span class="lineno"> 56</span>  
+<span class="lineno"> 57</span>         <span class="c1">// 获得 HTTP 请求的数据类型，正常的参数类型，即 name&amp;value 方式</span>
+<span class="lineno"> 58</span>         <span class="c1">// 还是 MIME 数据类型，还是数据流类型</span>
+<span class="lineno"> 59</span>         <span class="kt">http_request_t</span> <span class="n">request_type</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getRequestType</span><span class="p">();</span>
+<span class="lineno"> 60</span>         <span class="k">if</span> <span class="p">(</span><span class="n">request_type</span> <span class="o">==</span> <span class="n">HTTP_REQUEST_NORMAL</span><span class="p">)</span>
+<span class="lineno"> 61</span>             <span class="k">return</span> <span class="n">doParams</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="lineno"> 62</span>         <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">request_type</span> <span class="o">==</span> <span class="n">HTTP_REQUEST_MULTIPART_FORM</span><span class="p">)</span>
+<span class="lineno"> 63</span>             <span class="k">return</span> <span class="n">doUpload</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="lineno"> 64</span>         <span class="n">assert</span><span class="p">(</span><span class="n">request_type</span> <span class="o">==</span> <span class="n">HTTP_REQUEST_OCTET_STREAM</span><span class="p">);</span>
+<span class="lineno"> 65</span>         <span class="k">return</span> <span class="nf">doOctetStream</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="lineno"> 66</span>     <span class="p">}</span>
+<span class="lineno"> 67</span>  
+<span class="lineno"> 68</span>     <span class="kt">bool</span> <span class="n">doResponse</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">HttpServletResponse</span><span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span>
+<span class="lineno"> 69</span>     <span class="p">{</span>
+<span class="lineno"> 70</span>         <span class="c1">// 获得浏览器传来的 cookie 值</span>
+<span class="lineno"> 71</span>         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cookie1</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getCookieValue</span><span class="p">(</span><span class="s">&quot;name1&quot;</span><span class="p">);</span>
+<span class="lineno"> 72</span>         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cookie2</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getCookieValue</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">);</span>
+<span class="lineno"> 73</span>  
+<span class="lineno"> 74</span>         <span class="c1">// 获得 sid session 值</span>
+<span class="lineno"> 75</span>  
+<span class="lineno"> 76</span>         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">sid</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getSession</span><span class="p">().</span><span class="n">getAttribute</span><span class="p">(</span><span class="s">&quot;sid&quot;</span><span class="p">);</span>
+<span class="lineno"> 77</span>  
+<span class="lineno"> 78</span>         <span class="c1">// 创建 xml 格式的数据体</span>
+<span class="lineno"> 79</span>         <span class="n">xml</span> <span class="n">body</span><span class="p">;</span>
+<span class="lineno"> 80</span>         <span class="n">body</span><span class="p">.</span><span class="n">get_root</span><span class="p">().</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 81</span>             <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;content_type&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 82</span>                 <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;type&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">req</span><span class="p">.</span><span class="n">getRequestType</span><span class="p">())</span>
+<span class="lineno"> 83</span>                 <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno"> 84</span>             <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;sessions&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 85</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;session&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 86</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;sid&quot;</span><span class="p">,</span> <span class="n">sid</span> <span class="o">?</span> <span class="nl">sid</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno"> 87</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno"> 88</span>                 <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno"> 89</span>             <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;cookies&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 90</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;cookie&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 91</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;name1&quot;</span><span class="p">,</span> <span class="n">cookie1</span> <span class="o">?</span> <span class="nl">cookie1</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno"> 92</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno"> 93</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;cookie&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 94</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">,</span> <span class="n">cookie2</span> <span class="o">?</span> <span class="nl">cookie2</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno"> 95</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno"> 96</span>                 <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno"> 97</span>             <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;params&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 98</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;param&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno"> 99</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;name1&quot;</span><span class="p">,</span> <span class="n">param1_</span> <span class="o">?</span> <span class="nl">param1_</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno">100</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno">101</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;param&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">102</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">,</span> <span class="n">param2_</span> <span class="o">?</span> <span class="nl">param2_</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno">103</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno">104</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;param&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">105</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;name3&quot;</span><span class="p">,</span> <span class="n">param3_</span> <span class="o">?</span> <span class="nl">param3_</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno">106</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno">107</span>                 <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno">108</span>             <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;files&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">109</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;file&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">110</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;filename&quot;</span><span class="p">,</span> <span class="n">file1_</span> <span class="o">?</span> <span class="nl">file1_</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno">111</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno">112</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;file&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">113</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;filename&quot;</span><span class="p">,</span> <span class="n">file2_</span> <span class="o">?</span> <span class="nl">file2_</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">)</span>
+<span class="lineno">114</span>                     <span class="p">.</span><span class="n">get_parent</span><span class="p">()</span>
+<span class="lineno">115</span>                 <span class="p">.</span><span class="n">add_child</span><span class="p">(</span><span class="s">&quot;file&quot;</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">116</span>                     <span class="p">.</span><span class="n">add_attr</span><span class="p">(</span><span class="s">&quot;filename&quot;</span><span class="p">,</span> <span class="n">file3_</span> <span class="o">?</span> <span class="nl">file3_</span> <span class="p">:</span> <span class="s">&quot;null&quot;</span><span class="p">);</span>
+<span class="lineno">117</span>         <span class="n">string</span> <span class="n">buf</span><span class="p">;</span>
+<span class="lineno">118</span>         <span class="n">body</span><span class="p">.</span><span class="n">build_xml</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+<span class="lineno">119</span>  
+<span class="lineno">120</span>         <span class="c1">// 发送 http 响应头</span>
+<span class="lineno">121</span>         <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">sendHeader</span><span class="p">()</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+<span class="lineno">122</span>             <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">123</span>         <span class="c1">// 发送 http 响应体</span>
+<span class="lineno">124</span>         <span class="k">if</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">getOutputStream</span><span class="p">().</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">125</span>             <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">126</span>         <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="lineno">127</span>     <span class="p">}</span>
+<span class="lineno">128</span>  
+<span class="lineno">129</span>     <span class="c1">// GET 方式或 POST 方式且满足：</span>
+<span class="lineno">130</span>     <span class="c1">// Content-Type: application/x-www-form-urlencoded</span>
+<span class="lineno">131</span>     <span class="kt">bool</span> <span class="n">doParams</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">HttpServletResponse</span><span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span>
+<span class="lineno">132</span>     <span class="p">{</span>
+<span class="lineno">133</span>         <span class="n">param1_</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;name1&quot;</span><span class="p">);</span>
+<span class="lineno">134</span>         <span class="n">param2_</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">);</span>
+<span class="lineno">135</span>         <span class="n">param3_</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">);</span>
+<span class="lineno">136</span>         <span class="k">return</span> <span class="nf">doResponse</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="lineno">137</span>     <span class="p">}</span>
+<span class="lineno">138</span>  
+<span class="lineno">139</span>     <span class="c1">// POST 方式且满足：</span>
+<span class="lineno">140</span>     <span class="c1">// Content-Type: multipart/form-data; boundary=xxx</span>
+<span class="lineno">141</span>     <span class="kt">bool</span> <span class="n">doUpload</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="o">&amp;</span> <span class="n">req</span><span class="p">,</span> <span class="n">HttpServletResponse</span><span class="o">&amp;</span> <span class="n">res</span><span class="p">)</span>
+<span class="lineno">142</span>     <span class="p">{</span>
+<span class="lineno">143</span>         <span class="c1">// 先获得 Content-Type 对应的 http_ctype 对象</span>
+<span class="lineno">144</span>         <span class="n">http_mime</span><span class="o">*</span> <span class="n">mime</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getHttpMime</span><span class="p">();</span>
+<span class="lineno">145</span>         <span class="k">if</span> <span class="p">(</span><span class="n">mime</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+<span class="lineno">146</span>         <span class="p">{</span>
+<span class="lineno">147</span>             <span class="n">logger_error</span><span class="p">(</span><span class="s">&quot;http_mime null&quot;</span><span class="p">);</span>
+<span class="lineno">148</span>             <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">149</span>         <span class="p">}</span>
+<span class="lineno">150</span>  
+<span class="lineno">151</span>         <span class="c1">// 获得数据体的长度</span>
+<span class="lineno">152</span>         <span class="kt">long</span> <span class="kt">long</span> <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getContentLength</span><span class="p">();</span>
+<span class="lineno">153</span>         <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">154</span>         <span class="p">{</span>
+<span class="lineno">155</span>             <span class="n">logger_error</span><span class="p">(</span><span class="s">&quot;body empty&quot;</span><span class="p">);</span>
+<span class="lineno">156</span>             <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">157</span>         <span class="p">}</span>
+<span class="lineno">158</span>  
+<span class="lineno">159</span>         <span class="c1">// 获得输入流</span>
+<span class="lineno">160</span>         <span class="n">istream</span><span class="o">&amp;</span> <span class="n">in</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getInputStream</span><span class="p">();</span>
+<span class="lineno">161</span>         <span class="kt">char</span>  <span class="n">buf</span><span class="p">[</span><span class="mi">8192</span><span class="p">];</span>
+<span class="lineno">162</span>         <span class="kt">int</span>   <span class="n">ret</span><span class="p">;</span>
+<span class="lineno">163</span>         <span class="kt">bool</span>  <span class="n">finish</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">164</span>  
+<span class="lineno">165</span>         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filepath</span> <span class="o">=</span> <span class="s">&quot;./var/mime_file&quot;</span><span class="p">;</span>
+<span class="lineno">166</span>         <span class="n">ofstream</span> <span class="n">out</span><span class="p">;</span>
+<span class="lineno">167</span>         <span class="n">out</span><span class="p">.</span><span class="n">open_write</span><span class="p">(</span><span class="n">filepath</span><span class="p">);</span>
+<span class="lineno">168</span>  
+<span class="lineno">169</span>         <span class="c1">// 设置原始文件存入路径</span>
+<span class="lineno">170</span>         <span class="n">mime</span><span class="o">-&gt;</span><span class="n">set_saved_path</span><span class="p">(</span><span class="n">filepath</span><span class="p">);</span>
+<span class="lineno">171</span>  
+<span class="lineno">172</span>         <span class="kt">size_t</span> <span class="n">k</span><span class="p">;</span>
+<span class="lineno">173</span>  
+<span class="lineno">174</span>         <span class="c1">// 读取 HTTP 客户端请求数据</span>
+<span class="lineno">175</span>         <span class="k">while</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">176</span>         <span class="p">{</span>
+<span class="lineno">177</span>             <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="kt">size_t</span><span class="p">)</span> <span class="n">len</span> <span class="o">&gt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+<span class="lineno">178</span>                 <span class="o">?</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">:</span> <span class="p">(</span><span class="kt">size_t</span><span class="p">)</span> <span class="n">len</span><span class="p">;</span>
+<span class="lineno">179</span>             <span class="n">ret</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="lineno">180</span>             <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">181</span>             <span class="p">{</span>
+<span class="lineno">182</span>                 <span class="n">logger_error</span><span class="p">(</span><span class="s">&quot;read POST data error&quot;</span><span class="p">);</span>
+<span class="lineno">183</span>                 <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">184</span>             <span class="p">}</span>
+<span class="lineno">185</span>             <span class="n">out</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+<span class="lineno">186</span>  
+<span class="lineno">187</span>             <span class="n">len</span> <span class="o">-=</span> <span class="n">ret</span><span class="p">;</span>
+<span class="lineno">188</span>  
+<span class="lineno">189</span>             <span class="c1">// 将读得到的数据输入至解析器进行解析</span>
+<span class="lineno">190</span>             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">finish</span> <span class="o">&amp;&amp;</span> <span class="n">mime</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span> <span class="o">==</span> <span class="nb">true</span><span class="p">)</span>
+<span class="lineno">191</span>                 <span class="n">finish</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="lineno">192</span>         <span class="p">}</span>
+<span class="lineno">193</span>         <span class="n">out</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="lineno">194</span>  
+<span class="lineno">195</span>         <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">finish</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
+<span class="lineno">196</span>             <span class="n">logger_warn</span><span class="p">(</span><span class="s">&quot;not read all data from client&quot;</span><span class="p">);</span>
+<span class="lineno">197</span>  
+<span class="lineno">198</span>         <span class="n">param1_</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;name1&quot;</span><span class="p">);</span>
+<span class="lineno">199</span>         <span class="n">param2_</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;name2&quot;</span><span class="p">);</span>
+<span class="lineno">200</span>         <span class="n">param3_</span> <span class="o">=</span> <span class="n">req</span><span class="p">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s">&quot;name3&quot;</span><span class="p">);</span>
+<span class="lineno">201</span>  
+<span class="lineno">202</span>         <span class="n">string</span> <span class="n">path</span><span class="p">;</span>
+<span class="lineno">203</span>  
+<span class="lineno">204</span>         <span class="c1">// 遍历所有的 MIME 结点，找出其中为文件结点的部分进行转储</span>
+<span class="lineno">205</span>         <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">http_mime_node</span><span class="o">*&gt;&amp;</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">mime</span><span class="o">-&gt;</span><span class="n">get_nodes</span><span class="p">();</span>
+<span class="lineno">206</span>         <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">http_mime_node</span><span class="o">*&gt;::</span><span class="n">const_iterator</span> <span class="n">cit</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="lineno">207</span>         <span class="k">for</span> <span class="p">(;</span> <span class="n">cit</span> <span class="o">!=</span> <span class="n">nodes</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">cit</span><span class="p">)</span>
+<span class="lineno">208</span>         <span class="p">{</span>
+<span class="lineno">209</span>             <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cit</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">get_name</span><span class="p">();</span>
+<span class="lineno">210</span>             <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+<span class="lineno">211</span>                 <span class="k">continue</span><span class="p">;</span>
+<span class="lineno">212</span>  
+<span class="lineno">213</span>             <span class="kt">http_mime_t</span> <span class="n">mime_type</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cit</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">get_mime_type</span><span class="p">();</span>
+<span class="lineno">214</span>             <span class="k">if</span> <span class="p">(</span><span class="n">mime_type</span> <span class="o">==</span> <span class="n">HTTP_MIME_FILE</span><span class="p">)</span>
+<span class="lineno">215</span>             <span class="p">{</span>
+<span class="lineno">216</span>                 <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="n">cit</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">get_filename</span><span class="p">();</span>
+<span class="lineno">217</span>                 <span class="k">if</span> <span class="p">(</span><span class="n">filename</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+<span class="lineno">218</span>                 <span class="p">{</span>
+<span class="lineno">219</span>                     <span class="n">logger</span><span class="p">(</span><span class="s">&quot;filename null&quot;</span><span class="p">);</span>
+<span class="lineno">220</span>                     <span class="k">continue</span><span class="p">;</span>
+<span class="lineno">221</span>                 <span class="p">}</span>
+<span class="lineno">222</span>  
+<span class="lineno">223</span>                 <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;file1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">224</span>                     <span class="n">file1_</span> <span class="o">=</span> <span class="n">filename</span><span class="p">;</span>
+<span class="lineno">225</span>                 <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;file2&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">226</span>                     <span class="n">file2_</span> <span class="o">=</span> <span class="n">filename</span><span class="p">;</span>
+<span class="lineno">227</span>                 <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;file3&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">228</span>                     <span class="n">file3_</span> <span class="o">=</span> <span class="n">filename</span><span class="p">;</span>
+<span class="lineno">229</span>  
+<span class="lineno">230</span>                 <span class="c1">// 有的浏览器（如IE）上传文件时会带着文件路径，所以</span>
+<span class="lineno">231</span>                 <span class="c1">// 需要先将路径去掉</span>
+<span class="lineno">232</span>                 <span class="n">filename</span> <span class="o">=</span> <span class="n">acl_safe_basename</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+<span class="lineno">233</span> <span class="cp">#ifdef WIN32</span>
+<span class="lineno">234</span>                 <span class="n">path</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;var</span><span class="se">\\</span><span class="s">%s&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+<span class="lineno">235</span> <span class="cp">#else</span>
+<span class="lineno">236</span>                 <span class="n">path</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;./var/%s&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span>
+<span class="lineno">237</span> <span class="cp">#endif</span>
+<span class="lineno">238</span>                 <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="n">cit</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="lineno">239</span>             <span class="p">}</span>
+<span class="lineno">240</span>         <span class="p">}</span>
+<span class="lineno">241</span>  
+<span class="lineno">242</span>         <span class="c1">// 查找上载的某个文件并转储</span>
+<span class="lineno">243</span>         <span class="k">const</span> <span class="n">http_mime_node</span><span class="o">*</span> <span class="n">node</span> <span class="o">=</span> <span class="n">mime</span><span class="o">-&gt;</span><span class="n">get_node</span><span class="p">(</span><span class="s">&quot;file1&quot;</span><span class="p">);</span>
+<span class="lineno">244</span>         <span class="k">if</span> <span class="p">(</span><span class="n">node</span> <span class="o">&amp;&amp;</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_mime_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">HTTP_MIME_FILE</span><span class="p">)</span>
+<span class="lineno">245</span>         <span class="p">{</span>
+<span class="lineno">246</span>             <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">get_filename</span><span class="p">();</span>
+<span class="lineno">247</span>             <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span><span class="p">)</span>
+<span class="lineno">248</span>             <span class="p">{</span>
+<span class="lineno">249</span>                 <span class="c1">// 有的浏览器（如IE）上传文件时会带着文件路径，所以</span>
+<span class="lineno">250</span>                 <span class="c1">// 需要先将路径去掉</span>
+<span class="lineno">251</span>                 <span class="n">ptr</span> <span class="o">=</span> <span class="n">acl_safe_basename</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+<span class="lineno">252</span> <span class="cp">#ifdef WIN32</span>
+<span class="lineno">253</span>                 <span class="n">path</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;.</span><span class="se">\\</span><span class="s">var</span><span class="se">\\</span><span class="s">1_%s&quot;</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+<span class="lineno">254</span> <span class="cp">#else</span>
+<span class="lineno">255</span>                 <span class="n">path</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;./var/1_%s&quot;</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>
+<span class="lineno">256</span> <span class="cp">#endif</span>
+<span class="lineno">257</span>                 <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="lineno">258</span>             <span class="p">}</span>
+<span class="lineno">259</span>         <span class="p">}</span>
+<span class="lineno">260</span>         <span class="k">return</span> <span class="n">doResponse</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">);</span>
+<span class="lineno">261</span>     <span class="p">}</span>
+<span class="lineno">262</span>  
+<span class="lineno">263</span>     <span class="c1">// POST 方式且满足：</span>
+<span class="lineno">264</span>     <span class="c1">// Content-Type: application/octet-stream</span>
+<span class="lineno">265</span>     <span class="kt">bool</span> <span class="n">doOctetStream</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="o">&amp;</span><span class="p">,</span> <span class="n">HttpServletResponse</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="lineno">266</span>     <span class="p">{</span>
+<span class="lineno">267</span>         <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="lineno">268</span>     <span class="p">}</span>
+<span class="lineno">269</span>  
+<span class="lineno">270</span> <span class="k">protected</span><span class="o">:</span>
+<span class="lineno">271</span> <span class="k">private</span><span class="o">:</span>
+<span class="lineno">272</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">param1_</span><span class="p">;</span>
+<span class="lineno">273</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">param2_</span><span class="p">;</span>
+<span class="lineno">274</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">param3_</span><span class="p">;</span>
+<span class="lineno">275</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">file1_</span><span class="p">;</span>
+<span class="lineno">276</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">file2_</span><span class="p">;</span>
+<span class="lineno">277</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">file3_</span><span class="p">;</span>
+<span class="lineno">278</span> <span class="p">};</span>
+<span class="lineno">279</span>  
+<span class="lineno">280</span> <span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="lineno">281</span>  
+<span class="lineno">282</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">do_run</span><span class="p">(</span><span class="n">socket_stream</span><span class="o">*</span> <span class="n">stream</span><span class="p">)</span>
+<span class="lineno">283</span> <span class="p">{</span>
+<span class="lineno">284</span>     <span class="c1">// 使用 memcached 存储 session 数据</span>
+<span class="lineno">285</span>     <span class="n">memcache_session</span> <span class="n">session</span><span class="p">(</span><span class="s">&quot;127.0.0.1:11211&quot;</span><span class="p">);</span>
+<span class="lineno">286</span>     <span class="n">http_servlet</span> <span class="n">servlet</span><span class="p">;</span>
+<span class="lineno">287</span>     <span class="n">servlet</span><span class="p">.</span><span class="n">setLocalCharset</span><span class="p">(</span><span class="s">&quot;gb2312&quot;</span><span class="p">);</span>
+<span class="lineno">288</span>     <span class="n">servlet</span><span class="p">.</span><span class="n">doRun</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">stream</span><span class="p">);</span>
+<span class="lineno">289</span> <span class="p">}</span>
+<span class="lineno">290</span>  
+<span class="lineno">291</span> <span class="c1">// 服务器方式运行时的服务类</span>
+<span class="lineno">292</span> <span class="k">class</span> <span class="nc">master_service</span> <span class="o">:</span> <span class="k">public</span> <span class="n">master_proc</span>
+<span class="lineno">293</span> <span class="p">{</span>
+<span class="lineno">294</span> <span class="k">public</span><span class="o">:</span>
+<span class="lineno">295</span>     <span class="n">master_service</span><span class="p">()</span> <span class="p">{}</span>
+<span class="lineno">296</span>     <span class="o">~</span><span class="n">master_service</span><span class="p">()</span> <span class="p">{}</span>
+<span class="lineno">297</span> <span class="k">protected</span><span class="o">:</span>
+<span class="lineno">298</span>     <span class="k">virtual</span> <span class="kt">void</span> <span class="n">on_accept</span><span class="p">(</span><span class="n">socket_stream</span><span class="o">*</span> <span class="n">stream</span><span class="p">)</span>
+<span class="lineno">299</span>     <span class="p">{</span>
+<span class="lineno">300</span>         <span class="n">do_run</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="lineno">301</span>     <span class="p">}</span>
+<span class="lineno">302</span> <span class="p">};</span>
+<span class="lineno">303</span>  
+<span class="lineno">304</span> <span class="c1">// WEB 服务模式</span>
+<span class="lineno">305</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">do_alone</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="lineno">306</span> <span class="p">{</span>
+<span class="lineno">307</span>     <span class="n">master_service</span> <span class="n">service</span><span class="p">;</span>
+<span class="lineno">308</span>     <span class="n">acl</span><span class="o">::</span><span class="n">log</span><span class="o">::</span><span class="n">stdout_open</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="lineno">309</span>     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">addr</span> <span class="o">=</span> <span class="s">&quot;0.0.0.0:8081&quot;</span><span class="p">;</span>
+<span class="lineno">310</span>     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;listen: %s ...</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">addr</span><span class="p">);</span>
+<span class="lineno">311</span>     <span class="n">service</span><span class="p">.</span><span class="n">run_alone</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">// 单独运行方式</span>
+<span class="lineno">312</span> <span class="p">}</span>
+<span class="lineno">313</span> 
+<span class="lineno">314</span> 
+<span class="lineno">315</span> <span class="c1">// WEB CGI 模式</span>
+<span class="lineno">316</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">do_cgi</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="lineno">317</span> <span class="p">{</span>
+<span class="lineno">318</span>     <span class="n">do_run</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="lineno">319</span> <span class="p">}</span>
+<span class="lineno">320</span>  
+<span class="lineno">321</span> <span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="lineno">322</span>  
+<span class="lineno">323</span> <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="lineno">324</span> <span class="p">{</span>
+<span class="lineno">325</span> <span class="cp">#ifdef WIN32</span>
+<span class="lineno">326</span>     <span class="n">acl</span><span class="o">::</span><span class="n">acl_cpp_init</span><span class="p">();</span>
+<span class="lineno">327</span> <span class="cp">#endif</span>
+<span class="lineno">328</span>  
+<span class="lineno">329</span>     <span class="c1">// 开始运行</span>
+<span class="lineno">330</span>     <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&quot;alone&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">331</span>         <span class="n">do_alone</span><span class="p">();</span> <span class="c1">// 单独服务器运行方式</span>
+<span class="lineno">332</span>     <span class="k">else</span>
+<span class="lineno">333</span>         <span class="n">do_cgi</span><span class="p">();</span>   <span class="c1">// CGI 运行方式</span>
+<span class="lineno">334</span>  
+<span class="lineno">335</span>     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">336</span> <span class="p">}</span></code></pre></div>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+            <a href="/%E5%AE%9E%E9%AA%8C/2014/10/14/SweetAlert%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/" title="SweetAlert">SweetAlert</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <h1 id="sweetalert">SweetAlert</h1>
+
+<p>1/2 An awesome replacement for JavaScript’s alert.</p>
+
+<p><a href="http://tristanedwards.me/sweetalert">See it in action!</a></p>
+
+<p><img src="http://ww4.sinaimg.cn/mw690/7cc829d3gw1el8siw95rjj20f00aaaat.jpg" alt="A success modal" /></p>
+
+<h1 id="usage">Usage</h1>
+
+<p>You can install SweetAlert through bower:</p>
+
+<p><code>bash
+bower install sweetalert
+</code></p>
+
+<p>Alternatively, download the package and reference the JavaScript and CSS files manually:</p>
+
+<p><code>html
+&lt;script src="lib/sweet-alert.min.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="lib/sweet-alert.css"&gt;
+</code></p>
+
+<h1 id="sass">SASS</h1>
+<p>The css is built with the <code>--style compressed</code> and <code>--sourcemap=none</code> options:</p>
+
+<pre><code>sass --style compressed --sourcemap=none sweet-alert.scss sweet-alert.css
+</code></pre>
 
 
             </div>
