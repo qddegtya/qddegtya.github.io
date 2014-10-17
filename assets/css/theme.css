@@ -162,7 +162,7 @@ li{
 .bloglists{
     width: 60%;
     float: left;
-    display: none;
+    /*display: none;*/
 }
 .blogbody__everyblog__header{
     background-color: #1abc9c;

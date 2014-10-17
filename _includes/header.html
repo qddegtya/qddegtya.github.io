@@ -21,7 +21,7 @@
         $(document).ready(function(){
 
             //fadeIn
-            $('.bloglists').fadeIn(1000);
+            //$('.bloglists').fadeIn(1000);
 
 
             //nav waypoints
@@ -147,7 +147,7 @@
                     //$('.bloglists').css('opacity','1.0');
                     $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
                     if (count == data.length) {
-                        $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").fadeOut(2000);
+                        $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                     }
 
                 });
