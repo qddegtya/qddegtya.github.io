@@ -384,7 +384,6 @@ img{
     padding: 20px 10px;
 }
 .sidebar__ul li:hover{
-    background-color: #ffffff;
     padding: 20px 20px;
     background-color:#f0f0f0;
 }
@@ -449,6 +448,48 @@ img{
     letter-spacing: 3px;
     cursor: help;
 }
+.githubitems{
+    text-align: center;
+}
+.githubitems li{
+    font-size:1.2rem;
+    color:#333333;
+    line-height: 1.6rem;
+    letter-spacing: 2px;
+}
+.githubitems li:first-child{
+    margin-bottom: 30px;
+}
+.github--followers{
+    font-size: 1.8rem;
+    color:#1abc9c;
+    line-height: 2.4rem;
+}
+.githubdata{
+    margin-top: 30px;
+}
+.button--radius{
+    padding: 10px;
+    border-radius: 50px;
+    display: block;
+    background-color: #f0f0f0;
+    color:#ffffff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+}
+.followme:hover{
+    background-color: #2ECC71;
+}
+.submitbug:hover{
+    background-color: #E74C3C;
+}
+.forkmysite:hover{
+    background-color: #3498DB
+}
+
 
 /*-----------------------------*\
    $for js
