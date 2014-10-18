@@ -3,9 +3,10 @@
  */
 
 (function(){
+    //获取github api followers
     $.getJSON("https://api.github.com/users/qddegtya/followers",function(data){
         //alert(data.length);
         $('.github--followers').text(data.length);
-    })
+    });
 }());
 
