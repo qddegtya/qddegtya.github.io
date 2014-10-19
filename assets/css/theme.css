@@ -405,6 +405,7 @@ li{
     /*width: 100%;*/
     opacity: 0.8;
     border: 5px solid #cccccc;
+    width: 100%; /*自适应*/
 }
 
 .aboutarcher img:hover{
