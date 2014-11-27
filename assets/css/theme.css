@@ -407,6 +407,11 @@ li{
 .blogcontent code{
     font-family: "Microsoft YaHei";
 }
+
+.blogcontent code:hover{
+    /*background-color: #000000;*/
+}
+
 .blogcontent pre{
     padding: 5px 10px;
     margin-bottom: 25px;
