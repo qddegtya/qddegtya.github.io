@@ -53,7 +53,7 @@
                     //添加
                     $.each(catposts,function(j,item){
                         var content = "";
-                        if(j < 10){
+                        if(j < 1){
                             //alert(j);
                             var excerpt = " + item.excerpt + ";
                             content += "<div class='blogbody__everyblog'>";
@@ -99,10 +99,10 @@
                 totalsize = 2;
             
 
-            if(totalsize > 10){
+            if(totalsize > 1){
 
                 var bloglists = $('.bloglists');
-                var count = 10; //一开始的文章数目
+                var count = 1; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 $('.loadingmore').click(function () {
@@ -112,7 +112,7 @@
                     $.getJSON("../allposts.json", function (data) {
 
                         var content = "";
-                        looptimes = count + 5; //初始化
+                        looptimes = count + 1; //初始化
                         var j = 0; //采集loop了多少次
 
                         if("首页" == '首页'){
@@ -136,7 +136,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == data.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -163,7 +163,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -193,11 +193,11 @@
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current"><a href="/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item"><a href="/blogs/" class="navlink">BLOGS</a></li>
-            <li class="blog__nav__item"><a href="/projects/" class="navlink">PROJECTS</a></li>
-            <li class="blog__nav__item"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
-            <li class="blog__nav__item"><a href="/tools/" class="navlink">TOOLS</a></li>
+            <li class="blog__nav__item nav__current home__link"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOGS</a></li>
+            <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">PROJECTS</a></li>
+            <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
+            <li class="blog__nav__item tools__link"><a href="/tools/" class="navlink">TOOLS</a></li>
         </ul>
     </div>
 
@@ -213,164 +213,31 @@
 
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="/experiments/2014/11/28/xcode%20and%20python/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/xcode%20and%20python/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
             </div>
             <div class="blogbody__everyblog__meta">
                 <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
             </div>
             <div class="blogcontent blogbody__everyblog__excerpt">
                 <blockquote>
-  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以尝试用一句话解决。</p>
+  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
 </blockquote>
 
-<h3 id="xcodebuild">查看xcodebuild出错信息</h3>
+<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
 
-<h3 id="brewpython">首先通过brew安装python</h3>
+<h3 id="brewpython">通过brew安装python</h3>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
 
-<h3 id="copy--r">接着直接copy -R</h3>
+<h3 id="copy--r">copy -R</h3>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
 
-<p>Done，这个时候Xcodebuild就可以成功了，Xcode顺利启动。</p>
-
-
-            </div>
-    </div>
-
-
-    <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-            <a href="/experiments/2014/10/14/python%20gist/" title="jython+ddmlib 安卓屏幕截图并在web展示demo">jython+ddmlib 安卓屏幕截图并在web展示demo</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <blockquote>
-  <p>部分代码思路来源于互联网</p>
-</blockquote>
-
-<h3 id="section">需求</h3>
-
-<p>之前一直在寻找一种完美的移动设备屏幕流回传方案，这种尝试一旦成功即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的特性，可以直接在web上模拟手机操作，达到”远程监控”的目的，本demo的部分思路来源于互联网，我尝试用jython全部重写了一遍，这种方式实现起来虽然比较”土鳖”，但是效果基本可以符合需求，下面是效果图和代码清单。</p>
-
-<h3 id="section-1">代码</h3>
-
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">  1</span> <span class="c">#!/usr/bin/env python</span>
-<span class="lineno">  2</span> <span class="c"># -*- coding:utf-8 -*-</span>
-<span class="lineno">  3</span> <span class="c"># Android_ScreenSream by Archer</span>
-<span class="lineno">  4</span> <span class="c"># Based on Jython,ddmlib</span>
-<span class="lineno">  5</span> 
-<span class="lineno">  6</span> <span class="c">#import jar</span>
-<span class="lineno">  7</span> <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
-<span class="lineno">  8</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">r&#39;C:</span><span class="se">\\</span><span class="s">ddmlib.jar&#39;</span><span class="p">)</span>
-<span class="lineno">  9</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">r&#39;C:</span><span class="se">\\</span><span class="s">guava17.jar&#39;</span><span class="p">)</span>
-<span class="lineno"> 10</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">r&#39;C:</span><span class="se">\\</span><span class="s">rt.jar&#39;</span><span class="p">)</span>
-<span class="lineno"> 11</span> <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
-<span class="lineno"> 12</span> 
-<span class="lineno"> 13</span> <span class="c">#import lib</span>
-<span class="lineno"> 14</span> <span class="kn">from</span> <span class="nn">java.awt.image</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="lineno"> 15</span> <span class="kn">from</span> <span class="nn">java.io</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="lineno"> 16</span> <span class="kn">from</span> <span class="nn">javax.imageio</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="lineno"> 17</span> <span class="kn">from</span> <span class="nn">com.android.ddmlib</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="lineno"> 18</span> <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="lineno"> 19</span> 
-<span class="lineno"> 20</span> <span class="k">class</span> <span class="nc">AndroidScreenStream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="lineno"> 21</span> 
-<span class="lineno"> 22</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="lineno"> 23</span>         <span class="nb">super</span><span class="p">(</span><span class="n">AndroidScreenStream</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-<span class="lineno"> 24</span>         <span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="o">=</span><span class="p">[]</span>
-<span class="lineno"> 25</span>         <span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">=</span><span class="bp">None</span>
-<span class="lineno"> 26</span>         <span class="bp">self</span><span class="o">.</span><span class="n">rawimgdata</span><span class="o">=</span><span class="bp">None</span>
-<span class="lineno"> 27</span>         <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">=</span><span class="bp">None</span>
-<span class="lineno"> 28</span> 
-<span class="lineno"> 29</span>     <span class="k">def</span> <span class="nf">wait_device_lists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bridge</span><span class="p">):</span>
-<span class="lineno"> 30</span>         <span class="sd">&quot;&quot;&quot;获取设备列表信息&quot;&quot;&quot;</span>
-<span class="lineno"> 31</span>         <span class="n">count</span><span class="o">=</span><span class="mi">0</span>
-<span class="lineno"> 32</span>         <span class="k">while</span><span class="p">(</span><span class="n">bridge</span><span class="o">.</span><span class="n">hasInitialDeviceList</span><span class="p">()</span><span class="o">==</span><span class="bp">False</span><span class="p">):</span>
-<span class="lineno"> 33</span>             <span class="k">try</span><span class="p">:</span>
-<span class="lineno"> 34</span>                 <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="lineno"> 35</span>                 <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
-<span class="lineno"> 36</span>             <span class="k">except</span><span class="p">:</span>
-<span class="lineno"> 37</span>                 <span class="k">pass</span>
-<span class="lineno"> 38</span>             <span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">60</span><span class="p">):</span>
-<span class="lineno"> 39</span>                 <span class="k">print</span> <span class="s">&quot;获取设备列表信息超时！&quot;</span>
-<span class="lineno"> 40</span>                 <span class="k">break</span>
-<span class="lineno"> 41</span> 
-<span class="lineno"> 42</span>     <span class="k">def</span> <span class="nf">get_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="lineno"> 43</span>         <span class="sd">&quot;&quot;&quot;获取所有已连接设备&quot;&quot;&quot;</span>
-<span class="lineno"> 44</span>         <span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="lineno"> 45</span>         <span class="n">mybridge</span><span class="o">=</span><span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">createBridge</span><span class="p">()</span>
-<span class="lineno"> 46</span>         <span class="bp">self</span><span class="o">.</span><span class="n">wait_device_lists</span><span class="p">(</span><span class="n">mybridge</span><span class="p">)</span> <span class="c">#get</span>
-<span class="lineno"> 47</span>         <span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mybridge</span><span class="o">.</span><span class="n">getDevices</span><span class="p">())</span>
-<span class="lineno"> 48</span>         <span class="k">return</span> <span class="bp">self</span>
-<span class="lineno"> 49</span> 
-<span class="lineno"> 50</span>     <span class="k">def</span> <span class="nf">get_device_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
-<span class="lineno"> 51</span>         <span class="sd">&quot;&quot;&quot;根据index获取单个当前设备&quot;&quot;&quot;</span>
-<span class="lineno"> 52</span>         <span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="lineno"> 53</span>         <span class="n">mybridge</span><span class="o">=</span><span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">createBridge</span><span class="p">()</span>
-<span class="lineno"> 54</span>         <span class="bp">self</span><span class="o">.</span><span class="n">wait_device_lists</span><span class="p">(</span><span class="n">mybridge</span><span class="p">)</span> <span class="c">#get</span>
-<span class="lineno"> 55</span>         <span class="k">try</span><span class="p">:</span>
-<span class="lineno"> 56</span>             <span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">=</span><span class="n">mybridge</span><span class="o">.</span><span class="n">getDevices</span><span class="p">()[</span><span class="n">index</span><span class="p">]</span>
-<span class="lineno"> 57</span>             <span class="k">return</span> <span class="bp">self</span>
-<span class="lineno"> 58</span>         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-<span class="lineno"> 59</span>             <span class="k">print</span> <span class="s">&quot;不存在序号为&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;的设备,请检查USB连接!&quot;</span>
-<span class="lineno"> 60</span>             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-<span class="lineno"> 61</span> 
-<span class="lineno"> 62</span>     <span class="k">def</span> <span class="nf">get_current_screen_imgbyes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="lineno"> 63</span>         <span class="sd">&quot;&quot;&quot;获取当前屏幕图像的字节数据&quot;&quot;&quot;</span>
-<span class="lineno"> 64</span>         <span class="bp">self</span><span class="o">.</span><span class="n">rawimgdata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">.</span><span class="n">getScreenshot</span><span class="p">()</span><span class="o">.</span><span class="n">data</span> <span class="c">#保存图像字节数据</span>
-<span class="lineno"> 65</span>         <span class="k">return</span> <span class="bp">self</span>
-<span class="lineno"> 66</span> 
-<span class="lineno"> 67</span>     <span class="k">def</span> <span class="nf">get_current_rawscreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="lineno"> 68</span>         <span class="sd">&quot;&quot;&quot;保存当前屏幕screen对象&quot;&quot;&quot;</span>
-<span class="lineno"> 69</span>         <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">.</span><span class="n">getScreenshot</span><span class="p">()</span>
-<span class="lineno"> 70</span>         <span class="k">return</span> <span class="bp">self</span>
-<span class="lineno"> 71</span> 
-<span class="lineno"> 72</span>     <span class="k">def</span> <span class="nf">save_screen_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span><span class="s">&#39;current_frame.jpeg&#39;</span><span class="p">),</span><span class="n">islandscape</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-<span class="lineno"> 73</span>         <span class="sd">&quot;&quot;&quot;将当前屏幕图像数据保存为图片&quot;&quot;&quot;</span>
-<span class="lineno"> 74</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-<span class="lineno"> 75</span>             <span class="n">landscape</span><span class="o">=</span><span class="n">islandscape</span>
-<span class="lineno"> 76</span>             <span class="c">#横屏尺寸处理</span>
-<span class="lineno"> 77</span>             <span class="n">imgwidth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">height</span> <span class="k">if</span> <span class="n">landscape</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span>
-<span class="lineno"> 78</span>             <span class="n">imgheight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span> <span class="k">if</span> <span class="n">landscape</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">height</span>
-<span class="lineno"> 79</span>             <span class="n">image</span><span class="o">=</span><span class="n">BufferedImage</span><span class="p">(</span><span class="n">imgwidth</span><span class="p">,</span><span class="n">imgheight</span><span class="p">,</span><span class="n">BufferedImage</span><span class="o">.</span><span class="n">TYPE_INT_RGB</span><span class="p">)</span>
-<span class="lineno"> 80</span>             <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getHeight</span><span class="p">()</span><span class="o">!=</span><span class="n">imgheight</span> <span class="ow">or</span> <span class="n">image</span><span class="o">.</span><span class="n">getWidth</span><span class="p">()</span><span class="o">!=</span><span class="n">imgwidth</span><span class="p">:</span>
-<span class="lineno"> 81</span>                 <span class="n">image</span><span class="o">=</span><span class="n">BufferedImage</span><span class="p">(</span><span class="n">imgwidth</span><span class="p">,</span><span class="n">imgheight</span><span class="p">,</span><span class="n">BufferedImage</span><span class="o">.</span><span class="n">TYPE_INT_RGB</span><span class="p">)</span>
-<span class="lineno"> 82</span>             <span class="n">index</span><span class="o">=</span><span class="mi">0</span>
-<span class="lineno"> 83</span>             <span class="n">indexInc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">bpp</span><span class="o">&gt;&gt;</span><span class="mi">3</span>
-<span class="lineno"> 84</span>             <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">height</span><span class="p">):</span>
-<span class="lineno"> 85</span>                 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span><span class="p">):</span>
-<span class="lineno"> 86</span>                     <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">getARGB</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
-<span class="lineno"> 87</span>                     <span class="k">if</span> <span class="n">landscape</span><span class="p">:</span>
-<span class="lineno"> 88</span>                         <span class="n">image</span><span class="o">.</span><span class="n">setRGB</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-<span class="lineno"> 89</span>                     <span class="k">else</span><span class="p">:</span>
-<span class="lineno"> 90</span>                         <span class="n">image</span><span class="o">.</span><span class="n">setRGB</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
-<span class="lineno"> 91</span>                     <span class="n">index</span><span class="o">+=</span><span class="n">indexInc</span>
-<span class="lineno"> 92</span>             <span class="k">try</span><span class="p">:</span>
-<span class="lineno"> 93</span>                 <span class="n">ImageIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="s">&quot;JPEG&quot;</span><span class="p">,</span><span class="n">File</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-<span class="lineno"> 94</span>             <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-<span class="lineno"> 95</span>                 <span class="k">print</span> <span class="s">&quot;发生异常!&quot;</span>
-<span class="lineno"> 96</span>                 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-<span class="lineno"> 97</span>         <span class="k">else</span><span class="p">:</span>
-<span class="lineno"> 98</span>             <span class="k">print</span> <span class="s">&quot;rawscreen为空!&quot;</span>
-<span class="lineno"> 99</span>             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
-<span class="lineno">100</span> 
-<span class="lineno">101</span> <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-<span class="lineno">102</span>     <span class="n">ASS</span><span class="o">=</span><span class="n">AndroidScreenStream</span><span class="p">()</span>
-<span class="lineno">103</span>     <span class="n">ShotDevice</span><span class="o">=</span><span class="n">ASS</span><span class="o">.</span><span class="n">get_device_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="lineno">104</span>     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-<span class="lineno">105</span>         <span class="n">ShotDevice</span><span class="o">.</span><span class="n">get_current_rawscreen</span><span class="p">()</span><span class="o">.</span><span class="n">save_screen_img</span><span class="p">()</span></code></pre></div>
-
-<h3 id="github">Github</h3>
-
-<p><a href="https://github.com/qddegtya/Android_Screen_Stream" title="Android_Screen_Stream">Android_Screen_Stream</a></p>
+<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
 
 
             </div>
@@ -378,7 +245,7 @@
 
 
         <div class="loadingmore">
-            <span class="loadingmorespan">点击加载更多...</span>
+            <span class="loadingmorespan">阅读更多文章</span>
         </div>
 
     </div>

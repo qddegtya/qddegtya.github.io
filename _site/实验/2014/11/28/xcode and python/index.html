@@ -140,7 +140,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == data.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -167,7 +167,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -197,11 +197,11 @@
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current"><a href="/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item"><a href="/blogs/" class="navlink">BLOGS</a></li>
-            <li class="blog__nav__item"><a href="/projects/" class="navlink">PROJECTS</a></li>
-            <li class="blog__nav__item"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
-            <li class="blog__nav__item"><a href="/tools/" class="navlink">TOOLS</a></li>
+            <li class="blog__nav__item nav__current home__link"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOGS</a></li>
+            <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">PROJECTS</a></li>
+            <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
+            <li class="blog__nav__item tools__link"><a href="/tools/" class="navlink">TOOLS</a></li>
         </ul>
     </div>
 
@@ -215,37 +215,37 @@
         <div class="bloglists">
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="/experiments/2014/11/28/xcode%20and%20python/">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+                    <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/xcode%20and%20python/">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
                     <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
                 </div>
                 <div class="blogcontent blogbody__everyblog__excerpt">
                     <blockquote>
-  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以尝试用一句话解决。</p>
+  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
 </blockquote>
 
-<h3 id="xcodebuild">查看xcodebuild出错信息</h3>
+<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
 
-<h3 id="brewpython">首先通过brew安装python</h3>
+<h3 id="brewpython">通过brew安装python</h3>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
 
-<h3 id="copy--r">接着直接copy -R</h3>
+<h3 id="copy--r">copy -R</h3>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
 
-<p>Done，这个时候Xcodebuild就可以成功了，Xcode顺利启动。</p>
+<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
 
                 </div>
                 <div class="blogbody__everyblog__footer">
                     <div class="footercopyright">
                         <span>警告! 转载时请注明本文出处:</span>
-                        <span class="blogperlink">http://qddegtya.github.io/experiments/2014/11/28/xcode%20and%20python/</span>
+                        <span class="blogperlink">http://qddegtya.github.io/%E5%AE%9E%E9%AA%8C/2014/11/28/xcode%20and%20python/</span>
                     </div>
                 </div>
             </div>

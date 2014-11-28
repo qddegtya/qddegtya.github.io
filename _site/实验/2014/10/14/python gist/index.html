@@ -140,7 +140,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == data.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -167,7 +167,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -197,11 +197,11 @@
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current"><a href="/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item"><a href="/blogs/" class="navlink">BLOGS</a></li>
-            <li class="blog__nav__item"><a href="/projects/" class="navlink">PROJECTS</a></li>
-            <li class="blog__nav__item"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
-            <li class="blog__nav__item"><a href="/tools/" class="navlink">TOOLS</a></li>
+            <li class="blog__nav__item nav__current home__link"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOGS</a></li>
+            <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">PROJECTS</a></li>
+            <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
+            <li class="blog__nav__item tools__link"><a href="/tools/" class="navlink">TOOLS</a></li>
         </ul>
     </div>
 
@@ -215,7 +215,7 @@
         <div class="bloglists">
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="/experiments/2014/10/14/python%20gist/">jython+ddmlib 安卓屏幕截图并在web展示demo</a>
+                    <a href="/%E5%AE%9E%E9%AA%8C/2014/10/14/python%20gist/">jython+ddmlib 安卓屏幕截图并在web展示demo</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
                     <span class="blogbody__everyblog__metainfo">2014 - 10 - 14</span>
@@ -227,7 +227,9 @@
 
 <h3 id="section">需求</h3>
 
-<p>之前一直在寻找一种完美的移动设备屏幕流回传方案，这种尝试一旦成功即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的特性，可以直接在web上模拟手机操作，达到”远程监控”的目的，本demo的部分思路来源于互联网，我尝试用jython全部重写了一遍，这种方式实现起来虽然比较”土鳖”，但是效果基本可以符合需求，下面是效果图和代码清单。</p>
+<p>之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。</p>
+
+<p><strong>以上内容是文章摘要</strong></p>
 
 <h3 id="section-1">代码</h3>
 
@@ -337,7 +339,7 @@
 <span class="lineno">104</span>     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 <span class="lineno">105</span>         <span class="n">ShotDevice</span><span class="o">.</span><span class="n">get_current_rawscreen</span><span class="p">()</span><span class="o">.</span><span class="n">save_screen_img</span><span class="p">()</span></code></pre></div>
 
-<h3 id="github">Github</h3>
+<h3 id="in-github">In Github</h3>
 
 <p><a href="https://github.com/qddegtya/Android_Screen_Stream" title="Android_Screen_Stream">Android_Screen_Stream</a></p>
 
@@ -346,7 +348,7 @@
                 <div class="blogbody__everyblog__footer">
                     <div class="footercopyright">
                         <span>警告! 转载时请注明本文出处:</span>
-                        <span class="blogperlink">http://qddegtya.github.io/experiments/2014/10/14/python%20gist/</span>
+                        <span class="blogperlink">http://qddegtya.github.io/%E5%AE%9E%E9%AA%8C/2014/10/14/python%20gist/</span>
                     </div>
                 </div>
             </div>

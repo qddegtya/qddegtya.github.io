@@ -1,16 +1,17 @@
 ---
 layout: singlepost
 title: jython+ddmlib 安卓屏幕截图并在web展示demo
-tags: python jython
-category: experiments
+tags: python jython ddmlib
+category: 实验
 ---
 
 > 部分代码思路来源于互联网
 
 ### 需求
 
-之前一直在寻找一种完美的移动设备屏幕流回传方案，这种尝试一旦成功即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的特性，可以直接在web上模拟手机操作，达到"远程监控"的目的，本demo的部分思路来源于互联网，我尝试用jython全部重写了一遍，这种方式实现起来虽然比较"土鳖"，但是效果基本可以符合需求，下面是效果图和代码清单。
+之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。
 
+__以上内容是文章摘要__
 
 ### 代码
 
@@ -122,7 +123,7 @@ if __name__=="__main__":
         ShotDevice.get_current_rawscreen().save_screen_img()
 {% endhighlight %}
 
-### Github
+### In Github
 
 [Android_Screen_Stream](https://github.com/qddegtya/Android_Screen_Stream "Android_Screen_Stream")
 

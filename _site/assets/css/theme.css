@@ -150,6 +150,10 @@ li{
         text-decoration: none;
         font-size: 1.2em;
     }
+    
+    .home__link{
+
+    }
 
 
 
@@ -711,6 +715,19 @@ li{
     margin-bottom: 50px;
     opacity: 0.8;
     cursor: pointer;
+
+    /*-webkit-box-shadow: 0 5px 0 #e1e1e1;*/
+    /*-moz-box-shadow: 0 5px 0 #e1e1e1;*/
+    /*box-shadow: 0 5px 0 #e1e1e1;*/
+
+    font-family: "Microsoft YaHei";
+    letter-spacing: 2px;
+
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
 }
 .loadingmore:hover{
     opacity: 1.0;

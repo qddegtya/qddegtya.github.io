@@ -140,7 +140,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == data.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -167,7 +167,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>点击加载更多...</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -197,11 +197,11 @@
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current"><a href="/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item"><a href="/blogs/" class="navlink">BLOGS</a></li>
-            <li class="blog__nav__item"><a href="/projects/" class="navlink">PROJECTS</a></li>
-            <li class="blog__nav__item"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
-            <li class="blog__nav__item"><a href="/tools/" class="navlink">TOOLS</a></li>
+            <li class="blog__nav__item nav__current home__link"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOGS</a></li>
+            <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">PROJECTS</a></li>
+            <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
+            <li class="blog__nav__item tools__link"><a href="/tools/" class="navlink">TOOLS</a></li>
         </ul>
     </div>
 
@@ -214,7 +214,7 @@
     <div class="clearleft bloglooparea">
         <div class="bloglists">
             <div class="loadingmore">
-                <span class="loadingmorespan">点击加载更多...</span>
+                <span class="loadingmorespan">阅读更多文章</span>
             </div>
         </div>
         <div class="blogsidebar index__sidebar">
