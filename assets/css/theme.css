@@ -128,18 +128,22 @@ li{
         background-color: #ffffff;
         border-right: 1px dashed #f0f0f0;
 
-        -webkit-transition: padding .5s;
-        -moz-transition: padding .5s;
-        -ms-transition: padding .5s;
-        -o-transition: padding .5s;
-        transition: padding .5s;
+        -webkit-transition: box-shadow .5s;
+        -moz-transition: box-shadow .5s;
+        -ms-transition: box-shadow .5s;
+        -o-transition: box-shadow .5s;
+        transition: box-shadow .5s;
+
     }
     .blog__nav__item:last-child{
         border-right: none;
     }
     .blog__nav__item:hover{
-        padding:25px 20px;
-        font-size: 1.2em;
+        /*padding:25px 20px;*/
+        /*font-size: 1.2em;*/
+        -webkit-box-shadow: 0 5px 0 #e1e1e1;
+        -moz-box-shadow: 0 5px 0 #e1e1e1;
+        box-shadow: 0 5px 0 #e1e1e1;
     }
     .blog__nav__item a{
         color:#333333;
