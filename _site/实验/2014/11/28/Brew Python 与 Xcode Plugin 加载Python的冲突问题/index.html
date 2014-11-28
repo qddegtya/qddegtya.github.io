@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>首页 - Archer's Blog</title>
+    <title>Brew Python 与 Xcode Plugin 加载Python的冲突问题 - Archer's Blog</title>
     <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.36"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -41,11 +41,11 @@
             var catposts = [];
 
             //首次载入便缓存下来
-            if("首页" != '首页'){
+            if("" != '首页'){
 
                 $.getJSON("../allposts.json", function (data) {
                     $.each(data, function (i, item) {
-                        if(item.cat == "首页"){
+                        if(item.cat == ""){
                         catposts.push(item);
                         }
                     });
@@ -53,7 +53,7 @@
                     //添加
                     $.each(catposts,function(j,item){
                         var content = "";
-                        if(j < 10){
+                        if(j < 0){
                             //alert(j);
                             var excerpt = " + item.excerpt + ";
                             content += "<div class='blogbody__everyblog'>";
@@ -96,13 +96,19 @@
             var totalsize = 0;
 
             
-                totalsize = 3;
+                
+                    
+                
+                    
+                
+                    
+                
             
 
-            if(totalsize > 10){
+            if(totalsize > 0){
 
                 var bloglists = $('.bloglists');
-                var count = 10; //一开始的文章数目
+                var count = 0; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 $('.loadingmore').click(function () {
@@ -112,10 +118,10 @@
                     $.getJSON("../allposts.json", function (data) {
 
                         var content = "";
-                        looptimes = count + 5; //初始化
+                        looptimes = count + 0; //初始化
                         var j = 0; //采集loop了多少次
 
-                        if("首页" == '首页'){
+                        if("" == '首页'){
                             $.each(data, function (i, item) {
                                 if (i >= count & i < looptimes) {
                                     var excerpt = " + item.excerpt + ";
@@ -185,8 +191,8 @@
     <div class="blog__bighead">
         <!-- blog title & description -->
         <div class="blog__titlearea">
-            <h1 class="blogtitle title--blogtitle">I AM ARCHER</h1>
-            <h2 class="blogtitle title--blogdescription">Keep thinking and Keep coding.</h2>
+            <h1 class="blogtitle title--blogtitle">THANK YOU</h1>
+            <h2 class="blogtitle title--blogdescription">Reading is powerful and useful.</h2>
         </div>
     </div>
 
@@ -207,57 +213,17 @@
 <!-- github ribbon -->
 <a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
 <section id="blogbody">
-<div class="clearleft bloglooparea">
-    <div class="bloglists">
-
-
-    <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-            <a href="/%E9%A1%B9%E7%9B%AE/2014/11/29/%E5%86%8D%E8%B0%88%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE/" title="再谈前端设计中的字体设置">再谈前端设计中的字体设置</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 29</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <p><img src="http://qddegtya.github.io/assets/blog-images/ziti-2014-11-29.png" alt="" /></p>
-
-<p>字体可以更美</p>
-
-
-            </div>
-    </div>
-
-
-    <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%20%E5%AE%89%E5%8D%93%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%E5%B9%B6%E5%9C%A8web%E5%B1%95%E7%A4%BAdemo/" title="jython+ddmlib 安卓屏幕截图并在web展示demo">jython+ddmlib 安卓屏幕截图并在web展示demo</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <blockquote>
-  <p>部分代码思路来源于互联网</p>
-</blockquote>
-
-<h3 id="section">需求</h3>
-
-<p>之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。</p>
-
-
-            </div>
-    </div>
-
-
-    <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <blockquote>
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt">
+                    <blockquote>
   <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
 </blockquote>
 
@@ -277,59 +243,26 @@
 
 <p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
 
-
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>警告! 转载时请注明本文出处:</span>
+                        <span class="blogperlink">http://qddegtya.github.io/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/</span>
+                    </div>
+                </div>
             </div>
-    </div>
-
-
-        <div class="loadingmore">
-            <span class="loadingmorespan">阅读更多文章</span>
         </div>
+        <div class="blogsidebar single__sidebar">
 
-    </div>
-
-<div class="blogsidebar index__sidebar">
-    <div class="sidebar_item sidebar--about">
-        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
-        <div class="aboutarcher">
-            <img src="../assets/images/avatar.jpg">
-        </div>
-        <ul class="archermeta">
-            <li><i class="fa fa-male"></i> <span class="archermeta--des">Archer/小A</span></li>
-            <li><i class="fa fa-map-marker"></i> <span class="archermeta--des">中国.上海</span></li>
-            <li><i class="fa fa-briefcase"></i> <span class="archermeta--des">前端打杂工程师</span></li>
-        </ul>
-        <div class="learnmemore">
-            <a href="/about">了解更多</a>
-        </div>
-    </div>
-
-    <div class="sidebar_item sidebar--cat">
-            <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
-            <ul class="sidebar__ul">
-                <li><a href="/blogs/" title="碎碎念">碎碎念</a></li>
-                <li><a href="/tools/" title="工具">工具</a></li>
-                <li><a href="/experiments/" title="做实验">做实验</a></li>
-                <li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>
-            </ul>
-    </div>
-
-    <div class="sidebar_item sidebar--followme">
-        <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
-        <div class="githubdata">
-            <ul class="githubitems">
-                <li><span>已有 <em class="github--followers"><img src="../assets/images/ajax-loader.gif"></em> 个人关注此人</span></li>
-                <li><a href="https://github.com/qddegtya" target="_blank" title="在github上关注我" class="button--radius followme"><i class="fa fa-facebook"></i> 关注此人</a></li>
-                <li><a href="https://github.com/qddegtya/qddegtya.github.io/issues" target="_blank" title="给本站提issues" class="button--radius submitbug"><i class="fa fa-bug"></i> 发现BUG?</a></li>
-                <li><a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank" title="Fork本站源码" class="button--radius forkmysite"><i class="fa fa-code-fork"></i> 本站源码</a></li>
-            </ul>
-        </div>
+    <div class="sidebar_item sidebar--catcontent">
+        <h3 class="sidebar__title"><i class="fa fa-list-ol fa-lg"></i></h3>
+        <ul class="sidebar__ul">
+            <li><a href="#">目录 一</a></li>
+         </ul>
     </div>
 
 </div>
-
-</div>
-
+    </div>
 </section>
 <footer id="blogfooter">
     <div class="clearboth blogfooter">

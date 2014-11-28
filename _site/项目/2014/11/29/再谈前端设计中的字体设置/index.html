@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Brew Python 与 Xcode Plugin 加载Python的冲突问题 - Archer's Blog</title>
+    <title>再谈前端设计中的字体设置 - Archer's Blog</title>
     <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.36"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -96,6 +96,8 @@
             var totalsize = 0;
 
             
+                
+                    
                 
                     
                 
@@ -215,37 +217,23 @@
         <div class="bloglists">
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/xcode%20and%20python/">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+                    <a href="/%E9%A1%B9%E7%9B%AE/2014/11/29/%E5%86%8D%E8%B0%88%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE/">再谈前端设计中的字体设置</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+                    <span class="blogbody__everyblog__metainfo">2014 - 11 - 29</span>
                 </div>
                 <div class="blogcontent blogbody__everyblog__excerpt">
-                    <blockquote>
-  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
-</blockquote>
+                    <p><img src="http://qddegtya.github.io/assets/blog-images/ziti-2014-11-29.png" alt="" /></p>
 
-<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
+<p>字体可以更美</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
-
-<h3 id="brewpython">通过brew安装python</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
-
-<h3 id="copy--r">copy -R</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
-
-<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
+<p><strong>以上内容是文章摘要</strong></p>
 
                 </div>
                 <div class="blogbody__everyblog__footer">
                     <div class="footercopyright">
                         <span>警告! 转载时请注明本文出处:</span>
-                        <span class="blogperlink">http://qddegtya.github.io/%E5%AE%9E%E9%AA%8C/2014/11/28/xcode%20and%20python/</span>
+                        <span class="blogperlink">http://qddegtya.github.io/%E9%A1%B9%E7%9B%AE/2014/11/29/%E5%86%8D%E8%B0%88%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE/</span>
                     </div>
                 </div>
             </div>
