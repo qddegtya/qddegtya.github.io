@@ -189,6 +189,9 @@ li{
     float: left;
     /*display: none;*/
     border-right: 1px solid #f0f0f0;
+    /*-webkit-box-shadow: 0 8px 0 rgba(255,255,255,0.4);*/
+    /*-moz-box-shadow: 0 8px 0 rgba(255,255,255,0.4);*/
+    /*box-shadow: 0 8px 0 rgba(255,255,255,0.4);*/
 }
 .blogbody__everyblog__header{
     /*background-color: #1abc9c;*/
@@ -408,7 +411,7 @@ li{
 }
 .blogcontent p img{
     /*width: 100%;*/
-    border: 5px solid #f9f9f9;
+    /*border: 5px solid #f9f9f9;*/
     opacity: .8;
 
     -webkit-transition: opacity .8s;
