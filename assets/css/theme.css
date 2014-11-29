@@ -185,13 +185,20 @@ li{
     border-bottom: 1px solid #f0f0f0;
 }
 .bloglists{
-    width: 60%;
+
+    width: calc( 60% - 1px );
+    width: -moz-calc( 60% - 1px );
+    width: -webkit-calc( 60% - 1px );
+
     float: left;
     /*display: none;*/
-    border-right: 1px solid #f0f0f0;
-    /*-webkit-box-shadow: 0 8px 0 rgba(255,255,255,0.4);*/
-    /*-moz-box-shadow: 0 8px 0 rgba(255,255,255,0.4);*/
-    /*box-shadow: 0 8px 0 rgba(255,255,255,0.4);*/
+    /*border-right: 1px solid #f0f0f0;*/
+    -webkit-box-shadow: 0 12px 0 rgba(255,255,255,0.4);
+    -moz-box-shadow: 0 12px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 12px 0 rgba(255,255,255,0.4);
+
+    z-index: 9998;
+    position: relative;
 }
 .blogbody__everyblog__header{
     /*background-color: #1abc9c;*/
@@ -371,13 +378,13 @@ li{
 }
 .blogcontent blockquote{
 
-    /*padding: 0 10px;*/
+    padding: 0 10px;
     font-size: 1.0em;
     line-height: 1.0em;
     color:#333333;
     letter-spacing: 1px;
     /*background-color: #f9f9f9;*/
-    /*border-left: 2px solid #1abc9c;*/
+    border-left: 2px solid #1abc9c;
     margin-bottom: 25px;
 
     -ms-word-wrap: break-word;
@@ -386,30 +393,7 @@ li{
     word-break: break-all;
 
 }
-.blogcontent blockquote p:before{
-    content: '\201C';
-    font-family: "Arial";
-    font-size: 4.8em;
-    /*line-height: 1.8em;*/
-    /*line-height: 1.0em;*/
-    font-weight: bold;
-    /*position: relative;*/
-    /*left: 5px;*/
-    color: #f0f0f0;
-    position: relative;
-    bottom: -25px;
-    margin-right: 5px;
-}
-.blogcontent blockquote:first-letter{
-    /*font-size: 1.4em;*/
-    text-transform: uppercase;
-    /*font-weight: bold;*/
-}
-.blogcontent blockquote:before{
-    /*font-size: 1.4em;*/
-    /*color: #999999;*/
-    /*font-weight: bold;*/
-}
+
 .blogcontent table td{
     border: 1px solid #f0f0f0;
     padding: 5px;
@@ -534,8 +518,18 @@ li{
    $blogfooter
 \*-----------------------------*/
 .blogfooter{
-        padding: 200px 0;
+        padding: 150px 0;
         background-color: #1abc9c;
+        width: 100%;
+
+        z-index: 9995;
+        position: relative;
+}
+.truefooter{
+    padding: 30px 50px;
+    background-color: #f0f0f0;
+    z-index: -1;
+    position: relative;
 }
 
 
@@ -611,7 +605,7 @@ li{
     border-radius: 50%;
     /*width: 100%;*/
     opacity: 0.8;
-    border: 5px solid #cccccc;
+    border: 5px solid #f0f0f0;
     width: 100%; /*自适应*/
 
     /*height: 256px;*/
@@ -773,6 +767,18 @@ li{
     font-size: 1.4em;
     line-height: 2.0em;
 }
+
+
+
+
+
+/*-----------------------------*\
+   $footer
+\*-----------------------------*/
+.html5--logo img{
+
+}
+
 
 
 
