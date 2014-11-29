@@ -370,14 +370,14 @@ li{
     /*display: block;*/
 }
 .blogcontent blockquote{
-    quotes: '\00AB' '\00BB' '\201E' '\201C';
-    padding: 0 10px;
+
+    /*padding: 0 10px;*/
     font-size: 1.0em;
     line-height: 1.0em;
     color:#333333;
     letter-spacing: 1px;
     /*background-color: #f9f9f9;*/
-    border-left: 2px solid #1abc9c;
+    /*border-left: 2px solid #1abc9c;*/
     margin-bottom: 25px;
 
     -ms-word-wrap: break-word;
@@ -385,6 +385,20 @@ li{
     -ms-word-break: break-all;
     word-break: break-all;
 
+}
+.blogcontent blockquote p:before{
+    content: '\201C';
+    font-family: "Arial";
+    font-size: 4.8em;
+    /*line-height: 1.8em;*/
+    /*line-height: 1.0em;*/
+    font-weight: bold;
+    /*position: relative;*/
+    /*left: 5px;*/
+    color: #f0f0f0;
+    position: relative;
+    bottom: -25px;
+    margin-right: 5px;
 }
 .blogcontent blockquote:first-letter{
     /*font-size: 1.4em;*/
@@ -600,6 +614,8 @@ li{
     border: 5px solid #cccccc;
     width: 100%; /*自适应*/
 
+    /*height: 256px;*/
+
     -webkit-transition: opacity .5s;
     -moz-transition: opacity .5s;
     -ms-transition: opacity .5s;
@@ -628,7 +644,7 @@ li{
 }
 .learnmemore{
     text-align: center;
-    padding: 10px;
+    padding: 2px;
     background-color: #1abc9c;
     border-radius: 50px;
     opacity: 0.8;
