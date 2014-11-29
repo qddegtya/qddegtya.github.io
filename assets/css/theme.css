@@ -233,9 +233,9 @@ li{
 .blogbody__everyblog__meta{
     text-align: center;
     padding-top: 15px;
-    padding-bottom: 25px;
+    /*padding-bottom: 25px;*/
     /*padding-bottom: 15px;*/
-    border-bottom: 1px solid #f0f0f0;
+    /*border-bottom: 1px solid #f0f0f0;*/
     color: #cccccc;
     font-weight: normal;
     font-size: 0.8em;
@@ -740,11 +740,11 @@ li{
 \*-----------------------------*/
 .loadingmore{
     padding: 20px;
-    background-color: #1abc9c;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #333333;
     text-align: center;
-    margin-bottom: 50px;
-    opacity: 0.8;
+    /*margin-bottom: 50px;*/
+    /*opacity: 0.8;*/
     cursor: pointer;
 
     /*-webkit-box-shadow: 0 5px 0 #e1e1e1;*/
@@ -752,13 +752,16 @@ li{
     /*box-shadow: 0 5px 0 #e1e1e1;*/
 
     font-family: "Microsoft YaHei";
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    -webkit-transition: opacity .5s;
-    -moz-transition: opacity .5s;
-    -ms-transition: opacity .5s;
-    -o-transition: opacity .5s;
-    transition: opacity .5s;
+    /*-webkit-transition: opacity .5s;*/
+    /*-moz-transition: opacity .5s;*/
+    /*-ms-transition: opacity .5s;*/
+    /*-o-transition: opacity .5s;*/
+    /*transition: opacity .5s;*/
+
+    font-family: "Microsoft YaHei";
+
 }
 .loadingmore:hover{
     opacity: 1.0;
