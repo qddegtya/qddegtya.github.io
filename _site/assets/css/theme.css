@@ -672,7 +672,7 @@ li{
 }
 .learnmemore{
     text-align: center;
-    padding: 2px;
+    padding: 10px;
     background-color: #1abc9c;
     border-radius: 50px;
     opacity: 0.8;
@@ -689,11 +689,13 @@ li{
 }
 .learnmemore a{
     color: #ffffff;
-    font-size:1.4em;
-    line-height: 2.0em;
+    font-size:1.2em;
+    line-height: 1.4em;
     text-decoration: none;
     letter-spacing: 3px;
     cursor: help;
+
+    font-family: "Microsoft YaHei";
 }
 .githubitems{
     text-align: center;
