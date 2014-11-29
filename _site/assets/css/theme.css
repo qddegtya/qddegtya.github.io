@@ -518,12 +518,13 @@ li{
    $blogfooter
 \*-----------------------------*/
 .blogfooter{
-        padding: 150px 0;
+        height: 70px;
+        padding: 0 50px;
         background-color: #1abc9c;
         width: 100%;
 
         z-index: 9995;
-        position: relative;
+        /*position: relative;*/
 }
 .truefooter{
     padding: 30px 50px;
@@ -531,7 +532,32 @@ li{
     z-index: -1;
     position: relative;
 }
+.blogfooter--left{
+    height: 70px;
+    width: calc( 60% - 1px );
+    width: -moz-calc( 60% - 1px );
+    width: -webkit-calc( 60% - 1px );
 
+    float: left;
+    /*background-color: #000000;*/
+    /*padding: 30px 0;*/
+
+}
+.blogfooter--right{
+    width: 40%;
+    float: right;
+    height: 70px;
+    /*background-color: #000000;*/
+    /*padding: 30px 0;*/
+}
+.footer--copyright{
+    font-family: "Microsoft YaHei";
+    color: #ffffff;
+    font-size: 1.0em;
+    line-height: 1.0em;
+    display: block;
+    margin-top: 35px;
+}
 
 
 
