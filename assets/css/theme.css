@@ -981,11 +981,11 @@ pre{
 
     cursor: pointer;
 
-    -webkit-transition: color .5s;
-    -moz-transition: color .5s;
-    -ms-transition: color .5s;
-    -o-transition: color .5s;
-    transition: color .5s;
+    -webkit-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+    -ms-transition: background-color .5s;
+    -o-transition: background-color .5s;
+    transition: background-color .5s;
 
     /*border-bottom: 1px solid #f0f0f0;*/
     border-top: 1px solid #f0f0f0;
@@ -1021,6 +1021,17 @@ pre{
     font-family: "Microsoft YaHei";
     letter-spacing: 2px;
 }
+
+.greenfont{
+    color:#1abc9c !important;
+    background-color: #ffffff;
+}
+
+.whitefont{
+    color: #ffffff !important;
+    background-color: #1abc9c;
+}
+
 .currentfollow{
     color:#1abc9c !important;
 }

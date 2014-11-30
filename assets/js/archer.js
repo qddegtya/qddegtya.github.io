@@ -19,6 +19,33 @@
             "1&isFans=1&uid=1893906792&verifier=26da3846&dpc=1'></iframe>";
 
 
+        var startTwink = function(times,interval,callbacks){
+            var i = 1; //总共执行的次数
+            var j = 0; //callback堆栈初始位置
+
+            var thisInterval = setInterval(function(){
+                if(i <= times){
+                    if(j <= callbacks.length - 1){
+                        callbacks[j].apply(this,arguments);
+                        j++; //++
+                    } else {
+                        j = 0; //归位
+                        callbacks[j].apply(this,arguments);
+                    }
+
+                    i++;
+
+                } else {
+                    stopTwink(thisInterval);
+                }
+            }, interval);
+        };
+
+        var stopTwink = function(interval){
+            clearInterval(interval);
+        };
+
+
         var showBanner = function(modelId, what){
             modelId.addClass("currentfollow");
             bannerContent.html(what);
@@ -69,7 +96,16 @@
                 }
 
                 } else if(tmp.currentObj.text() !== text){
-                    $(tmp.currentObj).addClass("twinkling");
+
+                startTwink(9,200,[function(){
+                    $(tmp.currentObj).removeClass("whitefont");
+                    $(tmp.currentObj).addClass("greenfont");
+                }, function(){
+                    $(tmp.currentObj).removeClass("greenfont");
+                    $(tmp.currentObj).addClass("whitefont");
+                }]);
+
+                    //$(tmp.currentObj).addClass("twinkling");
                     //switchContent($(event.target));
                 } else if(tmp.currentObj.text() === text){
 
@@ -99,7 +135,16 @@
                }
 
                } else if(tmp.currentObj.text() !== text){
-                    $(tmp.currentObj).addClass("twinkling");
+
+               startTwink(9,200,[function(){
+                   $(tmp.currentObj).removeClass("whitefont");
+                   $(tmp.currentObj).addClass("greenfont");
+               }, function(){
+                   $(tmp.currentObj).removeClass("greenfont");
+                   $(tmp.currentObj).addClass("whitefont");
+               }]);
+
+                    //$(tmp.currentObj).addClass("twinkling");
                     //switchContent($(event.target));
                } else if(tmp.currentObj.text() === text) {
 
