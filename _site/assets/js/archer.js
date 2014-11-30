@@ -55,9 +55,8 @@
         var hideBanner = function(modelId){
             modelId.removeClass("currentfollow");
             bannerContent.fadeOut("slow");
-            $(tmp.currentObj).removeClass("twinkling");
+            $(tmp.currentObj).removeClass("greenfont"); //移除残留状态
             delete(tmp.currentObj);
-
         };
 
         var switchContent = function(modelId){
@@ -100,9 +99,11 @@
                 startTwink(9,200,[function(){
                     $(tmp.currentObj).removeClass("whitefont");
                     $(tmp.currentObj).addClass("greenfont");
+                    //$(tmp.currentObj).removeClass("greenfont");
                 }, function(){
                     $(tmp.currentObj).removeClass("greenfont");
                     $(tmp.currentObj).addClass("whitefont");
+                    //$(tmp.currentObj).removeClass("whitefont");
                 }]);
 
                     //$(tmp.currentObj).addClass("twinkling");
@@ -139,9 +140,11 @@
                startTwink(9,200,[function(){
                    $(tmp.currentObj).removeClass("whitefont");
                    $(tmp.currentObj).addClass("greenfont");
+                   //$(tmp.currentObj).removeClass("greenfont");
                }, function(){
                    $(tmp.currentObj).removeClass("greenfont");
                    $(tmp.currentObj).addClass("whitefont");
+                   //$(tmp.currentObj).removeClass("whitefont");
                }]);
 
                     //$(tmp.currentObj).addClass("twinkling");
