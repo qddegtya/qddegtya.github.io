@@ -1049,3 +1049,122 @@ pre{
         color: #ffffff;
     }
 }
+
+
+
+
+/*-----------------------------*\
+   $media--query
+\*-----------------------------*/
+.mobile--footer{
+    display: none;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.0em;
+    line-height: 1.2em;
+
+    background-color: #1abc9c;
+
+    font-family: "Microsoft YaHei";
+    letter-spacing: 2px;
+}
+.mobile--footer i{
+    margin-right: 8px;
+}
+.mobile--header{
+    width: 100%;
+    background-color: #1abc9c;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    display: none;
+
+    text-align: center;
+    color: #ffffff;
+
+    font-family: "Microsoft YaHei";
+    font-size: 1.0em;
+    line-height: 1.2em;
+
+    letter-spacing: 1px;
+
+    /*-webkit-box-shadow: 0 1px 10px #999999;*/
+    /*-moz-box-shadow: 0 1px 10px #999999;*/
+    /*box-shadow: 0 1px 10px #999999;*/
+}
+
+.mobile--header a{
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Microsoft YaHei";
+}
+
+.mobile--header i{
+    margin-right: 8px;
+}
+
+@media screen and (max-width:1103px){
+
+}
+@media screen and (max-width:823px){
+
+}
+@media screen and (max-width:598px){
+
+}
+@media screen and (max-width:480px){
+    body{
+        background-color: #ffffff !important;
+    }
+    /*设计手机屏幕*/
+    .bloglists{
+        width: 100% !important;
+        float: none !important;
+    }
+    .blogsidebar{
+        float: none !important;
+        width: 100% !important;
+    }
+    .bloglooparea{
+        padding: 0 !important;
+    }
+    .blogbody__everyblog{
+        padding: 15px !important;
+    }
+    #blog__header{
+        display: none !important;
+    }
+    .blogfooter{
+        display: none !important;
+    }
+    .mobile--footer{
+        display: block !important;
+    }
+    .sidebar--follow--ul li{
+        width: 100% !important;
+        float: none !important;
+    }
+    .single__sidebar{
+        display: none !important;
+    }
+    .bloglists{
+        box-shadow: none !important;
+    }
+    .mobile--header{
+        display: block !important;
+    }
+    #blogbody{
+        padding-top: 65px !important;
+    }
+    #ribbon--github{
+        display: none !important;
+    }
+}
+@media screen and (max-width:240px){
+
+
+}
