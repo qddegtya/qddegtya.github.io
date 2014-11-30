@@ -14,8 +14,8 @@
     "cat":"项目",
     "excerpt":"&lt;p&gt;&lt;img src=&quot;http://qddegtya.github.io/assets/blog-images/ziti-2014-11-29.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;&lt;p&gt;一个不争的事实是，各种苦逼前端都希望用户运行产品时所用的桌面浏览器或者手机浏览器都是高端货。&lt;/p&gt;"}
 ,
-    {"title":"jython+ddmlib 安卓屏幕截图并在web展示demo",
-    "url":"/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%20%E5%AE%89%E5%8D%93%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%E5%B9%B6%E5%9C%A8web%E5%B1%95%E7%A4%BAdemo/",
+    {"title":"jython+ddmlib实现仿豌豆荚效果屏幕实时快照",
+    "url":"/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/",
     "date":"2014 - 11 - 28",
     "tags":["python" ,"jython" ,"ddmlib"],
     "cat":"实验",
