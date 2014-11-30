@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>工具 - Archer's Blog</title>
     <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.36"/>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.2"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
-    <script src="../assets/js/archer.js"></script>
+    <script src="../assets/js/archer.js?ver=1.0.2"></script>
     <script type="text/javascript">
 
         //Html编码获取Html转义实体
@@ -224,30 +224,47 @@
             </div>
         </div>
         <div class="blogsidebar index__sidebar">
+
     <div class="sidebar_item sidebar--about">
         <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
         <div class="aboutarcher">
             <img src="../assets/images/avatar.jpeg" alt="colorful life">
         </div>
         <ul class="archermeta">
-            <li><i class="fa fa-male"></i> <span class="archermeta--des">Archer/小A</span></li>
+            <li><i class="fa fa-github-alt"></i> <span class="archermeta--des">Archer/小A</span></li>
             <li><i class="fa fa-map-marker"></i> <span class="archermeta--des">中国.上海</span></li>
             <li><i class="fa fa-coffee"></i> <span class="archermeta--des">前端打杂工程师</span></li>
         </ul>
-        <div class="learnmemore">
-            <a href="/about">了解更多<i class="fa fa-question"></i></a>
-        </div>
+        <!--<div class="learnmemore">-->
+            <!--<a href="/about">了解更多<i class="fa fa-question"></i></a>-->
+        <!--</div>-->
     </div>
 
-    <div class="sidebar_item sidebar--cat">
-            <h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>
-            <ul class="sidebar__ul">
-                <li><a href="/blogs/" title="碎碎念">碎碎念</a></li>
-                <li><a href="/tools/" title="工具">工具</a></li>
-                <li><a href="/experiments/" title="做实验">做实验</a></li>
-                <li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>
-            </ul>
+    <!--<div class="sidebar_item sidebar--cat">-->
+            <!--<h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>-->
+            <!--<ul class="sidebar__ul">-->
+                <!--<li><a href="/blogs/" title="碎碎念">碎碎念</a></li>-->
+                <!--<li><a href="/tools/" title="工具">工具</a></li>-->
+                <!--<li><a href="/experiments/" title="做实验">做实验</a></li>-->
+                <!--<li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>-->
+            <!--</ul>-->
+    <!--</div>-->
+
+    <div class="sidebar--follow--widget">
+        <ul class="sidebar--follow--ul">
+            <li id="me"><i class="fa fa-github-square"></i><span>关于</span></li>
+            <li id="weibo"><i class="fa fa-weibo"></i><span>微博</span></li>
+            <li id="weixin"><i class="fa fa-weixin"></i><span>微信</span></li>
+            <li id="mobile"><i class="fa fa-mobile"></i><span>移动版</span></li>
+        </ul>
     </div>
+
+    <div class="clearboth"></div>
+
+    <div id="sidebar--follow--info">
+        <!--<img src="../assets/images/ajax-loader.gif">-->
+    </div>
+
 
     <div class="sidebar_item sidebar--followme">
         <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
@@ -261,6 +278,8 @@
         </div>
     </div>
 
+
+
 </div>
     </div>
 </section>
@@ -268,7 +287,7 @@
     <div class="clearboth blogfooter">
         <!-- 底部左边 -->
         <div class="blogfooter--left">
-            <span class="footer--copyright">Powered by Jekyll / Theme is codelab / Version: 1.0.1</span>
+            <span class="footer--copyright">Powered by Jekyll / Theme is codelab / Version: 1.0.2</span>
         </div>
 
         <!-- 底部右边 -->

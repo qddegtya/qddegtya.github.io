@@ -949,3 +949,92 @@ pre{
     90% { transform: translate3d(-5px, 0, 0); }
     100% { transform: none; }
 }
+
+
+
+
+
+/*-----------------------------*\
+   $follow--widget
+\*-----------------------------*/
+.sidebar--follow--widget{
+    width: 100%;
+    border-bottom:1px solid #f0f0f0;
+    overflow: auto;
+    clear: both;
+}
+.sidebar--follow--ul{
+    width: 100%;
+}
+.sidebar--follow--ul li{
+    width: 50%;
+    float: left;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    color: #333333;
+    padding: 20px 0;
+    display: inline-block;
+
+    font-family: "Microsoft YaHei";
+
+    cursor: pointer;
+
+    -webkit-transition: color .5s;
+    -moz-transition: color .5s;
+    -ms-transition: color .5s;
+    -o-transition: color .5s;
+    transition: color .5s;
+
+    /*border-bottom: 1px solid #f0f0f0;*/
+    border-top: 1px solid #f0f0f0;
+}
+
+.sidebar--follow--ul li:hover{
+    color: #1abc9c;
+}
+.sidebar--follow--ul li:nth-child(2n-1){
+    border-right: 1px solid #f0f0f0;
+}
+.sidebar--follow--ul li > i{
+    margin-right: 10px;
+}
+#sidebar--follow--info{
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: none;
+    text-align: center;
+}
+#sidebar--follow--info img{
+    max-width: 100%;
+    /*width: 100%;*/
+    display: block;
+    margin: 0 auto;
+}
+.saoyisao{
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    color: #333333;
+    font-family: "Microsoft YaHei";
+    letter-spacing: 2px;
+}
+.currentfollow{
+    color:#1abc9c !important;
+}
+
+.twinkling{
+  -webkit-animation: twinkling .4s 3 linear;
+}
+
+@-webkit-keyframes twinkling{
+    0%{
+        background-color: #ffffff;
+    }
+    100%{
+        background-color: #1abc9c;
+        color: #ffffff;
+    }
+}
