@@ -175,7 +175,7 @@ li{
 }
 .blogbody__everyblog{
     background-color: #ffffff;
-    padding: 40px;
+    padding: 15px 40px;
     /*margin-bottom: 60px;*/
 
     /*-webkit-box-shadow: 0 5px 0 #e1e1e1;*/
@@ -202,7 +202,7 @@ li{
 }
 .blogbody__everyblog__header{
     /*background-color: #1abc9c;*/
-    padding: 2px;
+    padding-top: 15px;
     text-align: center;
 }
 .blogbody__everyblog__header a{
@@ -253,7 +253,7 @@ li{
    $blogcontent
 \*-----------------------------*/
 .blogcontent{
-    padding: 30px 0;
+    padding: 25px 0 0 0;
     color:#666666;
     font-size: .9em;
     line-height: 1.8em;
@@ -477,7 +477,7 @@ li{
     /*border: 1px solid #f0f0f0;*/
     width: 100%;
     border-top:1px solid #f0f0f0;
-    padding-top: 25px;
+    padding-top: 15px;
 
     font-family: "Microsoft YaHei";
 }
@@ -1158,10 +1158,16 @@ pre{
         display: block !important;
     }
     #blogbody{
-        padding-top: 65px !important;
+        padding-top: 50px !important;
     }
     #ribbon--github{
         display: none !important;
+    }
+    /*.blogbody__everyblog__excerpt{*/
+        /*padding: 25px 0 0 0 !important;*/
+    /*}*/
+    .loadingmore{
+        border-bottom: 1px solid #f0f0f0;
     }
 }
 @media screen and (max-width:240px){
