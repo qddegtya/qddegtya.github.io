@@ -10,6 +10,7 @@
         var tmp = {};
 
         //定义各个组件
+        var weixinQrCode = "<img src='../assets/images/qrcode-weixin.jpg'><span class='saoyisao'>微信号：archerblog</span>";
         var mobileQrCode = "<img src='../assets/images/qrcode.png'><span class='saoyisao'>扫一扫</span>";
         var weiboWidget = "<iframe width='100%' height='550' " +
             "class='share_self'  frameborder='0' scrolling='no' " +
@@ -94,7 +95,7 @@
                     hideBanner(self);
                 }
 
-                } else if(tmp.currentObj.text() !== text){
+            } else if(tmp.currentObj.text() !== text){
 
                 startTwink(9,200,[function(){
                     $(tmp.currentObj).removeClass("whitefont");
@@ -106,9 +107,9 @@
                     //$(tmp.currentObj).removeClass("whitefont");
                 }]);
 
-                    //$(tmp.currentObj).addClass("twinkling");
-                    //switchContent($(event.target));
-                } else if(tmp.currentObj.text() === text){
+                //$(tmp.currentObj).addClass("twinkling");
+                //switchContent($(event.target));
+            } else if(tmp.currentObj.text() === text){
 
                 if(bannerContent.is(":hidden")){
                     showBanner(self, mobileQrCode);
@@ -120,47 +121,87 @@
             }
         });
 
+        //微信组件
+        $("#weixin").click(function(event){
+            var self = $(this);
+            var text = self.text();
+
+            if(!tmp.currentObj){
+                tmp.currentObj = self;
+
+                if (bannerContent.is(":hidden")) {
+                    showBanner(self, weixinQrCode);
+                }
+                else if (bannerContent.is(":visible")) {
+                    hideBanner(self);
+                }
+
+            } else if(tmp.currentObj.text() !== text){
+
+                startTwink(9,200,[function(){
+                    $(tmp.currentObj).removeClass("whitefont");
+                    $(tmp.currentObj).addClass("greenfont");
+                    //$(tmp.currentObj).removeClass("greenfont");
+                }, function(){
+                    $(tmp.currentObj).removeClass("greenfont");
+                    $(tmp.currentObj).addClass("whitefont");
+                    //$(tmp.currentObj).removeClass("whitefont");
+                }]);
+
+                //$(tmp.currentObj).addClass("twinkling");
+                //switchContent($(event.target));
+            } else if(tmp.currentObj.text() === text) {
+
+                if (bannerContent.is(":hidden")) {
+                    showBanner(self, weixinQrCode);
+                }
+
+                else if (bannerContent.is(":visible")) {
+                    hideBanner(self);
+                }
+            }
+        });
+
         //新浪微博组件
         $("#weibo").click(function(event){
             var self = $(this);
             var text = self.text();
 
-           if(!tmp.currentObj){
-               tmp.currentObj = self;
+            if(!tmp.currentObj){
+                tmp.currentObj = self;
 
-               if (bannerContent.is(":hidden")) {
-                   showBanner(self, weiboWidget);
-               }
-               else if (bannerContent.is(":visible")) {
-                   hideBanner(self);
-               }
+                if (bannerContent.is(":hidden")) {
+                    showBanner(self, weiboWidget);
+                }
+                else if (bannerContent.is(":visible")) {
+                    hideBanner(self);
+                }
 
-               } else if(tmp.currentObj.text() !== text){
+            } else if(tmp.currentObj.text() !== text){
 
-               startTwink(9,200,[function(){
-                   $(tmp.currentObj).removeClass("whitefont");
-                   $(tmp.currentObj).addClass("greenfont");
-                   //$(tmp.currentObj).removeClass("greenfont");
-               }, function(){
-                   $(tmp.currentObj).removeClass("greenfont");
-                   $(tmp.currentObj).addClass("whitefont");
-                   //$(tmp.currentObj).removeClass("whitefont");
-               }]);
+                startTwink(9,200,[function(){
+                    $(tmp.currentObj).removeClass("whitefont");
+                    $(tmp.currentObj).addClass("greenfont");
+                    //$(tmp.currentObj).removeClass("greenfont");
+                }, function(){
+                    $(tmp.currentObj).removeClass("greenfont");
+                    $(tmp.currentObj).addClass("whitefont");
+                    //$(tmp.currentObj).removeClass("whitefont");
+                }]);
 
-                    //$(tmp.currentObj).addClass("twinkling");
-                    //switchContent($(event.target));
-               } else if(tmp.currentObj.text() === text) {
+                //$(tmp.currentObj).addClass("twinkling");
+                //switchContent($(event.target));
+            } else if(tmp.currentObj.text() === text) {
 
-               if (bannerContent.is(":hidden")) {
-                   showBanner(self, weiboWidget);
-               }
+                if (bannerContent.is(":hidden")) {
+                    showBanner(self, weiboWidget);
+                }
 
-               else if (bannerContent.is(":visible")) {
-                   hideBanner(self);
-               }
-           }
+                else if (bannerContent.is(":visible")) {
+                    hideBanner(self);
+                }
+            }
         });
     });
 
 }());
-
