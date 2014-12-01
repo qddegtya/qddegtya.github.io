@@ -1169,6 +1169,15 @@ pre{
     .loadingmore{
         border-bottom: 1px solid #f0f0f0;
     }
+    .sidebar--followme{
+        display: none !important;
+    }
+    #mobile{
+        display: none !important;
+    }
+    #weibo{
+        display: none !important;
+    }
 }
 @media screen and (max-width:240px){
 
