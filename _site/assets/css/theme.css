@@ -1142,7 +1142,7 @@ pre{
         display: none !important;
     }
     .mobile--footer{
-        /*display: block !important;*/
+        display: block !important;
     }
     .sidebar--follow--ul li{
         width: 100% !important;
