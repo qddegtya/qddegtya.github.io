@@ -1178,6 +1178,9 @@ pre{
     #weibo{
         display: none !important;
     }
+    #weixin{
+        display: none !important;
+    }
 }
 @media screen and (max-width:240px){
 

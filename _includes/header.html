@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ site.url }}/assets/css/theme.css?ver=1.0.9"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
-    <script src="../assets/js/archer.js?ver=1.0.9"></script>
+    <script src="/assets/js/archer.js?ver=1.0.9"></script>
     <script type="text/javascript">
 
         //Html编码获取Html转义实体
@@ -44,7 +44,7 @@
             //首次载入便缓存下来
             if("{{ page.thiscat }}" != '首页'){
 
-                $.getJSON("../allposts.json", function (data) {
+                $.getJSON("/allposts.json", function (data) {
                     $.each(data, function (i, item) {
                         if(item.cat == "{{ page.thiscat }}"){
                         catposts.push(item);
