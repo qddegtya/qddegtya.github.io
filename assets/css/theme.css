@@ -755,7 +755,8 @@ li{
 }
 
 .single--sidebar--fix{
-
+    position: fixed;
+    top: 0;
 }
 .single__sidebar{
     width: 40%;
@@ -1185,4 +1186,37 @@ pre{
 @media screen and (max-width:240px){
 
 
+}
+
+
+
+
+
+/*-----------------------------*\
+   $others
+\*-----------------------------*/
+#contentml li{
+    margin-left: 35px;
+    list-style: circle !important;
+    color: #666666;
+    border-bottom: none !important;
+    padding: 0 0 20px 0 !important;
+}
+#contentml li:hover a{
+    text-decoration: underline;
+}
+#contentml li:first-child{
+    padding-top: 20px !important;
+}
+.sidebar__title__ml{
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20px;
+    color: #666666 !important;
+    letter-spacing: 2px;
+    font-weight: normal !important;
+}
+.sidebar--catcontent{
+    padding: 20px 0 0 0 !important;
 }

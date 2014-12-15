@@ -34,8 +34,6 @@
                 var curExe = re.exec(blogContent);
                 mlHtml = mlHtml
                 + "<li><a href='#" + curExe[1] + "'>"
-                + (parseInt(r) + 1).toString()
-                + ". "
                 + curExe[2] + "</a></li>";
             }
         }
