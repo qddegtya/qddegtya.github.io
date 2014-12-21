@@ -95,10 +95,10 @@
         };
 
         //获取github api followers
-        $.getJSON("https://api.github.com/users/qddegtya/followers",function(data){
-            //alert(data.length);
-            $('.github--followers').text(data.length);
-        });
+        //$.getJSON("https://api.github.com/users/qddegtya/followers",function(data){
+        //    //alert(data.length);
+        //    $('.github--followers').text(data.length);
+        //});
 
         //扫一扫
         $('#mobile').click(function(event){
