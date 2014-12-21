@@ -21,25 +21,25 @@
 
 
         //h3目录生成
-        var mlHtml = "";
-        var re = /<h3 id="(.*?)">([^<]+?)<\/h3>/gi;
-        var blogContent = $("#singleblogcontent").html() || "";
-        var ml = $("#contentml");
-        var reMatch = blogContent.match(re);
-
-        if(reMatch === null){
-            mlHtml = "<li><a href='#'>暂无文章目录</a></li>";
-        } else {
-            for(r in reMatch){
-                var curExe = re.exec(blogContent);
-                mlHtml = mlHtml
-                + "<li><a href='#" + curExe[1] + "'>"
-                + curExe[2] + "</a></li>";
-            }
-        }
-
-        //添加目录
-        ml.html(mlHtml);
+        //var mlHtml = "";
+        //var re = /<h3 id="(.*?)">([^<]+?)<\/h3>/gi;
+        //var blogContent = $("#singleblogcontent").html() || "";
+        //var ml = $("#contentml");
+        //var reMatch = blogContent.match(re);
+        //
+        //if(reMatch === null){
+        //    mlHtml = "<li><a href='#'>暂无文章目录</a></li>";
+        //} else {
+        //    for(r in reMatch){
+        //        var curExe = re.exec(blogContent);
+        //        mlHtml = mlHtml
+        //        + "<li><a href='#" + curExe[1] + "'>"
+        //        + curExe[2] + "</a></li>";
+        //    }
+        //}
+        //
+        ////添加目录
+        //ml.html(mlHtml);
 
         var startTwink = function(times,interval,callbacks){
             var i = 1; //总共执行的次数

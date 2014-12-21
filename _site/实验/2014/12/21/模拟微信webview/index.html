@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>Brew Python 与 Xcode Plugin 加载Python的冲突问题 - Archer's Blog</title>
+    <title>模拟微信webview - Archer's Blog</title>
     <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.12"/>
     <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.12"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.12"></script>
@@ -221,37 +221,113 @@
         <div class="bloglists">
             <div class="blogbody__everyblog">
                 <div class="blogbody__everyblog__header">
-                    <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+                    <a href="/%E5%AE%9E%E9%AA%8C/2014/12/21/%E6%A8%A1%E6%8B%9F%E5%BE%AE%E4%BF%A1webview/">模拟微信webview</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+                    <span class="blogbody__everyblog__metainfo">2014 - 12 - 21</span>
                 </div>
                 <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
-                    <blockquote>
-  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
+                    <p>在某些前端项目开发过程中，我们需要不断在微信中调试和测试我们的页面，这给本地调试造成了很大的不便。 Weixin-WebView-Mock就是解决这个问题的迷你辅助工具，正所谓：</p>
+
+<blockquote>
+  <p>专注于小而美，令人心驰神往</p>
 </blockquote>
 
-<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
+<p>具体的项目已经放在Github上了，所以这里不再赘述，放上核心实现代码：</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="cm">/*</span>
+<span class="lineno"> 2</span> <span class="cm"> * 模拟微信webview的行为</span>
+<span class="lineno"> 3</span> <span class="cm"> * 调试，测试时可以使用</span>
+<span class="lineno"> 4</span> <span class="cm"> * 作者：Archer_小A</span>
+<span class="lineno"> 5</span> <span class="cm"> */</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> 	<span class="kd">var</span> <span class="nx">__wx</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> 	<span class="c1">//call</span>
+<span class="lineno">13</span> 	<span class="nx">__wx</span><span class="p">.</span><span class="nx">__call</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">){</span>
+<span class="lineno">14</span>         <span class="nx">__wx</span><span class="p">.</span><span class="nx">callMethods</span><span class="p">[</span><span class="nx">m</span><span class="p">]();</span>
+<span class="lineno">15</span> 	<span class="p">}</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> 	<span class="c1">//invoke</span>
+<span class="lineno">18</span> 	<span class="nx">__wx</span><span class="p">.</span><span class="nx">__invoke</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+<span class="lineno">19</span> 		<span class="nx">__wx</span><span class="p">.</span><span class="nx">invokeMethods</span><span class="p">[</span><span class="nx">m</span><span class="p">](</span><span class="nx">args</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+<span class="lineno">20</span> 	<span class="p">}</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> 	<span class="c1">//on</span>
+<span class="lineno">23</span> 	<span class="nx">__wx</span><span class="p">.</span><span class="nx">__on</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="nx">handler</span><span class="p">){</span>
+<span class="lineno">24</span> 		<span class="nx">__wx</span><span class="p">.</span><span class="nx">__events</span><span class="p">[</span><span class="nx">m</span><span class="p">](</span><span class="nx">handler</span><span class="p">);</span>
+<span class="lineno">25</span> 	<span class="p">}</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> 	<span class="c1">//invokes</span>
+<span class="lineno">28</span> 	<span class="nx">__wx</span><span class="p">.</span><span class="nx">invokeMethods</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span> 		<span class="c1">//分享到微博</span>
+<span class="lineno">31</span> 		<span class="s2">&quot;shareWeibo&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+<span class="lineno">32</span> 			<span class="nx">alert</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]);</span>
+<span class="lineno">33</span> 		<span class="p">},</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span> 		<span class="c1">//分享到朋友圈</span>
+<span class="lineno">36</span> 		<span class="s2">&quot;shareTimeline&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+<span class="lineno">37</span> 			<span class="nx">alert</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]);</span>
+<span class="lineno">38</span> 		<span class="p">},</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> 		<span class="c1">//发送给好友</span>
+<span class="lineno">41</span> 		<span class="s2">&quot;sendAppMessage&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+<span class="lineno">42</span> 			<span class="nx">alert</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]);</span>
+<span class="lineno">43</span> 		<span class="p">}</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span> 	<span class="p">}</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> 	<span class="c1">//接口</span>
+<span class="lineno">48</span> 	<span class="nx">__wx</span><span class="p">.</span><span class="nx">callMethods</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">49</span> 		<span class="c1">//隐藏右上角按钮</span>
+<span class="lineno">50</span> 		<span class="s2">&quot;hideOptionMenu&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+<span class="lineno">51</span> 			<span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;你调用了隐藏右上角按钮&quot;</span><span class="p">);</span>
+<span class="lineno">52</span> 		<span class="p">}</span>
+<span class="lineno">53</span> 	<span class="p">}</span>
+<span class="lineno">54</span> 
+<span class="lineno">55</span> 	<span class="c1">//eventlistener</span>
+<span class="lineno">56</span> 	<span class="nx">__wx</span><span class="p">.</span><span class="nx">__events</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">57</span> 
+<span class="lineno">58</span> 		<span class="c1">//菜单-分享到微博</span>
+<span class="lineno">59</span> 		<span class="s2">&quot;menu:share:weibo&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">handler</span><span class="p">){</span>
+<span class="lineno">60</span> 			<span class="nx">handler</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="lineno">61</span> 		<span class="p">},</span>
+<span class="lineno">62</span> 
+<span class="lineno">63</span> 		<span class="c1">//菜单-发送给好友</span>
+<span class="lineno">64</span> 		<span class="s2">&quot;menu:share:appmessage&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">handler</span><span class="p">){</span>
+<span class="lineno">65</span> 			<span class="nx">handler</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="lineno">66</span> 		<span class="p">},</span>
+<span class="lineno">67</span> 
+<span class="lineno">68</span> 		<span class="c1">//菜单-分享到朋友圈</span>
+<span class="lineno">69</span> 		<span class="s2">&quot;menu:share:timeline&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">handler</span><span class="p">){</span>
+<span class="lineno">70</span> 			<span class="nx">handler</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="lineno">71</span> 		<span class="p">}</span>
+<span class="lineno">72</span> 
+<span class="lineno">73</span> 	<span class="p">}</span>
+<span class="lineno">74</span> 
+<span class="lineno">75</span> 
+<span class="lineno">76</span> 	<span class="c1">//暴露给window的WeixinJSBridge</span>
+<span class="lineno">77</span> 	<span class="nb">window</span><span class="p">.</span><span class="nx">WeixinJSBridge</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">78</span> 		<span class="s2">&quot;call&quot;</span><span class="o">:</span> <span class="nx">__wx</span><span class="p">.</span><span class="nx">__call</span><span class="p">,</span>
+<span class="lineno">79</span> 		<span class="s2">&quot;invoke&quot;</span><span class="o">:</span> <span class="nx">__wx</span><span class="p">.</span><span class="nx">__invoke</span><span class="p">,</span>
+<span class="lineno">80</span> 		<span class="s2">&quot;on&quot;</span><span class="o">:</span> <span class="nx">__wx</span><span class="p">.</span><span class="nx">__on</span>
+<span class="lineno">81</span> 	<span class="p">}</span>
+<span class="lineno">82</span> 
+<span class="lineno">83</span> <span class="p">}());</span></code></pre></div>
 
-<h3 id="brewpython">通过brew安装python</h3>
+<h3 id="in-github">in github</h3>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
-
-<h3 id="copy--r">copy -R</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
-
-<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
+<p><a href="https://github.com/qddegtya/Weixin-WebView-Mock" title="Weixin-WebView-Mock">Weixin-WebView-Mock</a></p>
 
                 </div>
                 <div class="blogbody__everyblog__footer">
                     <div class="footercopyright">
                         <span>警告! 转载时请注明本文出处:</span>
-                        <span class="blogperlink">http://xiaoa.name/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/</span>
+                        <span class="blogperlink">http://xiaoa.name/%E5%AE%9E%E9%AA%8C/2014/12/21/%E6%A8%A1%E6%8B%9F%E5%BE%AE%E4%BF%A1webview/</span>
                     </div>
                 </div>
             </div>
