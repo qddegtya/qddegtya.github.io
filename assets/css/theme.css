@@ -151,6 +151,7 @@ li{
     }
     .logo--name a{
         color: #ffffff;
+        text-decoration: none;
     }
     .logo--des{
         font-size: 1.2em;
