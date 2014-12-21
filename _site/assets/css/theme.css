@@ -123,13 +123,26 @@ li{
     font-family: "Microsoft YaHei";
 }
     .blog__head__img{
+        text-align: center;
         -webkit-border-radius: 20px 20px 0 0;
         -moz-border-radius: 20px 20px 0 0;
         border-radius: 20px 20px 0 0;
-        height: 365px;
+        padding: 130px 0;
         width: 100%;
-        background: url("../images/bigheader.jpg") left -120px no-repeat;
+        background: url("../images/1383101576334.jpg") left -120px no-repeat;
         background-size: cover;
+        color: #ffffff;
+    }
+    .logo--name{
+        letter-spacing: 2px;
+        display: block;
+        font-size: 3.2em;
+        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    }
+    .logo--des{
+        font-size: 1.2em;
+        letter-spacing: 3px;
+        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
     }
     .blog__titlearea{
         text-align: center;
