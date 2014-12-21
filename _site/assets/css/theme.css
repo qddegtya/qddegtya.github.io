@@ -129,15 +129,28 @@ li{
         border-radius: 20px 20px 0 0;
         padding: 130px 0;
         width: 100%;
-        background: url("../images/1383101576334.jpg") left -120px no-repeat;
+        background: url("../images/bigheader.jpg") left -120px no-repeat;
         background-size: cover;
         color: #ffffff;
+
+        -webkit-transition: background-position 1s;
+        -moz-transition: background-position 1s;
+        -ms-transition: background-position 1s;
+        -o-transition: background-position 1s;
+        transition: background-position 1s;
+        
+    }
+    .blog__head__img:hover{
+        background-position: left -200px;
     }
     .logo--name{
         letter-spacing: 2px;
         display: block;
         font-size: 3.2em;
         font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    }
+    .logo--name a{
+        color: #ffffff;
     }
     .logo--des{
         font-size: 1.2em;
