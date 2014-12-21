@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>首页 - Archer's Blog</title>
-    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.12"/>
+    <!--<link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.12"/>-->
     <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.12"/>
     <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.12"></script>
     <!--<script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>-->
@@ -30,7 +30,7 @@
             });
 
             //文章目录生成
-            var hpa = "/<h3>([^<]+)<\/h3>/i";
+            //var hpa = "/<h3>([^<]+)<\/h3>/i";
 
 //            $('.navlink').click(function(){
 //                var that = $(this).parent('.blog__nav__item');
@@ -54,7 +54,7 @@
                     //添加
                     $.each(catposts,function(j,item){
                         var content = "";
-                        if(j < 10){
+                        if(j < 1){
                             //alert(j);
                             var excerpt = " + item.excerpt + ";
                             content += "<div class='blogbody__everyblog'>";
@@ -100,10 +100,10 @@
                 totalsize = 3;
             
 
-            if(totalsize > 10){
+            if(totalsize > 1){
 
                 var bloglists = $('.bloglists');
-                var count = 10; //一开始的文章数目
+                var count = 1; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 $('.loadingmore').click(function () {
@@ -113,7 +113,7 @@
                     $.getJSON("../allposts.json", function (data) {
 
                         var content = "";
-                        looptimes = count + 5; //初始化
+                        looptimes = count + 1; //初始化
                         var j = 0; //采集loop了多少次
 
                         if("首页" == '首页'){
@@ -182,7 +182,7 @@
     </script>
 
 </head>
-<div id="content--body" class="shadow__box">
+
 <!-- 手机导航 -->
 <header id="mobile--header" class="mobile--header">
     <i class="fa fa-home"></i><span class="mobile--header--span"><a href="/">Archer's Blog</a></span>
@@ -324,60 +324,6 @@
     </div>
 
 
-    <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/" title="jython+ddmlib实现仿豌豆荚效果屏幕实时快照">jython+ddmlib实现仿豌豆荚效果屏幕实时快照</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <blockquote>
-  <p>部分代码思路来源于互联网</p>
-</blockquote>
-
-<h3 id="section">需求</h3>
-
-<p>之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。</p>
-
-
-            </div>
-    </div>
-
-
-    <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <blockquote>
-  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
-</blockquote>
-
-<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
-
-<h3 id="brewpython">通过brew安装python</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
-
-<h3 id="copy--r">copy -R</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
-
-<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
-
-
-            </div>
-    </div>
-
-
         <div class="loadingmore">
             <span class="loadingmorespan">阅读更多文章</span>
         </div>
@@ -392,7 +338,7 @@
 
     <!-- 链接区域 -->
     <div class="follow-panel">
-            <span class="sns"><i class="fa fa-github"></i> <a href="https://github.com/qddegtya" title="github" target="_blank">Github</a> / <i class="fa fa-weibo"></i> <a href="http://www.weibo.com/IMArcher" title="weibo" target="_blank">Weibo</span>
+            <span class="sns"><a href="https://github.com/qddegtya" title="github" target="_blank">Github</a> / <a href="http://www.weibo.com/IMArcher" title="weibo" target="_blank">Weibo</a> / <a href="http://www.weibo.com/IMArcher" title="about" target="_blank">About</a></span>
         <div>
 </div>
 
@@ -403,6 +349,6 @@
 <footer id="blogfooter">
 
 </footer>
-</div>
+
 </body>
 </html>
