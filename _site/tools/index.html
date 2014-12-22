@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>工具 - Archer's Blog</title>
     <!--<link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.12"/>-->
-    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.12"/>
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.12"></script>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.22"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.22"></script>
     <!--<script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>-->
-    <script src="/assets/js/archer.js?ver=1.0.12"></script>
+    <script src="/assets/js/archer.js?ver=1.0.22"></script>
     <script type="text/javascript">
 
         //Html编码获取Html转义实体
@@ -118,6 +118,9 @@
 
                     $.getJSON("../allposts.json", function (data) {
 
+
+                        //alert(data);
+
                         var content = "";
                         looptimes = count + 5; //初始化
                         var j = 0; //采集loop了多少次
@@ -142,6 +145,9 @@
                             });
 
                             count += j; //现在的文章数目
+
+                            //alert(content);
+
                             $('.loadingmore').before(content);
                             $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
                             if (count == data.length) {

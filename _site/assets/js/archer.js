@@ -9,6 +9,10 @@
         var bannerContent = $("#sidebar--follow--info");
         var tmp = {};
 
+        //mouse init
+        var mouseX = null;
+        var mouseY = null;
+
         //定义各个组件
         var weixinQrCode = "<img src='../assets/images/qrcode-weixin.jpg'><span class='saoyisao'>微信号：archerblog</span>";
         var mobileQrCode = "<img src='../assets/images/qrcode.png'><span class='saoyisao'>扫一扫</span>";
@@ -18,6 +22,33 @@
             "language=&width=0&height=550&fansRow=2&ptype=1" +
             "&speed=0&skin=5&isTitle=0&noborder=0&isWeibo=" +
             "1&isFans=1&uid=1893906792&verifier=26da3846&dpc=1'></iframe>";
+
+
+        //mousemove
+        $(".blog__head__img").mousemove(function(e){
+
+            //if mouseX and mouseY is status init
+            if(!mouseX && !mouseY){
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            } else {
+
+                //y
+                if(mouseY > e.clientY){
+                    $(this).css("background-position", "left -100px");
+                } else if(mouseY < e.clientY){
+                    $(this).css("background-position", "left -140px");
+                } else if(mouseY === e.clientY){
+                    //
+                }
+
+                //new value
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+            }
+
+        });
 
 
         //h3目录生成
