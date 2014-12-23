@@ -130,7 +130,7 @@ li{
         border-radius: 20px 20px 0 0;
         padding: 130px 0;
         width: 100%;
-        background: url("../images/code.jpg") left -120px no-repeat;
+        background: url("../images/bigheader3.jpg") left -120px no-repeat;
         background-size: cover;
         color: #ffffff;
 
@@ -248,7 +248,7 @@ li{
         text-align: center;
         padding: 20px;
         background-color: #ffffff;
-        /*border-right: 1px solid #f0f0f0;*/
+        border-right: 1px solid #f0f0f0;
 
         -webkit-transition: box-shadow .5s;
         -moz-transition: box-shadow .5s;
@@ -1336,9 +1336,3 @@ pre{
 .sidebar--catcontent{
     padding: 20px 0 0 0 !important;
 }
-
-
-
-/*-------------------------*\
-    $animations
-\*-------------------------*/
