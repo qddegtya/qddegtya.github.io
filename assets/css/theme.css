@@ -125,12 +125,12 @@ li{
     .blog__head__img{
         /*background-color: #000000;*/
         text-align: center;
-        -webkit-border-radius: 20px 20px 0 0;
-        -moz-border-radius: 20px 20px 0 0;
-        border-radius: 20px 20px 0 0;
+        /*-webkit-border-radius: 20px 20px 0 0;*/
+        /*-moz-border-radius: 20px 20px 0 0;*/
+        /*border-radius: 20px 20px 0 0;*/
         padding: 130px 0;
         width: 100%;
-        background: url("../images/meng.jpg") left -120px no-repeat;
+        background: url("../images/color.jpg") left -120px no-repeat;
         background-size: cover;
         color: #ffffff;
 
@@ -229,9 +229,13 @@ li{
     z-index: 9999;
     font-family: "Microsoft YaHei";
 
+    /*-webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;*/
+    /*-moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;*/
+    /*box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;*/
+
 }
 .nav__current{
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     /*border-bottom: 2px solid #bdc3c7;*/
 
 }
@@ -241,13 +245,18 @@ li{
     border-top:15px solid rgba(255, 255, 255, .2);
 
     margin-top: -15px;
+
+    /*border-top: 5px solid #2f2f2f;*/
+
+    /*border-top: 5px solid #2f2f2f;*/
+
 }
     .blog__nav__item{
         float: left;
         width: 20%;
         text-align: center;
-        padding: 20px;
-        background-color: #ffffff;
+        padding: 15px;
+
         /*border-right: 1px solid #f0f0f0;*/
 
         -webkit-transition: box-shadow .5s;
@@ -257,6 +266,9 @@ li{
         transition: box-shadow .5s;
 
         border-bottom: 1px solid #f0f0f0;
+        color: #333333;
+
+        background-color: #ffffff;
 
     }
     .blog__nav__item:last-child{
@@ -272,6 +284,36 @@ li{
         color:#333333;
         text-decoration: none;
         font-size: 1.2em;
+        display: inline-block;
+
+        padding: 8px 20px;
+
+        /*-webkit-border-radius: 8px;*/
+        /*-moz-border-radius: 8px;*/
+        /*border-radius: 8px;*/
+
+        -webkit-transition: transform 1s;
+        -moz-transition: transform 1s;
+        -ms-transition: transform 1s;
+        -o-transition: transform 1s;
+        transition: transform 1s;
+
+        transform: rotateX(0deg);
+        -webkit-transform: rotateX(0deg);	/* Safari 和 Chrome */
+        -moz-transform: rotateX(0deg);	/* Firefox */
+
+
+    }
+
+    .blog__nav__item a:hover{
+
+        background:rgba(0,0,0,0.9);
+        color: #ffffff;
+
+        transform: rotateX(360deg);
+        -webkit-transform: rotateX(360deg);	/* Safari 和 Chrome */
+        -moz-transform: rotateX(360deg);	/* Firefox */
+
     }
     
     .home__link{
@@ -301,6 +343,8 @@ li{
     border-bottom: 1px solid #f0f0f0;
 }
 .bloglists{
+
+    /*border-top: 5px solid #2f2f2f;*/
 
     width: 100%;
 
@@ -546,9 +590,10 @@ li{
 }
 
 .blogcontent pre{
-    padding: 5px 10px;
+    padding: 20px;
     margin-bottom: 25px;
-    background-color: #333333;
+    background: #202020;
+    /*background-color: rgba(0, 0, 0, 0.3);*/
     color: #ffffff;
     font-size: .8em;
     -ms-word-wrap: normal;
@@ -556,16 +601,12 @@ li{
     -ms-word-break: normal;
     word-break: normal;
     overflow: hidden;
-    border-left: 2px solid #666666;
+    border: 5px solid #2f2f2f;
     font-family: "Microsoft YaHei";
 
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-
-    -webkit-box-shadow: 0 2px 0 #666666;
-    -moz-box-shadow: 0 2px 0 #666666;
-    box-shadow: 0 2px 0 #666666;
+    -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+    -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+    box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
 }
 .blogcontent pre:active{
     /*-webkit-box-shadow: none;*/
@@ -695,9 +736,9 @@ li{
     /*border-left: 1px solid #f0f0f0;*/
     font-family: "Microsoft YaHei";
 
-    -webkit-border-radius: 0 0 20px 20px;
-    -moz-border-radius: 0 0 20px 20px;
-    border-radius: 0 0 20px 20px;
+    /*-webkit-border-radius: 0 0 20px 20px;*/
+    /*-moz-border-radius: 0 0 20px 20px;*/
+    /*border-radius: 0 0 20px 20px;*/
 
     border-bottom: 10px solid rgba(0,0,0,0.5);
 
@@ -1335,4 +1376,84 @@ pre{
 }
 .sidebar--catcontent{
     padding: 20px 0 0 0 !important;
+}
+
+
+
+
+
+/*-----------------------------*\
+   $animations
+\*-----------------------------*/
+@-webkit-keyframes bounceInDown {
+    0%, 60%, 75%, 90%, 100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes bounceInDown {
+    0%, 60%, 75%, 90%, 100% {
+        -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.bounceInDown {
+    -webkit-animation-name: bounceInDown;
+    animation-name: bounceInDown;
 }
