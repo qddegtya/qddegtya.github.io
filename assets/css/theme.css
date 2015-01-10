@@ -128,7 +128,6 @@ li{
 .blog__bighead{
 
     position: relative;
-    /*z-index: -99;*/
 
     padding-top: 100px;
     width: 960px;
@@ -137,6 +136,10 @@ li{
     font-family: "Microsoft YaHei";
 }
     .blog__head__img{
+
+        position: relative;
+        z-index: -99;
+
         /*background-color: #000000;*/
         text-align: center;
         /*-webkit-border-radius: 20px 20px 0 0;*/
@@ -144,7 +147,7 @@ li{
         /*border-radius: 20px 20px 0 0;*/
         padding: 130px 0;
         width: 100%;
-        background: url("../images/color.jpg") left -120px no-repeat;
+        background: url("../images/chrome.jpg") left -240px no-repeat;
         background-size: cover;
         color: #ffffff;
 
