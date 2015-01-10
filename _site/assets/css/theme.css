@@ -356,6 +356,11 @@ li{
 
         /*display: inline-block;*/
 
+
+        background-image: -moz-linear-gradient( 90deg, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
+        background-image: -webkit-linear-gradient( 90deg, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
+        background-image: -ms-linear-gradient( 90deg, rgb(239,239,239) 0%, rgb(255,255,255) 100%);
+
     }
     .blog__nav__item:last-child{
         border-right: none;
@@ -374,9 +379,9 @@ li{
 
         padding: 8px 20px;
 
-        /*-webkit-border-radius: 5px;*/
-        /*-moz-border-radius: 5px;*/
-        /*border-radius: 5px;*/
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
 
         -webkit-transition: background .3s;
         -moz-transition: background .3s;
