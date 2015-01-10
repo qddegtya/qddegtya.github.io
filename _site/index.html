@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>首页 - Archer's Blog</title>
-    <!--<link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.26"/>-->
-    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.26"/>
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.26"></script>
+    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.27"/>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.27"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.27"></script>
     <!--<script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js?ver=1.0.26" type="text/javascript"></script>-->
-    <script src="/assets/js/archer.js?ver=1.0.26"></script>
+    <script src="/assets/js/archer.js?ver=1.0.27"></script>
     <script type="text/javascript">
 
         //Html编码获取Html转义实体
@@ -54,7 +54,7 @@
                     //添加
                     $.each(catposts,function(j,item){
                         var content = "";
-                        if(j < 1){
+                        if(j < 2){
                             //alert(j);
                             var excerpt = " + item.excerpt + ";
                             content += "<div class='blogbody__everyblog'>";
@@ -100,15 +100,15 @@
                 totalsize = 3;
             
 
-            if(totalsize > 1){
+            if(totalsize > 2){
 
                 var bloglists = $('.bloglists');
-                var count = 1; //一开始的文章数目
+                var count = 2; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 $('.loadingmore').click(function () {
 
-                    $('.loadingmore').html("<span class='loadingmorespan'>正在加载...</span>");
+                    $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-spinner fa-spin fa-fw'></i> 正在加载...</span>");
 
                     $.getJSON("../allposts.json", function (data) {
 
@@ -116,7 +116,7 @@
                         //alert(data);
 
                         var content = "";
-                        looptimes = count + 1; //初始化
+                        looptimes = count + 5; //初始化
                         var j = 0; //采集loop了多少次
 
                         if("首页" == '首页'){
@@ -143,7 +143,7 @@
                             //alert(content);
 
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-book fa-lg'></i> 阅读更多文章</span>");
                             if (count == data.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -170,7 +170,7 @@
 
                             count += j; //现在的文章数目
                             $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
+                            $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-book fa-lg'></i> 阅读更多文章</span>");
                             if (count == catposts.length) {
                                 $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
                             }
@@ -194,7 +194,14 @@
     <i class="fa fa-home"></i><span class="mobile--header--span"><a href="/">Archer's Blog</a></span>
 </header>
 <header id="blog__header">
+
+
+
     <div class="blog__bighead">
+
+        <!-- github ribbon -->
+        <a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank" id="ribbon--github"><img style="position: absolute; top: 100px; left: 0px; border: 0;" src="http://xiaoa.name/assets/images/ribbon.png" alt="Fork me on GitHub"></a>
+
         <div class="blog__head__img">
             <span class="logo--name bounceInDown"><a href="/">ARCHER</a></span>
             <span class="logo--des">WEB DEVELOPER</span>
@@ -204,7 +211,7 @@
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current home__link"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item home__link"><a href="/" class="navlink">HOME</a></li>
             <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOG</a></li>
             <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">WORK</a></li>
             <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">LAB</a></li>
@@ -223,10 +230,10 @@
 
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/12/21/%E6%A8%A1%E6%8B%9F%E5%BE%AE%E4%BF%A1webview/" title="模拟微信webview">模拟微信webview</a>
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E5%AE%9E%E9%AA%8C/2014/12/21/%E6%A8%A1%E6%8B%9F%E5%BE%AE%E4%BF%A1webview/" title="模拟微信webview">模拟微信webview</a>
             </div>
             <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 12 - 21</span>
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2014 - 12 - 21</span>
             </div>
             <div class="blogcontent blogbody__everyblog__excerpt">
                 <p>在某些前端项目开发过程中，我们需要不断在微信中调试和测试我们的页面，这给本地调试造成了很大的不便。 Weixin-WebView-Mock就是解决这个问题的迷你辅助工具，正所谓：</p>
@@ -330,8 +337,29 @@
     </div>
 
 
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/" title="jython+ddmlib实现仿豌豆荚效果屏幕实时快照">jython+ddmlib实现仿豌豆荚效果屏幕实时快照</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>部分代码思路来源于互联网</p>
+</blockquote>
+
+<h3 id="section">需求</h3>
+
+<p>之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。</p>
+
+
+            </div>
+    </div>
+
+
         <div class="loadingmore">
-            <span class="loadingmorespan">阅读更多文章</span>
+            <span class="loadingmorespan"><i class="fa fa-book fa-lg"></i> 阅读更多文章</span>
         </div>
 
     </div>
@@ -344,7 +372,7 @@
 
     <!-- 链接区域 -->
     <div class="follow-panel">
-            <span class="sns"><a href="https://github.com/qddegtya" title="github" target="_blank">Github</a> / <a href="http://www.weibo.com/IMArcher" title="weibo" target="_blank">Weibo</a> / <a href="http://www.weibo.com/IMArcher" title="about" target="_blank">About</a></span>
+            <span class="sns"><i class="fa fa-github"></i> <a href="https://github.com/qddegtya" title="github" target="_blank">Github</a> / <i class="fa fa-weibo"></i> <a href="http://www.weibo.com/IMArcher" title="weibo" target="_blank">Weibo</a> / <i class="fa fa-html5"></i> <a href="http://www.weibo.com/IMArcher" title="about" target="_blank">About</a></span>
         <div>
 </div>
 

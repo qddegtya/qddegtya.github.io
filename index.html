@@ -1,8 +1,8 @@
 ---
 layout: index
 title: 首页
-initItem: 1
-perPageItem: 1
+initItem: 2
+perPageItem: 5
 thiscat: 首页
 thisdes: I AM ARCHER
 thissectitle: Keep thinking and Keep coding.
@@ -15,10 +15,10 @@ thissectitle: Keep thinking and Keep coding.
 
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </div>
             <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">{{ post.date | date:"%Y - %m - %d" }}</span>
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">{{ post.date | date:"%Y - %m - %d" }}</span>
             </div>
             <div class="blogcontent blogbody__everyblog__excerpt">
                 {{ post.excerpt }}
@@ -27,7 +27,7 @@ thissectitle: Keep thinking and Keep coding.
 {% endfor %}
 
         <div class="loadingmore">
-            <span class="loadingmorespan">阅读更多文章</span>
+            <span class="loadingmorespan"><i class="fa fa-book fa-lg"></i> 阅读更多文章</span>
         </div>
 
     </div>

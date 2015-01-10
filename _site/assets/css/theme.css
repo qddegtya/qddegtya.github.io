@@ -74,6 +74,10 @@ li{
 /*-----------------------------*\
     $blog__header
 \*-----------------------------*/
+#blog__header{
+    position: relative;
+}
+
 .avatar--footer{
     width: 100px;
     height: 100px;
@@ -116,6 +120,9 @@ li{
     color: #ffffff;
 }
 .blog__bighead{
+
+    position: relative;
+
     padding-top: 100px;
     width: 960px;
     margin: 0 auto;
@@ -155,6 +162,12 @@ li{
         text-decoration: none;
     }
     .logo--des{
+
+        /*display: block;*/
+        /*background: #2f2f2f;*/
+
+        border-bottom: 1px solid #ffffff;
+
         font-size: 1.2em;
         letter-spacing: 3px;
         font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
@@ -234,9 +247,12 @@ li{
     /*box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;*/
 
 }
-.nav__current{
+.nav__current a{
     /*background-color: #ffffff;*/
     /*border-bottom: 2px solid #bdc3c7;*/
+
+    background:rgba(0,0,0,0.9);
+    color: #ffffff !important;
 
 }
 .blog__nav__ul{
@@ -249,6 +265,8 @@ li{
     /*border-top: 5px solid #2f2f2f;*/
 
     /*border-top: 5px solid #2f2f2f;*/
+    
+    overflow: auto;
 
 }
     .blog__nav__item{
@@ -270,6 +288,12 @@ li{
 
         background-color: #ffffff;
 
+        /*-webkit-box-shadow: 5px 5px 5px #333333;*/
+        /*-moz-box-shadow: 5px 5px 5px #333333;*/
+        /*box-shadow: 5px 5px 5px #333333;*/
+
+        /*display: inline-block;*/
+
     }
     .blog__nav__item:last-child{
         border-right: none;
@@ -288,19 +312,19 @@ li{
 
         padding: 8px 20px;
 
-        /*-webkit-border-radius: 8px;*/
-        /*-moz-border-radius: 8px;*/
-        /*border-radius: 8px;*/
+        /*-webkit-border-radius: 5px;*/
+        /*-moz-border-radius: 5px;*/
+        /*border-radius: 5px;*/
 
-        -webkit-transition: transform 1s;
-        -moz-transition: transform 1s;
-        -ms-transition: transform 1s;
-        -o-transition: transform 1s;
-        transition: transform 1s;
+        -webkit-transition: background .3s;
+        -moz-transition: background .3s;
+        -ms-transition: background .3s;
+        -o-transition: background .3s;
+        transition: background .3s;
 
-        transform: rotateX(0deg);
-        -webkit-transform: rotateX(0deg);	/* Safari 和 Chrome */
-        -moz-transform: rotateX(0deg);	/* Firefox */
+        /*transform: rotateX(0deg);*/
+        /*-webkit-transform: rotateX(0deg);	*//* Safari 和 Chrome */
+        /*-moz-transform: rotateX(0deg);	*//* Firefox */
 
 
     }
@@ -310,9 +334,11 @@ li{
         background:rgba(0,0,0,0.9);
         color: #ffffff;
 
-        transform: rotateX(360deg);
-        -webkit-transform: rotateX(360deg);	/* Safari 和 Chrome */
-        -moz-transform: rotateX(360deg);	/* Firefox */
+        /*transform: rotateX(360deg);*/
+        /*-webkit-transform: rotateX(360deg);	*//* Safari 和 Chrome */
+        /*-moz-transform: rotateX(360deg);	*//* Firefox */
+
+        cursor: pointer;
 
     }
     
@@ -590,7 +616,7 @@ li{
 }
 
 .blogcontent pre{
-    padding: 20px;
+    padding: 5px 10px;
     margin-bottom: 25px;
     background: #202020;
     /*background-color: rgba(0, 0, 0, 0.3);*/
