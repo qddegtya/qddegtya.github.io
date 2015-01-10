@@ -461,11 +461,11 @@ li{
     word-break: break-all;
 }
 .blogcontent a{
-    /*padding: 2px;*/
-    /*background-color: #bdc3c7;*/
-    color: #bdc3c7;
+    padding: 2px;
+    background-color: #000000;
+    color: #ffffff;
     text-decoration: none;
-    /*border-left: 2px solid #cccccc;*/
+    border-left: 2px solid #2f2f2f;
     font-size: 1.0em;
     line-height: 1.4em;
 }
