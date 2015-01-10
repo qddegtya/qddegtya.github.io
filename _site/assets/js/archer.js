@@ -35,8 +35,16 @@
 
 
         $(".footer--mask").click(function(){
-
+            setTimeout(function(){
+                var topInterval = setInterval(function(){
+                    if(document.body.scrollTop > 0){
+                        document.body.scrollTop -= 50;
+                    } else {
+                        //stop
+                        clearInterval(topInterval);
+                    }
+                }, 1);
+            }, 100);
         });
-
     });
 }(jQuery));
