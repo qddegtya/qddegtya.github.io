@@ -87,8 +87,50 @@ li{
 .avatar--footer{
     width: 100px;
     height: 100px;
-    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
 }
+
+.footer--mask:hover{
+    opacity: 0.8;
+    cursor: pointer;
+
+    /*color: #16a085;*/
+}
+
+.footer--mask{
+    width: 100px;
+    height: 100px;
+    background: #2f2f2f;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    opacity: 0;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    color: #ffffff;
+
+    text-align: center;
+    line-height: 100px;
+    font-size: 2.0em;
+
+    display: block;
+
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+.footer--mask i{
+    vertical-align: middle;
+}
+
 .avatar--header{
     width: 100px;
     height: 100px;
@@ -120,6 +162,16 @@ li{
 }
 .avatar--footer img:hover{
     opacity: 1.0;
+    cursor: pointer;
+}
+.avatar--mask{
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto;
+    position: relative;
+
+    overflow: hidden;
 }
 
 .blogtitle{
@@ -1515,4 +1567,60 @@ pre{
 .bounceInDown {
     -webkit-animation-name: bounceInDown;
     animation-name: bounceInDown;
+}
+
+
+.follow--pop{
+    width: 200px;
+    position: fixed;
+    top: 0;
+    height: 45px;
+    background: #2f2f2f;
+    left: calc(50% - 100px);
+    z-index: 999999;
+
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+
+    border-left: 1px solid #222222;
+    border-right: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+
+    -webkit-transform: translate3d(0, -45px, 0);
+    -moz-transform: translate3d(0, -45px, 0);
+    -ms-transform: translate3d(0, -45px, 0);
+    -o-transform: translate3d(0, -45px, 0);
+    transform: translate3d(0, -45px, 0);
+
+    -webkit-transition: transform .5s ease;
+    -moz-transition: transform .5s ease;
+    -ms-transition: transform .5s ease;
+    -o-transition: transform .5s ease;
+    transition: transform .5s ease;
+
+    line-height: 45px;
+    vertical-align: middle;
+
+    text-align: center;
+
+    color: #ffffff;
+    font-size: 1.6em;
+    
+}
+.fa-color{
+    display: inline-block;
+    padding: 0 8px;
+
+    -webkit-transition: color .8s;
+    -moz-transition: color .8s;
+    -ms-transition: color .8s;
+    -o-transition: color .8s;
+    transition: color .8s;
+
+    text-shadow: 5px 5px 0 #222222;
+}
+.fa-color:hover{
+    color: #16a085;
+    cursor: pointer;
 }
