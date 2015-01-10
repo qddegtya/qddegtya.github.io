@@ -1572,11 +1572,12 @@ pre{
 
 .follow--pop{
     width: 200px;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100px;
     height: 45px;
     background: #2f2f2f;
-    left: calc(50% - 100px);
+    /*left: calc(50% - 100px);*/
+    right: 50px;
     z-index: 999999;
 
     -webkit-border-radius: 0 0 10px 10px;
@@ -1587,11 +1588,11 @@ pre{
     border-right: 1px solid #222222;
     border-bottom: 1px solid #222222;
 
-    -webkit-transform: translate3d(0, -45px, 0);
-    -moz-transform: translate3d(0, -45px, 0);
-    -ms-transform: translate3d(0, -45px, 0);
-    -o-transform: translate3d(0, -45px, 0);
-    transform: translate3d(0, -45px, 0);
+    /*-webkit-transform: translate3d(0, -45px, 0);*/
+    /*-moz-transform: translate3d(0, -45px, 0);*/
+    /*-ms-transform: translate3d(0, -45px, 0);*/
+    /*-o-transform: translate3d(0, -45px, 0);*/
+    /*transform: translate3d(0, -45px, 0);*/
 
     -webkit-transition: transform .5s ease;
     -moz-transition: transform .5s ease;
@@ -1623,4 +1624,11 @@ pre{
 .fa-color:hover{
     color: #16a085;
     cursor: pointer;
+}
+.fa-rocket{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }

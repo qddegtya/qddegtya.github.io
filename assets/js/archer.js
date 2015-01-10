@@ -33,8 +33,9 @@
             }
         });
 
+
         $(".footer--mask").click(function(){
-            $("#follow--pop--area").css("transform", "translate3d(0,0,0)");
+
         });
 
     });
