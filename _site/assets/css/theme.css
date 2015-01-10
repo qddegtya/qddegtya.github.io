@@ -26,6 +26,12 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+
+    outline: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 body{
     margin: 0;
@@ -1257,8 +1263,8 @@ pre{
 }
 .mobile--header{
     width: 100%;
-    background-color: #bdc3c7;
-    padding: 15px 0;
+    background-color: #2f2f2f;
+    padding: 20px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -1365,6 +1371,29 @@ pre{
     }
     .blogcontent pre{
         overflow: auto !important;
+    }
+    .bloglooparea{
+        width: 100% !important;
+    }
+    #blogfooter{
+        padding: 0 !important;
+    }
+    .follow-panel{
+        display: none !important;
+        padding: 10px !important;
+    }
+    .blogsidebar{
+        padding: 20px 0 !important;
+        display: none !important;
+    }
+    .avatar--footer{
+        width: 64px !important;
+        height: 64px !important;
+        display: none !important;
+    }
+    .loadingmorespan{
+        font-size: 1.0em !important;
+        line-height: 1.2em !important;
     }
 }
 @media screen and (max-width:240px){
