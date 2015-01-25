@@ -1682,16 +1682,22 @@ pre{
     text-align: center;
     position: relative;
 }
-.side_nav_gravatar img{
+.img_avatar img{
     display: block;
     max-width: 50px;
     height: 50px;
     width: 100%;
 
-    -webkit-border-radius: 36px;
-    -moz-border-radius: 36px;
-    border-radius: 36px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.img_avatar{
 
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    
     border: 3px solid #ffffff;
 
     position: absolute;
@@ -1713,6 +1719,8 @@ pre{
     text-decoration: none;
     color: #2f2f2f;
     letter-spacing: 2px;
+
+    /*-webkit-tap-highlight-color: rgba(0,0,0,0.2);*/
 
 }
 .side_nav_ul a:hover{
