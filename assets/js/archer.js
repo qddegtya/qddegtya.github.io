@@ -49,7 +49,13 @@
 
         //移动端菜单
         $("#navopen").click(function(){
-            $("#side_nav").css({ "width": "70%" });
+            $("#side_nav").css({
+                "-webkit-transform": "translate3d(0,0,0)",
+                "-moz-transform": "translate3d(0,0,0)",
+                "-ms-transform": "translate3d(0,0,0)",
+                "-o-transform": "translate3d(0,0,0)",
+                "transform": "translate3d(0,0,0)"
+            });
         });
 
     });
