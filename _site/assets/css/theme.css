@@ -1671,3 +1671,29 @@ pre{
     -o-transition: transform .3s ease-out;
     transition: transform .3s ease-out;
 }
+
+.side_nav_gravatar{
+    width: 100%;
+    padding: 20px 0;
+    background: #cccccc;
+
+    text-align: center;
+    position: relative;
+}
+.side_nav_gravatar img{
+    display: block;
+    max-width: 36px;
+    height: 36px;
+    width: 100%;
+
+    -webkit-border-radius: 36px;
+    -moz-border-radius: 36px;
+    border-radius: 36px;
+
+    border: 3px solid #ffffff;
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    float: left;
+}
