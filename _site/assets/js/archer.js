@@ -38,7 +38,7 @@
             setTimeout(function(){
                 var topInterval = setInterval(function(){
                     if(document.body.scrollTop > 0){
-                        document.body.scrollTop -= 50;
+                        document.body.scrollTop -= 16.67;
                     } else {
                         //stop
                         clearInterval(topInterval);
