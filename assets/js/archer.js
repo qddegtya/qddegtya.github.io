@@ -3,10 +3,34 @@
  */
 
 (function($){
+
+    var _checkTransFormType = function(){
+        var t;
+        var el = document.createElement('fakeelement');
+        var resultObj = {};
+        var transforms = {
+            'transform':'transform',
+            'OTransform':'-o-transform',
+            'MozTransform':'-moz-transform',
+            'WebkitTransform':'-webkit-transform',
+            'MsTransform':'-ms-transform',
+        };
+
+        for(t in transforms){
+            if(el.style[t] !== undefined ){
+                resultObj.k = t;
+                resultObj.v = transforms[t];
+                return resultObj;
+            }
+        }
+    };
+
     $(document).ready(function() {
         //mouse init
         var mouseX = null;
         var mouseY = null;
+
+        var prefix = _checkTransFormType();
 
         //mousemove
         $(".blog__head__img").mousemove(function (e) {
@@ -49,24 +73,12 @@
 
         //移动端菜单
         $("#navopen").click(function(){
-            $("#side_nav").css({
-                "-webkit-transform": "translate3d(0,0,0)",
-                "-moz-transform": "translate3d(0,0,0)",
-                "-ms-transform": "translate3d(0,0,0)",
-                "-o-transform": "translate3d(0,0,0)",
-                "transform": "translate3d(0,0,0)"
-            });
+            $("#side_nav").css(prefix.v, "translate3d(0,0,0)");
         });
 
         //收菜单栏
         $("#close_nav").click(function(){
-            $("#side_nav").css({
-                "-webkit-transform": "translate3d(-150%,0,0)",
-                "-moz-transform": "translate3d(-150%,0,0)",
-                "-ms-transform": "translate3d(-150%,0,0)",
-                "-o-transform": "translate3d(-150%,0,0)",
-                "transform": "translate3d(-150%,0,0)"
-            });
+            $("#side_nav").css(prefix.v, "translate3d(-150%,0,0)");
         });
 
     });
