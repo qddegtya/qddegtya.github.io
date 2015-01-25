@@ -1697,7 +1697,7 @@ pre{
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    
+
     border: 3px solid #ffffff;
 
     position: absolute;
@@ -1724,8 +1724,7 @@ pre{
 
 }
 .side_nav_ul a:hover{
-    background: #E74C3C;
-    color: #ffffff;
+    border-left: 5px solid #E74C3C;
 }
 
 .side_nav_ads{
