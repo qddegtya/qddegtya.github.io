@@ -1,6 +1,14 @@
 [
     
     {
+        "title": "Again or Begin",
+        "url": "/%E5%8D%9A%E5%AE%A2/2015/01/25/%E6%96%B0%E5%8D%9A%E5%AE%A2%E6%AD%A3%E5%BC%8F%E8%B5%B7%E8%88%AA/",
+        "date": "2015 - 01 - 25",
+        "tags": ["blog", "博客"],
+        "cat": "博客",
+        "excerpt": "&lt;blockquote&gt;  &lt;p&gt;今晚，我用Mou写下这里略带文艺气息的第一篇博文，这个小小的地方还是花费了我些许精力，2014年，我完成了人生的大事，有产出，有收获，更有转型，当然也少不了一些深刻的教训，或多或少的都已经过去。&lt;/p&gt;&lt;/blockquote&gt;&lt;h3 id=&quot;section&quot;&gt;这里即将产生什么？&lt;/h3&gt;&lt;p&gt;一些前端开发技术，一些文艺片段，一些回忆，一些工具，一些经验。如果你喜欢这里，你也可以拿起你的手机，访问和收藏xiaoa.name&lt;/p&gt;&lt;h3 id=&quot;section-1&quot;&gt;这里的主人是谁？&lt;/h3&gt;&lt;p&gt;Archer_小A/90后/自称Geek/自称Python,Javascript程序员/自称逼格控&lt;/p&gt;&lt;h3 id=&quot;my-desk&quot;&gt;My Desk…&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/assets/blog-images/my_desktop.jpg&quot; alt=&quot;Archer&#39;s Desktop&quot; /&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;装备列表&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;  &lt;li&gt;Macbook Air&lt;/li&gt;  &lt;li&gt;Leopold FC660M&lt;/li&gt;&lt;/ol&gt;"
+    },
+    {
         "title": "jython+ddmlib实现仿豌豆荚效果屏幕实时快照",
         "url": "/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/",
         "date": "2014 - 11 - 28",
