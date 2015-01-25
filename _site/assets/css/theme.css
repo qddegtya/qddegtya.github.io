@@ -1728,7 +1728,7 @@ pre{
     background: #1abc9c;
     color: #ffffff;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 
     font-size: 1.0em;
     line-height: 1.4em;
@@ -1736,4 +1736,8 @@ pre{
 .side_nav_ads img{
     display: block;
     width: 100%;
+}
+.side_nav_ads a{
+    color: #ffffff;
+    text-decoration: none;
 }

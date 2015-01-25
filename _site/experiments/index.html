@@ -53,6 +53,11 @@
 
         $(document).ready(function(){
 
+            $.getJSON("/ad.json", function(data){
+                $(".side_nav_topic").html("<i class='fa fa-plug'></i> " +
+                "<a href='" + data.url + "'>" + data.title + "</a>");
+            });
+
             //缓存分类文章列表
             var catposts = [];
 
@@ -199,9 +204,9 @@
         <img src="/assets/images/avatar.jpeg" alt="Archer"/>
     </div>
 
-    <!-- 推广区域 -->
+    <!-- 公告区域 -->
     <div class="side_nav_ads">
-        <span class="side_nav_topic"><i class="fa fa-plug"></i> 微信JS-SDK那点事</span>
+        <span class="side_nav_topic"></span>
     </div>
 
     <!-- 菜单区域 -->
