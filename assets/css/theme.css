@@ -1723,11 +1723,15 @@ pre{
 }
 .side_nav_ads{
     width: 100%;
-    padding: 40px;
+    padding: 45px;
     overflow: hidden;
     background: #1abc9c;
     color: #ffffff;
     text-align: center;
+    letter-spacing: 1px;
+
+    font-size: 1.0em;
+    line-height: 1.4em;
 }
 .side_nav_ads img{
     display: block;
