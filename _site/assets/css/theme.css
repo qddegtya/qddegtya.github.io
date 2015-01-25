@@ -660,16 +660,23 @@ li{
 .blogcontent p img{
     /*width: 100%;*/
     /*border: 5px solid #f9f9f9;*/
-    opacity: .8;
+    /*opacity: .8;*/
 
-    -webkit-transition: opacity .8s;
-    -moz-transition: opacity .8s;
-    -ms-transition: opacity .8s;
-    -o-transition: opacity .8s;
-    transition: opacity .8s;
+    /*-webkit-transition: opacity .8s;*/
+    /*-moz-transition: opacity .8s;*/
+    /*-ms-transition: opacity .8s;*/
+    /*-o-transition: opacity .8s;*/
+    /*transition: opacity .8s;*/
     display: block;
     width: 100%;
     /*width: 100%;*/
+
+    border: 5px solid #ffffff;
+
+    -webkit-box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5);
+    box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5);
+
 }
 .blogcontent p img:hover{
     opacity: 1.0;
