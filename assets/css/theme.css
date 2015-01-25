@@ -1675,15 +1675,15 @@ pre{
 .side_nav_gravatar{
     width: 100%;
     padding: 20px 0;
-    background: #cccccc;
+    background: #2f2f2f;
 
     text-align: center;
     position: relative;
 }
 .side_nav_gravatar img{
     display: block;
-    max-width: 36px;
-    height: 36px;
+    max-width: 50px;
+    height: 50px;
     width: 100%;
 
     -webkit-border-radius: 36px;
@@ -1696,4 +1696,26 @@ pre{
     top: 20px;
     left: 20px;
     float: left;
+}
+.side_nav_ul ul{
+    width: 100%;
+}
+.side_nav_ul ul > li{
+    list-style: none;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+
+    text-align: center;
+}
+.side_nav_ul ul > li:hover{
+    background: #E74C3C;
+}
+.side_nav_ul ul > li:hover a{
+    color: #ffffff;
+}
+.side_nav_ul ul > li a{
+    text-decoration: none;
+    color: #2f2f2f;
+    letter-spacing: 2px;
 }

@@ -59,7 +59,7 @@
             //首次载入便缓存下来
             if('工具' !== '首页'){
 
-                $.getJSON("../allposts.json", function (data) {
+                $.getJSON("/allposts.json", function (data) {
 
                     $.each(data, function (i, item) {
                         if(item.cat === '工具'){
@@ -109,7 +109,7 @@
 
                     $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-spinner fa-spin fa-fw'></i> 正在加载...</span>");
 
-                    $.getJSON("../allposts.json", function (data) {
+                    $.getJSON("/allposts.json", function (data) {
                         var content = "";
                         looptimes = count + 5; //初始化
                         var j = 0; //采集loop了多少次
@@ -192,8 +192,25 @@
 <div id="side_nav" class="side_nav">
     <!-- 头像位置 -->
     <div class="side_nav_gravatar">
-        <img src="../assets/images/avatar.jpeg" alt="Archer"/>
+        <img src="/assets/images/avatar.jpeg" alt="Archer"/>
     </div>
+
+    <!-- 推广区域 -->
+    <div class="side_nav_ads">
+
+    </div>
+
+    <!-- 菜单区域 -->
+    <div class="side_nav_ul">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/blogs">博客</a></li>
+            <li><a href="/projects">项目</a></li>
+            <li><a href="/experiments">实验</a></li>
+            <li><a href="/tools">工具</a></li>
+        </ul>
+    </div>
+
 </div>
 
 <header id="blog__header">
