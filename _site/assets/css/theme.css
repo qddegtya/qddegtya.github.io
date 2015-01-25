@@ -1654,11 +1654,11 @@ pre{
     top: 0;
     z-index: 9999999;
 
-    -webkit-transform: translate3d(-100%,0,0);
-    -moz-transform: translate3d(-100%,0,0);
-    -ms-transform: translate3d(-100%,0,0);
-    -o-transform: translate3d(-100%,0,0);
-    transform: translate3d(-100%,0,0);
+    -webkit-transform: translate3d(-150%,0,0);
+    -moz-transform: translate3d(-150%,0,0);
+    -ms-transform: translate3d(-150%,0,0);
+    -o-transform: translate3d(-150%,0,0);
+    transform: translate3d(-150%,0,0);
 
     /*box-shadow*/
     -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
