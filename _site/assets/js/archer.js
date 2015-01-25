@@ -46,5 +46,11 @@
                 }, 1);
             }, 100);
         });
+
+        //移动端菜单
+        $("#navopen").click(function(){
+            $("#side_nav").css({ "width": "70%" });
+        });
+
     });
 }(jQuery));

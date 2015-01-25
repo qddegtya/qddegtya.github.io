@@ -1637,3 +1637,31 @@ pre{
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
+.mobile__nav--open{
+    float: left;
+    position: absolute;
+    left: 15px;
+}
+.mobile--header--span{
+
+}
+.side_nav{
+    width: 0;
+    height: 100%;
+    position: fixed;
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    z-index: 9999999;
+
+    /*box-shadow*/
+    -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
+
+    -webkit-transition: width .3s ease-out;
+    -moz-transition: width .3s ease-out;
+    -ms-transition: width .3s ease-out;
+    -o-transition: width .3s ease-out;
+    transition: width .3s ease-out;
+}
