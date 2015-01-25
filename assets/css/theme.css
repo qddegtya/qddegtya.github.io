@@ -1665,11 +1665,11 @@ pre{
     -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
     box-shadow: 0 0 5px 2px rgba(0,0,0,0.3);
 
-    -webkit-transition: transform .3s ease-out;
-    -moz-transition: transform .3s ease-out;
-    -ms-transition: transform .3s ease-out;
-    -o-transition: transform .3s ease-out;
-    transition: transform .3s ease-out;
+    /*-webkit-transition: transform .3s ease-out;*/
+    /*-moz-transition: transform .3s ease-out;*/
+    /*-ms-transition: transform .3s ease-out;*/
+    /*-o-transition: transform .3s ease-out;*/
+    /*transition: transform .3s ease-out;*/
 
     overflow: auto;
 }

@@ -73,12 +73,42 @@
 
         //移动端菜单
         $("#navopen").click(function(){
-            $("#side_nav").css(prefix.v, "translate3d(0,0,0)");
+            var that_ele = $("#side_nav");
+            that_ele.css(prefix.v, "translate3d(-150%,0,0)");
+
+            //延迟触发
+            setTimeout(function(){
+                that_ele.css({
+                    "MozTransition": ".3s ease-out",
+                    "WebkitTransition": ".3s ease-out",
+                    "OTransition": ".3s ease-out"
+                });
+
+                that_ele.css("transition", prefix.v + " .3s ease-out");
+                that_ele.css(prefix.v, "translate3d(0,0,0)");
+
+            }, 50);
         });
 
         //收菜单栏
         $("#close_nav").click(function(){
-            $("#side_nav").css(prefix.v, "translate3d(-150%,0,0)");
+
+            var that_ele = $("#side_nav");
+            that_ele.css(prefix.v, "translate3d(0,0,0)");
+
+            //延迟触发
+            setTimeout(function(){
+                that_ele.css({
+                    "MozTransition": ".3s ease-out",
+                    "WebkitTransition": ".3s ease-out",
+                    "OTransition": ".3s ease-out"
+                });
+
+                that_ele.css("transition", prefix.v + " .3s ease-out");
+                that_ele.css(prefix.v, "translate3d(-150%,0,0)");
+
+            }, 50);
+
         });
 
     });
