@@ -59,7 +59,15 @@
         });
 
         //收菜单栏
-
+        $("#close_nav").click(function(){
+            $("#side_nav").css({
+                "-webkit-transform": "translate3d(-100%,0,0)",
+                "-moz-transform": "translate3d(-100%,0,0)",
+                "-ms-transform": "translate3d(-100%,0,0)",
+                "-o-transform": "translate3d(-100%,0,0)",
+                "transform": "translate3d(-100%,0,0)"
+            });
+        });
 
     });
 }(jQuery));

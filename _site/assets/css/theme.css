@@ -1741,3 +1741,18 @@ pre{
     color: #ffffff;
     text-decoration: none;
 }
+.side_nav_close{
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #ffffff;
+
+    color: #cccccc;
+
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+
+    font-size: 1.4em;
+}
