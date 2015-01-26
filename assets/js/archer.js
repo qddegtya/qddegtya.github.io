@@ -13,7 +13,7 @@
             'OTransform':'-o-transform',
             'MozTransform':'-moz-transform',
             'WebkitTransform':'-webkit-transform',
-            'MsTransform':'-ms-transform',
+            'MsTransform':'-ms-transform'
         };
 
         for(t in transforms){
@@ -74,7 +74,10 @@
         //移动端菜单
         $("#navopen").click(function(){
             var that_ele = $("#side_nav");
+            var m_ele = $("#side_nav_bg");
             that_ele.css(prefix.v, "translate3d(-150%,0,0)");
+            m_ele.css("background", "rgba(0,0,0,0)");
+            m_ele.css("display", "block");
 
             //延迟触发
             setTimeout(function(){
@@ -84,17 +87,28 @@
                     "OTransition": ".3s ease-out"
                 });
 
+                m_ele.css({
+                        "MozTransition": ".3s ease-out",
+                        "WebkitTransition": ".3s ease-out",
+                        "OTransition": ".3s ease-out"
+                });
+
                 that_ele.css("transition", prefix.v + " .3s ease-out");
                 that_ele.css(prefix.v, "translate3d(0,0,0)");
+
+                m_ele.css("transition", "background .3s ease-out");
+                m_ele.css("background", "rgba(0,0,0,0.5)");
 
             }, 50);
         });
 
         //收菜单栏
-        $("#close_nav").click(function(){
+        $("#side_nav_bg").click(function(){
 
             var that_ele = $("#side_nav");
             that_ele.css(prefix.v, "translate3d(0,0,0)");
+            var m_ele = $("#side_nav_bg");
+            m_ele.css("background", "rgba(0,0,0,0.5)");
 
             //延迟触发
             setTimeout(function(){
@@ -106,6 +120,11 @@
 
                 that_ele.css("transition", prefix.v + " .3s ease-out");
                 that_ele.css(prefix.v, "translate3d(-150%,0,0)");
+
+                m_ele.css("transition", "background .3s ease-out");
+                m_ele.css("background", "rgba(0,0,0,0)");
+
+                m_ele.css("display", "none");
 
             }, 50);
 
