@@ -34,10 +34,10 @@
     <meta name="msapplication-tap-highlight" content="no">
     <!-- 适应移动端end -->
     <title>工具 - Archer's Blog</title>
-    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.31"/>
-    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.31"/>
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.31"></script>
-    <script src="/assets/js/archer.js?ver=1.0.31"></script>
+    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.32"/>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.32"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.32"></script>
+    <script src="/assets/js/archer.js?ver=1.0.32"></script>
     <script type="text/javascript">
 
         //Html编码获取Html转义实体
@@ -52,10 +52,10 @@
 
         $(document).ready(function(){
 
-            $.getJSON("/ad.json", function(data){
-                $(".side_nav_topic").html("<i class='fa fa-plug'></i> " +
-                "<a href='" + data.url + "'>" + data.title + "</a>");
-            });
+//            $.getJSON("/ad.json", function(data){
+//                $(".side_nav_topic").html("<i class='fa fa-plug'></i> " +
+//                "<a href='" + data.url + "'>" + data.title + "</a>");
+//            });
 
             //缓存分类文章列表
             var catposts = [];
@@ -201,15 +201,17 @@
 <!-- 手机侧栏导航 -->
 <div id="side_nav" class="side_nav">
     <!-- 头像位置 -->
-    <div class="side_nav_gravatar">
-        <div class="img_avatar">
-            <img src="/assets/images/avatar.jpeg" alt="Archer"/>
-        </div>
-    </div>
+    <!--<div class="side_nav_gravatar">-->
+        <!--<div class="img_avatar">-->
+            <!--<img src="/assets/images/avatar.jpeg" alt="Archer"/>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!-- 公告区域 -->
     <div class="side_nav_ads">
-        <span class="side_nav_topic"></span>
+        <span class="side_nav_topic">
+            <a href="/" title="Archer's Blog">WEB DEVELOPER</a>
+        </span>
     </div>
 
     <!-- 菜单区域 -->
@@ -285,7 +287,7 @@
     </div>
     <!-- 链接区域 -->
     <div class="follow-panel">
-            <span class="sns">Theme Version 1.0.31</span>
+            <span class="sns">Theme Version 1.0.32</span>
         <div>
 </div>
     </div>

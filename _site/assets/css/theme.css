@@ -1683,7 +1683,7 @@ pre{
 
 .side_nav_gravatar{
     width: 100%;
-    padding: 20px 0;
+    padding: 35px 0;
     background: #f0f0f0;
 
     text-align: center;
@@ -1705,12 +1705,10 @@ pre{
     -moz-border-radius: 50%;
     border-radius: 50%;
 
-    border: 3px solid #ffffff;
-
     position: absolute;
-    top: 20px;
-    left: 20px;
-    float: left;
+    left: 0;
+    top: 5px;
+    border: 3px solid #ffffff;
 }
 .side_nav_ul{
     width: 100%;
@@ -1731,7 +1729,7 @@ pre{
 
 }
 .side_nav_ul a:hover{
-    border-left: 5px solid #E74C3C;
+    border-left: 5px solid #2f2f2f;
 }
 
 .side_nav_ads{
