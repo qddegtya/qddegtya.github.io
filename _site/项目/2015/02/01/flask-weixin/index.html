@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <title>微信JS-SDK签名接入flask版 - Archer's Blog</title>
+    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css?ver=1.0.32"/>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.32"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=1.0.32"></script>
+    <script src="/assets/js/archer.js?ver=1.0.32"></script>
+    <script type="text/javascript">
+
+        //Html编码获取Html转义实体
+        function htmlEncode(value){
+            return $('<div/>').text(value).html();
+        }
+
+        //Html解码获取Html实体
+        function htmlDecode(value){
+            return $('<div/>').html(value).text();
+        }
+
+        $(document).ready(function(){
+
+//            $.getJSON("/ad.json", function(data){
+//                $(".side_nav_topic").html("<i class='fa fa-plug'></i> " +
+//                "<a href='" + data.url + "'>" + data.title + "</a>");
+//            });
+
+            //缓存分类文章列表
+            var catposts = [];
+
+            //首次载入便缓存下来
+            if('' !== '首页'){
+
+                $.getJSON("/allposts.json", function (data) {
+
+                    $.each(data, function (i, item) {
+                        if(item.cat === ''){
+                            catposts.push(item);
+                        }
+                    });
+
+                    //添加
+                    $.each(catposts, function(j, item){
+                        var content = "";
+                        if(j < 0){
+                            var excerpt = " + item.excerpt + ";
+                            content += "<div class='blogbody__everyblog'>";
+                            content += "<div class='blogbody__everyblog__header'>";
+                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                            content += "</div>";
+                            content += "<div class='blogbody__everyblog__meta'>";
+                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                            content += "</div>";
+                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                            content += htmlDecode(item.excerpt);
+                            content += "</div>";
+                            content += "</div>";
+                            $('.loadingmore').before(content);
+                        }
+                    });
+                });
+            }
+
+            var totalsize = 0;
+
+            
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            
+
+            if(totalsize > 0){
+
+                var bloglists = $('.bloglists');
+                var count = 0; //一开始的文章数目
+                var looptimes = 0; //计数器top
+
+                $('.loadingmore').click(function () {
+
+                    $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-spinner fa-spin fa-fw'></i> 正在加载...</span>");
+
+                    $.getJSON("/allposts.json", function (data) {
+                        var content = "";
+                        looptimes = count + 0; //初始化
+                        var j = 0; //采集loop了多少次
+
+                        if('' === '首页'){
+                            $.each(data, function (i, item) {
+                                if (i >= count && i < looptimes) {
+                                    var excerpt = " + item.excerpt + ";
+                                    content += "<div class='blogbody__everyblog'>";
+                                    content += "<div class='blogbody__everyblog__header'>";
+                                    content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                                    content += "</div>";
+                                    content += "<div class='blogbody__everyblog__meta'>";
+                                    content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                                    content += "</div>";
+                                    content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                                    content += htmlDecode(item.excerpt);
+                                    content += "</div>";
+                                    content += "</div>";
+                                    j++;
+                                }
+                            });
+
+                            count += j; //现在的文章数目
+
+                            $('.loadingmore').before(content);
+                            $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-book fa-lg'></i> 阅读更多文章</span>");
+                            if (count == data.length) {
+                                $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
+                            }
+
+                        }
+                        else{
+                            $.each(catposts, function (i, item) {
+                                if (i >= count && i < looptimes) {
+                                    var excerpt = " + item.excerpt + ";
+                                    content += "<div class='blogbody__everyblog'>";
+                                    content += "<div class='blogbody__everyblog__header'>";
+                                    content += "<a href='" + item.url + "'>" + item.title + "</a>";
+                                    content += "</div>";
+                                    content += "<div class='blogbody__everyblog__meta'>";
+                                    content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
+                                    content += "</div>";
+                                    content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
+                                    content += htmlDecode(item.excerpt);
+                                    content += "</div>";
+                                    content += "</div>";
+                                    j++;
+                                }
+                            });
+
+                            count += j; //现在的文章数目
+                            $('.loadingmore').before(content);
+                            $('.loadingmore').html("<span class='loadingmorespan'><i class='fa fa-book fa-lg'></i> 阅读更多文章</span>");
+                            if (count === catposts.length) {
+                                $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
+                            }
+                        }
+                    });
+                });
+            }
+
+            //如果totalsize<=初始值则不显示
+            else{
+                //否则不显示翻页
+                $('.loadingmore').css('display', 'none');
+            }
+        });
+    </script>
+
+</head>
+
+<!-- 手机导航 -->
+<header id="mobile--header" class="mobile--header">
+    <span class="mobile__nav--open" id="navopen"><i class="fa fa-bars"></i></span>
+    <span class="mobile--header--span"><a href="/">Archer's Blog</a></span>
+</header>
+
+<!-- 手机导航侧栏蒙板 -->
+<div id="side_nav_bg" class="side_nav_bg">
+</div>
+
+<!-- 手机侧栏导航 -->
+<div id="side_nav" class="side_nav">
+    <!-- 头像位置 -->
+    <!--<div class="side_nav_gravatar">-->
+        <!--<div class="img_avatar">-->
+            <!--<img src="/assets/images/avatar.jpeg" alt="Archer"/>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!-- 公告区域 -->
+    <div class="side_nav_ads">
+        <span class="side_nav_topic">
+            <a href="/" title="Archer's Blog">WEB DEVELOPER</a>
+        </span>
+    </div>
+
+    <!-- 菜单区域 -->
+    <div class="side_nav_ul">
+            <a href="/">首页</a>
+            <a href="/blogs">博客</a>
+            <a href="/projects">项目</a>
+            <a href="/experiments">实验</a>
+            <a href="/tools">工具</a>
+            <a href="/about">关于</a>
+    </div>
+
+    <!-- 关闭 -->
+    <!--<div class="side_nav_close" id="close_nav">-->
+        <!--<i class="fa fa-close"></i>-->
+    <!--</div>-->
+</div>
+
+<header id="blog__header">
+
+
+
+    <div class="blog__bighead">
+
+        <div id="follow--pop--area" class="follow--pop bounceInDown">
+            <span class="follow--list"><a href="http://www.weibo.com/IMArcher" target="_blank" title="Weibo"><i class="fa fa-weibo fa-color"></i></a> <a href="http://github.com/qddegtya" target="_blank" title="Github"><i class="fa fa-github fa-color"></i></a> <a href="/about" title="About"><i class="fa fa-coffee fa-color"></i></a> <i></i></span>
+        </div>
+
+        <!-- github ribbon -->
+        <a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank" id="ribbon--github"><img style="position: absolute; top: 100px; left: 0px; border: 0;" src="http://xiaoa.name/assets/images/ribbon.png" alt="Fork me on GitHub"></a>
+
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown"><a href="/">ARCHER</a></span>
+            <span class="logo--des">WEB DEVELOPER</span>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item home__link"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOG</a></li>
+            <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">WORK</a></li>
+            <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">LAB</a></li>
+            <li class="blog__nav__item tools__link"><a href="/tools/" class="navlink">TOOL</a></li>
+        </ul>
+    </div>
+
+</header>
+<body>
+<!-- github ribbon -->
+<!--<a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank" id="ribbon--github"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://xiaoa.name/assets/images/ribbon.png" alt="Fork me on GitHub"></a>-->
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E9%A1%B9%E7%9B%AE/2015/02/01/flask-weixin/">微信JS-SDK签名接入flask版</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2015 - 02 - 01</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
+                    <blockquote>
+  <p>相信很多做前端的朋友都已经注意到了微信今年的一系列大动作，当然，对于前端开发工作来讲，我觉得这本身就是一种非常不错的开放机会，
+能够让我们更好地利用好微信这个平台，每次写博客都要废话一段前言……好吧，下面说说最近的JS-SDK那些事儿。</p>
+</blockquote>
+
+<p><img src="/assets/blog-images/2015-2-1-flaskweixin/jssdk.png" alt="" /></p>
+
+<p><strong>以上内容是文章摘要</strong></p>
+
+<h3 id="section">前端部分</h3>
+
+<p>在前端部分，我们重点来看下JS-SDK的接入流程，从前端角度而言，大致是如下三个步骤：
+wx.pre-wx.ready-wx.apicall(实际上没有这个apicall方法)。
+我把它翻译成：接入-就绪-调用。
+OK，如果这么说的话，嗯……So easy……But，当我们用代码的方式写出来，可能是这样一种情况：</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">var</span> <span class="nx">jsTool</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">//Get Access Token</span>
+<span class="lineno"> 4</span> <span class="c1">// Need APPID &amp; APPSECRET</span>
+<span class="lineno"> 5</span> <span class="nx">jsTool</span><span class="p">.</span><span class="nx">getAccessToken</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+<span class="lineno"> 6</span>     <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span>
+<span class="lineno"> 7</span>          <span class="nx">callback</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="p">});</span>
+<span class="lineno"> 9</span> <span class="p">};</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">//Get jsapi_ticket</span>
+<span class="lineno">12</span> <span class="nx">jsTool</span><span class="p">.</span><span class="nx">getApiTicket</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+<span class="lineno">13</span>     <span class="k">this</span><span class="p">.</span><span class="nx">getAccessToken</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">acCode</span><span class="p">){</span>
+<span class="lineno">14</span>             <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span>
+<span class="lineno">15</span>                 <span class="nx">callback</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="lineno">16</span>                 <span class="c1">//立即存下ticket</span>
+<span class="lineno">17</span>             <span class="p">});</span>
+<span class="lineno">18</span>     <span class="p">});</span>
+<span class="lineno">19</span> <span class="p">};</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">//Throw args to backend to checksign</span>
+<span class="lineno">22</span> <span class="nx">jsTool</span><span class="p">.</span><span class="nx">getSignFromBackEnd</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+<span class="lineno">23</span>      <span class="nx">$ajax</span><span class="p">({</span>
+<span class="lineno">24</span>           <span class="c1">//扔给后端参数中的timestamp和nonceStr必须跟wx.config一致</span>
+<span class="lineno">25</span>           <span class="nx">timestamp</span><span class="o">:</span> <span class="mi">145672831</span><span class="p">,</span>
+<span class="lineno">26</span>           <span class="nx">noncestr</span><span class="o">:</span> <span class="s2">&quot;Wm3WZYTPz0wzccnW&quot;</span>
+<span class="lineno">27</span>           <span class="nx">jsapi_ticket</span><span class="o">:</span> <span class="s2">&quot;sM4AOVdWfPE4DxkX&quot;</span> <span class="c1">//上面存下的ticket</span>
+<span class="lineno">28</span>           <span class="nx">url</span><span class="o">:</span> <span class="s2">&quot;http://mp.weixin.qq.com&quot;</span>
+<span class="lineno">29</span>      <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">sign</span><span class="p">){</span>
+<span class="lineno">30</span>          <span class="nx">wx</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+<span class="lineno">31</span>             <span class="nx">debug</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// 开启调试模式</span>
+<span class="lineno">32</span>             <span class="nx">appId</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// 必填，公众号的唯一标识</span>
+<span class="lineno">33</span>             <span class="nx">timestamp</span><span class="o">:</span> <span class="p">,</span> <span class="c1">// 必填，生成签名的时间戳</span>
+<span class="lineno">34</span>             <span class="nx">nonceStr</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">// 必填，生成签名的随机串</span>
+<span class="lineno">35</span>             <span class="nx">signature</span><span class="o">:</span> <span class="nx">sign</span><span class="p">,</span><span class="c1">// 必填，签名</span>
+<span class="lineno">36</span>             <span class="nx">jsApiList</span><span class="o">:</span> <span class="p">[</span><span class="nx">xxx</span><span class="p">,</span><span class="nx">xxx</span><span class="p">,</span><span class="nx">xxx</span><span class="p">,</span><span class="nx">xxx</span><span class="p">,</span><span class="nx">xxx</span><span class="p">]</span> <span class="c1">// 必填，需要使用的JS接口列表</span>
+<span class="lineno">37</span>          <span class="p">});</span>
+<span class="lineno">38</span>      <span class="p">});</span>
+<span class="lineno">39</span> <span class="p">}</span></code></pre></div>
+
+<p>没错，如果按照官方文档的说明进行开发还是稍微显得有些复杂，主要是因为微信这次加入了签名策略。
+那么，我们再来梳理一遍带签名的处理流程：</p>
+
+<ol>
+  <li>拿下全局token</li>
+  <li>根据全局token拿到ticket</li>
+  <li>一顿签名规则</li>
+  <li>拿到签名</li>
+  <li>wx.pre</li>
+  <li>wx.ready</li>
+  <li>wx.apicall</li>
+</ol>
+
+<p>我们只要想办法把wx.config需要的参数直接扔给前端，让他继续处理下面的事情就可以了，官方推荐的做法也是如此：
+token和ticket建议存储，必要时签名等做成中置服务，让所有应用服务器都只用一个全局token。</p>
+
+<p>说干就干，上flask版的代码：
+我最终的思路是：让前端专心处理前端，让后端专心处理后端，通过restful风格的/all接口，我可以将wx.config需要的一系列参数全部直接返回给前端使用。
+全局的token和ticket使用job的方式去单独处理他们的更新。
+与官方推荐做法基本吻合：</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="lineno">  1</span> <span class="c"># -*- coding:utf-8 -*-</span>
+<span class="lineno">  2</span> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span>  <span class="n">make_response</span><span class="p">,</span> <span class="n">request</span>
+<span class="lineno">  3</span> <span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">CONFIG</span>
+<span class="lineno">  4</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="lineno">  5</span> <span class="kn">import</span> <span class="nn">random</span>
+<span class="lineno">  6</span> <span class="kn">import</span> <span class="nn">string</span>
+<span class="lineno">  7</span> <span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="lineno">  8</span> <span class="kn">import</span> <span class="nn">time</span>
+<span class="lineno">  9</span> <span class="kn">from</span> <span class="nn">flask.ext.sqlalchemy</span> <span class="kn">import</span> <span class="n">SQLAlchemy</span>
+<span class="lineno"> 10</span> 
+<span class="lineno"> 11</span> <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="lineno"> 12</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;sqlite:///main.db&#39;</span>  <span class="c"># 相对路径写法</span>
+<span class="lineno"> 13</span> <span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="lineno"> 14</span> 
+<span class="lineno"> 15</span> 
+<span class="lineno"> 16</span> <span class="k">class</span> <span class="nc">TokenAndTicket</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="lineno"> 17</span> 
+<span class="lineno"> 18</span>     <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno"> 19</span>     <span class="n">token</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno"> 20</span>     <span class="n">ticket</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="lineno"> 21</span> 
+<span class="lineno"> 22</span>     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">ticket</span><span class="p">):</span>
+<span class="lineno"> 23</span>         <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
+<span class="lineno"> 24</span>         <span class="bp">self</span><span class="o">.</span><span class="n">ticket</span> <span class="o">=</span> <span class="n">ticket</span>
+<span class="lineno"> 25</span> 
+<span class="lineno"> 26</span>     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="lineno"> 27</span>         <span class="k">return</span> <span class="s">&quot;&lt;TICKET </span><span class="si">%r</span><span class="s">&gt;&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">ticket</span>
+<span class="lineno"> 28</span> 
+<span class="lineno"> 29</span> 
+<span class="lineno"> 30</span> <span class="n">current_token_ticket</span> <span class="o">=</span> <span class="n">TokenAndTicket</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="lineno"> 31</span> 
+<span class="lineno"> 32</span> <span class="c">#error code</span>
+<span class="lineno"> 33</span> <span class="n">DONE</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="lineno"> 34</span> 
+<span class="lineno"> 35</span> <span class="c">#weixin token</span>
+<span class="lineno"> 36</span> <span class="n">WX_TOKEN_REQ</span> <span class="o">=</span> <span class="p">(</span>
+<span class="lineno"> 37</span>     <span class="s">&quot;https://api.weixin.qq.com/cgi-bin/token?grant_type=</span><span class="si">%s</span><span class="s">&amp;appid=</span><span class="si">%s</span><span class="s">&amp;secret=</span><span class="si">%s</span><span class="s">&quot;</span>
+<span class="lineno"> 38</span>     <span class="o">%</span> <span class="p">(</span><span class="n">CONFIG</span><span class="p">[</span><span class="s">&#39;client_credential&#39;</span><span class="p">],</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s">&quot;app_id&quot;</span><span class="p">],</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s">&quot;secret&quot;</span><span class="p">])</span>
+<span class="lineno"> 39</span> <span class="p">)</span>
+<span class="lineno"> 40</span> 
+<span class="lineno"> 41</span> <span class="c">#weixin js_ticket</span>
+<span class="lineno"> 42</span> <span class="n">WX_TICKET_REQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s">&quot;https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=</span><span class="si">%s</span><span class="s">&amp;type=jsapi&quot;</span> <span class="o">%</span> <span class="n">x</span>
+<span class="lineno"> 43</span> 
+<span class="lineno"> 44</span> 
+<span class="lineno"> 45</span> <span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/nonce&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="s">&#39;POST&#39;</span><span class="p">])</span>
+<span class="lineno"> 46</span> <span class="k">def</span> <span class="nf">ge_nonce_str</span><span class="p">():</span>
+<span class="lineno"> 47</span>     <span class="sd">&quot;&quot;&quot;随机串单拿接口</span>
+<span class="lineno"> 48</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno"> 49</span>     <span class="k">return</span> <span class="n">json_response</span><span class="p">(</span>
+<span class="lineno"> 50</span>         <span class="p">{</span>
+<span class="lineno"> 51</span>             <span class="s">&quot;nonce_str&quot;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="lineno"> 52</span>         <span class="p">}</span>
+<span class="lineno"> 53</span>     <span class="p">)</span>
+<span class="lineno"> 54</span> 
+<span class="lineno"> 55</span> 
+<span class="lineno"> 56</span> <span class="k">def</span> <span class="nf">_ge_nonce_str</span><span class="p">():</span>
+<span class="lineno"> 57</span>     <span class="sd">&quot;&quot;&quot;all in one 接口用</span>
+<span class="lineno"> 58</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno"> 59</span>     <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="lineno"> 60</span> 
+<span class="lineno"> 61</span> 
+<span class="lineno"> 62</span> <span class="k">def</span> <span class="nf">error_res_obj</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+<span class="lineno"> 63</span>     <span class="sd">&quot;&quot;&quot;错误响应</span>
+<span class="lineno"> 64</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno"> 65</span>     <span class="k">return</span> <span class="p">{</span>
+<span class="lineno"> 66</span>         <span class="s">&quot;errcode&quot;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span>
+<span class="lineno"> 67</span>         <span class="s">&quot;errmsg&quot;</span><span class="p">:</span> <span class="n">msg</span>
+<span class="lineno"> 68</span>     <span class="p">}</span>
+<span class="lineno"> 69</span> 
+<span class="lineno"> 70</span> 
+<span class="lineno"> 71</span> <span class="k">def</span> <span class="nf">json_response</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
+<span class="lineno"> 72</span>     <span class="sd">&quot;&quot;&quot;包装response为json</span>
+<span class="lineno"> 73</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno"> 74</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+<span class="lineno"> 75</span>         <span class="n">json_response_body</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="lineno"> 76</span>     <span class="k">else</span><span class="p">:</span>
+<span class="lineno"> 77</span>         <span class="n">json_response_body</span> <span class="o">=</span> <span class="n">make_response</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="lineno"> 78</span>     <span class="n">json_response_body</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;application/json;charset=UTF-8&quot;</span>  <span class="c"># 设置</span>
+<span class="lineno"> 79</span>     <span class="c"># json_response_body.headers[&#39;Access-Control-Allow-Origin&#39;] = &quot;*&quot;  # 跨域</span>
+<span class="lineno"> 80</span>     <span class="k">return</span> <span class="n">json_response_body</span>
+<span class="lineno"> 81</span> 
+<span class="lineno"> 82</span> 
+<span class="lineno"> 83</span> <span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/token&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="lineno"> 84</span> <span class="k">def</span> <span class="nf">get_access_token</span><span class="p">():</span>
+<span class="lineno"> 85</span>     <span class="sd">&quot;&quot;&quot;token单拿接口</span>
+<span class="lineno"> 86</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno"> 87</span>     <span class="n">token</span> <span class="o">=</span> <span class="n">current_token_ticket</span><span class="o">.</span><span class="n">token</span>
+<span class="lineno"> 88</span>     <span class="k">return</span> <span class="n">json_response</span><span class="p">({</span>
+<span class="lineno"> 89</span>         <span class="s">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span>
+<span class="lineno"> 90</span>     <span class="p">})</span>
+<span class="lineno"> 91</span> 
+<span class="lineno"> 92</span> 
+<span class="lineno"> 93</span> <span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/ticket&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="lineno"> 94</span> <span class="k">def</span> <span class="nf">js_ticket</span><span class="p">():</span>
+<span class="lineno"> 95</span>     <span class="sd">&quot;&quot;&quot;ticket单拿接口</span>
+<span class="lineno"> 96</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno"> 97</span>     <span class="n">ticket</span> <span class="o">=</span> <span class="n">current_token_ticket</span><span class="o">.</span><span class="n">ticket</span>
+<span class="lineno"> 98</span>     <span class="k">return</span> <span class="n">json_response</span><span class="p">({</span>
+<span class="lineno"> 99</span>         <span class="s">&quot;ticket&quot;</span><span class="p">:</span> <span class="n">ticket</span>
+<span class="lineno">100</span>     <span class="p">})</span>
+<span class="lineno">101</span> 
+<span class="lineno">102</span> 
+<span class="lineno">103</span> <span class="k">def</span> <span class="nf">_sign_ticket</span><span class="p">(</span><span class="n">nonce_str</span><span class="p">,</span> <span class="n">j_ticket</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+<span class="lineno">104</span>     <span class="sd">&quot;&quot;&quot;私有签名方法</span>
+<span class="lineno">105</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">106</span>     <span class="n">sign_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">107</span>         <span class="s">&quot;jsapi_ticket&quot;</span><span class="p">:</span> <span class="n">j_ticket</span><span class="p">,</span>
+<span class="lineno">108</span>         <span class="s">&quot;noncestr&quot;</span><span class="p">:</span> <span class="n">nonce_str</span><span class="p">,</span>
+<span class="lineno">109</span>         <span class="s">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+<span class="lineno">110</span>         <span class="s">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span>
+<span class="lineno">111</span>     <span class="p">}</span>
+<span class="lineno">112</span> 
+<span class="lineno">113</span>     <span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="lineno">114</span> 
+<span class="lineno">115</span>     <span class="c"># 字典排序</span>
+<span class="lineno">116</span>     <span class="n">sign_sorted_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sign_dict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="lineno">117</span>     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sign_sorted_list</span><span class="p">:</span>
+<span class="lineno">118</span>         <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s">&quot;=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="lineno">119</span> 
+<span class="lineno">120</span>     <span class="n">_url_string</span> <span class="o">=</span> <span class="s">&#39;&amp;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+<span class="lineno">121</span>     <span class="n">final_sign</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="n">_url_string</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="lineno">122</span>     <span class="k">return</span> <span class="n">final_sign</span>
+<span class="lineno">123</span> 
+<span class="lineno">124</span> 
+<span class="lineno">125</span> <span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/all&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="lineno">126</span> <span class="k">def</span> <span class="nf">all_in_one</span><span class="p">():</span>
+<span class="lineno">127</span>     <span class="sd">&quot;&quot;&quot;all in one数据返回</span>
+<span class="lineno">128</span> <span class="sd">    &quot;&quot;&quot;</span>
+<span class="lineno">129</span>     <span class="n">_time_stamp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="lineno">130</span>     <span class="n">_random_str</span> <span class="o">=</span> <span class="n">_ge_nonce_str</span><span class="p">()</span>
+<span class="lineno">131</span>     <span class="n">_js_ticket</span> <span class="o">=</span> <span class="n">current_token_ticket</span><span class="o">.</span><span class="n">ticket</span>
+<span class="lineno">132</span>     <span class="n">_url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">host_url</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c"># 去除/</span>
+<span class="lineno">133</span> 
+<span class="lineno">134</span>     <span class="k">return</span> <span class="n">json_response</span><span class="p">({</span>
+<span class="lineno">135</span>         <span class="s">&#39;appId&#39;</span><span class="p">:</span> <span class="n">CONFIG</span><span class="p">[</span><span class="s">&#39;app_id&#39;</span><span class="p">],</span>
+<span class="lineno">136</span>         <span class="s">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">_time_stamp</span><span class="p">,</span>
+<span class="lineno">137</span>         <span class="s">&#39;nonceStr&#39;</span><span class="p">:</span> <span class="n">_random_str</span><span class="p">,</span>
+<span class="lineno">138</span>         <span class="s">&#39;signature&#39;</span><span class="p">:</span> <span class="n">_sign_ticket</span><span class="p">(</span><span class="n">_random_str</span><span class="p">,</span> <span class="n">_js_ticket</span><span class="p">,</span> <span class="n">_time_stamp</span><span class="p">,</span> <span class="n">_url</span><span class="p">),</span>
+<span class="lineno">139</span>         <span class="s">&#39;url&#39;</span><span class="p">:</span> <span class="n">_url</span>  <span class="c"># POST过来什么,返回什么</span>
+<span class="lineno">140</span>     <span class="p">})</span>
+<span class="lineno">141</span> 
+<span class="lineno">142</span> 
+<span class="lineno">143</span> <span class="k">def</span> <span class="nf">_detect_request</span><span class="p">():</span>
+<span class="lineno">144</span>     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">(</span><span class="s">&#39;/all&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;POST&#39;</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">]):</span>
+<span class="lineno">145</span>         <span class="k">print</span> <span class="nb">dir</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="lineno">146</span>         <span class="k">print</span> <span class="n">request</span><span class="o">.</span><span class="n">host_url</span>
+<span class="lineno">147</span> 
+<span class="lineno">148</span> 
+<span class="lineno">149</span> <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="lineno">150</span>     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s">&quot;0.0.0.0&quot;</span><span class="p">)</span>
+<span class="lineno">151</span>     <span class="c"># _detect_request()</span></code></pre></div>
+
+<p>冬天写博客手真冷……</p>
+
+<h3 id="github">Github</h3>
+
+<p><a href="https://github.com/qddegtya/Weixin-Flask">Weixin-Flask</a></p>
+
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>本文固定链接</span>
+                        <span class="blogperlink">http://xiaoa.name/%E9%A1%B9%E7%9B%AE/2015/02/01/flask-weixin/</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blogsidebar single__sidebar">
+    <div class="avatar--mask">
+        <!-- 头像 -->
+        <div class="avatar--footer">
+            <img src="http://qddegtya.gitcafe.com/assets/images/avatar.jpeg">
+        </div>
+
+        <!-- 头像遮罩 -->
+        <div class="footer--mask">
+            <div class="mask"><i class="fa fa-rocket"></i></div>
+        </div>
+
+    </div>
+    <!-- 链接区域 -->
+    <div class="follow-panel">
+        <span class="sns">Theme Version 1.0.32</span>
+        <div>
+</div>
+    </div>
+</section>
+
+<footer id="blogfooter">
+
+</footer>
+
+</body>
+</html>
