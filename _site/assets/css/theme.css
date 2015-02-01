@@ -1120,7 +1120,7 @@ pre{
 .highlight .ne { color: #e74c3c; font-weight: bold } /* Name.Exception */
 .highlight .nf { color: #8E44AD; font-weight: bold } /* Name.Function */
 .highlight .nn { color: #cccccc } /* Name.Namespace */
-.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nt { color: #ffffff } /* Name.Tag */
 .highlight .nv { color: #008080 } /* Name.Variable */
 .highlight .ow { font-weight: bold } /* Operator.Word */
 .highlight .w { color: #bbbbbb } /* Text.Whitespace */

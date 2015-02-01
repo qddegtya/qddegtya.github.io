@@ -74,7 +74,7 @@
                     //添加
                     $.each(catposts, function(j, item){
                         var content = "";
-                        if(j < 2){
+                        if(j < 10){
                             var excerpt = " + item.excerpt + ";
                             content += "<div class='blogbody__everyblog'>";
                             content += "<div class='blogbody__everyblog__header'>";
@@ -96,13 +96,13 @@
             var totalsize = 0;
 
             
-                totalsize = 5;
+                totalsize = 6;
             
 
-            if(totalsize > 2){
+            if(totalsize > 10){
 
                 var bloglists = $('.bloglists');
-                var count = 2; //一开始的文章数目
+                var count = 10; //一开始的文章数目
                 var looptimes = 0; //计数器top
 
                 $('.loadingmore').click(function () {
@@ -265,6 +265,32 @@
 
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E5%B7%A5%E5%85%B7/2015/02/01/sina-berserk/" title="前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记">前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2015 - 02 - 01</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。</p>
+</blockquote>
+
+<blockquote>
+  <p>已知bug：
+当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size &lt;= 0(0) 】（官方bug链接 http://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。</p>
+</blockquote>
+
+<p>以上引用来自于 BerserkJS 官方github 的大标题，那么，BerserkJS究竟好用在哪里？</p>
+
+<p><a href="https://github.com/tapir-dream/berserkJS">https://github.com/tapir-dream/berserkJS</a></p>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
                 <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E9%A1%B9%E7%9B%AE/2015/02/01/flask-weixin/" title="微信JS-SDK签名接入flask版">微信JS-SDK签名接入flask版</a>
             </div>
             <div class="blogbody__everyblog__meta">
@@ -298,6 +324,101 @@
 <p><img src="/assets/blog-images/2015-2-1-coolors/coolors.png" alt="" /></p>
 
 <p>可以使用快捷键快速获取到一个唯一的色彩组合，仿佛灵感在瞬间迸发。</p>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E5%8D%9A%E5%AE%A2/2015/01/25/%E6%96%B0%E5%8D%9A%E5%AE%A2%E6%AD%A3%E5%BC%8F%E8%B5%B7%E8%88%AA/" title="Again or Begin">Again or Begin</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2015 - 01 - 25</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>今晚，我用Mou写下这里略带文艺气息的第一篇博文，这个小小的地方还是花费了我些许精力，2014年，我完成了人生的大事，有产出，有收获，更有转型，当然也少不了一些深刻的教训，或多或少的都已经过去。</p>
+</blockquote>
+
+<h3 id="section">这里即将产生什么？</h3>
+
+<p>一些前端开发技术，一些文艺片段，一些回忆，一些工具，一些经验……
+你也可以拿起你的手机，访问和收藏xiaoa.name</p>
+
+<h3 id="section-1">简短声明</h3>
+<p>这个博客托管在Gitcafe，代码同步到github和gitcafe的master分支，你都可以看到。
+不要反复问起这个博客的搭建过程，如果你跟我一样喜欢jekyll，你应该自己动手尝试一下。</p>
+
+<h3 id="section-2">这里的主人是谁？</h3>
+
+<p>Archer_小A/90后/自称Geek/自称Python,Javascript程序员/自称逼格控</p>
+
+<h3 id="my-desk">My Desk…</h3>
+
+<p><img src="/assets/blog-images/my_desktop.jpg" alt="Archer's Desktop" /></p>
+
+<p><strong>装备列表</strong></p>
+
+<ol>
+  <li>Macbook Air</li>
+  <li>Leopold FC660M</li>
+</ol>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/" title="jython+ddmlib实现仿豌豆荚效果屏幕实时快照">jython+ddmlib实现仿豌豆荚效果屏幕实时快照</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>部分代码思路来源于互联网</p>
+</blockquote>
+
+<h3 id="section">需求</h3>
+
+<p>之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。</p>
+
+
+            </div>
+    </div>
+
+
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <i class="fa fa-file-text-o fa-fw fa-lg"></i> <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <i class="fa fa-calendar fa-fw"></i> <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
+</blockquote>
+
+<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
+
+<h3 id="brewpython">通过brew安装python</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
+
+<h3 id="copy--r">copy -R</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
+
+<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
 
 
             </div>

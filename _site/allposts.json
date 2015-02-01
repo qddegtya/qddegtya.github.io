@@ -1,6 +1,14 @@
 [
     
     {
+        "title": "前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记",
+        "url": "/%E5%B7%A5%E5%85%B7/2015/02/01/sina-berserk/",
+        "date": "2015 - 02 - 01",
+        "tags": ["工具"],
+        "cat": "工具",
+        "excerpt": "&lt;blockquote&gt;  &lt;p&gt;berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;  &lt;p&gt;已知bug：当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size &amp;lt;= 0(0) 】（官方bug链接 http://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;以上引用来自于 BerserkJS 官方github 的大标题，那么，BerserkJS究竟好用在哪里？&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/tapir-dream/berserkJS&quot;&gt;https://github.com/tapir-dream/berserkJS&lt;/a&gt;&lt;/p&gt;"
+    },
+    {
         "title": "微信JS-SDK签名接入flask版",
         "url": "/%E9%A1%B9%E7%9B%AE/2015/02/01/flask-weixin/",
         "date": "2015 - 02 - 01",
