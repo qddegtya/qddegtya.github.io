@@ -1779,3 +1779,7 @@ pre{
 
     display: none;
 }
+.follow--list a{
+    text-decoration: none !important;
+    color: #ffffff !important;
+}
