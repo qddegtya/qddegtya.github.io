@@ -1,6 +1,14 @@
 [
     
     {
+        "title": "SVG+JS实现新版手机QQ的手势消除红点消息的动画",
+        "url": "/%E5%AE%9E%E9%AA%8C/2015/03/05/baymax/",
+        "date": "2015 - 03 - 05",
+        "tags": ["实验"],
+        "cat": "实验",
+        "excerpt": "&lt;blockquote&gt;  &lt;p&gt;下面的配图仅供卖萌&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;img src=&quot;/assets/blog-images/2015-3-5/baymax.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;&lt;p&gt;很久没有写博客了，今天给大家带来一个小折腾。虽然说是小折腾，但还是废了不少劲，某位大神的博客写得好：前端工程师要想脱颖而出，就要拿出草稿纸，所以有了如下这个丑陋无比的配图：&lt;/p&gt;"
+    },
+    {
         "title": "前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记",
         "url": "/%E5%B7%A5%E5%85%B7/2015/02/01/sina-berserk/",
         "date": "2015 - 02 - 01",
