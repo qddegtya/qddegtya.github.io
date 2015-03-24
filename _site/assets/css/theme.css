@@ -142,7 +142,7 @@ li{
     -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-    
+
     width: 100%;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
@@ -155,7 +155,7 @@ li{
     -ms-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
-    
+
 }
 .avatar--header img:hover{
     opacity: 1.0;
@@ -208,7 +208,7 @@ li{
         -ms-transition: background-position .8s;
         -o-transition: background-position .8s;
         transition: background-position .8s;
-        
+
     }
     /*.blog__head__img:hover{*/
         /*background-position: left -150px;*/
@@ -275,7 +275,7 @@ li{
     -ms-transition: color .5s;
     -o-transition: color .5s;
     transition: color .5s;
-    
+
 }
 .sns:hover{
     color: #16a085;
@@ -327,7 +327,7 @@ li{
     /*border-top: 5px solid #2f2f2f;*/
 
     /*border-top: 5px solid #2f2f2f;*/
-    
+
     overflow: auto;
 
 }
@@ -408,7 +408,7 @@ li{
         cursor: pointer;
 
     }
-    
+
     .home__link{
 
     }
@@ -1019,7 +1019,7 @@ li{
     /*-webkit-box-shadow: 0 5px 0 #e1e1e1 !important;*/
     /*-moz-box-shadow: 0 5px 0 #e1e1e1 !important;*/
     /*box-shadow: 0 5px 0 #e1e1e1 !important;*/
-    
+
 }
 
 
@@ -1619,7 +1619,7 @@ pre{
 
     color: #ffffff;
     font-size: 1.6em;
-    
+
 }
 .fa-color{
     display: inline-block;
@@ -1728,8 +1728,9 @@ pre{
     /*-webkit-tap-highlight-color: rgba(0,0,0,0.2);*/
 
 }
-.side_nav_ul a:hover{
-    border-left: 5px solid #2f2f2f;
+.side_nav_ul a:active{
+    /* border-left: 5px solid #2f2f2f; */
+    background: #f0f0f0 !important;
 }
 
 .side_nav_ads{
@@ -1773,11 +1774,25 @@ pre{
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,0);
-
+    background: rgba(0,0,0);
+    /* opacity: 0; */
     z-index: 9999990;
-
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
     display: none;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+
 }
 .follow--list a{
     text-decoration: none !important;

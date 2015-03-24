@@ -108,7 +108,7 @@
             var that_ele = $("#side_nav");
             that_ele.css(prefix.v, "translate3d(0,0,0)");
             var m_ele = $("#side_nav_bg");
-            m_ele.css("background", "rgba(0,0,0,0.5)");
+            m_ele.css("opacity", "0");
 
             //延迟触发
             setTimeout(function(){
@@ -121,8 +121,8 @@
                 that_ele.css("transition", prefix.v + " .3s ease-out");
                 that_ele.css(prefix.v, "translate3d(-150%,0,0)");
 
-                m_ele.css("transition", "background .3s ease-out");
-                m_ele.css("background", "rgba(0,0,0,0)");
+                m_ele.css("transition", "background .1s ease");
+                m_ele.css("opacity", "0.65");
 
                 m_ele.css("display", "none");
 
