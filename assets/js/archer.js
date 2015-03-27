@@ -59,16 +59,16 @@
 
 
         $(".footer--mask").click(function(){
-            setTimeout(function(){
-                var topInterval = setInterval(function(){
-                    if(document.body.scrollTop > 0){
-                        document.body.scrollTop -= 16.67;
-                    } else {
-                        //stop
-                        clearInterval(topInterval);
-                    }
-                }, 1);
-            }, 100);
+            // setTimeout(function(){
+            //     var topInterval = setInterval(function(){
+            //         if(document.body.scrollTop > 0){
+            //             document.body.scrollTop -= 16.67;
+            //         } else {
+            //             //stop
+            //             clearInterval(topInterval);
+            //         }
+            //     }, 1);
+            // }, 100);
         });
 
         //移动端菜单
