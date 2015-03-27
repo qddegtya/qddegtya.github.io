@@ -200,7 +200,7 @@ li{
         /*border-radius: 20px 20px 0 0;*/
         padding: 130px 0;
         width: 100%;
-        background: url("../images/color.jpg") left -240px no-repeat;
+        background: url("../images/desk.jpg") left -280px no-repeat;
         background-size: cover;
         color: #ffffff;
 
@@ -229,7 +229,7 @@ li{
         /*display: block;*/
         /*background: #2f2f2f;*/
 
-        border-bottom: 1px solid #ffffff;
+        /* border-bottom: 1px solid #ffffff; */
 
         font-size: 1.2em;
         letter-spacing: 3px;
@@ -672,11 +672,11 @@ li{
     width: 100%;
     /*width: 100%;*/
 
-    border: 5px solid #ffffff;
+    /* border: 5px solid #ffffff;
 
     -webkit-box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5);
-    box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5);
+    box-shadow: 0px 0 2px 0 rgba(0,0,0,0.5); */
 
 }
 .blogcontent p img:hover{
@@ -702,12 +702,12 @@ li{
     -ms-word-break: normal;
     word-break: normal;
     overflow: hidden;
-    border: 5px solid #2f2f2f;
+    border-left: 5px solid #cccccc;
     font-family: "Microsoft YaHei";
 
-    -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+    /* -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
     -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
-    box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+    box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset; */
 }
 .blogcontent pre:active{
     /*-webkit-box-shadow: none;*/
@@ -1331,7 +1331,7 @@ pre{
 }
 .mobile--header{
     width: 100%;
-    background-color: #2f2f2f;
+    background-color: #ffffff;
     padding: 20px 0;
     position: fixed;
     top: 0;
@@ -1340,7 +1340,7 @@ pre{
     display: none;
 
     text-align: center;
-    color: #ffffff;
+    color: #2f2f2f;
 
     font-family: "Microsoft YaHei";
     font-size: 1.0em;
@@ -1351,10 +1351,12 @@ pre{
     /*-webkit-box-shadow: 0 1px 10px #999999;*/
     /*-moz-box-shadow: 0 1px 10px #999999;*/
     /*box-shadow: 0 1px 10px #999999;*/
+
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .mobile--header a{
-    color: #ffffff;
+    color: #2f2f2f;
     text-decoration: none;
     font-family: "Microsoft YaHei";
 }
@@ -1593,9 +1595,9 @@ pre{
     right: 50px;
     z-index: 999999;
 
-    /* -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px; */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 
     /* border-left: 1px solid #222222;
     border-right: 1px solid #222222;
@@ -1737,13 +1739,16 @@ pre{
     width: 100%;
     padding: 45px;
     overflow: hidden;
-    background: #1abc9c;
+    background: url("../images/desk.jpg") no-repeat;
     color: #ffffff;
     text-align: center;
     letter-spacing: 2px;
 
     font-size: 1.0em;
     line-height: 1.4em;
+
+    background-size: 100% 100%;
+
 }
 .side_nav_ads img{
     display: block;
