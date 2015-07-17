@@ -1,1 +1,5 @@
-.idea
+.idea/
+assets/blog-images/
+node_modules/
+
+projectFilesBackup/
