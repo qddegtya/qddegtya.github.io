@@ -62,7 +62,12 @@ li{
 .clearright{
     clear: right;
 }
+.clearfix{
 
+}
+img{
+    vertical-align: middle;
+}
 
 
 
@@ -817,59 +822,25 @@ li{
    $blogfooter
 \*-----------------------------*/
 #blogfooter{
-    padding:50px 0;
+    padding: 150px 0;
     width: 100%;
     clear: both;
-}
-.blogfooter{
-        height: 70px;
-        padding: 0 50px;
-        background-color: #bdc3c7;
-        width: 100%;
-
-        z-index: 9995;
-        /*position: relative;*/
-}
-.truefooter{
-    padding: 30px 50px;
-    background-color: #f0f0f0;
-    z-index: -1;
-    position: relative;
-}
-.blogfooter--left{
-    height: 70px;
-    width: calc( 60% - 1px );
-    width: -moz-calc( 60% - 1px );
-    width: -webkit-calc( 60% - 1px );
-
-    float: left;
-    /*background-color: #000000;*/
-    /*padding: 30px 0;*/
-
-}
-.blogfooter--right{
-    width: 40%;
-    float: right;
-    height: 70px;
-    /*background-color: #000000;*/
-    /*padding: 30px 0;*/
-}
-.footer--copyright{
-    font-family: "Microsoft YaHei";
+    background: #232327;
     color: #ffffff;
-    font-size: .8em;
-    line-height: .8em;
+    text-align: center;
+}
+.copyright{
+    font-size: 16px;
+    letter-spacing: 1px;
     display: block;
-    margin-top: 35px;
-    font-weight: normal;
-    /*text-shadow: 1px 1px 1px rgba(0,0,0,0.2);*/
+    line-height: 24px;
 }
-.footer--copyright:hover{
-    /*opacity: 1.0;*/
+.footer-title{
+    font-size: 24px;
+    letter-spacing: 1px;
+    display: block;
+    line-height: 48px;
 }
-
-
-
 
 /*-----------------------------*\
    $sidebar
@@ -877,9 +848,10 @@ li{
 .blogsidebar{
     width: 300px;
     float: right;
-
+}
+.blogsidebar_item{
     background-color: #ffffff;
-    padding: 15px 40px;
+    padding: 20px;
     -webkit-box-shadow: 5px 5px 0 0 #f0f0f0;
     -moz-box-shadow: 5px 5px 0 0 #f0f0f0;
     box-shadow: 5px 5px 0 0 #f0f0f0;
@@ -887,7 +859,18 @@ li{
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 50px;
 }
-
+.sidebar_title{
+    color: #999999;
+    font-size: 18px;
+    line-height: 36px;
+    letter-spacing: 2px;
+    border-bottom: 2px dashed #f0f0f0;
+    margin-bottom: 20px;
+}
+.avatar img{
+    width: 100%;
+    display: block;
+}
 
 /*-----------------------------*\
    $for js
