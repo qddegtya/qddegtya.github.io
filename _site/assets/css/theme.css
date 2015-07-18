@@ -62,13 +62,20 @@ li{
 .clearright{
     clear: right;
 }
-.clearfix{
-
-}
 img{
     vertical-align: middle;
 }
 
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}  /* for IE/Mac */
 
 
 /*-----------------------------*\
@@ -870,6 +877,50 @@ img{
 .avatar img{
     width: 100%;
     display: block;
+}
+.sidebar_detail{
+    text-align: justify;
+    text-align-last: justify;
+    font-size: 14px;
+    line-height: 18px;
+    color: #999999;
+    letter-spacing: 1px;
+}
+.avatar_detail{
+    width: 64px;
+    height: 64px;
+    float: left;
+    margin-right: 10px;
+
+    border: 1px solid rgba(255,255,255,0);
+}
+
+.learn_more{
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    background: #ffffff;
+    color: #666666;
+    padding: 10px;
+    border: none;
+    margin-top: 20px;
+
+
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
+    -ms-transition: all .5s ease-out;
+    -o-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+
+.learn_more:hover{
+
 }
 
 /*-----------------------------*\
