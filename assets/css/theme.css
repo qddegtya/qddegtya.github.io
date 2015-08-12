@@ -28,19 +28,17 @@
     -webkit-box-sizing: border-box;
 
     outline: none !important;
-    -webkit-touch-callout: none !important;
-    -webkit-user-select: none;
-    user-select: none;
+    /*-webkit-touch-callout: none !important;*/
+    /*-webkit-user-select: none;*/
+    /*user-select: none;*/
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 body{
     margin: 0;
     padding: 0;
     background-color: #232327;
-    font-size: 1.0em;
-    font-family:"NSimSun", Arial; /*中国人自己的字体*/
+    font: 15px/1.2 "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: antialiased; /*使字体平滑*/
-
 }
 h1,span,ul,li,a,p,h2,table,th,tr,td,img,h3,i,h4,h5,h6,ol,blockquote,code{
     margin: 0;
@@ -78,13 +76,21 @@ img{
 }  /* for IE/Mac */
 
 
+
 /*-----------------------------*\
     $FONT-FACE
 \*-----------------------------*/
-/*@font-face {*/
-    /*font-family: Meccano;*/
-    /*src: url("../fonts/Meccano.ttf");*/
-/*}*/
+@font-face {
+    font-family: 'pinghei';
+    src: url('../fonts/pinghei.eot');
+    src:
+    url('../fonts/pinghei.eot?#font-spider') format('embedded-opentype'),
+    url('../fonts/pinghei.woff') format('woff'),
+    url('../fonts/pinghei.ttf') format('truetype'),
+    url('../fonts/pinghei.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 
@@ -199,8 +205,6 @@ img{
     position: relative;
     width: 100%;
     margin: 0 auto;
-    /*border-bottom: 5px solid #ffffff;*/
-    font-family: "Microsoft YaHei";
 }
     .blog__head__img{
 
@@ -212,7 +216,7 @@ img{
         /*-webkit-border-radius: 20px 20px 0 0;*/
         /*-moz-border-radius: 20px 20px 0 0;*/
         /*border-radius: 20px 20px 0 0;*/
-        padding: 124px 0 100px 0;
+        padding: 144px 0 100px 0;
         width: 100%;
         background: #232327;
         background-size: cover;
@@ -233,7 +237,6 @@ img{
         display: block;
         font-size: 4.8em;
         margin-bottom: 10px;
-        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
     }
     .logo--name a{
         color: #ffffff;
@@ -248,22 +251,20 @@ img{
 
         font-size: 1.2em;
         letter-spacing: 3px;
-        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
     }
     .blog__titlearea{
         text-align: center;
     }
     .title--blogtitle{
-        /*em*/font-size: 4.8em;
-        font-family: Meccano;
-
+        /*em*/
+        font-size: 4.8em;
         /*animation*/
         -webkit-animation: bounceInRight .6s ease both;
         animation: bounceInRight .6s ease both;
-
     }
     .title--blogdescription{
-        /*em*/font-size: 1.2em;
+        /*em*/
+        font-size: 1.2em;
         font-weight: normal;
         line-height: 1.2em;
     }
@@ -275,8 +276,6 @@ img{
     padding: 50px 50px;
 }
 .sns{
-
-    font-family: "Microsoft YaHei";
 
     border: 1px solid rgba(0,0,0,0.1);
     background-color: rgba(0,0,0,0.1);
@@ -320,7 +319,6 @@ img{
     left: 0;
     /*margin-bottom: 120px;*/
     z-index: 9999;
-    font-family: "Microsoft YaHei";
 
     background-color: #ffffff;
 
@@ -527,7 +525,6 @@ img{
     -ms-transition: color .5s;
     -o-transition: color .5s;
     transition: color .5s;
-    font-family: "Microsoft YaHei";
 }
 .blogbody__everyblog__header:hover{
     /*background-color: #bdc3c7;*/
@@ -565,7 +562,6 @@ img{
     font-size: .9em;
     line-height: 1.8em;
     letter-spacing: 1px;
-    font-family: "Microsoft YaHei";
 }
 .blogcontent p{
     /*padding: 20px;*/
@@ -739,7 +735,7 @@ img{
     opacity: 1.0;
 }
 .blogcontent code{
-    font-family: "Microsoft YaHei";
+
 }
 
 .blogcontent code:hover{
@@ -757,9 +753,8 @@ img{
     word-wrap: normal;
     -ms-word-break: normal;
     word-break: normal;
-    overflow: hidden;
+    /*overflow: hidden;*/
     border-left: 5px solid #cccccc;
-    font-family: "Microsoft YaHei";
 
     /* -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
     -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
@@ -789,8 +784,6 @@ img{
     width: 100%;
     border-top:1px solid #f0f0f0;
     padding-top: 15px;
-
-    font-family: "Microsoft YaHei";
 }
 .footercopyright span{
     display: block;
@@ -964,7 +957,7 @@ img{
     /*-moz-box-shadow: 0 5px 0 #e1e1e1;*/
     /*box-shadow: 0 5px 0 #e1e1e1;*/
 
-    font-family: "Microsoft YaHei";
+
     letter-spacing: 3px;
 
     /*-webkit-transition: opacity .5s;*/
@@ -973,7 +966,6 @@ img{
     /*-o-transition: opacity .5s;*/
     /*transition: opacity .5s;*/
 
-    font-family: "Microsoft YaHei";
 
     -webkit-box-shadow: 5px 5px 0 0 #f0f0f0;
     -moz-box-shadow: 5px 5px 0 0 #f0f0f0;
@@ -1161,8 +1153,6 @@ pre{
     padding: 20px 0;
     display: inline-block;
 
-    font-family: "Microsoft YaHei";
-
     cursor: pointer;
 
     -webkit-transition: background-color .5s;
@@ -1202,7 +1192,7 @@ pre{
     font-size: 1.2em;
     line-height: 1.8em;
     color: #333333;
-    font-family: "Microsoft YaHei";
+
     letter-spacing: 2px;
 }
 
@@ -1251,7 +1241,7 @@ pre{
 
     background-color: #bdc3c7;
 
-    font-family: "Microsoft YaHei";
+
     letter-spacing: 2px;
 }
 .mobile--footer i{
@@ -1270,7 +1260,7 @@ pre{
     text-align: center;
     color: #2f2f2f;
 
-    font-family: "Microsoft YaHei";
+
     font-size: 1.0em;
     line-height: 1.2em;
 
@@ -1286,7 +1276,7 @@ pre{
 .mobile--header a{
     color: #2f2f2f;
     text-decoration: none;
-    font-family: "Microsoft YaHei";
+
 }
 
 .mobile--header i{
