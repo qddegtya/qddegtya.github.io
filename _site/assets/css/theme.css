@@ -532,12 +532,12 @@ img{
     float: right;
 
     z-index: 9998;
-    position: fixed;
+    /*position: fixed;
 
     left: 30%;
     top: 0;
 
-    overflow: auto;
+    overflow: auto;*/
 }
 .blogbody__everyblog__header{
     /*background-color: #bdc3c7;*/
