@@ -31,7 +31,6 @@ https://facebook.github.io/react-native/docs/getting-started.html#content
 
 1. add html parse
 2. support user's login if testerhome's api is avalible
-3. ~~create the job page~~
-4. create the topicportal page
-5. add setting option
-6. beauty and beauty...
+3. create the topicportal page
+4. add setting option
+5. beauty and beauty...
