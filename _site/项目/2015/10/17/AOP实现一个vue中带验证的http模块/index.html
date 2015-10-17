@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <title>粮仓</title>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=2.0.1"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=2.0.1"></script>
+    <script src="/assets/js/archer.js?ver=2.0.1"></script>
+</head>
+<body>
+
+<header id="blog__header">
+    <!-- <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">糧倉</span>
+            <span class="logo--des">叩首问路,码梦为生.</span>
+        </div>
+    </div> -->
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item current"><a href="/" class="navlink">首页</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">文字</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">项目</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">实验</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">掘金</a></li>
+        </ul>
+    </div>
+
+</header>
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/%E9%A1%B9%E7%9B%AE/2015/10/17/AOP%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAvue%E4%B8%AD%E5%B8%A6%E9%AA%8C%E8%AF%81%E7%9A%84http%E6%A8%A1%E5%9D%97/">AOP实现一个vue中带验证的$http模块</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2015 - 10 - 17</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
+                    <p><code>
+在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
+</code></p>
+
+<p>事实上在js中，我们不止一次地会用到AOP，这不，我们又遇到了：</p>
+
+<p>现在有一个需求是这样的：在我们的某个SPA项目中需要模拟Native侧的登录效果以增强用户体验，
+大概思路是，不管哪个View拉取了哪个接口的数据，只要接口返回403，那么就要”快速”跳转到登录页。
+开发人员在调用$http方法拉取数据时不需要关心这个逻辑，全程由拦截逻辑透明代理。</p>
+
+<h3 id="section">思路分析</h3>
+
+<p>经过分析可以得出：</p>
+
+<ol>
+  <li>
+    <p>所有涉及拉取数据的视图必先要经过一次主动的fetchData调用，因此，我们需要拦截调用侧的逻辑，
+并且最好能够保证这个拦截逻辑对于调用侧来讲是透明的；</p>
+  </li>
+  <li>
+    <p>为了增强用户体验，我们需要在视图还没进入渲染之前就完成这个跳转，因此，这个跳转逻辑不能推迟。</p>
+  </li>
+</ol>
+
+<p><strong>以上内容是文章摘要</strong></p>
+
+<h3 id="section-1">实现</h3>
+
+<p>我们项目落地的选型是：vue+es6，想要达到的目的是让开发不关心拦截逻辑，
+像这样：</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kr">import</span> <span class="nx">header</span> <span class="nx">from</span> <span class="s1">&#39;../components/header.vue&#39;</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="kr">import</span> <span class="nx">hotsale</span> <span class="nx">from</span> <span class="s1">&#39;../components/hotsale.vue&#39;</span><span class="p">;</span>
+<span class="lineno"> 3</span> <span class="kr">import</span> <span class="nx">banner</span> <span class="nx">from</span> <span class="s1">&#39;../components/banner.vue&#39;</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="c1">// 路由勾子</span>
+<span class="lineno"> 7</span>     <span class="c1">// 增强体验的推荐做法</span>
+<span class="lineno"> 8</span>     <span class="nx">route</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">10</span>             <span class="k">return</span> <span class="p">{</span>
+<span class="lineno">11</span>                 <span class="c1">// 因为AOP实现的$httpWithAuth方法有性能损耗</span>
+<span class="lineno">12</span>                 <span class="c1">// 有一些职责清晰的业务可能还是需要直接调用$http</span>
+<span class="lineno">13</span>                 <span class="c1">// 所以，通过将$httpWithAuth这个全新方法挂载到上下文来解决</span>
+<span class="lineno">14</span>                 <span class="s1">&#39;testData&#39;</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">$httpWithAuth</span>
+<span class="lineno">15</span>                     <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://api.xiaomagouche.com/cgi&#39;</span><span class="p">)</span>
+<span class="lineno">16</span>                     <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>                         <span class="k">return</span> <span class="p">{</span>
+<span class="lineno">18</span>                             <span class="s1">&#39;testData&#39;</span><span class="o">:</span> <span class="nx">res</span>
+<span class="lineno">19</span>                         <span class="p">}</span>
+<span class="lineno">20</span>                     <span class="p">})</span>
+<span class="lineno">21</span>             <span class="p">}</span>
+<span class="lineno">22</span>         <span class="p">}</span>
+<span class="lineno">23</span>     <span class="p">},</span>
+<span class="lineno">24</span>     <span class="nx">ready</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">25</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$http</span><span class="p">);</span>
+<span class="lineno">26</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$route</span><span class="p">);</span>
+<span class="lineno">27</span>     <span class="p">},</span>
+<span class="lineno">28</span>     <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">29</span>         <span class="k">return</span> <span class="p">{</span>
+<span class="lineno">30</span>             <span class="s1">&#39;testData&#39;</span><span class="o">:</span> <span class="p">{}</span>
+<span class="lineno">31</span>         <span class="p">}</span>
+<span class="lineno">32</span>     <span class="p">},</span>
+<span class="lineno">33</span>     <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span>     <span class="p">},</span>
+<span class="lineno">36</span>     <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno">37</span>         <span class="c1">// 注册组件实例</span>
+<span class="lineno">38</span>         <span class="nx">header</span><span class="p">,</span>
+<span class="lineno">39</span>         <span class="nx">hotsale</span><span class="p">,</span>
+<span class="lineno">40</span>         <span class="nx">banner</span>
+<span class="lineno">41</span>     <span class="p">}</span>
+<span class="lineno">42</span> <span class="p">};</span></code></pre></div>
+
+<p><strong>$httpWithAuth的实现</strong></p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">function</span> <span class="nx">install</span><span class="p">(</span><span class="nx">Vue</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 2</span>   <span class="kd">var</span> <span class="nx">_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./util&#39;</span><span class="p">)(</span><span class="nx">Vue</span><span class="p">);</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>   <span class="c1">// $httpWithAuth</span>
+<span class="lineno"> 5</span>   <span class="c1">// 代理Vue.$http</span>
+<span class="lineno"> 6</span>   <span class="c1">// Vue.$resource是$http的上层</span>
+<span class="lineno"> 7</span>   <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperties</span><span class="p">(</span><span class="nx">Vue</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="nx">$httpWithAuth</span><span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 9</span>       <span class="nx">get</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">10</span>         <span class="k">return</span> <span class="nx">_handleWrapper</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">$http</span><span class="p">);</span>
+<span class="lineno">11</span>       <span class="p">}</span>
+<span class="lineno">12</span>     <span class="p">}</span>
+<span class="lineno">13</span>   <span class="p">});</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span>   <span class="c1">// 代理$http模块</span>
+<span class="lineno">16</span>   <span class="kd">function</span> <span class="nx">_handleWrapper</span><span class="p">(</span><span class="nx">vm</span><span class="p">,</span> <span class="nx">originModule</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="c1">// 验证方法</span>
+<span class="lineno">18</span>     <span class="kd">function</span> <span class="nx">_auth</span><span class="p">(</span><span class="nx">promise</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">19</span>       <span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">rs</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>         <span class="c1">// 返回promise</span>
+<span class="lineno">21</span>         <span class="c1">// 这里需要返回Promise给组件实例的route选项用</span>
+<span class="lineno">22</span>         <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+<span class="lineno">23</span>       <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span>
+<span class="lineno">24</span>         <span class="c1">// 重定向到某个业务path</span>
+<span class="lineno">25</span>         <span class="c1">// 一般为/login登陆业务</span>
+<span class="lineno">26</span>         <span class="nx">vm</span><span class="p">.</span><span class="nx">$route</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">);</span>
+<span class="lineno">27</span>       <span class="p">});</span>
+<span class="lineno">28</span>     <span class="p">}</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span>     <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">method</span> <span class="k">in</span> <span class="nx">originModule</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>       <span class="k">if</span><span class="p">(</span><span class="nx">originModule</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">method</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+<span class="lineno">32</span>       <span class="nx">_</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="nx">originModule</span><span class="p">[</span><span class="nx">method</span><span class="p">])</span>
+<span class="lineno">33</span>     <span class="p">)</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="c1">// 模块原方法</span>
+<span class="lineno">35</span>         <span class="kd">var</span> <span class="nx">_oF</span> <span class="o">=</span> <span class="nx">originModule</span><span class="p">[</span><span class="nx">method</span><span class="p">];</span>
+<span class="lineno">36</span>         <span class="nx">originModule</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">37</span>           <span class="c1">// 绑定验证</span>
+<span class="lineno">38</span>           <span class="k">return</span> <span class="nx">_auth</span><span class="p">(</span><span class="nx">_oF</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">));</span>
+<span class="lineno">39</span>         <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">originModule</span><span class="p">);</span>
+<span class="lineno">40</span>       <span class="p">}</span>
+<span class="lineno">41</span>     <span class="p">}</span>
+<span class="lineno">42</span> 
+<span class="lineno">43</span>     <span class="k">return</span> <span class="nx">originModule</span><span class="p">;</span>
+<span class="lineno">44</span>   <span class="p">}</span>
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="p">}</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">Vue</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">49</span>   <span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">install</span><span class="p">);</span>
+<span class="lineno">50</span> <span class="p">}</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">install</span><span class="p">;</span></code></pre></div>
+
+<ol>
+  <li>通过Vue.use勾子我们将$httpWithAuth挂载到上下文供业务侧使用，这样可以保证在各个地方都可以按需调用这个模块</li>
+  <li>通过简单的AOP，我们就把$http模块的方法进行了验证代理，这样就基本完成了我们的需求。</li>
+</ol>
+
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>转载请注明出处</span>
+                        <span class="blogperlink">http://xiaoa.name/%E9%A1%B9%E7%9B%AE/2015/10/17/AOP%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAvue%E4%B8%AD%E5%B8%A6%E9%AA%8C%E8%AF%81%E7%9A%84http%E6%A8%A1%E5%9D%97/</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blogsidebar">
+
+    <div class="blogsidebar_item author_item">
+        <div class="side_img_logo">
+            <img src="/assets/images/avatar.jpeg" alt="">
+        </div>
+    </div>
+
+    <div class="blogsidebar_item author_item meta_logo">
+        <div class="side_logo">
+            粮仓
+        </div>
+    </div>
+
+    <!-- 简介 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">作者</h3>
+        <p class="sidebar_detail clearfix">
+          某小A，FE/Pythoner/Noder/C++，混迹独立博客圈多年，开发过wordpress主题、技术社区......
+          目前专注于伟大的前端事业，在Github重开此blog；
+          愿能持续以此微薄之力回馈自己曾在学习过程中受到的那些帮助。
+          <!-- <input type="button" value="了解更多..." class="learn_more" id="learn_more_about"/> -->
+        </p>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">归档</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/2/9/4/272492.gif" alt=""/>
+        </div>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">粮品</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/1/2/6/273621.jpg" alt=""/>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+<!-- <footer id="blogfooter" class="blogfooter">
+    <h3 class="footer-title">LiangCang</h3>
+    <span class="copyright">Jekyll / Github / Gitcafe</span>
+</footer> -->
+
+</body>
+</html>
+

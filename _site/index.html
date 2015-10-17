@@ -67,6 +67,42 @@
     
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
+                <a href="/%E9%A1%B9%E7%9B%AE/2015/10/17/AOP%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAvue%E4%B8%AD%E5%B8%A6%E9%AA%8C%E8%AF%81%E7%9A%84http%E6%A8%A1%E5%9D%97/" title="AOP实现一个vue中带验证的$http模块">AOP实现一个vue中带验证的$http模块</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2015 - 10 - 17</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <p><code>
+在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
+</code></p>
+
+<p>事实上在js中，我们不止一次地会用到AOP，这不，我们又遇到了：</p>
+
+<p>现在有一个需求是这样的：在我们的某个SPA项目中需要模拟Native侧的登录效果以增强用户体验，
+大概思路是，不管哪个View拉取了哪个接口的数据，只要接口返回403，那么就要”快速”跳转到登录页。
+开发人员在调用$http方法拉取数据时不需要关心这个逻辑，全程由拦截逻辑透明代理。</p>
+
+<h3 id="section">思路分析</h3>
+
+<p>经过分析可以得出：</p>
+
+<ol>
+  <li>
+    <p>所有涉及拉取数据的视图必先要经过一次主动的fetchData调用，因此，我们需要拦截调用侧的逻辑，
+并且最好能够保证这个拦截逻辑对于调用侧来讲是透明的；</p>
+  </li>
+  <li>
+    <p>为了增强用户体验，我们需要在视图还没进入渲染之前就完成这个跳转，因此，这个跳转逻辑不能推迟。</p>
+  </li>
+</ol>
+
+
+            </div>
+    </div>
+    
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
                 <a href="/%E9%A1%B9%E7%9B%AE/2015/09/14/a-ReactNative-TesterHome/" title="ReactNative App for TesterHome">ReactNative App for TesterHome</a>
             </div>
             <div class="blogbody__everyblog__meta">
