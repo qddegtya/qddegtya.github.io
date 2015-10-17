@@ -46,7 +46,7 @@ export default {
                 // 有一些职责清晰的业务可能还是需要直接调用$http
                 // 所以，通过将$httpWithAuth这个全新方法挂载到上下文来解决
                 'testData': this.$httpWithAuth
-                    .get('http://api.xiaomagouche.com/cgi')
+                    .get('http://api.test.com/test')
                     .then(function(res) {
                         return {
                             'testData': res
