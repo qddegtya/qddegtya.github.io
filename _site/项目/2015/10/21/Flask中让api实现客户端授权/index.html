@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <title>粮仓</title>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=2.0.1"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=2.0.1"></script>
+    <script src="/assets/js/archer.js?ver=2.0.1"></script>
+</head>
+<body>
+
+<header id="blog__header">
+    <!-- <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">糧倉</span>
+            <span class="logo--des">叩首问路,码梦为生.</span>
+        </div>
+    </div> -->
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item current"><a href="/" class="navlink">首页</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">文字</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">项目</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">实验</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">掘金</a></li>
+        </ul>
+    </div>
+
+</header>
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/%E9%A1%B9%E7%9B%AE/2015/10/21/Flask%E4%B8%AD%E8%AE%A9api%E5%AE%9E%E7%8E%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%88%E6%9D%83/">Flask中让api实现客户端授权</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2015 - 10 - 21</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
+                    <p><code>
+后端API通常需要对发送请求的客户端进行合法验证，以确保这些API是被"保护"起来的。
+前段时间给一个移动应用做Flask的Restful-API正好涉及到了这方面的内容，其中有用到python元编程的相关技巧。
+</code></p>
+
+<p><strong>以上内容是文章摘要</strong></p>
+
+<h3 id="section">如何认证？</h3>
+
+<p>对于崇尚标准的工程师来说，http标准的auth是一个不错的选择，或者直接选择oAuth也可以。
+但本着研究的精神，我们自己来实现一个api签名机制，并且patch到需要认证的api对应的资源类上。</p>
+
+<p><strong>认证思路</strong></p>
+
+<p>我们需要知道的大概认证背景和思路：</p>
+
+<ol>
+  <li>合法客户端拥有服务端下发的app_id和app_key;</li>
+  <li>服务端知道每个app_id对应的app_key;</li>
+  <li>客户端请求接口数据时，必须用本地的app_key，时间戳，以及app_id进行指定规则的加密，得到一个签名串;</li>
+  <li>每一次请求带上app_id，时间戳，签名串和业务数据提交给后端API;</li>
+  <li>后端API根据提交上来app_id，时间戳，签名串就可以确认是否为合法的客户端;</li>
+</ol>
+
+<p>废话不多说，上代码和详细的注释：</p>
+
+<h3 id="keygenpy">我们先伪造一个颁证服务key_gen.py</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">digits</span>
+<span class="k">def</span> <span class="nf">sign_api</span><span class="p">(</span><span class="n">time_stamp</span><span class="p">,</span> <span class="n">_id</span><span class="p">,</span> <span class="n">_key</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    签名算法测试</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">print</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">time_stamp</span><span class="p">),</span>
+        <span class="n">_id</span><span class="p">,</span>
+        <span class="n">_key</span>
+    <span class="p">]))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">ge_app_id</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: app_id</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">ge_app_key</span><span class="p">(</span><span class="n">_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: app_key</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="n">_id</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app_id</span> <span class="o">=</span> <span class="n">ge_app_id</span><span class="p">()</span>
+    <span class="n">app_key</span> <span class="o">=</span> <span class="n">ge_app_key</span><span class="p">(</span><span class="n">app_id</span><span class="p">)</span>
+    <span class="n">sign_api</span><span class="p">(</span><span class="mi">159874265148</span><span class="p">,</span> <span class="s">&#39;710628459&#39;</span><span class="p">,</span> <span class="s">&#39;bd7d14ed5e0b9bf3c3ac28c224b322d271f6ae6c&#39;</span><span class="p">)</span></code></pre></div>
+
+<h3 id="flaskauthpy">Flask中利用元类进行授权包装auth.py</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+<span class="c"># -*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">FunctionType</span>
+<span class="kn">from</span> <span class="nn">flask.views</span> <span class="kn">import</span> <span class="n">MethodViewType</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Resource</span><span class="p">,</span> <span class="n">abort</span>
+<span class="kn">from</span> <span class="nn">app.setting</span> <span class="kn">import</span> <span class="n">ACCESS_CLIENT</span><span class="p">,</span> <span class="n">ENV_DEBUG</span>
+<span class="k">def</span> <span class="nf">check_sign_api</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param args: 认证参数</span>
+<span class="sd">    :return: 是否签名成功</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">PRE_TIMESTAMP</span>
+    <span class="c"># 为了正确传递KeyError错误</span>
+    <span class="n">_time_stamp</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;timestamp&#39;</span><span class="p">]</span>
+    <span class="n">_app_id</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;app_id&#39;</span><span class="p">]</span>
+    <span class="n">_signature</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;signature&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">_time_stamp</span> <span class="o">&lt;=</span> <span class="n">PRE_TIMESTAMP</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="n">PRE_TIMESTAMP</span> <span class="o">=</span> <span class="n">_time_stamp</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">_signature</span> <span class="o">==</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">_time_stamp</span><span class="p">),</span>
+            <span class="n">_app_id</span><span class="p">,</span>
+            <span class="n">ACCESS_CLIENT</span><span class="p">[</span><span class="n">_app_id</span><span class="p">]</span>
+        <span class="p">]))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="p">)</span>
+<span class="k">def</span> <span class="nf">_get_resource_base</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :return: 获取资源Restful基类</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ENV_DEBUG</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Resource</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">with_meta_class</span><span class="p">(</span><span class="n">RequireAuthClass</span><span class="p">,</span> <span class="n">Resource</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">with_meta_class</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="o">*</span><span class="n">bases</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param meta: 指定元类</span>
+<span class="sd">    :param bases: 指定基类</span>
+<span class="sd">    :return: 继承自按照指定元类创建的基类的临时类</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">MetaClass</span><span class="p">(</span><span class="n">meta</span><span class="p">):</span>
+        <span class="n">__call__</span> <span class="o">=</span> <span class="nb">type</span><span class="o">.</span><span class="n">__call__</span>
+        <span class="n">__init__</span> <span class="o">=</span> <span class="nb">type</span><span class="o">.</span><span class="n">__init__</span>
+        <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">this_bases</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">this_bases</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="p">(),</span> <span class="n">d</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">meta</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">MetaClass</span><span class="p">(</span><span class="s">&#39;temporary_class&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">{})</span>
+<span class="k">def</span> <span class="nf">api_require_auth</span><span class="p">(</span><span class="n">http_handler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param http_handler: 业务接口处理方法</span>
+<span class="sd">    :return: 包装了认证逻辑的包装方法</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">check_sign_api</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">http_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">abort</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">&#39;access fail&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="n">abort</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s">u&#39;access need a {} param&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+<span class="k">class</span> <span class="nc">RequireAuthClass</span><span class="p">(</span><span class="n">MethodViewType</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    接口授权统一处理类</span>
+<span class="sd">    基本思想是：所有指定RequireAuthClass为元类的类，在type.__new__为其实例化时</span>
+<span class="sd">    会自动将其下的post,put,delete等方法包装上api_require_auth</span>
+<span class="sd">    为了解决元类冲突问题，RequireAuthClass必须是MethodViewType的子类</span>
+<span class="sd">    而不是type的子类</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;post&#39;</span><span class="p">,</span> <span class="s">&#39;put&#39;</span><span class="p">,</span> <span class="s">&#39;delete&#39;</span><span class="p">,</span> <span class="s">&#39;get&#39;</span><span class="p">]</span>  <span class="c"># restful methods</span>
+                <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="n">FunctionType</span>
+            <span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">api_require_auth</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">dct</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">MethodViewType</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span></code></pre></div>
+
+<h3 id="api">业务层的api就好办多了</h3>
+
+<p>小Tip：</p>
+
+<p>app.auth模块导出的_get_resource_base方法由环境变量控制</p>
+
+<p>如果在调试模式下，则不启用授权</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># -*- coding:utf-8 -*-</span>
+<span class="c"># Flask 引入</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span> <span class="nn">flask_restful</span> <span class="kn">import</span> <span class="n">Api</span><span class="p">,</span> <span class="n">reqparse</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">g</span>
+<span class="kn">from</span> <span class="nn">werkzeug.local</span> <span class="kn">import</span> <span class="n">LocalProxy</span>
+<span class="kn">from</span> <span class="nn">app.auth</span> <span class="kn">import</span> <span class="n">_get_resource_base</span>
+<span class="c"># 配置</span>
+<span class="kn">from</span> <span class="nn">app.setting</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CURRENT_API_VERSION</span><span class="p">,</span>
+    <span class="n">SET_VERSION_ROUTE</span><span class="p">,</span>
+    <span class="n">_db_settings</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">util.mongo_util</span> <span class="kn">import</span> <span class="n">Mongo</span><span class="p">,</span> <span class="n">close_db</span><span class="p">,</span> <span class="n">json_serializable</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">Api</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="c"># 获取db实例</span>
+<span class="k">def</span> <span class="nf">get_db</span><span class="p">():</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">&#39;_database&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">_database</span> <span class="o">=</span> <span class="n">Mongo</span><span class="p">(</span><span class="n">_db_settings</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db</span>
+<span class="c"># 全局db实例</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">LocalProxy</span><span class="p">(</span><span class="n">get_db</span><span class="p">)</span>
+<span class="c"># 应用环境销毁的时候</span>
+<span class="nd">@app.teardown_appcontext</span>
+<span class="k">def</span> <span class="nf">teardown_db</span><span class="p">(</span><span class="n">exception</span><span class="p">):</span>
+    <span class="c"># 意外退出日志</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="s">&#39;_database&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c"># 确保db立即关闭</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">close</span>
+<span class="nd">@app.errorhandler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">not_found_error</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+        <span class="s">&#39;code&#39;</span><span class="p">:</span> <span class="n">error</span><span class="o">.</span><span class="n">code</span><span class="p">,</span>
+        <span class="s">&#39;message&#39;</span><span class="p">:</span> <span class="n">error</span><span class="o">.</span><span class="n">description</span>
+    <span class="p">}),</span> <span class="mi">404</span>
+<span class="k">class</span> <span class="nc">WelcomeToApi</span><span class="p">(</span><span class="n">_get_resource_base</span><span class="p">()):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    业务api根入口</span>
+<span class="sd">    用于检查版本等用途</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;ZhiYuanHelper Api&#39;</span><span class="p">,</span>
+            <span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="n">CURRENT_API_VERSION</span>
+        <span class="p">})</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">_get_resource_base</span><span class="p">()):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    用户管理类</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+            <span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">user_id</span><span class="p">,</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;测试账号&#39;</span>
+        <span class="p">})</span>
+<span class="k">class</span> <span class="nc">Register</span><span class="p">(</span><span class="n">_get_resource_base</span><span class="p">()):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    用户注册接口</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+<span class="k">class</span> <span class="nc">Login</span><span class="p">(</span><span class="n">_get_resource_base</span><span class="p">()):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    用户登录接口</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+<span class="c"># todo 等待前段定义所需数据</span>
+<span class="k">class</span> <span class="nc">HigherVocationalCollege</span><span class="p">(</span><span class="n">_get_resource_base</span><span class="p">()):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span> <span class="o">=</span> <span class="n">reqparse</span><span class="o">.</span><span class="n">RequestParser</span><span class="p">()</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Defaults to :class:`unicode`</span>
+<span class="sd">        in python2 and :class:`str` in python3.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;province&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">,</span> <span class="n">required</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">location</span> <span class="o">=</span> <span class="s">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">&#39;description&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">location</span> <span class="o">=</span> <span class="s">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reqparse</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="nd">@close_db</span><span class="p">(</span><span class="s">&#39;db&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">hvc</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">json_serializable</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+            <span class="s">&#39;args&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span>
+            <span class="s">&#39;data&#39;</span><span class="p">:</span><span class="n">res</span>
+        <span class="p">})</span>
+
+<span class="c"># API 列表</span>
+<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">WelcomeToApi</span><span class="p">,</span> <span class="s">&#39;/api&#39;</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">SET_VERSION_ROUTE</span><span class="p">(</span><span class="s">&#39;/user/&lt;int:user_id&gt;&#39;</span><span class="p">))</span>
+<span class="n">api</span><span class="o">.</span><span class="n">add_resource</span><span class="p">(</span><span class="n">HigherVocationalCollege</span><span class="p">,</span> <span class="n">SET_VERSION_ROUTE</span><span class="p">(</span><span class="s">&#39;/hvc&#39;</span><span class="p">))</span></code></pre></div>
+
+<p>欢迎拍砖~</p>
+
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>转载请注明出处</span>
+                        <span class="blogperlink">http://xiaoa.name/%E9%A1%B9%E7%9B%AE/2015/10/21/Flask%E4%B8%AD%E8%AE%A9api%E5%AE%9E%E7%8E%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%88%E6%9D%83/</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blogsidebar">
+
+    <div class="blogsidebar_item author_item">
+        <div class="side_img_logo">
+            <img src="/assets/images/avatar.jpeg" alt="">
+        </div>
+    </div>
+
+    <div class="blogsidebar_item author_item meta_logo">
+        <div class="side_logo">
+            粮仓
+        </div>
+    </div>
+
+    <!-- 简介 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">作者</h3>
+        <p class="sidebar_detail clearfix">
+          某小A，FE/Pythoner/Noder/C++，混迹独立博客圈多年，开发过wordpress主题、技术社区......
+          目前专注于伟大的前端事业，在Github重开此blog；
+          愿能持续以此微薄之力回馈自己曾在学习过程中受到的那些帮助。
+          <!-- <input type="button" value="了解更多..." class="learn_more" id="learn_more_about"/> -->
+        </p>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">归档</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/2/9/4/272492.gif" alt=""/>
+        </div>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">粮品</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/1/2/6/273621.jpg" alt=""/>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+<!-- <footer id="blogfooter" class="blogfooter">
+    <h3 class="footer-title">LiangCang</h3>
+    <span class="copyright">Jekyll / Github / Gitcafe</span>
+</footer> -->
+
+</body>
+</html>
+
