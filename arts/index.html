@@ -51,6 +51,8 @@ layout: arts
   artsGenerator(document.getElementById('arts-md'));
 
   // remove source md
-  document.getElementById('arts-md').remove();
+  document.body.removeChild(
+    document.getElementById('arts-md')
+  );
 </script>
 </html>
