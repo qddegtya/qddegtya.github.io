@@ -942,8 +942,8 @@ h1,h2,h3,h4,h5,h6 {
     display: block;
 }
 .sidebar_detail{
-    text-align: justify;
-    text-align-last: justify;
+    /*text-align: justify;
+    text-align-last: justify;*/
     font-size: 1.2em;
     line-height: 1.6em;
     color: #ffffff;
