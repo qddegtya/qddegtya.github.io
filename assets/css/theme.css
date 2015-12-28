@@ -800,13 +800,13 @@ h1,h2,h3,h4,h5,h6 {
 }
 .blogcontent p code{
   background-color: #f9f9f9;
-  border-left: 3px solid #f0f0f0;
+  border-left: 2px solid #f0f0f0;
   display: block;
 
   padding: 20px;
   letter-spacing: 1px;
 
-  color: #999999;
+  color: #666666;
   font-size: 16px;
   line-height: 24px;
   font-weight: lighter !important;
