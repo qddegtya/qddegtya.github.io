@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <title>Colorful</title>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=2.0.0"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=2.0.0"></script>
+    <script src="/assets/js/archer.js?ver=2.0.0"></script>
+</head>
+<body>
+
+<!-- self ribbon -->
+<a href="https://github.com/qddegtya/qddegtya.github.io"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 99999;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+<header id="blog__header">
+    <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">COLORFUL</span>
+            <span class="logo--des">Thinking & Coding</span>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item current"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">LIFE</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">CODE</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">DESIGN</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">ABOUT</a></li>
+        </ul>
+    </div>
+</header>
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/blog/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
+                    <blockquote>
+  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
+</blockquote>
+
+<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
+
+<h3 id="brewpython">通过brew安装python</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
+
+<h3 id="copy--r">copy -R</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
+
+<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
+
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>转载请注明出处</span>
+                        <span class="blogperlink">http://xiaoa.name/blog/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blogsidebar">
+    <!-- 简介 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">博主</h3>
+        <p class="sidebar_detail clearfix">
+            <img src="/assets/images/js-avatar.jpg" class="avatar_detail" alt=""/>
+            Hi, I am Archer. This is my colorful blog-site. Welcome and enjoy reading.
+        </p>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">粮品</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/2/9/4/272492.gif" alt=""/>
+        </div>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">延伸阅读</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/1/2/6/273621.jpg" alt=""/>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+<footer id="blogfooter" class="blogfooter">
+    <h3 class="footer-title">COLORFUL</h3>
+    <span class="copyright">Powered By Jekyll</span>
+</footer>
+
+</body>
+</html>
+
