@@ -1701,3 +1701,10 @@ pre{
     text-decoration: none !important;
     color: #ffffff !important;
 }
+
+.loadingmore a {
+  text-decoration: none;
+  color: #666666;
+  font-size: 18px;
+  letter-spacing: 1px;
+}

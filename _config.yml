@@ -1,3 +1,4 @@
 excerpt_separator: "__以上内容是文章摘要__"
-permalink: pretty
+permalink: /blog/:year/:month/:day/:title
 baseurl: /
+paginate: 8

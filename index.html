@@ -1,12 +1,12 @@
 ---
 layout: index
-initItem: 12
+paginate_path: "blog/page:num"
 ---
 
 <section id="blogbody">
 <div class="clearleft bloglooparea">
     <div class="bloglists">
-    {% for post in site.posts limit:page.initItem %}
+    {% for post in paginator.posts %}
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
                 <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
@@ -20,10 +20,19 @@ initItem: 12
     </div>
     {% endfor %}
 
-        <!-- 存放归档 -->
-        <div class="loadingmore">
-            <span class="loadingmorespan">更多文章</span>
-        </div>
+    <!-- 翻页 -->
+    <div class="loadingmore">
+      {% if paginator.previous_page and paginator.page != 2 %}
+        <a href="/page{{ paginator.previous_page }}" class="previous">← Newer Posts</a>
+      {% endif %}
+      {% if paginator.previous_page and paginator.page == 2 %}
+        <a href="/" class="previous">← Newer Posts</a>
+      {% endif %}
+      {% if paginator.next_page %}
+        <a href="/page{{ paginator.next_page }}" class="next">Older Posts →</a>
+      {% endif %}
+    </div>
+
     </div>
     {% include index_sidebar.html %}
 </div>

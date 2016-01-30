@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <title>Colorful</title>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=2.0.0"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=2.0.0"></script>
+    <script src="/assets/js/archer.js?ver=2.0.0"></script>
+</head>
+<body>
+
+<!-- self ribbon -->
+<a href="https://github.com/qddegtya/qddegtya.github.io"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 99999;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
+<header id="blog__header">
+    <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">COLORFUL</span>
+            <span class="logo--des">Thinking & Coding</span>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item current"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">LIFE</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">CODE</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">DESIGN</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">ABOUT</a></li>
+        </ul>
+    </div>
+</header>
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/blog/2015/02/01/sina-berserk">前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2015 - 02 - 01</span>
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
+                    <blockquote>
+  <p>berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。</p>
+</blockquote>
+
+<blockquote>
+  <p>已知bug：
+当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size &lt;= 0(0) 】（官方bug链接 http://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。</p>
+</blockquote>
+
+<p>以上引用来自于 BerserkJS 官方github 的大标题，那么，BerserkJS究竟好用在哪里？</p>
+
+<p><a href="https://github.com/tapir-dream/berserkJS">https://github.com/tapir-dream/berserkJS</a></p>
+
+<p><strong>以上内容是文章摘要</strong></p>
+
+<blockquote>
+  <p>环境：Windows</p>
+</blockquote>
+
+<p>下面我根据我试用的心得给官方的介绍贴上“注释”</p>
+
+<h3 id="section">使用案例</h3>
+
+<p>无界面浏览器测试：在不依赖本地任何浏览器的情况下，运行测试框架，如 QUnit，Capybara, QUnit, Mocha, WebDriver, YUI Test, BusterJS, FuncUnit, Robot Framework 等。</p>
+
+<p>（确实如此，berserJS自带command模式，可以进行无界面的浏览器测试）</p>
+
+<p>页面自动化：可以无障碍访问和操作网页的标准 DOM API 以及页面所用 JS 变量、对象、属性等内容。</p>
+
+<p>主要是因为这个实用的API：</p>
+
+<p>App.webview.execScript(sandbox <function> [, argObject <object>|<array>|<string>|<number>])</number></string></array></object></function></p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 执行当前页面中的console.log方法打印在控制台中打印 &#39;hello&#39;</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">webview</span><span class="p">.</span><span class="nx">execScript</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">},</span> <span class="s1">&#39;hello&#39;</span><span class="p">);</span>
+
+<span class="c1">// 执行当前页面中的console.log方法在控制台中打印 &#39;width: 100, height:100&#39;&#39;</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">webview</span><span class="p">.</span><span class="nx">execScript</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;width: &#39;</span> <span class="o">+</span> <span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="s2">&quot;height: &quot;</span> <span class="o">+</span>  <span class="nx">size</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">{</span><span class="nx">width</span><span class="o">:</span><span class="mi">100</span><span class="p">,</span> <span class="nx">height</span><span class="o">:</span><span class="mi">300</span><span class="p">});</span></code></pre></div>
+
+<p>屏幕捕获：以编程方式获取网页全部或部分内容，可根据 Selector 截取指定 DOM 元素渲染情况；包括 CSS，SVG 和 Canvas。可将截取图片 base64 化，以便发送给远端服务器保存。</p>
+
+<p>（也有API进行捕获）</p>
+
+<p>网络监控：自动化的网络性能监控，跟踪页面所有资源加载情况并可简便的将输出结果格式化为标准HAR格式。</p>
+
+<p>(var data=JSON.stringify(App.networkData(),undefined,2); 一句话搞定格式化和收集)</p>
+
+<p>页面性能监控：自动化的页面渲染监控，可获取 CPU、 内存使用情况数据，根据页面整体情况可简便的输出首次渲染时间、首屏渲染时间等关键数据。</p>
+
+<p>(现成API)</p>
+
+<h3 id="section-1">工具特性</h3>
+
+<p>跨平台性：基于 Qt 开发，可跨平台编译，部署。内置基于 QtWebkit 的浏览器环境。源码需在目标系统中编译后，可产生运行于 Windows / Linux / Mac 系统的可执行文件。</p>
+
+<p>(界面稍粗糙一点而已….⊙﹏⊙，功能很强大！)</p>
+
+<p>功能性：工具内置 webkit 浏览器内核，可响应浏览器内核事件回调、支持发送鼠标消息给浏览器、包装浏览器网络请求数据为JS数据格式、可与浏览器内JS做数据交互。</p>
+
+<p>(不得不感叹webkit的强大~)</p>
+
+<p>开放性：工具将主要操作均包装为JS语法与数据格式，采用JS语法包装，前端工程师可根据API组装出符合各自预期的检测功能。</p>
+
+<p>(确实是JS语法，前端躁动…….)</p>
+
+<p>接口性：工具本身支持命令行参数，可带参调用。API支持处理外部进程读取输出流、支持HTTP发送数据。可由 WEB 程序远程调用后获取测试的返回结果。</p>
+
+<p>(看源码可知，确实支持command模式)</p>
+
+<p>标准性：完全真实的浏览器环境内 DOM，CSS，JavaScript，Canvas，SVG 可供使用，绝无仿真模拟。</p>
+
+<p>(这点确实是绝无。)</p>
+
+<h3 id="section-2">特点差异</h3>
+
+<p>与 PhantomJS 相比具有以下不同：</p>
+
+<p>API 简易: 更直接的 API，如获取网络性能数据，仅需 3 行代码，而非 PhantomJS 的几十行，且信息量比 PhantomJS 丰富。</p>
+
+<p>API 标准化： 常用 API 均采用 W3 规范标准命名，事件处理代码可重复绑定而不相互覆盖，可以无缝兼容 Wind.JS 等异步流程处理库来解决自动化时异步流程控制问题。</p>
+
+<p>页面性能信息丰富：具有页面渲染和 CPU、 内存使用情况数据获取能力，可输出首次渲染时间、首屏渲染时间等页面性能关键数据。</p>
+
+<p>调试便利: 具有 GUI 界面与命令行状态两种形式，开发调试期可使用 GUI 模式定位问题，此模式中可开启 WebKit 的 Inspector 工具辅助调试页面代码与 DOM 。实际运行时可开启命令行状态避免自动执行时 GUI 界面干扰。</p>
+
+<h3 id="section-3">应用企业</h3>
+
+<p>新浪微博：已使用 berserkJS 构建前端性能监测数据分析平台，防止微博主要产品在不停开发迭代时，页面性能产生退化。</p>
+
+<p>Cisco: 用于 WebEx 项目的自动化测试</p>
+
+<h3 id="section-4">试用示例</h3>
+
+<p>我们的目标：</p>
+
+<ol>
+  <li>采集页面加载过程中的所有性能数据并序列化之后进行存储</li>
+  <li>在界面上显示加载进度。</li>
+</ol>
+
+<p><img src="http://segmentfault.com/img/bVc5aK" alt="" /></p>
+
+<h3 id="apijs">根据API用JS完成我们此次的目标</h3>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*</span>
+<span class="cm">berserkJS 验证XXX页面加载问题</span>
+<span class="cm"> */</span>
+<span class="c1">//打开网络监听</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">netListener</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">//打开Tujia</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">webview</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;xxxxxxxxxxxx&quot;</span><span class="p">);</span>
+
+<span class="c1">//监听加载进度</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">webview</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;loadProgress&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">cur</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;当前加载进度: %&quot;</span> <span class="o">+</span> <span class="nx">cur</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">//页面load完成后回调获取数据</span>
+<span class="nx">App</span><span class="p">.</span><span class="nx">webview</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">data</span><span class="o">=</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">App</span><span class="p">.</span><span class="nx">networkData</span><span class="p">(),</span><span class="kc">undefined</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="c1">//写入文件</span>
+    <span class="nx">App</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="nx">App</span><span class="p">.</span><span class="nx">path</span> <span class="o">+</span> <span class="s2">&quot;xxxx.txt&quot;</span><span class="p">,</span><span class="nx">data</span><span class="p">);</span>
+
+    <span class="c1">//关闭监听</span>
+    <span class="nx">App</span><span class="p">.</span><span class="nx">netListener</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+    <span class="c1">//退出App</span>
+    <span class="c1">//App.close();</span>
+<span class="p">});</span></code></pre></div>
+
+<p>berserkJS提供了很多可以监听的事件类型，满足你各种要求，每个回调函数的参数不一样，看一下官方api就知道了。</p>
+
+<p>上述脚本中，我们记录下了页面加载的数据，利用这个数据我们可以做很多事情，开发一个前端性能对比平台应该就不是什么难事了。</p>
+
+<h3 id="rungogogo">Run！GO~GO~GO</h3>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">berserkJS --script<span class="o">=</span>xxx.js</code></pre></div>
+
+<h3 id="section-5">采集下来的序列化数据</h3>
+
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;StatusCode&quot;</span><span class="p">:</span> <span class="mi">302</span><span class="p">,</span>
+    <span class="nt">&quot;ReasonPhrase&quot;</span><span class="p">:</span> <span class="s2">&quot;Found&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;FromCache&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;RequestStartTime&quot;</span><span class="p">:</span> <span class="mi">1411711232386</span><span class="p">,</span>
+    <span class="nt">&quot;RequestEndTime&quot;</span><span class="p">:</span> <span class="mi">1411711232542</span><span class="p">,</span>
+    <span class="nt">&quot;ResponseSize&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;ResponseDuration&quot;</span><span class="p">:</span> <span class="mi">156</span><span class="p">,</span>
+    <span class="nt">&quot;ResponseWaitingDuration&quot;</span><span class="p">:</span> <span class="mi">155</span><span class="p">,</span>
+    <span class="nt">&quot;ResponseDownloadDuration&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;ResponseDNSLookupDuration&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;ResponseMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;UserAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) Qt/4.8.0 Safari/534.34 berserkJS&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Referer&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;AcceptRanges&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Age&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;AccessControlAllowOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CacheControl&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Connection&quot;</span><span class="p">:</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ContentType&quot;</span><span class="p">:</span> <span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ContentLength&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;ContentEncoding&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ContentLanguange&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Cookie&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;Fri, 26 Sep 2014 06:00:32 GMT&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ETag&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Expires&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;IfModifiedSince&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LastModified&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Location&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxx&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Server&quot;</span><span class="p">:</span> <span class="s2">&quot;Apache&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;SetCookie&quot;</span><span class="p">:</span> <span class="s2">&quot;ALLYESID4=08E83680AC344512; expires=Wednesday, 02-Nov-2099 00:00:00 GMT; path=/; domain=allyes.com&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;P3P&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Vary&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;TransferEncoding&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Via&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;XVia&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;XDEBUGIDC&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;XPoweredBy&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;XCache&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;XCacheLookup&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;XCacheVarnish&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;PoweredByChinaCache&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;SINALB&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;width&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
+    <span class="nt">&quot;height&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
+    <span class="nt">&quot;hasKeepAlive&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;hasGZip&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;hasCookie&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;hasCache&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;hasExpires&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isFromCDN&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isImgFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isPng&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isJpg&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isGif&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isIco&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isSvg&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isCssFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isJsFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isDocFile&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;isAudioFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isVideoFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isFontFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isOtherFile&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isHttp200&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isHttp301&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isHttp302&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;isHttp304&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;isHttp404&quot;</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">}</span></code></pre></div>
+
+<h3 id="section-6">其他一些前端性能采集框架推荐</h3>
+
+<p><a href="http://github.hubspot.com/bucky/" title="bucky.js">Bucky.js</a></p>
+
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>转载请注明出处</span>
+                        <span class="blogperlink">http://xiaoa.name/blog/2015/02/01/sina-berserk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blogsidebar">
+    <!-- 简介 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">博主</h3>
+        <p class="sidebar_detail clearfix">
+            <img src="/assets/images/js-avatar.jpg" class="avatar_detail" alt=""/>
+            Hi, I am Archer. This is my colorful blog-site. Welcome and enjoy reading.
+        </p>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">粮品</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/2/9/4/272492.gif" alt=""/>
+        </div>
+    </div>
+
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">延伸阅读</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/1/2/6/273621.jpg" alt=""/>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+<footer id="blogfooter" class="blogfooter">
+    <h3 class="footer-title">COLORFUL</h3>
+    <span class="copyright">Powered By Jekyll</span>
+</footer>
+
+</body>
+</html>
+
