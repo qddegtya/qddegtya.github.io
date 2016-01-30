@@ -1297,96 +1297,7 @@ pre{
 
 }
 @media screen and (max-width:480px){
-    body{
-        background-color: #ffffff !important;
-    }
-    /*设计手机屏幕*/
-    .bloglists{
-        width: 100% !important;
-        float: none !important;
-    }
-    .blogsidebar{
-        float: none !important;
-        width: 100% !important;
-    }
-    .bloglooparea{
-        padding: 0 !important;
-    }
-    .blogbody__everyblog{
-        padding: 15px !important;
-    }
-    #blog__header{
-        display: none !important;
-    }
-    .blogfooter{
-        display: none !important;
-    }
-    .mobile--footer{
-        display: block !important;
-    }
-    .sidebar--follow--ul li{
-        width: 100% !important;
-        float: none !important;
-    }
-    .single__sidebar{
-        display: none !important;
-    }
-    .bloglists{
-        box-shadow: none !important;
-    }
-    .mobile--header{
-        display: block !important;
-    }
-    #blogbody{
-        padding-top: 50px !important;
-    }
-    #ribbon--github{
-        display: none !important;
-    }
-    /*.blogbody__everyblog__excerpt{*/
-        /*padding: 25px 0 0 0 !important;*/
-    /*}*/
-    .loadingmore{
-        border-bottom: 1px solid #f0f0f0;
-    }
-    .sidebar--followme{
-        display: none !important;
-    }
-    #mobile{
-        display: none !important;
-    }
-    #weibo{
-        display: none !important;
-    }
-    #weixin{
-        display: none !important;
-    }
-    .blogcontent pre{
-        overflow: auto !important;
-    }
-    .bloglooparea{
-        width: 100% !important;
-    }
-    #blogfooter{
-        padding: 0 !important;
-    }
-    .follow-panel{
-        display: none !important;
-        padding: 10px !important;
-    }
-    .blogsidebar{
-        padding: 20px 0 !important;
-        display: none !important;
-    }
-    .avatar--footer{
-        width: 64px !important;
-        height: 64px !important;
-        display: none !important;
-    }
-    .loadingmorespan{
-        font-size: 1.0em !important;
-        line-height: 1.2em !important;
-    }
+  
 }
 @media screen and (max-width:240px){
 
@@ -1705,6 +1616,6 @@ pre{
 .loadingmore a {
   text-decoration: none;
   color: #666666;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
