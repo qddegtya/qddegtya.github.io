@@ -78,6 +78,18 @@ img{
     display: inline-block;
 }  /* for IE/Mac */
 
+a {
+  color: #d35400;
+  text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+ color: #d35400;
+ text-decoration: none;
+}
 
 
 /*-----------------------------*\
@@ -479,7 +491,7 @@ img{
     width: 960px;
     margin: 0 auto;
 }
-.blogbody__everyblog{
+.blogbody__everyblog, .comments{
     background-color: #ffffff;
     padding: 15px 40px;
 
