@@ -2,252 +2,233 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>首页 - Archer's Blog</title>
-    <link rel="stylesheet" href="/assets/css/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/assets/css/theme.css?ver=1.0.3"/>
-    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/waypoints/2.0.5/waypoints.min.js" type="text/javascript"></script>
-    <script src="../assets/js/archer.js?ver=1.0.3"></script>
-    <script type="text/javascript">
-
-        //Html编码获取Html转义实体
-        function htmlEncode(value){
-            return $('<div/>').text(value).html();
-        }
-
-        //Html解码获取Html实体
-        function htmlDecode(value){
-            return $('<div/>').html(value).text();
-        }
-
-        $(document).ready(function(){
-
-            //菜单
-            $('.blog__nav__item').mouseover(function(){
-                $(this).siblings().removeClass('nav__current');
-                $(this).addClass('nav__current');
-            });
-
-            //文章目录生成
-            var hpa = "/<h3>([^<]+)<\/h3>/i";
-
-//            $('.navlink').click(function(){
-//                var that = $(this).parent('.blog__nav__item');
-//                that.siblings().removeClass('nav__current');
-//                that.addClass('nav__current');
-//            });
-
-            //缓存分类文章列表
-            var catposts = [];
-
-            //首次载入便缓存下来
-            if("首页" != '首页'){
-
-                $.getJSON("../allposts.json", function (data) {
-                    $.each(data, function (i, item) {
-                        if(item.cat == "首页"){
-                        catposts.push(item);
-                        }
-                    });
-
-                    //添加
-                    $.each(catposts,function(j,item){
-                        var content = "";
-                        if(j < 10){
-                            //alert(j);
-                            var excerpt = " + item.excerpt + ";
-                            content += "<div class='blogbody__everyblog'>";
-                            content += "<div class='blogbody__everyblog__header'>";
-                            content += "<a href='" + item.url + "'>" + item.title + "</a>";
-                            content += "</div>";
-                            content += "<div class='blogbody__everyblog__meta'>";
-                            content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
-                            content += "</div>";
-                            content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
-                            content += htmlDecode(item.excerpt);
-                            content += "</div>";
-                            content += "</div>";
-                            $('.loadingmore').before(content);
-                        }
-                    });
-                });
-            }
-
-            //nav waypoints
-            $('.blog__nav').waypoint(function(direction){
-                if(direction == "down"){
-                    $('.blog__nav').addClass("fixedposition");
-                }
-                else if(direction == "up"){
-                    $('.blog__nav').removeClass("fixedposition");
-                }
-            });
-
-            //内页目录waypoints
-            $('.single__sidebar').waypoint(function(direction){
-                if(direction == "down"){
-                    $('.single__sidebar').addClass("single--sidebar--fix");
-                }
-                else if(direction == "up"){
-                    $('.single__sidebar').removeClass("single--sidebar--fix");
-                }
-            });
-
-            var totalsize = 0;
-
-            
-                totalsize = 4;
-            
-
-            if(totalsize > 10){
-
-                var bloglists = $('.bloglists');
-                var count = 10; //一开始的文章数目
-                var looptimes = 0; //计数器top
-
-                $('.loadingmore').click(function () {
-
-                    $('.loadingmore').html("<span class='loadingmorespan'>正在加载...</span>");
-
-                    $.getJSON("../allposts.json", function (data) {
-
-                        var content = "";
-                        looptimes = count + 5; //初始化
-                        var j = 0; //采集loop了多少次
-
-                        if("首页" == '首页'){
-                            $.each(data, function (i, item) {
-                                if (i >= count & i < looptimes) {
-                                    var excerpt = " + item.excerpt + ";
-                                    content += "<div class='blogbody__everyblog'>";
-                                    content += "<div class='blogbody__everyblog__header'>";
-                                    content += "<a href='" + item.url + "'>" + item.title + "</a>";
-                                    content += "</div>";
-                                    content += "<div class='blogbody__everyblog__meta'>";
-                                    content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
-                                    content += "</div>";
-                                    content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
-                                    content += htmlDecode(item.excerpt);
-                                    content += "</div>";
-                                    content += "</div>";
-                                    j++;
-                                }
-                            });
-
-                            count += j; //现在的文章数目
-                            $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
-                            if (count == data.length) {
-                                $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
-                            }
-
-                        }
-                        else{
-                            $.each(catposts, function (i, item) {
-                                if (i >= count & i < looptimes) {
-                                    var excerpt = " + item.excerpt + ";
-                                    content += "<div class='blogbody__everyblog'>";
-                                    content += "<div class='blogbody__everyblog__header'>";
-                                    content += "<a href='" + item.url + "'>" + item.title + "</a>";
-                                    content += "</div>";
-                                    content += "<div class='blogbody__everyblog__meta'>";
-                                    content += "<span class='blogbody__everyblog__metainfo'>" + item.date + "</span>";
-                                    content += "</div>";
-                                    content += "<div class='blogcontent blogbody__everyblog__excerpt'>";
-                                    content += htmlDecode(item.excerpt);
-                                    content += "</div>";
-                                    content += "</div>";
-                                    j++;
-                                }
-                            });
-
-                            count += j; //现在的文章数目
-                            $('.loadingmore').before(content);
-                            $('.loadingmore').html("<span class='loadingmorespan'>阅读更多文章</span>");
-                            if (count == catposts.length) {
-                                $('.loadingmore').html("<span class='loadingmorespan'>没有更多了...</span>").hide();
-                            }
-                        }
-                    });
-                });
-            }
-
-            //如果totalsize<=初始值则不显示
-            else{
-                //否则不显示翻页
-                $('.loadingmore').css('display', 'none');
-            }
-        });
-    </script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+    <title>Colorful</title>
+    <link rel="stylesheet" href="/assets/css/theme.css?ver=2.0.0"/>
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js?ver=2.0.0"></script>
+    <script src="/assets/js/archer.js?ver=2.0.0"></script>
 </head>
+<body>
+
+<!-- self ribbon -->
+<a href="https://github.com/you"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 99999;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+
 <header id="blog__header">
     <div class="blog__bighead">
-        <!-- blog title & description -->
-        <div class="blog__titlearea">
-            <h1 class="blogtitle title--blogtitle">I AM ARCHER</h1>
-            <h2 class="blogtitle title--blogdescription">Keep thinking and Keep coding.</h2>
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">COLORFUL</span>
+            <span class="logo--des">Thinking & Coding</span>
         </div>
     </div>
 
     <!-- blog nav -->
     <div class="blog__nav">
         <ul class="blog__nav__ul">
-            <li class="blog__nav__item nav__current home__link"><a href="/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item blog__link"><a href="/blogs/" class="navlink">BLOGS</a></li>
-            <li class="blog__nav__item projects__link"><a href="/projects/" class="navlink">PROJECTS</a></li>
-            <li class="blog__nav__item experiments__link"><a href="/experiments/" class="navlink">EXPERIMENTS</a></li>
-            <li class="blog__nav__item tools__link"><a href="/tools/" class="navlink">TOOLS</a></li>
+            <li class="blog__nav__item current"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">LIFE</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">CODE</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">DESIGN</a></li>
+            <li class="blog__nav__item"><a href="" class="navlink">ABOUT</a></li>
         </ul>
     </div>
-
 </header>
-<body>
 
-<!-- github ribbon -->
-<a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://xiaoa.name/assets/images/ribbon.png" alt="Fork me on GitHub"></a>
 <section id="blogbody">
 <div class="clearleft bloglooparea">
     <div class="bloglists">
-
-
+    
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="/%E5%B7%A5%E5%85%B7/2014/11/29/%E6%8E%A8%E8%8D%90%E5%9B%BD%E5%A4%96%E7%B2%BE%E5%93%81%E5%89%8D%E7%AB%AF%E6%8A%80%E8%83%BD%E6%B6%A8%E9%80%BC%E6%A0%BC%E7%AB%99%E7%82%B9-Tuts/" title="推荐国外精品前端技能涨逼格站点">推荐国外精品前端技能涨逼格站点</a>
+                <a href="/%E9%A1%B9%E7%9B%AE/2015/10/21/Flask%E4%B8%AD%E8%AE%A9api%E5%AE%9E%E7%8E%B0%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%88%E6%9D%83/" title="Flask中让api实现客户端授权">Flask中让api实现客户端授权</a>
             </div>
             <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 29</span>
+                <span class="blogbody__everyblog__metainfo">2015 - 10 - 21</span>
             </div>
             <div class="blogcontent blogbody__everyblog__excerpt">
-                <p><img src="http://xiaoa.name/assets/blog-images/tuts-2014-11-29.png" alt="" /></p>
-
-<p>Tuts+ ，精品资源</p>
+                <p><code>
+后端API通常需要对发送请求的客户端进行合法验证，以确保这些API是被"保护"起来的。
+前段时间给一个移动应用做Flask的Restful-API正好涉及到了这方面的内容，其中有用到python元编程的相关技巧。
+</code></p>
 
 
             </div>
     </div>
-
-
+    
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="/%E9%A1%B9%E7%9B%AE/2014/11/29/%E5%86%8D%E8%B0%88%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE/" title="再谈前端设计中的字体设置">再谈前端设计中的字体设置</a>
+                <a href="/%E9%A1%B9%E7%9B%AE/2015/10/17/AOP%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAvue%E4%B8%AD%E5%B8%A6%E9%AA%8C%E8%AF%81%E7%9A%84http%E6%A8%A1%E5%9D%97/" title="AOP实现一个vue中带验证的$http模块">AOP实现一个vue中带验证的$http模块</a>
             </div>
             <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 29</span>
+                <span class="blogbody__everyblog__metainfo">2015 - 10 - 17</span>
             </div>
             <div class="blogcontent blogbody__everyblog__excerpt">
-                <p><img src="http://xiaoa.name/assets/blog-images/ziti-2014-11-29.png" alt="" /></p>
+                <p><code>
+在软件业，AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
+</code></p>
 
-<p>一个不争的事实是，各种苦逼前端都希望用户运行产品时所用的桌面浏览器或者手机浏览器都是高端货。</p>
+<p>事实上在js中，我们不止一次地会用到AOP，这不，我们又遇到了：</p>
+
+<p>现在有一个需求是这样的：在我们的某个SPA项目中需要模拟Native侧的登录效果以增强用户体验，
+大概思路是，不管哪个View拉取了哪个接口的数据，只要接口返回403，那么就要”快速”跳转到登录页。
+开发人员在调用$http方法拉取数据时不需要关心这个逻辑，全程由拦截逻辑透明代理。</p>
+
+<h3 id="section">思路分析</h3>
+
+<p>经过分析可以得出：</p>
+
+<ol>
+  <li>
+    <p>所有涉及拉取数据的视图必先要经过一次主动的fetchData调用，因此，我们需要拦截调用侧的逻辑，
+并且最好能够保证这个拦截逻辑对于调用侧来讲是透明的；</p>
+  </li>
+  <li>
+    <p>为了增强用户体验，我们需要在视图还没进入渲染之前就完成这个跳转，因此，这个跳转逻辑不能推迟。</p>
+  </li>
+</ol>
 
 
             </div>
     </div>
-
-
+    
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/" title="jython+ddmlib实现仿豌豆荚效果屏幕实时快照">jython+ddmlib实现仿豌豆荚效果屏幕实时快照</a>
+                <a href="/%E9%A1%B9%E7%9B%AE/2015/09/14/a-ReactNative-TesterHome/" title="ReactNative App for TesterHome">ReactNative App for TesterHome</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2015 - 09 - 14</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <h3 id="github">Github</h3>
+<p>https://github.com/qddegtya/A-ReactNative-TesterHome</p>
+
+<h3 id="about">About</h3>
+<p>This is a react-native ios app for https://testerhome.com</p>
+
+<p>Written By ES6 + JSX + ReactNative</p>
+
+
+            </div>
+    </div>
+    
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <a href="/%E5%AE%9E%E9%AA%8C/2015/03/05/baymax/" title="SVG+JS实现新版手机QQ的手势消除红点消息的动画">SVG+JS实现新版手机QQ的手势消除红点消息的动画</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2015 - 03 - 05</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>下面的配图仅供卖萌</p>
+</blockquote>
+
+<p><img src="/assets/blog-images/2015-3-5/baymax.jpg" alt="" /></p>
+
+<p>很久没有写博客了，今天给大家带来一个小折腾。
+虽然说是小折腾，但还是废了不少劲，某位大神的博客写得好：
+前端工程师要想脱颖而出，就要拿出草稿纸，所以有了如下这个丑陋无比的配图：</p>
+
+
+            </div>
+    </div>
+    
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <a href="/%E5%B7%A5%E5%85%B7/2015/02/01/sina-berserk/" title="前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记">前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2015 - 02 - 01</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。</p>
+</blockquote>
+
+<blockquote>
+  <p>已知bug：
+当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size &lt;= 0(0) 】（官方bug链接 http://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。</p>
+</blockquote>
+
+<p>以上引用来自于 BerserkJS 官方github 的大标题，那么，BerserkJS究竟好用在哪里？</p>
+
+<p><a href="https://github.com/tapir-dream/berserkJS">https://github.com/tapir-dream/berserkJS</a></p>
+
+
+            </div>
+    </div>
+    
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <a href="/%E9%A1%B9%E7%9B%AE/2015/02/01/flask-weixin/" title="微信JS-SDK签名接入flask版">微信JS-SDK签名接入flask版</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2015 - 02 - 01</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>相信很多做前端的朋友都已经注意到了微信今年的一系列大动作，当然，对于前端开发工作来讲，我觉得这本身就是一种非常不错的开放机会，
+能够让我们更好地利用好微信这个平台，每次写博客都要废话一段前言……好吧，下面说说最近的JS-SDK那些事儿。</p>
+</blockquote>
+
+<p><img src="/assets/blog-images/2015-2-1-flaskweixin/jssdk.png" alt="" /></p>
+
+
+            </div>
+    </div>
+    
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <a href="/%E5%B7%A5%E5%85%B7/2015/02/01/coolors%E5%BF%AB%E9%80%9F%E8%89%B2%E5%BD%A9%E6%90%AD%E9%85%8D/" title="快速色彩搭配coolors.co">快速色彩搭配coolors.co</a>
+            </div>
+            <div class="blogbody__everyblog__meta">
+                <span class="blogbody__everyblog__metainfo">2015 - 02 - 01</span>
+            </div>
+            <div class="blogcontent blogbody__everyblog__excerpt">
+                <blockquote>
+  <p>色彩无疑是前端设计环节中最为流行和重要的，在codepen上偶然捡回来一款体验比较特别的拾色器（他本身的设计就值得学习和推敲一把）在这里推荐给大家 <a href="http://coolors.co" title="coolors">http://coolors.co</a></p>
+</blockquote>
+
+<p><img src="/assets/blog-images/2015-2-1-coolors/coolors.png" alt="" /></p>
+
+<p>可以使用快捷键快速获取到一个唯一的色彩组合，仿佛灵感在瞬间迸发。</p>
+
+
+            </div>
+    </div>
+    
+    <div class="blogbody__everyblog">
+            <div class="blogbody__everyblog__header">
+                <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/" title="jython+ddmlib实现仿豌豆荚效果屏幕实时快照">jython+ddmlib实现仿豌豆荚效果屏幕实时快照</a>
             </div>
             <div class="blogbody__everyblog__meta">
                 <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
@@ -264,11 +245,10 @@
 
             </div>
     </div>
-
-
+    
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
+                <a href="/%E5%AE%9E%E9%AA%8C/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
             </div>
             <div class="blogbody__everyblog__meta">
                 <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
@@ -297,88 +277,48 @@
 
             </div>
     </div>
+    
 
-
+        <!-- 存放归档 -->
         <div class="loadingmore">
-            <span class="loadingmorespan">阅读更多文章</span>
+            <span class="loadingmorespan">更多文章</span>
         </div>
-
+    </div>
+    <div class="blogsidebar">
+    <!-- 简介 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">Author</h3>
+        <p class="sidebar_detail clearfix">
+            <img src="/assets/images/js-avatar.jpg" class="avatar_detail" alt=""/>
+            Hi, I am Archer. This is my colorful blog-site. Welcome and enjoy reading.
+        </p>
     </div>
 
-<div class="blogsidebar index__sidebar">
-
-    <div class="sidebar_item sidebar--about">
-        <h3 class="sidebar__title"><i class="fa fa-user fa-lg"></i></h3>
-        <div class="aboutarcher">
-            <img src="../assets/images/avatar.jpeg" alt="colorful life">
-        </div>
-        <ul class="archermeta">
-            <li><i class="fa fa-github-alt"></i> <span class="archermeta--des">Archer/小A</span></li>
-            <li><i class="fa fa-map-marker"></i> <span class="archermeta--des">中国.上海</span></li>
-            <li><i class="fa fa-coffee"></i> <span class="archermeta--des">前端打杂工程师</span></li>
-        </ul>
-        <!--<div class="learnmemore">-->
-            <!--<a href="/about">了解更多<i class="fa fa-question"></i></a>-->
-        <!--</div>-->
-    </div>
-
-    <!--<div class="sidebar_item sidebar--cat">-->
-            <!--<h3 class="sidebar__title"><i class="fa fa-list fa-lg"></i></h3>-->
-            <!--<ul class="sidebar__ul">-->
-                <!--<li><a href="/blogs/" title="碎碎念">碎碎念</a></li>-->
-                <!--<li><a href="/tools/" title="工具">工具</a></li>-->
-                <!--<li><a href="/experiments/" title="做实验">做实验</a></li>-->
-                <!--<li><a href="/projects/" title="那些年上线或是没上线的项目...">项目</a></li>-->
-            <!--</ul>-->
-    <!--</div>-->
-
-    <div class="sidebar--follow--widget">
-        <ul class="sidebar--follow--ul">
-            <li id="me"><i class="fa fa-github-square"></i><span>关于</span></li>
-            <li id="weibo"><i class="fa fa-weibo"></i><span>微博</span></li>
-            <li id="weixin"><i class="fa fa-weixin"></i><span>微信</span></li>
-            <li id="mobile"><i class="fa fa-mobile"></i><span>移动版</span></li>
-        </ul>
-    </div>
-
-    <div class="clearboth"></div>
-
-    <div id="sidebar--follow--info">
-        <!--<img src="../assets/images/ajax-loader.gif">-->
-    </div>
-
-
-    <div class="sidebar_item sidebar--followme">
-        <h3 class="sidebar__title"><i class="fa fa-github fa-lg"></i></h3>
-        <div class="githubdata">
-            <ul class="githubitems">
-                <li><span>已有 <em class="github--followers"><img src="../assets/images/ajax-loader.gif"></em> 个人关注此人</span></li>
-                <li><a href="https://github.com/qddegtya" target="_blank" title="在github上关注我" class="button--radius followme"><i class="fa fa-facebook"></i> 关注此人</a></li>
-                <li><a href="https://github.com/qddegtya/qddegtya.github.io/issues" target="_blank" title="给本站提issues" class="button--radius submitbug"><i class="fa fa-bug"></i> 提交问题</a></li>
-                <li><a href="https://github.com/qddegtya/qddegtya.github.io" target="_blank" title="Fork本站源码" class="button--radius forkmysite"><i class="fa fa-code-fork"></i> 本站源码</a></li>
-            </ul>
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">Follow</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/2/9/4/272492.gif" alt=""/>
         </div>
     </div>
 
-
+    <!-- 广告 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">Other</h3>
+        <div class="avatar">
+            <img src="http://img.ui.cn/data/file/1/2/6/273621.jpg" alt=""/>
+        </div>
+    </div>
 
 </div>
 
 </div>
-
 </section>
-<footer id="blogfooter">
-    <div class="clearboth blogfooter">
-        <!-- 底部左边 -->
-        <div class="blogfooter--left">
-            <span class="footer--copyright">Powered by Jekyll / Theme is codelab / Version: 1.0.3</span>
-        </div>
 
-        <!-- 底部右边 -->
-        <div class="blogfooter--right">
-
-        </div>
-    </div>
+<footer id="blogfooter" class="blogfooter">
+    <h3 class="footer-title">COLORFUL</h3>
+    <span class="copyright">Powered By Jekyll</span>
 </footer>
+
 </body>
 </html>

@@ -1,21 +1,15 @@
 ---
 layout: index
-title: 首页
-initItem: 10
-perPageItem: 5
-thiscat: 首页
-thisdes: I AM ARCHER
-thissectitle: Keep thinking and Keep coding.
+initItem: 12
 ---
 
 <section id="blogbody">
 <div class="clearleft bloglooparea">
     <div class="bloglists">
-{% for post in site.posts limit:page.initItem %}
-
+    {% for post in site.posts limit:page.initItem %}
     <div class="blogbody__everyblog">
             <div class="blogbody__everyblog__header">
-            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </div>
             <div class="blogbody__everyblog__meta">
                 <span class="blogbody__everyblog__metainfo">{{ post.date | date:"%Y - %m - %d" }}</span>
@@ -24,16 +18,13 @@ thissectitle: Keep thinking and Keep coding.
                 {{ post.excerpt }}
             </div>
     </div>
-{% endfor %}
+    {% endfor %}
 
+        <!-- 存放归档 -->
         <div class="loadingmore">
-            <span class="loadingmorespan">阅读更多文章</span>
+            <span class="loadingmorespan">更多文章</span>
         </div>
-
     </div>
-
-{% include index_sidebar.html %}
-
+    {% include index_sidebar.html %}
 </div>
-
 </section>

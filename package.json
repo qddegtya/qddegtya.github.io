@@ -1,0 +1,17 @@
+{
+  "name": "qddegtya.github.io",
+  "version": "1.0.0",
+  "description": "http://xiaoa.name",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitcafe.com:qddegtya/qddegtya.git"
+  },
+  "author": "Archer",
+  "license": "MIT"
+}
