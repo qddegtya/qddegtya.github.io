@@ -596,6 +596,8 @@ code {
     word-wrap: break-word;
     -ms-word-break: break-all;
     word-break: break-all;
+
+    text-align: justify;
 }
 .blogcontent a{
     padding: 2px;
@@ -753,10 +755,14 @@ code {
     opacity: 1.0;
 }
 .blogcontent p > code{
-  padding: 18px;
+  padding: 15px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: #FAEBD7;
   display: block;
   color: #666666;
+  letter-spacing: 1px;
+  text-align: justify;
 }
 
 .blogcontent code:hover{
