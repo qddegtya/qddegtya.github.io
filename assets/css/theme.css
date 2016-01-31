@@ -91,6 +91,9 @@ a:active {
  text-decoration: none;
 }
 
+code {
+  font-family: "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei", sans-serif;
+}
 
 /*-----------------------------*\
     $FONT-FACE
