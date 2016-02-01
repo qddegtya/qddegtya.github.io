@@ -1,8 +1,8 @@
 ---
 layout: singlepost
 title: AOP实现一个vue中带验证的$http模块
-tags: 项目
-category: 项目
+tags: vue fe javascript
+category: work
 ---
 
 ```

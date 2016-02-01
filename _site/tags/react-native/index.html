@@ -41,7 +41,7 @@
 <body>
 
 <!-- self ribbon -->
-<a href="https://github.com/qddegtya/qddegtya.github.io"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 99999;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+<a href="https://github.com/qddegtya/qddegtya.github.io"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 99999;" src="/assets/images/forkme_darkblue.png" alt="Fork me on GitHub"></a>
 
 <header id="blog__header">
     <div class="blog__bighead">
@@ -55,58 +55,53 @@
     <div class="blog__nav">
         <ul class="blog__nav__ul">
             <li class="blog__nav__item current"><a href="/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item"><a href="" class="navlink">TAG</a></li>
-            <li class="blog__nav__item"><a href="" class="navlink">ARCHIVE</a></li>
-            <li class="blog__nav__item"><a href="" class="navlink">ABOUT</a></li>
+            <li class="blog__nav__item"><a href="/category/lab" class="navlink">LAB</a></li>
+            <li class="blog__nav__item"><a href="/category/work" class="navlink">WORK</a></li>
+            <li class="blog__nav__item"><a href="/category/tool" class="navlink">TOOL</a></li>
+            <li class="blog__nav__item"><a href="/about" class="navlink">ABOUT</a></li>
         </ul>
     </div>
 </header>
 
+
 <section id="blogbody">
 <div class="clearleft bloglooparea">
     <div class="bloglists">
-    
     <div class="blogbody__everyblog">
-            <div class="blogbody__everyblog__header">
-                <a href="/blog/2014/11/28/Brew%20Python%20%E4%B8%8E%20Xcode%20Plugin%20%E5%8A%A0%E8%BD%BDPython%E7%9A%84%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98" title="Brew Python 与 Xcode Plugin 加载Python的冲突问题">Brew Python 与 Xcode Plugin 加载Python的冲突问题</a>
-            </div>
-            <div class="blogbody__everyblog__meta">
-                <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
-            </div>
-            <div class="blogcontent blogbody__everyblog__excerpt">
-                <blockquote>
-  <p>通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：</p>
-</blockquote>
-
-<h3 id="xcodebuild">先查看xcodebuild出错信息</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> xcodebuild</code></pre></div>
-
-<h3 id="brewpython">通过brew安装python</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> brew install python</code></pre></div>
-
-<h3 id="copy--r">copy -R</h3>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> <span class="nb">cd</span> /usr/local/Cellar/python/2.7.7_2/Frameworks/</code></pre></div>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="lineno">1</span> sudo copy -R Python.framework /Library/Frameworks/</code></pre></div>
-
-<p>Done，这个时候再次Xcodebuild就可以成功了，Xcode便顺利启动。</p>
-
-
-            </div>
+      <h3 class='archive_title'>标签 'react-native' 下的文章列表</h3>
+      <ul class="archive_posts">
+        
+          <li>
+            <span class="post-date">2015/09/14 - </span>
+            <a class="post-link" href="//blog/2015/09/14/a-ReactNative-TesterHome">ReactNative App for TesterHome</a>
+          </li>
+        
+      </ul>
     </div>
-    
 
-    <!-- 翻页 -->
-    <div class="loadingmore">
-      
-      
-        <a href="/" class="previous">← Newer Posts</a>
-      
-      
-    </div>
+    <div id="comments" class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  /**
+  * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+  */
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+
+  s.src = '//colorful-archer.disqus.com/embed.js';
+
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+</div>
 
     </div>
     <div class="blogsidebar">
@@ -129,7 +124,7 @@
 
     <!-- 广告 -->
     <div class="blogsidebar_item author_item">
-        <h3 class="sidebar_title">TAG</h3>
+        <h3 class="sidebar_title">TAGS</h3>
         <div class="avatar">
             <img src="http://img.ui.cn/data/file/1/2/6/273621.jpg" alt=""/>
         </div>
@@ -142,8 +137,9 @@
 
 <footer id="blogfooter" class="blogfooter">
     <h3 class="footer-title">COLORFUL</h3>
-    <span class="copyright">Powered By Jekyll</span>
+    <span class="copyright">Powered By <a href="http://jekyllrb.com/" title="Jekyll">Jekyll</a> / Theme is <a href="http://xiaoa.name/" title="Colorful">Colorful</a></span>
 </footer>
 
 </body>
 </html>
+

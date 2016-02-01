@@ -1,8 +1,8 @@
 ---
 layout: singlepost
 title: jython+ddmlib实现仿豌豆荚效果屏幕实时快照
-tags: python jython ddmlib
-category: 实验
+tags: python jython
+category: lab
 ---
 
 > 部分代码思路来源于互联网

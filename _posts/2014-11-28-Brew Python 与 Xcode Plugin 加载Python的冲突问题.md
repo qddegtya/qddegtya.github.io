@@ -1,8 +1,8 @@
 ---
 layout: singlepost
 title: Brew Python 与 Xcode Plugin 加载Python的冲突问题
-tags: 实验 Python
-category: 实验
+tags: brew python
+category: lab
 ---
 
 > 通过brew安装的python会提示移除mac os自带的python版本，除非你忽略这个warning，但同时又会带来一系列package的安装问题，由于xcode的某些ideplugin默认会加载python，故经常导致的不能启动xcode问题可以通过以下方式解决：

@@ -1,0 +1,26 @@
+{% include header.html %}
+{% include index_nav.html %}
+
+<section id="blogbody">
+<div class="clearleft bloglooparea">
+    <div class="bloglists">
+    <div class="blogbody__everyblog">
+      <h3 class='archive_title'>{{ site.name }} in {{ page.date | date: "%Y" }}</h3>
+      <ul class="archive_posts">
+        {% for post in page.posts %}
+          <li>
+            <span class="post-date">{{ post.date | date: "%Y/%m/%d" }} - </span>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% include comment.html %}
+    </div>
+
+    {% include single_sidebar.html %}
+</div>
+</section>
+
+{% include footer.html %}

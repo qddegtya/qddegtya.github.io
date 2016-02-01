@@ -1,8 +1,8 @@
 ---
 layout: singlepost
 title: ReactNative App for TesterHome
-tags: 项目
-category: 项目
+tags: react-native javascript
+category: work
 ---
 
 ### Github

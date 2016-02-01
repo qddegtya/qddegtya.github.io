@@ -1,4 +1,31 @@
+name: COLORFUL
+
+author:
+  name: Archer
+  email: qddegtya@gmail.com
+  github: qddegtya
+
+description: Thinking & Coding
+
 excerpt_separator: "__以上内容是文章摘要__"
 permalink: /blog/:year/:month/:day/:title
 baseurl: /
 paginate: 8
+paginate_path: "blog/page:num"
+
+jekyll-archives:
+  enabled:
+    - year
+    - tags
+    - categories
+  layouts:
+    tag: tag
+    year: year
+    category: category
+  permalinks:
+    year: '/archives/:year/'
+    tag: '/tags/:name/'
+    category: '/category/:name/'
+
+gems:
+  - jekyll-archives
