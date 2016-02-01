@@ -1,3 +1,6 @@
+gems:
+  - jekyll-archives
+
 name: COLORFUL
 
 author:
@@ -26,6 +29,3 @@ jekyll-archives:
     year: '/archives/:year/'
     tag: '/tags/:name/'
     category: '/category/:name/'
-
-gems:
-  - jekyll-archives
