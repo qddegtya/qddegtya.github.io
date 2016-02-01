@@ -453,7 +453,7 @@ code {
 }
     .blog__nav__item{
         float: left;
-        width: 20%;
+        width: 25%;
         text-align: center;
         padding: 12px;
     }
@@ -888,9 +888,9 @@ code {
 }
 .sidebar_title{
     color: #999999;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 36px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     border-bottom: 2px dashed #f0f0f0;
     margin-bottom: 20px;
     font-weight: 600;
