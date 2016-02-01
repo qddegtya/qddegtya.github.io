@@ -1707,7 +1707,7 @@ pre{
   display: block;
   background-color: #f9f9f9;
   border: 1px solid #f0f0f0;
-  padding:  10px 15px;
+  padding:  10px 0 10px 35px;
 
   margin-bottom: 15px;
 
@@ -1716,6 +1716,8 @@ pre{
   -ms-transition: all .5s ease;
   -o-transition: all .5s ease;
   transition: all .5s ease;
+
+  position: relative;
 }
 
 .sidebar_follows a:hover {
@@ -1724,4 +1726,16 @@ pre{
 
 #side_tags .blogbody__tag__class {
   margin: 0 0 15px 0;
+}
+
+.site--fav {
+  width: 16px;
+  height: 16px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+
+  margin: auto 0;
 }
