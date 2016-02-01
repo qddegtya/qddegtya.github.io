@@ -1,6 +1,12 @@
 .idea/
+
 assets/blog-images/
+
 node_modules/
+
 projectFilesBackup/
+
 .jekyll-metadata
 Gemfile.lock
+
+_site/
