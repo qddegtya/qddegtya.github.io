@@ -528,12 +528,13 @@ code {
     padding-top: 15px;
     text-align: center;
 }
-.blogbody__everyblog__header a:link,
+
+/*.blogbody__everyblog__header a:link,
 .blogbody__everyblog__header a:visited,
-.blogbody__everyblog__header a:active,
-.blogbody__everyblog__header a:hover {
+.blogbody__everyblog__header a:active {
   color: #666666;
-}
+}*/
+
 .blogbody__everyblog__header a{
     text-decoration: none;
     color: #666666;
