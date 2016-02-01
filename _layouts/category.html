@@ -1,5 +1,39 @@
 {% include header.html %}
-{% include index_nav.html %}
+<header id="blog__header">
+    <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">{{ site.name }}</span>
+            <span class="logo--des">{{ site.description }}</span>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item"><a href="{{ site.url }}/" class="navlink">HOME</a></li>
+
+            {% if page.title == "lab" %}
+            <li class="blog__nav__item current"><a href="{{ site.url }}/blog/categories/lab/" class="navlink">LAB</a></li>
+            {% else %}
+            <li class="blog__nav__item"><a href="{{ site.url }}/blog/categories/lab/" class="navlink">LAB</a></li>
+            {% endif %}
+
+            {% if page.title == "work" %}
+            <li class="blog__nav__item current"><a href="{{ site.url }}/blog/categories/work/" class="navlink">WORK</a></li>
+            {% else %}
+            <li class="blog__nav__item"><a href="{{ site.url }}/blog/categories/work/" class="navlink">WORK</a></li>
+            {% endif %}
+
+            {% if page.title == "tool" %}
+            <li class="blog__nav__item current"><a href="{{ site.url }}/blog/categories/tool/" class="navlink">TOOL</a></li>
+            {% else %}
+            <li class="blog__nav__item"><a href="{{ site.url }}/blog/categories/tool/" class="navlink">TOOL</a></li>
+            {% endif %}
+
+            <li class="blog__nav__item"><a href="{{ site.url }}/about/" class="navlink">ABOUT</a></li>
+        </ul>
+    </div>
+</header>
 
 <section id="blogbody">
 <div class="clearleft bloglooparea">

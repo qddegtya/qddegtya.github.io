@@ -1,26 +1,28 @@
-gems:
-  - jekyll-archives
+# gems
+gems: ["jekyll-archives"]
 
+# blog global settings
 name: COLORFUL
+description: Thinking & Coding
 
+# author
 author:
   name: Archer
   email: qddegtya@gmail.com
   github: qddegtya
 
-description: Thinking & Coding
-
+# jekyll settings
 excerpt_separator: "__以上内容是文章摘要__"
 permalink: /blog/:year/:month/:day/:title
 baseurl: ""
+
+# pagination
 paginate: 8
 paginate_path: "blog/page:num"
 
+# jekyll-archives
 jekyll-archives:
-  enabled:
-    - year
-    - tags
-    - categories
+  enabled: ["year", "tags", "categories"]
   layouts:
     tag: tag
     year: year
@@ -29,3 +31,11 @@ jekyll-archives:
     year: '/blog/archives/:year/'
     tag: '/blog/tags/:name/'
     category: '/blog/categories/:name/'
+
+# Friends
+friends: [
+    {
+        title: "",
+        href: ""
+    }
+]
