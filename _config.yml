@@ -26,6 +26,6 @@ jekyll-archives:
     year: year
     category: category
   permalinks:
-    year: '/archives/:year/'
-    tag: '/tags/:name/'
-    category: '/category/:name/'
+    year: '/blog/archives/:year/'
+    tag: '/blog/tags/:name/'
+    category: '/blog/categories/:name/'

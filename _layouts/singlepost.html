@@ -11,11 +11,11 @@ defineSiteUrl: http://xiaoa.name
                     <a href="{{ page.url }}">{{ page.title }}</a>
                 </div>
                 <div class="blogbody__everyblog__meta">
-                    <span class="blogbody__everyblog__metainfo"><a class="date_archive_link" href="{{ site.url }}/archives/{{ page.date | date:"%Y" }}/">{{ page.date | date:"%Y - %m - %d" }}</a></span>
+                    <span class="blogbody__everyblog__metainfo"><a class="date_archive_link" href="{{ site.url }}/blog/archives/{{ page.date | date:"%Y" }}/">{{ page.date | date:"%Y - %m - %d" }}</a></span>
                 </div>
                 <div class="blogbody__everyblog__tag">
                   {% for tag in page.tags %}
-                    <span class="blogbody__tag__class"><a href="{{ site.url }}/tags/{{ tag }}/">{{ tag }}</a></span>
+                    <span class="blogbody__tag__class"><a href="{{ site.url }}/blog/tags/{{ tag }}/">{{ tag }}</a></span>
                   {% endfor %}
                 </div>
                 <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
