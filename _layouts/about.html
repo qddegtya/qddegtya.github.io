@@ -1,0 +1,77 @@
+{% include header.html %}
+
+<header id="blog__header">
+    <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">ABOUT</span>
+            <span class="logo--des">关于我和这里</span>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item"><a href="{{ site.url }}/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item"><a href="{{ site.url }}/tags" class="navlink">TAGS</a></li>
+            <li class="blog__nav__item"><a href="{{ site.url }}/archives" class="navlink">POSTS</a></li>
+            <li class="blog__nav__item"><a href="{{ site.url }}/works" class="navlink">WORKS</a></li>
+            <li class="blog__nav__item current"><a href="{{ site.url }}/about" class="navlink">ABOUT</a></li>
+        </ul>
+    </div>
+</header>
+
+<section id="blogbody">
+<div class="clearleft bloglooparea">
+    <div class="bloglists">
+    <div class="blogbody__everyblog">
+      <div class="blogcontent">
+        <h3>不是说好了亮点在最后吗？</h3>
+        <p>
+          <img src="{{ site.url }}/assets/images/me.jpg" alt="" />
+        </p>
+        <h3>Hi, Welcome</h3>
+        <p>
+          <code>
+            大家好，我是Colorful的博主，我叫Archer，另外一个被人昵称的名字是小A；前端工程师一枚，目前就职于沪江网；玩博客很久了，一直希望用更加Geek style的手段来写博客，于是在Github上重新建起了Colorful，希望能够持续以微博之力回馈自己曾受到过的那些帮助。
+          </code>
+        </p>
+        <h3>这里讨论什么？</h3>
+        <p>
+          这里是我安静写点文字的地方，来到这里的您应该已经看到，这里的内容以原创的技术文章为主。
+          讨论的内容有且不限以下内容 -
+          <ul>
+            <li>前端开发</li>
+            <li>python</li>
+            <li>javascript</li>
+            <li>c++</li>
+            <li>go</li>
+            <li>移动端web开发</li>
+            <li>一些最佳实践</li>
+            <li>......</li>
+          </ul>
+        </p>
+        <h3>关于我，有哪些可以说说的？</h3>
+        <ul>
+          <li>90后</li>
+          <li>已婚</li>
+          <li>逼格控</li>
+          <li>极度强迫症患者</li>
+          <li>技术宅</li>
+          <li>...</li>
+        </ul>
+        <h3>为什么叫Colorful？</h3>
+        <p>
+          <code><b>COLORFUL</b>, 寓意多姿多彩，平衡Design与Coding绝逼是门艺术。</code>
+        </p>
+        <h3>要找我？</h3>
+        <p>
+          看右边那寂寞的侧边栏
+        </p>
+      </div>
+    </div>
+    </div>
+    {% include single_sidebar.html %}
+</div>
+</section>
+
+{% include footer.html %}

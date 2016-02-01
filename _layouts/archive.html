@@ -3,8 +3,8 @@
 <header id="blog__header">
     <div class="blog__bighead">
         <div class="blog__head__img">
-            <span class="logo--name bounceInDown">TAGS</span>
-            <span class="logo--des">总共为您找到{{ site.tags | size }}个标签</span>
+            <span class="logo--name bounceInDown">ARCHIVES</span>
+            <span class="logo--des">总共为您找到{{ site.posts | size }}篇文章</span>
         </div>
     </div>
 
@@ -12,8 +12,8 @@
     <div class="blog__nav">
         <ul class="blog__nav__ul">
             <li class="blog__nav__item"><a href="{{ site.url }}/" class="navlink">HOME</a></li>
-            <li class="blog__nav__item current"><a href="{{ site.url }}/tags" class="navlink">TAGS</a></li>
-            <li class="blog__nav__item"><a href="{{ site.url }}/archives" class="navlink">POSTS</a></li>
+            <li class="blog__nav__item"><a href="{{ site.url }}/tags" class="navlink">TAGS</a></li>
+            <li class="blog__nav__item current"><a href="{{ site.url }}/archives" class="navlink">POSTS</a></li>
             <li class="blog__nav__item"><a href="{{ site.url }}/works" class="navlink">WORKS</a></li>
             <li class="blog__nav__item"><a href="{{ site.url }}/about" class="navlink">ABOUT</a></li>
         </ul>
@@ -24,20 +24,19 @@
 <div class="clearleft bloglooparea">
     <div class="bloglists">
     <div class="blogbody__everyblog">
+      <h3 class='archive_title'>所有文章列表</h3>
       <ul class="archive_posts">
-        {% for tag in site.tags %}
-          <h3 class='archive_title' id="{{ tag[0] }}">标签 '{{ tag[0] }}' 下的文章</h3>
-          {% for post in tag[1] %}
+        {% for post in site.posts %}
           <li>
             <span class="post-date">{{ post.date | date: "%Y/%m/%d" }} - </span>
             <a class="post-link" href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
           </li>
-          {% endfor %}
         {% endfor %}
       </ul>
     </div>
 
     </div>
+
     {% include single_sidebar.html %}
 </div>
 </section>
