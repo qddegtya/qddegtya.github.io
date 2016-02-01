@@ -1,0 +1,17 @@
+{
+  "name": "qddegtya.github.io",
+  "version": "2.0.3",
+  "description": "This is my colorful blog-site.",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitcafe.com:qddegtya/qddegtya.git"
+  },
+  "author": "Archer",
+  "license": "MIT"
+}
