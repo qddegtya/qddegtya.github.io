@@ -2,6 +2,6 @@
  * Created by archer on 14/10/18.
  */
 
-(function(){
+(function(window, document) {
 
-}());
+})(window, document);

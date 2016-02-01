@@ -9,7 +9,7 @@ description: Thinking & Coding
 
 excerpt_separator: "__以上内容是文章摘要__"
 permalink: /blog/:year/:month/:day/:title
-baseurl: /
+baseurl: ""
 paginate: 8
 paginate_path: "blog/page:num"
 
