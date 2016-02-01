@@ -1700,3 +1700,28 @@ pre{
 .date_archive_link {
   color: #999999 !important;
 }
+
+.sidebar_follows a {
+  font-size: 14px;
+
+  display: block;
+  background-color: #f9f9f9;
+  border: 1px solid #f0f0f0;
+  padding:  10px 15px;
+
+  margin-bottom: 15px;
+
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.sidebar_follows a:hover {
+  background-color: #f0f0f0;
+}
+
+#side_tags .blogbody__tag__class {
+  margin: 0 0 15px 0;
+}
