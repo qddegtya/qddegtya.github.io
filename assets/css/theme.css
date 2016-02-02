@@ -1730,10 +1730,15 @@ pre{
   margin: auto 0;
 }
 
-figure.highlight pre code table tr {
+figure.highlight tr {
   border: none !important;
 }
 
-figure.highlight pre code table td {
+figure.highlight td {
+  border: none !important;
+}
+
+.code pre {
+  padding: 0 !important;
   border: none !important;
 }
