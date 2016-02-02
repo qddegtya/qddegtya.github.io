@@ -16,6 +16,9 @@ description: 有个骚年路过这里
 
 # highlighter & markdown
 # use default
+highlighter: pygments
+kramdown:
+  input: GFM
 
 # reading settings
 exclude: ["node_modules", "gulpfile.js", "README.md", "package.json", "dist"]
