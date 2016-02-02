@@ -537,8 +537,8 @@ code {
 .blogbody__everyblog__header a{
     text-decoration: none;
     color: #666666;
-    font-size: 1.2em;
-    line-height: 1.6em;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
     letter-spacing: 2px;
     -ms-word-wrap: break-word;
     word-wrap: break-word;
@@ -592,8 +592,8 @@ code {
     /*background-color: #f9f9f9;*/
     margin-bottom: 25px;
     /*border: 1px solid #f0f0f0;*/
-    font-size: 1.0em;
-    line-height: 1.4em;
+    font-size: 1.0rem;
+    line-height: 1.6rem;
     letter-spacing: 1px;
     color: #666666;
     /*text-indent: 15px;*/
@@ -619,8 +619,8 @@ code {
 }
 .blogcontent h1{
     color: #333333;
-    font-size: 1.0em;
-    line-height: 1.2em;
+    font-size: 1.0rem;
+    line-height: 1.6em;
     letter-spacing: 1px;
     /*background-color: #f0f0f0;*/
     margin-bottom: 25px;
@@ -631,8 +631,8 @@ code {
 }
 .blogcontent h2{
     color: #333333;
-    font-size: 1.0em;
-    line-height: 1.2em;
+    font-size: 1.0rem;
+    line-height: 1.6em;
     letter-spacing: 1px;
     /*background-color: #f0f0f0;*/
     margin-bottom: 25px;
@@ -643,8 +643,8 @@ code {
 }
 .blogcontent h3{
     color: #333333;
-    font-size: 1.0em;
-    line-height: 1.2em;
+    font-size: 1.0rem;
+    line-height: 1.6em;
     letter-spacing: 1px;
     /*background-color: #f0f0f0;*/
     margin-bottom: 25px;
@@ -655,8 +655,8 @@ code {
 }
 .blogcontent h4{
     color: #333333;
-    font-size: 1.0em;
-    line-height: 1.2em;
+    font-size: 1.0rem;
+    line-height: 1.6em;
     letter-spacing: 1px;
     /*background-color: #f0f0f0;*/
     margin-bottom: 25px;
@@ -667,8 +667,8 @@ code {
 }
 .blogcontent h5{
     color: #333333;
-    font-size: 1.0em;
-    line-height: 1.2em;
+    font-size: 1.0rem;
+    line-height: 1.6em;
     letter-spacing: 1px;
     /*background-color: #f0f0f0;*/
     margin-bottom: 25px;
@@ -679,8 +679,8 @@ code {
 }
 .blogcontent h6{
     color: #333333;
-    font-size: 1.0em;
-    line-height: 1.2em;
+    font-size: 1.0rem;
+    line-height: 1.6em;
     letter-spacing: 1px;
     /*background-color: #f0f0f0;*/
     margin-bottom: 25px;
@@ -695,9 +695,15 @@ code {
 }
 .blogcontent ul li{
     list-style: decimal;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    margin-bottom: 10px;
 }
 .blogcontent ol li{
     list-style: circle;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    margin-bottom: 10px;
 }
 .blogcontent table{
     border-collapse:collapse;
@@ -758,7 +764,7 @@ code {
   color: #666666;
   letter-spacing: 1px;
   text-align: justify;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .blogcontent code:hover{
@@ -1782,4 +1788,8 @@ figure.highlight pre code {
   overflow: auto;
   display: block !important;
   padding: 20px !important;
+}
+
+figure.highlight {
+  line-height: 1.8em !important;
 }
