@@ -5,7 +5,7 @@ tags: svg javascript
 category: lab
 ---
 
-> 下面的配图仅供卖萌
+下面的配图仅供卖萌
 
 ![](/assets/blog-images/2015-3-5/baymax.jpg)
 

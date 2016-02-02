@@ -9,4 +9,11 @@ gulp.task('css', function () {
     .pipe(gulp.dest('./assets/dist/'));
 });
 
-gulp.task('default', ['css']);
+gulp.task('debug', function() {
+  gulp.src('./assets/css/*.css')
+    // .pipe(uglifycss())
+    .pipe(gulp.dest('./assets/dist/'));
+})
+
+gulp.task('build', ['css'])
+gulp.task('default', ['debug']);

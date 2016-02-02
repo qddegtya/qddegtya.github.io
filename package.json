@@ -9,7 +9,8 @@
     "gulp-uglifycss": "^1.0.5"
   },
   "scripts": {
-    "debug": "gulp && jekyll serve"
+    "build": "gulp build",
+    "debug": "gulp debug && jekyll serve"
   },
   "repository": {
     "type": "git",

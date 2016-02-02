@@ -16,7 +16,7 @@ description: 有个骚年路过这里
 
 # highlighter & markdown
 # use default
-highlighter: pygments
+# highlighter: pygments
 kramdown:
   input: GFM
 

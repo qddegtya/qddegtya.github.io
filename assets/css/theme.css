@@ -40,7 +40,7 @@ body{
     font: 15px/1.2 "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: antialiased; /*使字体平滑*/
 }
-h1,span,ul,li,a,p,h2,table,th,tr,td,img,h3,i,h4,h5,h6,ol,blockquote,code{
+h1,span,ul,li,a,p,h2,table,th,tr,td,img,h3,i,h4,h5,h6,ol,blockquote,code,figure{
     margin: 0;
     padding: 0;
 }
@@ -705,21 +705,7 @@ code {
     width: 100%; /*撑满容器*/
     /*display: block;*/
 }
-.blogcontent blockquote{
-
-    padding: 0 10px;
-    font-size: 1.0em;
-    line-height: 1.0em;
-    color:#333333;
-    letter-spacing: 1px;
-    /*background-color: #f9f9f9;*/
-    border-left: 2px solid #bdc3c7;
-    margin-bottom: 25px;
-
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-all;
+.blogcontent blockquote {
 
 }
 
@@ -760,7 +746,10 @@ code {
 .blogcontent p img:hover{
     opacity: 1.0;
 }
-.blogcontent p > code{
+.blogcontent blockquote p {
+  margin-bottom: 0 !important;
+}
+.blogcontent blockquote{
   padding: 15px;
   font-size: 14px;
   line-height: 20px;
@@ -769,6 +758,7 @@ code {
   color: #666666;
   letter-spacing: 1px;
   text-align: justify;
+  margin-bottom: 20px;
 }
 
 .blogcontent code:hover{

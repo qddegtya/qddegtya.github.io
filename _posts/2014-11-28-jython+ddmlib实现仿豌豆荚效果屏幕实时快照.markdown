@@ -5,7 +5,7 @@ tags: python jython
 category: lab
 ---
 
-> 部分代码思路来源于互联网
+部分代码思路来源于互联网
 
 ### 需求
 
