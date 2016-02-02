@@ -12,4 +12,5 @@ projectFilesBackup/
 Gemfile.lock
 Gemfile
 
-_site/
+# push to remote to cache
+# _site/
