@@ -1736,7 +1736,11 @@ pre{
   margin: auto 0;
 }
 
-figure.highlight {
+pre.highlight {
+  padding: 20px !important;
+}
+
+figure.highlight, .highlighter-rouge {
   border-left: 3px solid #FAEBD7;
 
   -webkit-border-radius: 10px;
