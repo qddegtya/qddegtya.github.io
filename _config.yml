@@ -1,5 +1,5 @@
 # seo
-seo_title: Colorful，一个骚年路过这里，与你一起探讨关于前端技术，设计，Hack的奥秘。
+seo_des: Colorful，一个骚年路过这里，与你一起探讨关于前端技术，设计，Hack的奥秘。
 seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小A, 前端博客，前端工程师
 
 # github plugins
@@ -14,9 +14,11 @@ gems:
 name: COLORFUL
 description: 有个骚年路过这里
 
-# highlight
-markdown: kramdown
-highlighter: pygments
+# highlighter & markdown
+# use default
+
+# reading settings
+exclude: ["node_modules", "gulpfile.js", "README.md", "package.json", "dist"]
 
 # author
 author:

@@ -25,17 +25,22 @@ layout: index
     {% endfor %}
 
     <!-- 翻页 -->
-    <div class="loadingmore">
       {% if paginator.previous_page and paginator.page != 2 %}
+      <div class="loadingmore">
         <a href="{{ site.url }}/blog/page{{ paginator.previous_page }}" class="previous">← Newer Posts</a>
+      </div>
       {% endif %}
       {% if paginator.previous_page and paginator.page == 2 %}
+      <div class="loadingmore">
         <a href="{{ site.url }}/" class="previous">← Newer Posts</a>
+      </div>
       {% endif %}
       {% if paginator.next_page %}
+      <div class="loadingmore">
         <a href="{{ site.url }}/blog/page{{ paginator.next_page }}" class="next">Older Posts →</a>
+      </div>
+      {% else %}
       {% endif %}
-    </div>
 
     </div>
     {% include index_sidebar.html %}
