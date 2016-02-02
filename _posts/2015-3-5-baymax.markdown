@@ -13,7 +13,7 @@ category: lab
 虽然说是小折腾，但还是废了不少劲，某位大神的博客写得好：
 前端工程师要想脱颖而出，就要拿出草稿纸，所以有了如下这个丑陋无比的配图：
 
-__以上内容是文章摘要__
+<!-- more -->
 
 ![Paper](https://github.com/qddegtya/cute-qq-redpoint/raw/master/paper.jpg "草稿")
 

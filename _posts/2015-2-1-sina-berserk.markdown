@@ -14,7 +14,7 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 [https://github.com/tapir-dream/berserkJS](https://github.com/tapir-dream/berserkJS)
 
-__以上内容是文章摘要__
+<!-- more -->
 
 环境：Windows
 

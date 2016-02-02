@@ -13,7 +13,7 @@ This is a react-native ios app for https://testerhome.com
 
 Written By ES6 + JSX + ReactNative
 
-__以上内容是文章摘要__
+<!-- more -->
 
 ### Demo
 https://github.com/qddegtya/A-ReactNative-TesterHome

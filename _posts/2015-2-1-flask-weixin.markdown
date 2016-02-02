@@ -10,7 +10,7 @@ category: work
 
 ![](/assets/blog-images/2015-2-1-flaskweixin/jssdk.png)
 
-__以上内容是文章摘要__
+<!-- more -->
 
 ### 前端部分
 

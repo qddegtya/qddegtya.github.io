@@ -30,7 +30,7 @@ author:
   github: qddegtya
 
 # jekyll settings
-excerpt_separator: "__以上内容是文章摘要__"
+excerpt_separator: <!-- more -->
 permalink: /blog/:year/:month/:day/:title
 baseurl: ""
 
