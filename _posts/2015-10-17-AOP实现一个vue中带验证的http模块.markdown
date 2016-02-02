@@ -29,7 +29,7 @@ __以上内容是文章摘要__
 我们项目落地的选型是：vue+es6，想要达到的目的是让开发不关心拦截逻辑，
 像这样：
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 import header from '../components/header.vue';
 import hotsale from '../components/hotsale.vue';
 import banner from '../components/banner.vue';
@@ -76,7 +76,7 @@ export default {
 
 **$httpWithAuth的实现**
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function install(Vue) {
   var _ = require('./util')(Vue);
 

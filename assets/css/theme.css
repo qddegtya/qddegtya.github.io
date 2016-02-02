@@ -40,7 +40,7 @@ body{
     font: 15px/1.2 "Helvetica neue",Helvetica,Tahoma,"lantinghei sc","Microsoft Yahei", sans-serif;
     -webkit-font-smoothing: antialiased; /*使字体平滑*/
 }
-h1,span,ul,li,a,p,h2,table,th,tr,td,img,h3,i,h4,h5,h6,ol,blockquote,code,figure{
+h1,span,ul,li,a,p,h2,table,th,tr,td,img,h3,i,h4,h5,h6,ol,blockquote,code,figure,pre{
     margin: 0;
     padding: 0;
 }
@@ -766,9 +766,9 @@ code {
 }
 
 .blogcontent pre{
-    padding: 5px 10px;
+    /*padding: 5px 10px;*/
     margin-bottom: 25px;
-    background: #202020;
+    background: #2c3e50;
     /*background-color: rgba(0, 0, 0, 0.3);*/
     color: #ffffff;
     font-size: .8em;
@@ -777,7 +777,7 @@ code {
     -ms-word-break: normal;
     word-break: normal;
     /*overflow: hidden;*/
-    border-left: 5px solid #cccccc;
+    /*border-left: 5px solid #cccccc;*/
 
     /* -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
     -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
@@ -1731,14 +1731,42 @@ pre{
 }
 
 figure.highlight tr {
+  padding: 0 !important;
   border: none !important;
+  margin: 0 !important;
 }
 
 figure.highlight td {
+  padding: 0 !important;
   border: none !important;
+  margin: 0 !important;
 }
 
 .code pre {
   padding: 0 !important;
   border: none !important;
+}
+
+td.code {
+  padding: 0 !important;
+}
+
+.lineno {
+  border: none !important;
+  padding: 0 !important;
+}
+
+.highlight table {
+  margin: 0 !important;
+}
+
+td.gutter.gl {
+  padding: 0 10px !important;
+}
+
+figure.highlight pre code {
+  width: 100%;
+  overflow: auto;
+  display: block !important;
+  padding: 20px !important;
 }

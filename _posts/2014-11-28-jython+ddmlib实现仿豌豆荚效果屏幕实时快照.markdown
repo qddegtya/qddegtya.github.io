@@ -15,7 +15,7 @@ __以上内容是文章摘要__
 
 ### 代码
 
-{% highlight python linenos %}
+{% highlight python %}
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # Android_ScreenSream by Archer

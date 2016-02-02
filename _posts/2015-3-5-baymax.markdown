@@ -33,7 +33,7 @@ SVG+JS实现新版手机QQ的手势消除红点消息的动画。
 两个圆心相连线的中心即为该参考点。
 故得到代码如下：
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
     (function(){
         'use strict';
 
