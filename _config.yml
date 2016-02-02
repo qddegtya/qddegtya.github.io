@@ -2,6 +2,9 @@
 seo_des: Colorful，一个骚年路过这里，与你一起探讨关于前端技术，设计，Hack的奥秘。
 seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小A, 前端博客，前端工程师
 
+# site
+site_domain: http://xiao.name
+
 # github plugins
 gems:
   - jekyll-mentions
@@ -31,7 +34,7 @@ author:
 
 # jekyll settings
 excerpt_separator: <!-- more -->
-permalink: /blog/:year/:month/:day/:title
+permalink: /blog/:year/:month/:day/:title/
 baseurl: ""
 
 # pagination

@@ -1,6 +1,3 @@
----
-defineSiteUrl: http://xiaoa.name
----
 {% include header.html %}
 {% include index_nav.html %}
 <section id="blogbody">
@@ -24,7 +21,7 @@ defineSiteUrl: http://xiaoa.name
                 <div class="blogbody__everyblog__footer">
                     <div class="footercopyright">
                         <span>转载请注明出处</span>
-                        <span class="blogperlink">{{ page.defineSiteUrl }}{{ page.url }}</span>
+                        <span class="blogperlink">{{ site.site_domain }}{{ page.url }}</span>
                     </div>
                 </div>
             </div>
