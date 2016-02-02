@@ -53,10 +53,36 @@ jekyll-archives:
     tag: '/blog/tags/:name/'
     category: '/blog/categories/:name/'
 
+# follows
+follows: [
+  {
+    title: "稀土掘金",
+    url: "http://gold.xitu.io/#/user/564596b360b25b79f069ad76",
+    ico: "http://gold.xitu.io/favicon.ico"
+  },{
+    title: "GITHUB",
+    url: "https://github.com/qddegtya",
+    ico: "https://github.com/favicon.ico"
+  },{
+    title: "微博",
+    url: "http://weibo.com/IMArcher",
+    ico: "http://weibo.com/favicon.ico"
+  },{
+    title: "CODING",
+    url: "https://coding.net/u/archer",
+    ico: "https://coding.net/favicon.ico"
+  },{
+    title: "开源中国",
+    url: "http://my.oschina.net/Archerminia",
+    ico: "http://oschina.net/favicon.ico"
+  }
+]
+
 # Friends
 friends: [
-    {
-        title: "",
-        href: ""
-    }
+  {
+    title: "鲍勃の部屋",
+    url: "http://jiafeifei.weebly.com/",
+    ico: ""
+  }
 ]
