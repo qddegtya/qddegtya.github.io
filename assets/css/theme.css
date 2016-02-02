@@ -1729,3 +1729,11 @@ pre{
 
   margin: auto 0;
 }
+
+figure.highlight pre code table tr {
+  border: none !important;
+}
+
+figure.highlight pre code table td {
+  border: none !important;
+}
