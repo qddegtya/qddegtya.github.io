@@ -1,0 +1,10 @@
+---
+layout: singlepost
+title: 表格测试
+tags: weixin flask python
+category: work
+---
+
+| Native    | Unicode   | Description |
+| :-------- | :-------- | :---------- |
+| :smile: | U+1F601 | grinning face with smiling eyes |
