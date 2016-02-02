@@ -1,6 +1,22 @@
+# seo
+seo_title: Colorful，一个骚年路过这里，与你一起探讨关于前端技术，设计，Hack的奥秘。
+seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小A, 前端博客，前端工程师
+
+# github plugins
+gems:
+  - jekyll-mentions
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+
 # blog global settings
 name: COLORFUL
 description: 有个骚年路过这里
+
+# highlight
+markdown: kramdown
+highlighter: pygments
 
 # author
 author:

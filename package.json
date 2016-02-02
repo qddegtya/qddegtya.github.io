@@ -1,12 +1,15 @@
 {
   "name": "qddegtya.github.io",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "description": "This is my colorful blog-site.",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-uglifycss": "^1.0.5"
   },
-  "devDependencies": {},
   "scripts": {
+    "debug": "gulp && jekyll serve"
   },
   "repository": {
     "type": "git",

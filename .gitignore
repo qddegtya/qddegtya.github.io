@@ -3,10 +3,13 @@
 assets/blog-images/
 
 node_modules/
+npm-debug.log
 
 projectFilesBackup/
 
 .jekyll-metadata
+
 Gemfile.lock
+Gemfile
 
 _site/
