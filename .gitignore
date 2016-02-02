@@ -13,4 +13,4 @@ Gemfile.lock
 Gemfile
 
 # push to remote to cache
-# _site/
+_site/
