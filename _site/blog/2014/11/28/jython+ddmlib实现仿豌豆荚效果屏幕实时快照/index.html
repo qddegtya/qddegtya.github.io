@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- 适应移动端end -->
+
+    <!-- seo -->
+    <meta name="description" content="Colorful，一个骚年路过这里，与你一起探讨关于前端技术，设计，Hack的奥秘。">
+    <meta name="keyword" content="COLORFUL, Colorful, colorful, Archer, archer, 小A, 前端博客，前端工程师">
+    <meta name="baidu-site-verification" content="FgaJaRYy0x" />
+
+    <title>COLORFUL - 有个骚年路过这里</title>
+    <link rel="stylesheet" href="/assets/dist/theme.css?ver=2.0.6"/>
+</head>
+<body>
+
+<!-- self ribbon -->
+<a href="https://github.com/qddegtya/qddegtya.github.io"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 99999;" src="/assets/images/forkme_darkblue.png" alt="Fork me on GitHub"></a>
+
+<header id="blog__header">
+    <div class="blog__bighead">
+        <div class="blog__head__img">
+            <span class="logo--name bounceInDown">COLORFUL</span>
+            <span class="logo--des">有个骚年路过这里</span>
+        </div>
+    </div>
+
+    <!-- blog nav -->
+    <div class="blog__nav">
+        <ul class="blog__nav__ul">
+            <li class="blog__nav__item current"><a href="/" class="navlink">HOME</a></li>
+            <li class="blog__nav__item"><a href="/tags" class="navlink">TAGS</a></li>
+            <li class="blog__nav__item"><a href="/archives" class="navlink">POSTS</a></li>
+            <li class="blog__nav__item"><a href="/works" class="navlink">WORKS</a></li>
+            <li class="blog__nav__item"><a href="/about" class="navlink">ABOUT</a></li>
+        </ul>
+    </div>
+</header>
+
+<section id="blogbody">
+    <div class="clearleft bloglooparea">
+        <div class="bloglists">
+            <div class="blogbody__everyblog">
+                <div class="blogbody__everyblog__header">
+                    <a href="/blog/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/">jython+ddmlib实现仿豌豆荚效果屏幕实时快照</a>
+                </div>
+                <div class="blogbody__everyblog__meta">
+                    <span class="blogbody__everyblog__metainfo">2014 - 11 - 28</span>
+                </div>
+                <div class="blogbody__everyblog__tag">
+                  
+                    <span class="blogbody__tag__class"><a href="/tags/#python">python</a></span>
+                  
+                    <span class="blogbody__tag__class"><a href="/tags/#jython">jython</a></span>
+                  
+                </div>
+                <div class="blogcontent blogbody__everyblog__excerpt" id="singleblogcontent">
+                    <p>部分代码思路来源于互联网</p>
+
+<h3 id="section">需求</h3>
+
+<p>之前就一直在寻找一种较为完美的移动设备屏幕流回传方案，因为我知道，这种尝试一旦成功之后，即可运用于多种平台，比如云端测试Portal中对机器设备屏幕的实时监控，再辅以html5强大的功能特性，便可以直接在web页面上模拟手机操作，达到远程操作的目的，本demo的部分思路来源于互联网，我尝试用jython重写了一遍，效果基本符合需求，有更好实现思路的可以提出来，非常感谢。</p>
+
+<!-- more -->
+
+<h3 id="section-1">代码</h3>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding:utf-8 -*-</span>
+<span class="c"># Android_ScreenSream by Archer</span>
+<span class="c"># Based on Jython,ddmlib</span>
+
+<span class="c">#import jar</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">os</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">r'C:</span><span class="se">\\</span><span class="s">ddmlib.jar'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">r'C:</span><span class="se">\\</span><span class="s">guava17.jar'</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">r'C:</span><span class="se">\\</span><span class="s">rt.jar'</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+<span class="c">#import lib</span>
+<span class="kn">from</span> <span class="nn">java.awt.image</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">java.io</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">javax.imageio</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">com.android.ddmlib</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">class</span> <span class="nc">AndroidScreenStream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AndroidScreenStream</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="o">=</span><span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">=</span><span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rawimgdata</span><span class="o">=</span><span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">=</span><span class="bp">None</span>
+
+    <span class="k">def</span> <span class="nf">wait_device_lists</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bridge</span><span class="p">):</span>
+        <span class="s">"""获取设备列表信息"""</span>
+        <span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">bridge</span><span class="o">.</span><span class="n">hasInitialDeviceList</span><span class="p">()</span><span class="o">==</span><span class="bp">False</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+                <span class="n">count</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">60</span><span class="p">):</span>
+                <span class="k">print</span> <span class="s">"获取设备列表信息超时！"</span>
+                <span class="k">break</span>
+
+    <span class="k">def</span> <span class="nf">get_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""获取所有已连接设备"""</span>
+        <span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">mybridge</span><span class="o">=</span><span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">createBridge</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_device_lists</span><span class="p">(</span><span class="n">mybridge</span><span class="p">)</span> <span class="c">#get</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mybridge</span><span class="o">.</span><span class="n">getDevices</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">get_device_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+        <span class="s">"""根据index获取单个当前设备"""</span>
+        <span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">mybridge</span><span class="o">=</span><span class="n">AndroidDebugBridge</span><span class="o">.</span><span class="n">createBridge</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_device_lists</span><span class="p">(</span><span class="n">mybridge</span><span class="p">)</span> <span class="c">#get</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">=</span><span class="n">mybridge</span><span class="o">.</span><span class="n">getDevices</span><span class="p">()[</span><span class="n">index</span><span class="p">]</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">except</span> <span class="nb">IndexError</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"不存在序号为"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">+</span><span class="s">"的设备,请检查USB连接!"</span>
+            <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_current_screen_imgbyes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""获取当前屏幕图像的字节数据"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rawimgdata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">.</span><span class="n">getScreenshot</span><span class="p">()</span><span class="o">.</span><span class="n">data</span> <span class="c">#保存图像字节数据</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">get_current_rawscreen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""保存当前屏幕screen对象"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currentdevice</span><span class="o">.</span><span class="n">getScreenshot</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">save_screen_img</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span><span class="s">'current_frame.jpeg'</span><span class="p">),</span><span class="n">islandscape</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="s">"""将当前屏幕图像数据保存为图片"""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">landscape</span><span class="o">=</span><span class="n">islandscape</span>
+            <span class="c">#横屏尺寸处理</span>
+            <span class="n">imgwidth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">height</span> <span class="k">if</span> <span class="n">landscape</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span>
+            <span class="n">imgheight</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span> <span class="k">if</span> <span class="n">landscape</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">height</span>
+            <span class="n">image</span><span class="o">=</span><span class="n">BufferedImage</span><span class="p">(</span><span class="n">imgwidth</span><span class="p">,</span><span class="n">imgheight</span><span class="p">,</span><span class="n">BufferedImage</span><span class="o">.</span><span class="n">TYPE_INT_RGB</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">getHeight</span><span class="p">()</span><span class="o">!=</span><span class="n">imgheight</span> <span class="ow">or</span> <span class="n">image</span><span class="o">.</span><span class="n">getWidth</span><span class="p">()</span><span class="o">!=</span><span class="n">imgwidth</span><span class="p">:</span>
+                <span class="n">image</span><span class="o">=</span><span class="n">BufferedImage</span><span class="p">(</span><span class="n">imgwidth</span><span class="p">,</span><span class="n">imgheight</span><span class="p">,</span><span class="n">BufferedImage</span><span class="o">.</span><span class="n">TYPE_INT_RGB</span><span class="p">)</span>
+            <span class="n">index</span><span class="o">=</span><span class="mi">0</span>
+            <span class="n">indexInc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">bpp</span><span class="o">&gt;&gt;</span><span class="mi">3</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">height</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span><span class="p">):</span>
+                    <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">getARGB</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">landscape</span><span class="p">:</span>
+                        <span class="n">image</span><span class="o">.</span><span class="n">setRGB</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">rawscreen</span><span class="o">.</span><span class="n">width</span><span class="o">-</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">image</span><span class="o">.</span><span class="n">setRGB</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+                    <span class="n">index</span><span class="o">+=</span><span class="n">indexInc</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ImageIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="s">"JPEG"</span><span class="p">,</span><span class="n">File</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+            <span class="k">except</span> <span class="nb">IOError</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">"发生异常!"</span>
+                <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">"rawscreen为空!"</span>
+            <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">ASS</span><span class="o">=</span><span class="n">AndroidScreenStream</span><span class="p">()</span>
+    <span class="n">ShotDevice</span><span class="o">=</span><span class="n">ASS</span><span class="o">.</span><span class="n">get_device_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">ShotDevice</span><span class="o">.</span><span class="n">get_current_rawscreen</span><span class="p">()</span><span class="o">.</span><span class="n">save_screen_img</span><span class="p">()</span></code></pre></figure>
+
+<h3 id="in-github">In Github</h3>
+
+<p><a href="https://github.com/qddegtya/Android_Screen_Stream" title="Android_Screen_Stream">Android_Screen_Stream</a></p>
+
+
+                </div>
+                <div class="blogbody__everyblog__footer">
+                    <div class="footercopyright">
+                        <span>转载请注明出处</span>
+                        <span class="blogperlink">http://xiaoa.name/blog/2014/11/28/jython+ddmlib%E5%AE%9E%E7%8E%B0%E4%BB%BF%E8%B1%8C%E8%B1%86%E8%8D%9A%E6%95%88%E6%9E%9C%E5%B1%8F%E5%B9%95%E5%AE%9E%E6%97%B6%E5%BF%AB%E7%85%A7/</span>
+                    </div>
+                </div>
+            </div>
+
+        <div id="comments" class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+  /**
+  * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+  */
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+
+  s.src = '//colorful-archer.disqus.com/embed.js';
+
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+</div>
+
+        </div>
+
+        <div class="blogsidebar">
+    <!-- 简介 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">AUTHOR</h3>
+        <p class="sidebar_detail clearfix">
+            <img src="/assets/images/js-avatar.jpg" class="avatar_detail" alt=""/>
+            此人患有重度强迫症，逼格崇拜症，红色性格狂躁症。
+            想让他安静下来，给他读一篇技术文章就好。
+        </p>
+    </div>
+
+    <!-- 足迹 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">FOLLOW</h3>
+        <div id="sidebar_follows" class="sidebar_follows">
+          <ul>
+            
+              
+              <li><a href="http://gold.xitu.io/#/user/564596b360b25b79f069ad76" title="稀土掘金" target="_blank"><img src="http://gold.xitu.io/favicon.ico" alt="" class="site--fav"/>稀土掘金</a></li>
+              
+            
+              
+              <li><a href="https://github.com/qddegtya" title="GITHUB" target="_blank"><img src="https://github.com/favicon.ico" alt="" class="site--fav"/>GITHUB</a></li>
+              
+            
+              
+              <li><a href="http://weibo.com/IMArcher" title="微博" target="_blank"><img src="http://weibo.com/favicon.ico" alt="" class="site--fav"/>微博</a></li>
+              
+            
+              
+              <li><a href="https://coding.net/u/archer" title="CODING" target="_blank"><img src="https://coding.net/favicon.ico" alt="" class="site--fav"/>CODING</a></li>
+              
+            
+              
+              <li><a href="http://my.oschina.net/Archerminia" title="开源中国" target="_blank"><img src="http://oschina.net/favicon.ico" alt="" class="site--fav"/>开源中国</a></li>
+              
+            
+          </ul>
+        </div>
+    </div>
+
+    <!-- 标签云 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">TAGS</h3>
+        <div id="side_tags">
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#python">python</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#jython">jython</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#fe">fe</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#tool">tool</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#weixin">weixin</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#flask">flask</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#svg">svg</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#javascript">javascript</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#react-native">react-native</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#vue">vue</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#github">github</a></span>
+            
+          
+            
+            <span class="blogbody__tag__class"><a href="/tags/#jekyll">jekyll</a></span>
+            
+          
+        </div>
+    </div>
+
+
+    <!-- 足迹 -->
+    <div class="blogsidebar_item author_item">
+        <h3 class="sidebar_title">FRIENDS</h3>
+        <div id="sidebar_follows" class="sidebar_follows">
+          <ul>
+            
+              
+              <li><a href="http://jiafeifei.weebly.com/" title="鲍勃の部屋" target="_blank">鲍勃の部屋</a></li>
+              
+            
+          </ul>
+        </div>
+    </div>
+
+</div>
+
+    </div>
+</section>
+
+
+<footer id="blogfooter" class="blogfooter">
+    <h3 class="footer-title">COLORFUL</h3>
+    <span class="copyright">Powered By <a href="http://jekyllrb.com/" title="Jekyll">Jekyll</a> / Theme is <a href="http://xiaoa.name/" title="Colorful">Colorful</a></span>
+</footer>
+
+</body>
+</html>
+
