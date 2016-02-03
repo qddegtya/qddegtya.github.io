@@ -11,7 +11,7 @@ Github上有一些手册类型的开源项目，具有很大的务实价值，�
 <!-- more -->
 
 | project       | desciption       | repo |
-| :------------- | :------------- | :------  |
+| :------------- | :------------- | :------:  |
 | CSS参考手册  | 国内最好的CSS参考手册，持续小步更新 | [:link:](https://github.com/doyoe/css-handbook) |
 | bash-handbook  | This document was written for those who want to learn Bash without diving in too deeply.  | [:link:](https://github.com/denysdovhan/bash-handbook) |
 | stream-handbook  | This document covers the basics of how to write node.js programs with streams.  | [:link:](https://github.com/substack/stream-handbook) |
