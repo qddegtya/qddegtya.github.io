@@ -74,6 +74,10 @@ follows: [
     title: "开源中国",
     url: "http://my.oschina.net/Archerminia",
     ico: "http://oschina.net/favicon.ico"
+  },{
+    title: "知乎"
+    url: "https://www.zhihu.com/people/archer_xiaoa"
+    ico: "https://www.zhihu.com/favicon.ico"
   }
 ]
 
