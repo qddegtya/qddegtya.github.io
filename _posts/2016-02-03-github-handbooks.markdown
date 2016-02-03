@@ -16,5 +16,4 @@ Github上有一些手册类型的开源项目，具有很大的务实价值，�
 | bash-handbook  | This document was written for those who want to learn Bash without diving in too deeply.  | [:link:](https://github.com/denysdovhan/bash-handbook) |
 | stream-handbook  | This document covers the basics of how to write node.js programs with streams.  | [:link:](https://github.com/substack/stream-handbook) |
 | babel-handbook  | A guided handbook on how to use Babel and how to create plugins for Babel.  | [:link:](https://github.com/thejameskyle/babel-handbook) |
-| babel-handbook  | A guided handbook on how to use Babel and how to create plugins for Babel.  | [:link:](https://github.com/thejameskyle/babel-handbook) |
 | browserify-handbook  | This document covers how to use browserify to build modular applications.  | [:link:](https://github.com/substack/browserify-handbook) |
