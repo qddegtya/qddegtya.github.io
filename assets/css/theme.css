@@ -1661,7 +1661,7 @@ pre{
 
 .blogbody__tag__class {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 6px 12px;
   background-color: #f9f9f9;
   border: 1px solid #f0f0f0;
 
@@ -1673,8 +1673,8 @@ pre{
 
   text-align: center;
 
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 12px;
+  line-height: 12px;
   color: #999999;
 }
 
