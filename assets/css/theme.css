@@ -255,6 +255,8 @@ code {
         display: block;
         font-size: 4.8em;
         margin-bottom: 10px;
+
+        font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman";
     }
     .logo--name a{
         color: #ffffff;
