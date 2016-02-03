@@ -1,9 +1,8 @@
 ---
 layout: singlepost
-title: "Github上那些炙手可热的技术手册"
+title: Github上那些炙手可热的技术手册
 tags: github
 category: lab
-date: "2016-02-03 15:31:29"
 ---
 
 Github上有一些手册类型的开源项目，具有很大的务实价值，本文将不断持续小碎步更新，请叫我收集狂。
