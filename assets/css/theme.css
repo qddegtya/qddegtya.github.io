@@ -1819,3 +1819,9 @@ embed {
   padding: 0;
   margin-bottom: 25px;
 }
+
+img.emoji {
+  width: auto;
+  display: inline-block;
+  vertical-align: sub;
+}
