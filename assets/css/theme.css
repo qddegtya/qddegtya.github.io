@@ -1821,7 +1821,8 @@ embed {
 }
 
 img.emoji {
-  width: auto !important;
+  width: 18px !important;
+  height: 18px !important;
   display: inline-block !important;
-  vertical-align: sub;
+  vertical-align: text-bottom;
 }
