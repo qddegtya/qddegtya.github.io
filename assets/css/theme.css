@@ -456,12 +456,25 @@ code {
         width: 20%;
         text-align: center;
         padding: 12px;
+
+        border-bottom-color: #ffffff;
+        border-bottom-style: solid;
+        border-bottom-width: 5px;
     }
     .blog__nav__item:last-child{
         border-right: none;
     }
     .blog__nav__item:hover,.blog__nav__item.current{
-        border-bottom: 5px solid #d35400;
+        border-bottom-color: #d35400;
+        border-bottom-style: solid;
+        border-bottom-width: 5px;
+    }
+    .blog__nav__item:hover {
+      -webkit-transition: border-bottom-color .8s ease;
+      -moz-transition: border-bottom-color .8s ease;
+      -ms-transition: border-bottom-color .8s ease;
+      -o-transition: border-bottom-color .8s ease;
+      transition: border-bottom-color .8s ease;
     }
     .blog__nav__item a{
         color: #232327;
@@ -544,11 +557,6 @@ code {
     word-wrap: break-word;
     -ms-word-break: break-all;
     word-break: break-all;
-    -webkit-transition: color .5s;
-    -moz-transition: color .5s;
-    -ms-transition: color .5s;
-    -o-transition: color .5s;
-    transition: color .5s;
 }
 .blogbody__everyblog__header:hover{
     /*background-color: #bdc3c7;*/
@@ -557,6 +565,12 @@ code {
     /*color:#ffffff;*/
     /*text-decoration: underline;*/
     color: #333333;
+
+    -webkit-transition: color .5s;
+    -moz-transition: color .5s;
+    -ms-transition: color .5s;
+    -o-transition: color .5s;
+    transition: color .5s;
 }
 .blogbody__everyblog__meta{
     text-align: center;
@@ -1707,17 +1721,17 @@ pre{
 
   margin-bottom: 15px;
 
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-
   position: relative;
 }
 
 .sidebar_follows a:hover {
   background-color: #f0f0f0;
+
+  -webkit-transition: background-color .8s ease;
+  -moz-transition: background-color .8s ease;
+  -ms-transition: background-color .8s ease;
+  -o-transition: background-color .8s ease;
+  transition: background-color .8s ease;
 }
 
 #side_tags .blogbody__tag__class {
