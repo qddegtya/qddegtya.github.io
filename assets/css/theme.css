@@ -1436,10 +1436,10 @@ pre{
 }
 
 .bounceInDown {
-    /*animation: bounceInDown .5s;*/
-    /*-moz-animation: bounceInDown .5s;	*//* Firefox */
-    /*-webkit-animation: bounceInDown .5s;	*//* Safari 和 Chrome */
-    /*-o-animation: bounceInDown .5s;	*//* Opera */
+  animation: bounceInDown .5s;
+  -moz-animation: bounceInDown .5s;
+  -webkit-animation: bounceInDown .5s;
+  -o-animation: bounceInDown .5s;
 }
 
 
