@@ -1797,3 +1797,9 @@ figure.highlight pre code {
 figure.highlight {
   line-height: 1.8em !important;
 }
+
+embed {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 25px;
+}
