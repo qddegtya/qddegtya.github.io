@@ -1,6 +1,6 @@
 ---
 layout: singlepost
-title: [转]常见的Git工作流
+title: 转-常见的Git工作流
 tags: git
 category: lab
 ---
