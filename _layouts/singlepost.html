@@ -28,8 +28,11 @@
 
         {% include comment.html %}
         </div>
-
-        {% include single_sidebar.html %}
+        {% if page.category == "play" %}
+          {% include play_sidebar.html %}
+        {% else %}
+          {% include single_sidebar.html %}
+        {% endif %}
     </div>
 </section>
 

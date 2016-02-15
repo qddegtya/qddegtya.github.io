@@ -1826,3 +1826,49 @@ img.emoji {
   display: inline-block !important;
   vertical-align: text-bottom;
 }
+
+.play_price {
+  display: block;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 600;
+
+  color: #999999;
+}
+
+.play_buy_link {
+  display: block;
+
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #d35400;
+  color: #ffffff !important;
+
+  letter-spacing: 2px;
+
+  /*-webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -o-border-radius: 40px;
+  -ms-border-radius: 40px;
+  border-radius: 40px;*/
+
+  text-align: center;
+
+  margin-top: 20px;
+
+  font-weight: 600;
+
+  /*opacity: 0.8;*/
+}
+
+.play_buy_link:hover {
+  /*opacity: 1.0;*/
+  text-decoration: underline;
+}
+
+
+.sidebar_detail.fluid {
+  width: 100%;
+  /*text-align: center;*/
+}
