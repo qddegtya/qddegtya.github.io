@@ -3,7 +3,7 @@ layout: singlepost
 title: 剁手入装备-小鸡手柄G3增强版
 tags: play life
 category: play
-price: 159.90
+price: RMB¥159.90
 tb_link: http://item.jd.com/2046988.html
 ---
 
