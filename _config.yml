@@ -5,6 +5,9 @@ seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小A, 前端博客，
 # site
 site_domain: http://xiaoa.name
 
+# cdn domain
+cdn_domain: http://7xqy7v.com1.z0.glb.clouddn.com/
+
 # github plugins
 gems:
   - jekyll-mentions
