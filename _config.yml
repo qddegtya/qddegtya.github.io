@@ -96,3 +96,43 @@ friends: [
     ico: "http://www.xiaoa.name/favicon.ico"
   }
 ]
+
+# Skills
+skills: [
+  {
+    skill: "HTML",
+    dur: "36",
+    score: "85",
+    color: "#16a085"
+  },{
+    skill: "CSS",
+    dur: "36",
+    score: "75",
+    color: "#27ae60"
+  },{
+    skill: "Javascript",
+    dur: "36",
+    score: "85",
+    color: "#2980b9"
+  },{
+    skill: "Python",
+    dur: "24",
+    score: "75",
+    color: "#8e44ad"
+  },{
+    skill: "Git",
+    dur: "24",
+    score: "70",
+    color: "#2c3e50"
+  },{
+    skill: "Linux/Mac",
+    dur: "24",
+    score: "70",
+    color: "#f39c12"
+  },{
+    skill: "Nodejs",
+    dur: "24",
+    score: "70",
+    color: "#c0392b"
+  }
+]

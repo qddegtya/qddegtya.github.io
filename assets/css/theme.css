@@ -1874,3 +1874,52 @@ img.emoji {
   width: 100%;
   /*text-align: center;*/
 }
+
+.skill_score {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+
+  color: #ffffff;
+  line-height: 10px;
+
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  font-weight: 600;
+  text-align: center;
+
+  overflow: hidden;
+
+  animation: widthBounce 5s ease;
+}
+
+.skill_score:hover {
+  opacity: 0.8;
+}
+
+@keyframes widthBounce
+{
+  from {width:0;}
+  to {width:100%;}
+}
+
+@-moz-keyframes widthBounce /* Firefox */
+{
+  from {width:0;}
+  to {width:100%;}
+}
+
+@-webkit-keyframes widthBounce /* Safari 和 Chrome */
+{
+  from {width:0;}
+  to {width:100%;}
+}
+
+@-o-keyframes widthBounce /* Opera */
+{
+  from {width:0;}
+  to {width:100%;}
+}
