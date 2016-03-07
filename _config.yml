@@ -94,6 +94,10 @@ friends: [
     title: "zixin’s blog",
     url: "http://zixiinlian.github.io/",
     ico: "http://www.xiaoa.name/favicon.ico"
+  },{
+    title: "Kyonko记录站",
+    url: "http://kyon-df.com/",
+    ico: "http://www.xiaoa.name/favicon.ico"
   }
 ]
 
