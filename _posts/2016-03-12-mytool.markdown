@@ -1,0 +1,68 @@
+---
+layout: singlepost
+title: 前端工程师的工具包
+tags: tool fe
+category: tool
+---
+
+![我是工具控](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/2016-tool.jpeg)
+
+前两天看到SegmentFault运营专栏最新的工具控撰写活动，挺有意思的。我觉得整理这样一份自己工作中常用的工具清单还是有好处的，一来是检验自己有没有必先利其器，二来是通过这种分享的方式获得更多的神器推荐。
+
+<!-- more -->
+
+工具跟使用者的属性是有必然联系的，本文将从前端开发从业者的角度整理一份我自己的清单，大部分工具的使用平台为OSX
+
+### 我的工具格言
+
+> 具不在多，够用就好。
+
+### 编辑器及插件
+
+| 名称 | 推荐理由 | 备注 |
+| :---- | :----- | :----- |
+| ATOM | / | 编辑器本身 |
+| atom-beautify | 编辑器代码美化 | / |
+| atomic-chrome | 使用atom编辑页面中的输入框内容 | / |
+| atomic-emacs | emacs快捷键绑定 | Ctrl+x 3分屏的赶脚爽多了 |
+| autocomplete | 自动完成 | 必备 |
+| autoprefixer | 自动前缀 | css3必备 |
+| colorpicker | 颜色拾取 | 在编辑器中使用频率不高 |
+| codeif | 命名神器 | 听奏写的变量命名服务 |
+| emmet | 前端开发神器 | http://docs.emmet.io/cheat-sheet/ |
+| terminal-plus | 编辑器集成终端 | 打造ide的前奏 |
+| file-icons | 文件图标显示 | 不装逼,很实用 |
+
+### OSX工具集
+
+| 名称 | 推荐理由 | 备注 |
+| :---- | :----- | :----- |
+| Alfred | 快启神器 | 不多说了 |
+| Tmux | 终端分屏 | 神器属性爆表 |
+| oh-my-zsh | zsh增强版 | 神器属性爆表 |
+| Gitbook Editor | 写书用 | / |
+| Spectacle | 窗口按指定位置摆放 | / |
+| 微信Web开发者工具 | 微信开发必备 | / |
+| Dash | 手册仓库 | 神器属性爆表 |
+| AssitorPS | 切图辅助 | 神器属性爆表 |
+
+### Chrome插件
+
+| 名称 | 推荐理由 | 备注 |
+| :---- | :----- | :----- |
+| postman | 必备神器 | / |
+| Avatars for Github | Github的动态上显示头像 | / |
+| DevTools Author | 在chrome的Sources,console等面板美化代码显示 | / |
+| Google绘图 | 画UML咯 | / |
+| Isometric Contributions | 以3d柱状图显示Github Contributions | / |
+| JSON-handle | json编辑神器 | / |
+| JSONView | json查看神器 | / |
+| Lastpass | 密码管理 | / |
+| Momentum | 壁纸,TODO | / |
+| Octotree | 在Github左侧显示项目的Tree | 阅读和学习开源项目的神器 |
+| OneTab | 不多说了，节省资源神器 |  |
+| React Developer Tools | React开发必备 |  |
+| Vimium | vim快捷键操作浏览器 | 神器属性爆表 |
+| WEB前端助手(FeHelper) | 常用工具箱 | 国产优秀插件 |
+| 划词翻译 | 很方面,看文档不用怕了 |  |
+| 稀土掘金 | 掘金社区Co-Editor必备 |  |
