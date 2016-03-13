@@ -67,6 +67,7 @@ category: tool
 | WEB前端助手(FeHelper) | 常用工具箱 | 国产优秀插件 |
 | 划词翻译 | 很方便 |  |
 | 稀土掘金 | 掘金社区Co-Editor必备 |  |
+| Xmarks | 浏览器收藏夹同步 | 必备良品 |
 
 ### CLI增强
 
