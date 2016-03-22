@@ -5,6 +5,8 @@ tags: javascript react node
 category: life
 ---
 
+![FEDAY2016](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/feday2.png)
+
 ### 前戏
 
 2016/3/21 补上参会的完整记录，这个问题从一开始我就是准备“自问自答”的，希望可以通过这种形式把大会的干货分享给更多人。
@@ -19,6 +21,7 @@ category: life
 
 次日，我们穿个马路就来到了本次feday大会的现场。然后是标准的签到，拿“大礼包“，参会证等流程，经常参加大会的同学应该很熟悉了，由于我之前参加过d2，觉得阿里报告厅的屏幕已经很震撼了，没想到，第一次在电影院参加技术大会真的有种赶老罗发布会的感觉：
 
+![大会现场](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/feday1.png)
 
 此次的嘉宾阵容：
 
@@ -32,7 +35,7 @@ category: life
 Stepan的演讲精华我觉得可以精简整理为如下几点：
 原来用RoR(其实这里泛指后端)做的事情现在都可以用Javascript做，好处是可以前后端复用代码，符合同构的基本条件，然后他通过一个目录结构对比演示指出了同构应用中需要解决的三个事情：渲染/路由/数据（我是这么理解的，因为我认为这确实是同构落地的关键）
 
-* 对于渲染，他先列举了一个非常简单的例子，我认为他要表达的意思是：渲染的本质其实就是模版+数据，例如:
+对于渲染，他先列举了一个非常简单的例子，我认为他要表达的意思是：渲染的本质其实就是模版+数据，例如:
 
 ```javascript
 function template(data){ return '<body>${data}</body>'; }
@@ -40,15 +43,17 @@ function template(data){ return '<body>${data}</body>'; }
 
 这个函数可以在server端直接将数据扔给res.send，也可以用在client端用来生成真实的dom；但我们的应用往往是复杂的，React(Facebook的工程师肯定是要来安利React的)的renderToString方法可以帮助我们完成Server-Side Rendering，因为React的vdom不需要依赖浏览器侧的环境，这是React支持服务端渲染的唯一一个方法，好多同学已经知道了，讲到这里，作为一名Facebook工程师，他成功地为本次大会率先安利了一把React
 
-* 对于路由，他基本上直接安利了React-Router，然后贴出了跟React-Router官方文档几乎一样的代码，所以，折腾过的同学基本可以略过这个环节，但其实很多同学应该知道，路由共享是同构的重要部分，其实这里的坑还是蛮多的，其中还包括React-Router自身的bug，我在项目里的做法是将这块逻辑以中间件的形式进行处理。
+对于路由，他基本上直接安利了React-Router，然后贴出了跟React-Router官方文档几乎一样的代码，所以，折腾过的同学基本可以略过这个环节，但其实很多同学应该知道，路由共享是同构的重要部分，其实这里的坑还是蛮多的，其中还包括React-Router自身的bug，我在项目里的做法是将这块逻辑以中间件的形式进行处理。
 
-* 对于数据，不管你有没有用flux，都要解决初始化数据的问题，因为两端共用一份render逻辑，在后端直出的时候，需要将后端得到的数据同步给前端，否则，前端二次render，会得到不正确的渲染输出，这个相信玩过React后端直出的应该也知道，解决方案几乎都是一致的，说到底就是通过:
+对于数据，不管你有没有用flux，都要解决初始化数据的问题，因为两端共用一份render逻辑，在后端直出的时候，需要将后端得到的数据同步给前端，否则，前端二次render，会得到不正确的渲染输出，这个相信玩过React后端直出的应该也知道，解决方案几乎都是一致的，说到底就是通过:
+
 ```javascript
 window.__STORE__ = {}
 ```
-将数据带给前端。你会发现其他封装好的第三方同构库ISO等最终用的都是这个逻辑
 
-* 关于组件拉取数据，他安利了isomorphic-fetch，这样前后端可以共享一份拉取数据的逻辑，对于组件数据在server端的初始化，他的处理方式是，server.js：
+将数据带给前端。你会发现其他封装好的第三方同构库ISO等最终用的都是这个逻辑。
+
+关于组件拉取数据，他安利了isomorphic-fetch，这样前后端可以共享一份拉取数据的逻辑，对于组件数据在server端的初始化，他的处理方式是，server.js：
 
 ```javascript
 async function fetchAllData(props) {
@@ -74,6 +79,7 @@ React＋Node.js打造通用应用的折腾过程中其实只要解决这关键�
 
 最后，我在星巴克逛Stepan博客的时候发现他的博客就是同构的，很有趣，大家可以体验一下：
 
+![stepan's blog](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/stepan1.png)
 
 Stepan's Blog http://www.stepanp.com/
 
