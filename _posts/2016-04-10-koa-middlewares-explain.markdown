@@ -1,6 +1,6 @@
 ---
 layout: singlepost
-title: KOA源码阅读之理解KOA中间件的执行
+title: KOA源码阅读系列（一） - 理解KOA中间件的执行
 tags: javascript node
 category: work
 ---
