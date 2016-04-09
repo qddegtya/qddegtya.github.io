@@ -227,11 +227,13 @@ app.listen(3000);
 
 但是，我们写代码的时候明明写的是yield next啊，这就是co的奥秘之处了：
 
-co做的事情就是帮我们"自动管理"了generator的next，并根据调用返回的value做出不同的响应，他的原理其实是自动调用一次generator的next方法，然后通过toPromise方法，如果遇到一个generator就递归一次，这就是为什么我们只要写yield next就可以了，因为co一旦检测到这个next还是个generater，那就再次co.call(this)
+co做的事情就是帮我们"自动管理"generator的next，并根据调用返回的value做出不同的响应，他的原理其实是自动调用generator的next方法，然后通过toPromise方法，如果遇到一个generator就递归，这就是为什么我们只要写yield next的原因，因为co一旦检测到这个next还是个generater，那就再次co.call(this)
 
 ```javascript
 yield next;
 ```
+
+可以看一下这个toPromise
 
 ```javascript
 /**
@@ -300,3 +302,5 @@ let authinfo = yield getAuthInfo(authReq);
 * 在compose的时候，拿取中间件的顺序是FILO的，但是拿出来之后做的操作是循环i--赋值next，因此，依然可以保证正确的顺序执行
 
 * KOA框架中充斥着各种generater的思想，并且通过co来自动管理generater
+
+* 因此在KOA中使用中间件是很愉快的事情，在这个过程中你可以随心所欲做你想做的事情，比如改一个body咋样?
