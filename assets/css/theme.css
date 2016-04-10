@@ -229,7 +229,6 @@ code {
         position: relative;
         z-index: -99;
 
-        /*background-color: #000000;*/
         text-align: center;
         /*-webkit-border-radius: 20px 20px 0 0;*/
         /*-moz-border-radius: 20px 20px 0 0;*/
@@ -623,7 +622,6 @@ code {
 }
 .blogcontent a{
     padding: 2px;
-    /* background-color: #000000; */
     color: #e67e22;
     text-decoration: none;
     /* border-left: 2px solid #2f2f2f; */
@@ -1050,20 +1048,20 @@ pre{
 }
 .highlight  { background: #ffffff; }
 .highlight .c { color: #D8D5BC; font-style: italic } /* Comment */
-.highlight .err { color: #e74c3c; background-color: #e3d2d2 } /* Error */
+.highlight .err { color: #e74c3c; } /* Error */
 .highlight .k { font-weight: 600 } /* Keyword */
 .highlight .o { font-weight: 600 } /* Operator */
 .highlight .cm { color: #D8D5BC; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #FF8E8E; font-weight: 600 } /* Comment.Preproc */
 .highlight .c1 { color: #D8D5BC; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #FF8E8E; font-weight: 600; font-style: italic } /* Comment.Special */
-.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
-.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .gd { color: #e74c3c; } /* Generic.Deleted */
+.highlight .gd .x { color: #e74c3c; } /* Generic.Deleted.Specific */
 .highlight .ge { font-style: italic } /* Generic.Emph */
 .highlight .gr { color: #e74c3c } /* Generic.Error */
 .highlight .gh { color: #FF8E8E } /* Generic.Heading */
-.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
-.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .gi { color: #e74c3c; } /* Generic.Inserted */
+.highlight .gi .x { color: #e74c3c; } /* Generic.Inserted.Specific */
 .highlight .go { color: #888888 } /* Generic.Output */
 .highlight .gp { color: #555555 } /* Generic.Prompt */
 .highlight .gs { font-weight: 600 } /* Generic.Strong */

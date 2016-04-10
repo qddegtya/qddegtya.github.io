@@ -276,7 +276,7 @@ let getAuthInfo = function(req) {
   return new Promise((resolve, reject) => {
     rp(req)
     .then((authres) => {
-      debug(`用户中心响应结果: ${JSON.stringify(authres)}`);
+      debug(`auth result: ${JSON.stringify(authres)}`);
 
       if(authres.status === 0 && authres.code === 0) {
         resolve(authres);
