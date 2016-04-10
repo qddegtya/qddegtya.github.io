@@ -364,4 +364,4 @@ function respond() {
 
 * KOA框架通过co框架包装generator来达到"同步"写法
 
-* KOA在执行完所有中间件之后才会真正执行respond，在此之前，我们可以对response body做一些修改
+* KOA在执行完所有中间件之后才会真正执行respond，在此之前，我们可以对response body做任何你想做的修改，这点与Express有本质上的区别
