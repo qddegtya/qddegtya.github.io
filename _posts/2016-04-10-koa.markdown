@@ -276,8 +276,6 @@ let getAuthInfo = function(req) {
   return new Promise((resolve, reject) => {
     rp(req)
     .then((authres) => {
-      debug(`auth result: ${JSON.stringify(authres)}`);
-
       if(authres.status === 0 && authres.code === 0) {
         resolve(authres);
       } else {
