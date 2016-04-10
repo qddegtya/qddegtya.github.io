@@ -15,7 +15,7 @@ category: lab
 
 ### 代码
 
-{% highlight python %}
+```python
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # Android_ScreenSream by Archer
@@ -121,10 +121,8 @@ if __name__=="__main__":
     ShotDevice=ASS.get_device_by_index(0)
     while True:
         ShotDevice.get_current_rawscreen().save_screen_img()
-{% endhighlight %}
+```
 
-### In Github
+### Github
 
 [Android_Screen_Stream](https://github.com/qddegtya/Android_Screen_Stream "Android_Screen_Stream")
-
-  [1]: /img/bVc3Tu

@@ -29,7 +29,7 @@ category: work
 
 ### 我们先伪造一个颁证服务key_gen.py
 
-{% highlight python lino %}
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import hashlib
@@ -58,11 +58,11 @@ if __name__ == '__main__':
     app_id = ge_app_id()
     app_key = ge_app_key(app_id)
     sign_api(159874265148, '710628459', 'bd7d14ed5e0b9bf3c3ac28c224b322d271f6ae6c')
-{% endhighlight %}
+```
 
 ### Flask中利用元类进行授权包装auth.py
 
-{% highlight python lino %}
+```python
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import hashlib
@@ -145,7 +145,7 @@ class RequireAuthClass(MethodViewType):
                 value = api_require_auth(value)
             dct[name] = value
         return MethodViewType.__new__(mcs, name, bases, dct)
-{% endhighlight %}
+```
 
 ### 业务层的api就好办多了
 
@@ -155,7 +155,7 @@ app.auth模块导出的_get_resource_base方法由环境变量控制
 
 如果在调试模式下，则不启用授权
 
-{% highlight python lino %}
+```python
 # -*- coding:utf-8 -*-
 # Flask 引入
 from flask import Flask, jsonify
@@ -247,6 +247,6 @@ class HigherVocationalCollege(_get_resource_base()):
 api.add_resource(WelcomeToApi, '/api')
 api.add_resource(User, SET_VERSION_ROUTE('/user/<int:user_id>'))
 api.add_resource(HigherVocationalCollege, SET_VERSION_ROUTE('/hvc'))
-{% endhighlight %}
+```
 
 欢迎拍砖~

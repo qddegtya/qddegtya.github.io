@@ -32,7 +32,7 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 App.webview.execScript(sandbox <function> [, argObject <Object>|<Array>|<string>|<number>])
 
-{% highlight javascript linos%}
+```javascript
 // 执行当前页面中的console.log方法打印在控制台中打印 'hello'
 App.webview.execScript(function(msg) {
     console.log(msg);
@@ -42,7 +42,7 @@ App.webview.execScript(function(msg) {
 App.webview.execScript(function(size) {
     console.log('width: ' + size.width + ", " + "height: " +  size.height);
 }, {width:100, height:300});
-{% endhighlight %}
+```
 
 屏幕捕获：以编程方式获取网页全部或部分内容，可根据 Selector 截取指定 DOM 元素渲染情况；包括 CSS，SVG 和 Canvas。可将截取图片 base64 化，以便发送给远端服务器保存。
 
@@ -107,7 +107,7 @@ Cisco: 用于 WebEx 项目的自动化测试
 
 ### 根据API用JS完成我们此次的目标
 
-{% highlight javascript linos%}
+```javascript
 /*
 berserkJS 验证XXX页面加载问题
  */
@@ -134,7 +134,7 @@ App.webview.addEventListener("load",function(){
     //退出App
     //App.close();
 });
-{% endhighlight %}
+```
 
 berserkJS提供了很多可以监听的事件类型，满足你各种要求，每个回调函数的参数不一样，看一下官方api就知道了。
 
@@ -142,13 +142,13 @@ berserkJS提供了很多可以监听的事件类型，满足你各种要求，�
 
 ### Run！GO~GO~GO
 
-{% highlight bash linos%}
+```bash
 berserkJS --script=xxx.js
-{% endhighlight %}
+```
 
 ### 采集下来的序列化数据
 
-{% highlight json linos %}
+```json
   {
     "StatusCode": 302,
     "ReasonPhrase": "Found",
@@ -222,7 +222,7 @@ berserkJS --script=xxx.js
     "isHttp304": false,
     "isHttp404": false
   }
-{% endhighlight %}
+```
 
 ### 其他一些前端性能采集框架推荐
 
