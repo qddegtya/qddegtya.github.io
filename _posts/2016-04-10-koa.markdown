@@ -188,7 +188,7 @@ console.log(start(next).next());
 { value: '继续执行A中间件', done: false }
 ```
 
-等等，我们的co去哪儿了？大家有没有发现上面Demo中和我们平时写KOA的不同之处，我们来看一下KOA的官方示例代码：
+等等，我们的co去哪儿了？大家有没有发现上面Demo中和我们平时用KOA写中间件的不同之处，我们来看一下KOA的官方示例代码：
 
 ```
 var koa = require('koa');
@@ -225,9 +225,11 @@ app.listen(3000);
 
 > 根据上文，我们已经知道，那个负责把所有中间件串起来的next其实本身也是一个generator，但是，如果在Generater函数内部，调用另一个Generator函数，默认情况下是没有效果的，这个时候我们必须使用yield* next
 
-但是，我们写代码的时候明明写的是yield next啊，这就是co的奥秘之处了：
+但是，我们写代码的时候明明写的是yield next啊，这就是co的巧妙之处了：
 
-co做的事情就是帮我们"自动管理"generator的next，并根据调用返回的value做出不同的响应，他的原理其实是自动调用generator的next方法，然后通过toPromise方法，如果遇到一个generator就递归，这就是为什么我们只要写yield next的原因，因为co一旦检测到这个next还是个generater，那就再次co.call(this)
+co帮我们"自动管理"generator的next，并根据调用返回的value做出不同的响应，这个响应是通过toPromise方法进行的，我们可以在toPromise中发现：
+
+* 如果遇到另外一个generator，co会继续调用自己，这就是为什么我们不需要写yield* next的原因，而只要写yield next
 
 ```javascript
 yield next;
@@ -255,7 +257,7 @@ function toPromise(obj) {
 }
 ```
 
-有了这个函数，如果我们在项目中直接使用了DEMO中的
+所以，co对yield后面跟的类型是严格约定的，如果我们在项目中直接使用了DEMO中的
 
 ```javascript
 yield 1
@@ -289,11 +291,70 @@ let getAuthInfo = function(req) {
 };
 ```
 
-然后，我们就可以愉快地这样使用了：
+然后，我们就可以这样使用了：
 
 ```
 let authinfo = yield getAuthInfo(authReq);
 ```
+
+执行完所有中间件之后，KOA才会进入到respond
+
+```javascript
+fn.call(ctx).then(function () {
+      respond.call(ctx);
+    }).catch(ctx.onerror);
+```
+
+respond
+
+```javascript
+/**
+ * Response helper.
+ */
+
+function respond() {
+  // allow bypassing koa
+  if (false === this.respond) return;
+
+  var res = this.res;
+  if (res.headersSent || !this.writable) return;
+
+  var body = this.body;
+  var code = this.status;
+
+  // ignore body
+  if (statuses.empty[code]) {
+    // strip headers
+    this.body = null;
+    return res.end();
+  }
+
+  if ('HEAD' == this.method) {
+    if (isJSON(body)) this.length = Buffer.byteLength(JSON.stringify(body));
+    return res.end();
+  }
+
+  // status body
+  if (null == body) {
+    this.type = 'text';
+    body = this.message || String(code);
+    this.length = Buffer.byteLength(body);
+    return res.end(body);
+  }
+
+  // responses
+  if (Buffer.isBuffer(body)) return res.end(body);
+  if ('string' == typeof body) return res.end(body);
+  if (body instanceof Stream) return body.pipe(res);
+
+  // body: json
+  body = JSON.stringify(body);
+  this.length = Buffer.byteLength(body);
+  res.end(body);
+}
+```
+
+所以，我们说使用KOA写中间件的时候，我们可以任意修改我们的response body，然后再返回给客户端
 
 ### 总结
 
@@ -301,6 +362,6 @@ let authinfo = yield getAuthInfo(authReq);
 
 * 在compose的时候，拿取中间件的顺序是FILO的，但是拿出来之后做的操作是循环i--赋值next，因此，依然可以保证正确的顺序执行
 
-* KOA框架中充斥着各种generater的思想，并且通过co来自动管理generater
+* KOA框架通过co框架包装generator来达到"同步"写法
 
-* 因此在KOA中使用中间件是很愉快的事情，在这个过程中你可以随心所欲做你想做的事情，比如改一个body咋样?
+* KOA在执行完所有中间件之后才会真正执行respond，在此之前，我们可以对response body做一些修改
