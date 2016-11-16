@@ -1921,3 +1921,12 @@ img.emoji {
   from {width:0;}
   to {width:100%;}
 }
+
+/* 翻页修复 */
+.loadingmore-container {
+  width: 100%;
+}
+.loadingmore-container.has-all .loadingmore {
+  width: 50%;
+  float: left;
+}
