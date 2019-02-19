@@ -5,8 +5,6 @@ tags: javascript react node
 category: life
 ---
 
-![FEDAY2016](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/feday2.png)
-
 ### 前戏
 
 2016/3/21 补上参会的完整记录，这个问题从一开始我就是准备“自问自答”的，希望可以通过这种形式把大会的干货分享给更多人。
@@ -19,9 +17,8 @@ category: life
 
 ### 初到会场
 
-次日，我们穿个马路就来到了本次feday大会的现场。然后是标准的签到，拿“大礼包“，参会证等流程，经常参加大会的同学应该很熟悉了，由于我之前参加过d2，觉得阿里报告厅的屏幕已经很震撼了，没想到，第一次在电影院参加技术大会真的有种赶老罗发布会的感觉：
+次日，我们穿个马路就来到了本次feday大会的现场。然后是标准的签到，拿“大礼包“，参会证等流程，经常参加大会的同学应该很熟悉了，由于我之前参加过d2，觉得阿里报告厅的屏幕已经很震撼了，没想到，第一次在电影院参加技术大会真的有种赶老罗发布会的感觉
 
-![大会现场](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/feday1.png)
 
 此次的嘉宾阵容：
 
@@ -79,8 +76,6 @@ React＋Node.js打造通用应用的折腾过程中其实只要解决这关键�
 * ......
 
 最后，我在星巴克逛Stepan博客的时候发现他的博客就是同构的，很有趣，大家可以体验一下：
-
-![stepan's blog](http://7xqy7v.com1.z0.glb.clouddn.com/colorful/blog/stepan1.png)
 
 [Stepan's Blog](http://www.stepanp.com/)
 
