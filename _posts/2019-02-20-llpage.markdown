@@ -11,7 +11,7 @@ category: work
 
 <!-- more -->
 
-### Motivation
+# Motivation
 
 大型前端微应用架构中，往往需要 `在某个特定容器 DOM 节点里频繁操作各种业务入口页面`。无论是否使用 `渐进增强策略` 来完善和优化用户体验（比如是否启用 `iframe`，亦或是进化到某种 `前端微应用架构`），我们都希望这些页面在运行时之下能够做到：
 
@@ -23,16 +23,17 @@ category: work
 
 * 向成熟的`容器`架构借鉴，比如 `Android` 完善的 `Activity` 生命周期管理
 
-### Feature
+# Feature
 
 * ⚙️ 自由设置页面保活（keep alive）数量
 * 🚀 `llpage` 在操作页面模型时内部采用两个双向链表来保证原子操作的高性能
 * 💗 内置常见的页面操作 `open`/`close`/`closeAll`/`refresh`/`closeOthers`
 * 👀 单向数据流，模型状态机内部执行，页面操作模型可以被 dump
-* 😊 完善的类 `Android` 的生命周期模拟
+* 📱 完善的类 `Android` 的生命周期模拟
 * 💻 纯内存操作模型，提升微应用框架集成的便捷程度
+* 🎉 支持异步生命周期 hook
 
-### Quick Start
+# Quick Start
 
 ```javascript
 import { createLLPageManager, createPage } from 'llpage'
@@ -40,11 +41,13 @@ import { createLLPageManager, createPage } from 'llpage'
 const testPage = createPage({
   data: {},
 
-  onCreate() {
+  // llpage 支持异步生命周期 hook
+  async onCreate() {
     // do something
+    await xx()
   }
 
-  onStart() {
+  async onStart() {
     // do something
   }
 })
@@ -66,77 +69,82 @@ ll.closeOthers(testPage)
 ll.closeAll()
 ```
 
-### API
+# API
 
-### top api
+## top api
 
-#### createLLPageManager
+### createLLPageManager
 
 > 创建一个 llpage 管理容器
 
-#### createPage
+### createPage
 
 > 创建一个页面对象
 
-### manager instance api
+## manager instance api
 
-#### open
+### open
 
 > 打开一个页面
 
-#### close
+### close
 
 > 关闭某个页面
 
-#### closeAll
+### closeAll
 
 > 关闭所有页面
 
-#### closeOthers
+### closeOthers
 
 > 关闭其他页面
 
-#### refresh
+### refresh
 
 > 刷新页面
 
-### page lifecycle
+## page lifecycle
 
-#### onCreate
+### onCreate
 
 > 在页面对象被激活时执行
 
-#### onStart
+### onStart
 
 > 在页面对象被激活后，即将开始 running 时执行
 
-#### onResume
+### onResume
 
 > 在页面对象被隐藏后重新激活时执行
 
-#### onPause
+### onPause
 
 > 在页面对象被隐藏时执行
 
-#### onStop
+### onStop
 
 > 在页面对象被销毁前执行
 
-#### onDestroy
+### onDestroy
 
 > 在页面对象被销毁时执行
 
-#### onRestart
+### onRestart
 
 > 当页面对象曾经被打开过，并且当前处于 dead 状态中，这个时候被重新激活时执行
 
-### Run Example
+# Async
+
+> llpage 支持在生命周期内执行异步操作，llpage 内部会自动处理好这些 hook 的执行顺序，因此你可以自由地使用 `async`
+
+# Run Example
 
 ![preview](https://user-images.githubusercontent.com/773248/52936756-1f055700-3398-11e9-843a-1899dba7c36a.gif)
 
 * [How to run](./examples/README.md)
 
-### Thanks
+# Thanks
 
 * [lru_map](https://www.npmjs.com/package/lru_map)
 * [@humanwhocodes/circular-doubly-linked-list](https://www.npmjs.com/package/@humanwhocodes/circular-doubly-linked-list)
+
