@@ -133,6 +133,10 @@ ll.closeAll()
 
 > 当页面对象曾经被打开过，并且当前处于 dead 状态中，这个时候被重新激活时执行
 
+### onRefresh
+
+> 当页面处于非淘汰状态，被刷新时触发，接收一个`是否为当前运行页面`的参数 `isRunning`
+
 # Async
 
 > llpage 支持在生命周期内执行异步操作，llpage 内部会自动处理好这些 hook 的执行顺序，因此你可以自由地使用 `async`
@@ -147,4 +151,3 @@ ll.closeAll()
 
 * [lru_map](https://www.npmjs.com/package/lru_map)
 * [@humanwhocodes/circular-doubly-linked-list](https://www.npmjs.com/package/@humanwhocodes/circular-doubly-linked-list)
-
