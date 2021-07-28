@@ -47,7 +47,7 @@ jsTool.getSignFromBackEnd = function(callback){
           timestamp: 145672831,
           noncestr: "Wm3WZYTPz0wzccnW"
           jsapi_ticket: "sM4AOVdWfPE4DxkX" //上面存下的ticket
-          url: "http://mp.weixin.qq.com"
+          url: "https://mp.weixin.qq.com"
      }, function(sign){
          wx.config({
             debug: true, // 开启调试模式

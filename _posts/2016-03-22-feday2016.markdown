@@ -77,7 +77,7 @@ React＋Node.js打造通用应用的折腾过程中其实只要解决这关键�
 
 最后，我在星巴克逛Stepan博客的时候发现他的博客就是同构的，很有趣，大家可以体验一下：
 
-[Stepan's Blog](http://www.stepanp.com/)
+[Stepan's Blog](https://www.stepanp.com/)
 
 ### 江剑峰 微信开发过程中的最佳实践
 

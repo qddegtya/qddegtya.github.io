@@ -5,9 +5,6 @@ seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小A, 前端博客，
 # site
 url: https://xiaoa.name
 
-# cdn domain
-cdn_domain: http://7xqy7v.com1.z0.glb.clouddn.com/
-
 # github plugins
 gems:
   - jekyll-mentions
@@ -59,24 +56,24 @@ jekyll-archives:
 follows: [
   {
     title: "稀土掘金",
-    url: "http://gold.xitu.io/#/user/564596b360b25b79f069ad76",
-    ico: "http://gold.xitu.io/favicon.ico"
+    url: "https://gold.xitu.io/#/user/564596b360b25b79f069ad76",
+    ico: "https://gold.xitu.io/favicon.ico"
   },{
     title: "GITHUB",
     url: "https://github.com/qddegtya",
     ico: "https://github.com/favicon.ico"
   },{
     title: "微博",
-    url: "http://weibo.com/IMArcher",
-    ico: "http://weibo.com/favicon.ico"
+    url: "https://weibo.com/IMArcher",
+    ico: "https://weibo.com/favicon.ico"
   },{
     title: "CODING",
     url: "https://coding.net/u/archer",
     ico: "https://dn-coding-net-production-static.qbox.me/platform/favicon.ico"
   },{
     title: "开源中国",
-    url: "http://my.oschina.net/Archerminia",
-    ico: "http://oschina.net/favicon.ico"
+    url: "https://my.oschina.net/Archerminia",
+    ico: "https://oschina.net/favicon.ico"
   },{
     title: "知乎",
     url: "https://www.zhihu.com/people/archer_xiaoa",
@@ -88,12 +85,12 @@ follows: [
 friends: [
   {
     title: "鲍勃の部屋",
-    url: "http://jiafeifei.weebly.com/",
-    ico: "http://www.xiaoa.name/favicon.ico"
+    url: "https://jiafeifei.weebly.com/",
+    ico: "https://xiaoa.name/favicon.ico"
   },{
     title: "zixin’s blog",
-    url: "http://zixiinlian.github.io/",
-    ico: "http://www.xiaoa.name/favicon.ico"
+    url: "https://zixiinlian.github.io/",
+    ico: "https://xiaoa.name/favicon.ico"
   }
 ]
 

@@ -8,7 +8,7 @@ category: tool
 berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。
 
 > 已知bug：
-当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方bug链接 http://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。
+当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方bug链接 https://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。
 
 以上引用来自于 BerserkJS 官方github 的大标题，那么，BerserkJS究竟好用在哪里？
 
@@ -103,7 +103,7 @@ Cisco: 用于 WebEx 项目的自动化测试
 1. 采集页面加载过程中的所有性能数据并序列化之后进行存储
 2. 在界面上显示加载进度。
 
-![](http://segmentfault.com/img/bVc5aK)
+![](https://segmentfault.com/img/bVc5aK)
 
 ### 根据API用JS完成我们此次的目标
 
@@ -226,4 +226,4 @@ berserkJS --script=xxx.js
 
 ### 其他一些前端性能采集框架推荐
 
-[Bucky.js](http://github.hubspot.com/bucky/ "bucky.js")
+[Bucky.js](https://github.hubspot.com/bucky/ "bucky.js")

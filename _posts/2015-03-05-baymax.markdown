@@ -136,7 +136,7 @@ SVG+JS实现新版手机QQ的手势消除红点消息的动画。
 ### 演示
 
 用手机打开
-[codepen在线Demo](http://codepen.io/qddegtya/details/EapGWK "Demo")
+[codepen在线Demo](https://codepen.io/qddegtya/details/EapGWK "Demo")
 
 ### TODO
 
