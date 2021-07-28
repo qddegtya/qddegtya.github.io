@@ -3,18 +3,17 @@
   "version": "2.0.6",
   "description": "This is my colorful blog-site.",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-uglifycss": "^1.0.5"
+    "gulp": "^4.0.2",
+    "gulp-uglifycss": "^1.1.0"
   },
   "scripts": {
-    "build": "gulp build",
-    "debug": "gulp debug && jekyll serve"
+    "build": "./node_modules/.bin/gulp build",
+    "debug": "./node_modules/.bin/gulp debug && bundle exec jekyll serve"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitcafe.com:qddegtya/qddegtya.git"
+    "url": "git@github.com:qddegtya/qddegtya.github.io.git"
   },
   "author": "Archer",
   "license": "MIT"

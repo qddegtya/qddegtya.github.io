@@ -14,3 +14,5 @@ Gemfile
 
 # force update
 _site/
+
+*-lock.*
