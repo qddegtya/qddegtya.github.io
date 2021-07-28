@@ -1,19 +1,22 @@
-'use strict'
+"use strict";
 
-var gulp = require('gulp')
-var uglifycss = require('gulp-uglifycss')
+var gulp = require("gulp");
+var uglifycss = require("gulp-uglifycss");
 
-gulp.task('css', function () {
-  gulp.src('./assets/css/*.css')
+function build(cb) {
+  gulp
+    .src("./assets/css/*.css")
     .pipe(uglifycss())
-    .pipe(gulp.dest('./assets/dist/'))
-})
+    .pipe(gulp.dest("./assets/dist/"));
 
-gulp.task('debug', function() {
-  gulp.src('./assets/css/*.css')
-    // .pipe(uglifycss())
-    .pipe(gulp.dest('./assets/dist/'))
-})
+  cb();
+}
 
-gulp.task('build', ['css'])
-gulp.task('default', ['debug'])
+function debug(cb) {
+  gulp.src("./assets/css/*.css").pipe(gulp.dest("./assets/dist/"));
+
+  cb();
+}
+
+exports.build = gulp.task(build);
+exports.debug = gulp.task(debug);
