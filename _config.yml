@@ -6,7 +6,7 @@ seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小 A, 前端博客�
 url: https://xiaoa.name
 
 # github plugins
-gems:
+plugins:
   - jekyll-mentions
   - jemoji
   - jekyll-sitemap
