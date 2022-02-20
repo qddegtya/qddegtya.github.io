@@ -67,10 +67,6 @@ follows: [
     url: "https://weibo.com/IMArcher",
     ico: "https://weibo.com/favicon.ico"
   },{
-    title: "CODING",
-    url: "https://coding.net/u/archer",
-    ico: "https://dn-coding-net-production-static.qbox.me/platform/favicon.ico"
-  },{
     title: "开源中国",
     url: "https://my.oschina.net/Archerminia",
     ico: "https://oschina.net/favicon.ico"
