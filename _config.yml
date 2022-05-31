@@ -55,6 +55,11 @@ jekyll-archives:
 # follows
 follows: [
   {
+    title: "语雀",
+    url: "https://www.yuque.com/chiyu-heb0t",
+    ico: "https://gw.alipayobjects.com/zos/rmsportal/UTjFYEzMSYVwzxIGVhMu.png"
+  },
+  {
     title: "稀土掘金",
     url: "https://gold.xitu.io/#/user/564596b360b25b79f069ad76",
     ico: "https://gold.xitu.io/favicon.ico"

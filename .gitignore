@@ -6,6 +6,7 @@ npm-debug.log
 projectFilesBackup/
 
 .jekyll-metadata
+.jekyll-cache/
 
 Gemfile.lock
 Gemfile
