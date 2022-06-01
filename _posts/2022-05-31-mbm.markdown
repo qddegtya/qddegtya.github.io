@@ -19,8 +19,6 @@ Google was much more pragmatic, saying Dark Theme can “reduce power usage by a
 <br>
 <em>👦 Archer: Dark Mode IS NOT Dark Design or Dark UI in Javascript.</em>
 <br>
-<br>
-<br>
 
 # What is mbm ?
 
