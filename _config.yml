@@ -58,23 +58,18 @@ follows: [
     title: "语雀",
     url: "https://www.yuque.com/chiyu-heb0t",
     ico: "https://gw.alipayobjects.com/zos/rmsportal/UTjFYEzMSYVwzxIGVhMu.png"
-  },
-  {
+  },{
     title: "稀土掘金",
     url: "https://gold.xitu.io/#/user/564596b360b25b79f069ad76",
     ico: "https://gold.xitu.io/favicon.ico"
   },{
+    title: "Segmentfault",
+    url: "https://segmentfault.com/u/xiaoa",
+    ico: "https://static.segmentfault.com/main_site_next/e3057aed/favicon.ico"
+  },{
     title: "GITHUB",
     url: "https://github.com/qddegtya",
     ico: "https://github.com/favicon.ico"
-  },{
-    title: "微博",
-    url: "https://weibo.com/IMArcher",
-    ico: "https://weibo.com/favicon.ico"
-  },{
-    title: "开源中国",
-    url: "https://my.oschina.net/Archerminia",
-    ico: "https://oschina.net/favicon.ico"
   },{
     title: "知乎",
     url: "https://www.zhihu.com/people/archer_xiaoa",
