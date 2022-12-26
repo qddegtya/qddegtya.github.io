@@ -1456,6 +1456,9 @@ pre{
   -o-animation: bounceInDown .5s;
 }
 
+.sidebar_show a img {
+    width: 100%;
+}
 
 .follow--pop{
     width: 160px;
