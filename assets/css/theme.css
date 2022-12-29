@@ -1825,6 +1825,7 @@ embed {
   width: 100% !important;
   height: 360px !important;
   border: none !important;
+  margin-bottom: 25px !important;
 }
 
 img.emoji {
