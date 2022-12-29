@@ -1,6 +1,6 @@
 # seo
-seo_des: Colorful，一个骚年路过这里，与你一起探讨关于前端技术、设计、Hack 的魔法。
-seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小 A, 前端博客，前端工程师
+seo_des: Colorful，一枚数字艺术家的自留地。
+seo_keyword: COLORFUL, Colorful, colorful, Archer, archer, 小 A
 
 # site
 url: https://xiaoa.name
@@ -15,7 +15,7 @@ plugins:
 
 # blog global settings
 name: COLORFUL
-description: 有个骚年路过这里
+description: 一枚数字艺术家的自留地
 
 # highlighter & markdown
 # use default
