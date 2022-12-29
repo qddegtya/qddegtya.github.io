@@ -12,5 +12,3 @@ tb_link: https://item.jd.com/2046988.html
 为了弥补遗憾，顺手分享一下另外一个第三方制作的视频:
 
 <!-- more -->
-
-<embed src="https://player.youku.com/player.php/sid/XMTQzOTU2NzQ4MA==/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash">
