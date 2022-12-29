@@ -71,7 +71,7 @@ function deleteMailImmediately() {
         var messages = GmailApp.getMessagesForThread(threads[i])
         for (var j = 0; j < messages.length; j++) {
           var email = messages[j]
-          if (email.getDate() < age) {
+          if (email.getDate() < NOW) {
             Logger.log('Start to move this mail to trash.')
             email.moveToTrash()
             Logger.log('Mail has been moved to trash.')
@@ -119,7 +119,7 @@ function deleteMailWithLoopMode() {
         var messages = GmailApp.getMessagesForThread(threads[i])
         for (var j = 0; j < messages.length; j++) {
           var email = messages[j]
-          if (email.getDate() < age) {
+          if (email.getDate() < NOW) {
             Logger.log('Start to move this mail to trash.')
             email.moveToTrash()
             Logger.log('Mail has been moved to trash.')
