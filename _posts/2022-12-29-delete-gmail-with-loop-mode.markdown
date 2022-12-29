@@ -23,22 +23,24 @@ category: tool
 // search string to delete
 var SEARCH_STRING = 'category:forums'
 
+// tigger function name
 var TRIGGER_NAME = 'deleteMailWithLoopMode'
-var TIMEZONE = 'AEST'
 
-// FIRST_TIME_DELAY_MIN
+// first time job delay (min)
 var FIRST_TIME_DELAY_MIN = 1
 
-// FREQUENCY of scheduler
+// FREQUENCY of scheduler: 1h
 var RESUME_FREQUENCY = 60
 
 // MAX: 500
 var PAGE_SIZE = 500
 
+// intialize
 function intialize() {
   return
 }
 
+// install
 function install() {
   ScriptApp.newTrigger(TRIGGER_NAME)
     .timeBased()
@@ -46,6 +48,7 @@ function install() {
     .create()
 }
 
+// clean triggers
 function cleanTriggers() {
   var triggers = ScriptApp.getProjectTriggers()
   for (var i = 0; i < triggers.length; i++) {
@@ -53,6 +56,7 @@ function cleanTriggers() {
   }
 }
 
+// delete mail immediately
 function deleteMailImmediately() {
   var NOW = new Date()
   Logger.log('SEARCH: ' + SEARCH_STRING + ' PAGE_SIZE: ' + PAGE_SIZE)
@@ -85,6 +89,7 @@ function deleteMailImmediately() {
   }
 }
 
+// schedule new job
 function scheduleNewJob() {
   // before new job, we clear all triggers first
   Logger.log('clean triggers...')
@@ -97,6 +102,7 @@ function scheduleNewJob() {
     .create()
 }
 
+// delete mail with loop mode
 function deleteMailWithLoopMode() {
   var NOW = new Date()
   Logger.log('SEARCH: ' + SEARCH_STRING + ' PAGE_SIZE: ' + PAGE_SIZE)
