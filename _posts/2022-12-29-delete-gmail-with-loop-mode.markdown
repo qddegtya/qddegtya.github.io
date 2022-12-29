@@ -14,6 +14,7 @@ category: tool
 
 * 指定 `gmail` 搜索条件
 * 错误/边界条件等自动触发新调度
+* trigger 唯一
 
 ### Content of App Script
 
@@ -44,7 +45,7 @@ function install() {
   ScriptApp.newTrigger(TRIGGER_NAME).timeBased().everyDays(1).create()
 }
 
-function uninstall() {
+function cleanTriggers() {
   var triggers = ScriptApp.getProjectTriggers()
   for (var i = 0; i < triggers.length; i++) {
     ScriptApp.deleteTrigger(triggers[i])
@@ -84,6 +85,10 @@ function deleteMailImmediately() {
 }
 
 function scheduleNewJob() {
+  // before new job, we clear all triggers first
+  Logger.log('clean triggers...')
+  cleanTriggers();
+
   Logger.log('Scheduling one new job...')
   ScriptApp.newTrigger(TRIGGER_NAME)
     .timeBased()
