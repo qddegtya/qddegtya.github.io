@@ -1821,8 +1821,9 @@ embed {
   margin-bottom: 25px;
 }
 
-iframe {
-  width: 100%;
+.sketchfab {
+  width: 100% !important;
+  height: 360px !important;
   border: none !important;
 }
 
