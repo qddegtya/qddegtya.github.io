@@ -55,6 +55,14 @@ jekyll-archives:
 # follows
 follows: [
   {
+    title: "Github",
+    url: "https://github.com/qddegtya",
+    ico: "https://github.com/favicon.ico"
+  },{
+    title: "知乎",
+    url: "https://www.zhihu.com/people/archer_xiaoa",
+    ico: "https://www.zhihu.com/favicon.ico"
+  },{
     title: "语雀",
     url: "https://www.yuque.com/chiyu-heb0t",
     ico: "https://gw.alipayobjects.com/zos/rmsportal/UTjFYEzMSYVwzxIGVhMu.png"
@@ -66,14 +74,6 @@ follows: [
     title: "Segmentfault",
     url: "https://segmentfault.com/u/xiaoa",
     ico: "https://static.segmentfault.com/main_site_next/e3057aed/favicon.ico"
-  },{
-    title: "Github",
-    url: "https://github.com/qddegtya",
-    ico: "https://github.com/favicon.ico"
-  },{
-    title: "知乎",
-    url: "https://www.zhihu.com/people/archer_xiaoa",
-    ico: "https://www.zhihu.com/favicon.ico"
   }
 ]
 
