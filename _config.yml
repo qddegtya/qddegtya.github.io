@@ -128,17 +128,17 @@ skills: [
     score: "90",
     color: "#c0392b"
   },{
-    skill: "java",
-    dur: "120",
+    skill: "Java",
+    dur: "36",
     score: "90",
     color: "#A3CB38"
   },{
-    skill: "c/c++",
-    dur: "120",
+    skill: "C/C++",
+    dur: "24",
     score: "75",
     color: "#9980FA"
   },{
-    skill: "rust",
+    skill: "Rust",
     dur: "24",
     score: "70",
     color: "#B53471"
