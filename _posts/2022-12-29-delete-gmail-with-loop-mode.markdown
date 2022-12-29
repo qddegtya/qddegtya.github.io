@@ -26,8 +26,11 @@ var SEARCH_STRING = 'category:forums'
 var TRIGGER_NAME = 'deleteMailWithLoopMode'
 var TIMEZONE = 'AEST'
 
+// FIRST_TIME_DELAY_MIN
+var FIRST_TIME_DELAY_MIN = 1
+
 // FREQUENCY of scheduler
-var RESUME_FREQUENCY = 10
+var RESUME_FREQUENCY = 60
 
 // MAX: 500
 var PAGE_SIZE = 500
@@ -39,10 +42,8 @@ function intialize() {
 function install() {
   ScriptApp.newTrigger(TRIGGER_NAME)
     .timeBased()
-    .at(new Date(new Date().getTime() + 1000 * 60 * 2))
+    .at(new Date(new Date().getTime() + 1000 * 60 * FIRST_TIME_DELAY_MIN))
     .create()
-
-  ScriptApp.newTrigger(TRIGGER_NAME).timeBased().everyDays(1).create()
 }
 
 function cleanTriggers() {
