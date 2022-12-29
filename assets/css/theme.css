@@ -601,6 +601,15 @@ code {
     font-size: .9em;
     line-height: 1.2em;
     letter-spacing: 1px;
+    
+    border: 1px solid #f0f0f0;
+    margin: 40px 0;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
 }
 .blogcontent p{
     /*padding: 20px;*/
