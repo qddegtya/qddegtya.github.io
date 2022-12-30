@@ -24,7 +24,7 @@ category: tool
 var SEARCH_STRING = 'category:forums'
 
 // tigger function name
-var TRIGGER_NAME = 'deleteMailWithLoopMode'
+var TRIGGER_NAME = 'cleanWithScheduler'
 
 // first time job delay (min)
 var FIRST_TIME_DELAY_MIN = 1
@@ -56,8 +56,8 @@ function cleanTriggers() {
   }
 }
 
-// delete mail immediately
-function deleteMailImmediately() {
+// clean immediately
+function cleanImmediately() {
   var NOW = new Date()
   Logger.log('SEARCH: ' + SEARCH_STRING + ' BATCH_SIZE: ' + BATCH_SIZE)
 
@@ -102,8 +102,8 @@ function scheduleNewJob() {
     .create()
 }
 
-// delete mail with loop mode
-function deleteMailWithLoopMode() {
+// clean with scheduler
+function cleanWithScheduler() {
   var NOW = new Date()
   Logger.log('SEARCH: ' + SEARCH_STRING + ' BATCH_SIZE: ' + BATCH_SIZE)
 
