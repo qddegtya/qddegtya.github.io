@@ -29,11 +29,11 @@ var TRIGGER_NAME = 'deleteMailWithLoopMode'
 // first time job delay (min)
 var FIRST_TIME_DELAY_MIN = 1
 
-// FREQUENCY of scheduler: 1h
-var RESUME_FREQUENCY = 60
+// FREQUENCY of scheduler (min)
+var RESUME_FREQUENCY = 10
 
-// MAX: 500
-var PAGE_SIZE = 500
+// batch size
+var BATCH_SIZE = 500
 
 // intialize
 function intialize() {
@@ -59,10 +59,10 @@ function cleanTriggers() {
 // delete mail immediately
 function deleteMailImmediately() {
   var NOW = new Date()
-  Logger.log('SEARCH: ' + SEARCH_STRING + ' PAGE_SIZE: ' + PAGE_SIZE)
+  Logger.log('SEARCH: ' + SEARCH_STRING + ' BATCH_SIZE: ' + BATCH_SIZE)
 
   try {
-    var threads = GmailApp.search(SEARCH_STRING, 0, PAGE_SIZE)
+    var threads = GmailApp.search(SEARCH_STRING, 0, BATCH_SIZE)
 
     Logger.log('Processing ' + threads.length + ' threads...')
     for (var i = 0; i < threads.length; i++) {
@@ -105,12 +105,12 @@ function scheduleNewJob() {
 // delete mail with loop mode
 function deleteMailWithLoopMode() {
   var NOW = new Date()
-  Logger.log('SEARCH: ' + SEARCH_STRING + ' PAGE_SIZE: ' + PAGE_SIZE)
+  Logger.log('SEARCH: ' + SEARCH_STRING + ' BATCH_SIZE: ' + BATCH_SIZE)
 
   try {
-    var threads = GmailApp.search(SEARCH_STRING, 0, PAGE_SIZE)
+    var threads = GmailApp.search(SEARCH_STRING, 0, BATCH_SIZE)
 
-    if (threads.length == PAGE_SIZE) {
+    if (threads.length == BATCH_SIZE) {
       scheduleNewJob()
     }
 
