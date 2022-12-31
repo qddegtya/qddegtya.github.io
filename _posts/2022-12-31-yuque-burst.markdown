@@ -189,8 +189,6 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 值得一提的是，我们在这个点上的初心和想法，纵观整个零售行业数字化，其实本身并不算特别创新，布局这个赛道的很多科技公司早就已经入场 **Spatial Analytics **这个命题了，给我印象最深刻的是（[https://carto.com/industries/retail/](https://carto.com/industries/retail/)）公司出的解决方案，大家可以直观地感受到**空间数字化**的价值，尤其是室内地图的多种结合业务的生动场景。
 
-[![indoormapping.mp4 (1.73MB)](https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*NNs6TKOR3isAAAAAAAAAAABkARQnAQ)]()（素材来源于 Carto 官网）
-
 除此之外，我们团队当时也在不断跟进 webGL 标准演进，尝试使用 webGL 结合微观空间规划命题来解决门店的个性化陈列以及业务数字化（量化坪效等）
 
 线下门店的陈列是一个非常有意义的命题，没有人知道它的真正威力，一个陈列非常清晰、非常引入注目的门店能否带来直接营收的增长？这里面的深层原因和复杂因子之间的关系和规律，至今仍然是一个谜，即便我们已经通过技术手段可以拿到相应的数据，但是要**归因分析，找到一个增长密码**，仍然非常困难。
@@ -224,7 +222,6 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 该陈列方案最终会通过消息渠道，推送到门店的陈列员手机上：
 
-[![SVID_20210401_162120_1.mp4 (6.42MB)](https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*NNs6TKOR3isAAAAAAAAAAABkARQnAQ)]()
 ### 指南针优于地图，未来无法预测
 > 只要你走的够远，就一定能到达那里。- 《爆裂》
 
