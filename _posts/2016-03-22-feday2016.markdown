@@ -1,6 +1,6 @@
 ---
 layout: singlepost
-title: FEDAY2016之旅
+title: FEDAY 2016 之旅
 tags: javascript react node
 category: life
 ---

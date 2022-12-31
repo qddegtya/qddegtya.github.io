@@ -1,17 +1,17 @@
 ---
 layout: singlepost
-title: Flask中让api实现客户端授权
+title: Flask 中让 api 实现客户端授权
 tags: flask python
 category: work
 ---
 
-> 后端API通常需要对发送请求的客户端进行合法验证，以确保这些API是被"保护"起来的。
-前段时间给一个移动应用做Flask的Restful-API正好涉及到了这方面的内容，其中有用到python元编程的相关技巧。
+> 后端 API 通常需要对发送请求的客户端进行合法验证，以确保这些 API 是被"保护"起来的。
+前段时间给一个移动应用做 Flask 的 Restful-API 正好涉及到了这方面的内容，其中有用到 python 元编程的相关技巧。
 
 ### 如何认证？
 
-对于崇尚标准的工程师来说，http标准的auth是一个不错的选择，或者直接选择oAuth也可以。
-但本着研究的精神，我们自己来实现一个api签名机制，并且patch到需要认证的api对应的资源类上。
+对于崇尚标准的工程师来说，http 标准的 auth 是一个不错的选择，或者直接选择 oAuth 也可以。
+但本着研究的精神，我们自己来实现一个 api 签名机制，并且 patch 到需要认证的 api 对应的资源类上。
 
 <!-- more -->
 
@@ -19,15 +19,15 @@ category: work
 
 我们需要知道的大概认证背景和思路：
 
-1. 合法客户端拥有服务端下发的app_id和app_key;
-2. 服务端知道每个app_id对应的app_key;
-3. 客户端请求接口数据时，必须用本地的app_key，时间戳，以及app_id进行指定规则的加密，得到一个签名串;
-4. 每一次请求带上app_id，时间戳，签名串和业务数据提交给后端API;
-5. 后端API根据提交上来app_id，时间戳，签名串就可以确认是否为合法的客户端;
+1. 合法客户端拥有服务端下发的 app_id 和 app_key;
+2. 服务端知道每个 app_id 对应的 app_key;
+3. 客户端请求接口数据时，必须用本地的 app_key，时间戳，以及 app_id 进行指定规则的加密，得到一个签名串;
+4. 每一次请求带上 app_id，时间戳，签名串和业务数据提交给后端 API;
+5. 后端 API 根据提交上来 app_id，时间戳，签名串就可以确认是否为合法的客户端;
 
 废话不多说，上代码和详细的注释：
 
-### 我们先伪造一个颁证服务key_gen.py
+### 我们先伪造一个颁证服务 key_gen.py
 
 ```python
 #!/usr/bin/env python
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     sign_api(159874265148, '710628459', 'bd7d14ed5e0b9bf3c3ac28c224b322d271f6ae6c')
 ```
 
-### Flask中利用元类进行授权包装auth.py
+### Flask 中利用元类进行授权包装 auth.py
 
 ```python
 #!/usr/bin/python
@@ -77,7 +77,7 @@ def check_sign_api(args):
     :return: 是否签名成功
     """
     global PRE_TIMESTAMP
-    # 为了正确传递KeyError错误
+    # 为了正确传递 KeyError 错误
     _time_stamp = args['timestamp']
     _app_id = args['app_id']
     _signature = args['signature']
@@ -93,7 +93,7 @@ def check_sign_api(args):
     )
 def _get_resource_base():
     """
-    :return: 获取资源Restful基类
+    :return: 获取资源 Restful 基类
     """
     if ENV_DEBUG:
         return Resource
@@ -131,10 +131,10 @@ def api_require_auth(http_handler):
 class RequireAuthClass(MethodViewType):
     """
     接口授权统一处理类
-    基本思想是：所有指定RequireAuthClass为元类的类，在type.__new__为其实例化时
-    会自动将其下的post,put,delete等方法包装上api_require_auth
-    为了解决元类冲突问题，RequireAuthClass必须是MethodViewType的子类
-    而不是type的子类
+    基本思想是：所有指定 RequireAuthClass 为元类的类，在 type.__new__ 为其实例化时
+    会自动将其下的 post, put, delete 等方法包装上 api_require_auth
+    为了解决元类冲突问题，RequireAuthClass 必须是 MethodViewType 的子类
+    而不是 type 的子类
     """
     def __new__(mcs, name, bases, dct):
         for name, value in dct.iteritems():
@@ -147,11 +147,11 @@ class RequireAuthClass(MethodViewType):
         return MethodViewType.__new__(mcs, name, bases, dct)
 ```
 
-### 业务层的api就好办多了
+### 业务层的 api 就好办多了
 
-小Tip：
+小 Tip：
 
-app.auth模块导出的_get_resource_base方法由环境变量控制
+app.auth 模块导出的 _get_resource_base 方法由环境变量控制
 
 如果在调试模式下，则不启用授权
 
@@ -172,13 +172,13 @@ from app.setting import (
 from util.mongo_util import Mongo, close_db, json_serializable
 app = Flask(__name__)
 api = Api(app)
-# 获取db实例
+# 获取 db 实例
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
         db = g._database = Mongo(_db_settings)
     return db
-# 全局db实例
+# 全局 db 实例
 db = LocalProxy(get_db)
 # 应用环境销毁的时候
 @app.teardown_appcontext
@@ -186,7 +186,7 @@ def teardown_db(exception):
     # 意外退出日志
     db = getattr(g, '_database', None)
     if db is not None:
-        # 确保db立即关闭
+        # 确保 db 立即关闭
         db.connect.close
 @app.errorhandler(404)
 def not_found_error(error):
@@ -196,7 +196,7 @@ def not_found_error(error):
     }), 404
 class WelcomeToApi(_get_resource_base()):
     """
-    业务api根入口
+    业务 api 根入口
     用于检查版本等用途
     """
     def get(self):
@@ -223,7 +223,7 @@ class Login(_get_resource_base()):
     用户登录接口
     """
     pass
-# todo 等待前段定义所需数据
+# TODO 等待前端定义所需数据
 class HigherVocationalCollege(_get_resource_base()):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()

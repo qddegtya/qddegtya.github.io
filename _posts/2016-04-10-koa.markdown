@@ -1,13 +1,13 @@
 ---
 layout: singlepost
-title: KOA源码阅读系列（一） - 理解KOA中间件的执行
+title: KOA 源码阅读系列（一） - 理解 KOA 中间件的执行
 tags: javascript node
 category: work
 ---
 
 源码阅读系列的开篇就不多废话了，开门见山。
 
-首先看添加中间件的入口app.use的源码
+首先看添加中间件的入口 app.use 的源码
 
 ```javascript
 /**
@@ -27,7 +27,7 @@ app.use = function(fn){
   debug('use %s', fn._name || fn.name || '-');
 
   // 主要就是做这个事情
-  // 根据上面的assert，这里的fn均为generator function
+  // 根据上面的 assert，这里的 fn 均为 generator function
   this.middleware.push(fn);
   return this;
 };
@@ -36,7 +36,7 @@ app.use = function(fn){
 
 <!-- more -->
 
-接着，来看一下Server是怎么起来的
+接着，来看一下 Server 是怎么起来的
 
 ```javascript
 /**
@@ -52,14 +52,14 @@ app.use = function(fn){
 app.listen = function(){
   debug('listen');
 
-  // 非常熟悉的createServer
-  // 调用的是app.callback
+  // 非常熟悉的 createServer
+  // 调用的是 app.callback
   var server = http.createServer(this.callback());
   return server.listen.apply(server, arguments);
 };
 ```
 
-很显然，app.callback里应该就有我们想要的中间件执行的部分
+很显然，app.callback 里应该就有我们想要的中间件执行的部分
 
 ```javascript
 /**
@@ -93,7 +93,7 @@ app.callback = function(){
 };
 ```
 
-这里的compose是关键，我们来到koa-compose的源码，仅仅就这38行代码，就构成了KOA中间件执行的核心部分，这里我们暂且不讨论co.wrap
+这里的 compose 是关键，我们来到 koa-compose 的源码，仅仅就这 38 行代码，就构成了 KOA 中间件执行的核心部分，这里我们暂且不讨论 co.wrap
 
 ```javascript
 /**
@@ -135,7 +135,7 @@ function compose(middleware){
 function *noop(){}
 ```
 
-这么快就看到这行了？我觉得上面的代码信息量很大，道友们再细细品味一下，确定品味完了，下面的开胃DEMO可以帮助你更好的理解这个执行过程
+这么快就看到这行了？我觉得上面的代码信息量很大，道友们再细细品味一下，确定品味完了，下面的开胃 DEMO 可以帮助你更好的理解这个执行过程
 
 ```javascript
 #!/usr/bin/env node
@@ -160,12 +160,12 @@ function* b(next) {
 var next = function* (){};
 var i = [a, b].length;
 
-// 通过next首尾相连
+// 通过 next 首尾相连
 while(i--) {
   next = [a, b][i].call(null, next);
 }
 
-// 包裹第一个middleware
+// 包裹第一个 middleware
 function* start(ne) {
   return yield* ne;
 }
@@ -185,10 +185,10 @@ console.log(start(next).next());
 { value: 1, done: false }
 { value: 2, done: false }
 { value: 3, done: false }
-{ value: '继续执行A中间件', done: false }
+{ value: '继续执行 A 中间件', done: false }
 ```
 
-等等，我们的co去哪儿了？大家有没有发现上面Demo中和我们平时用KOA写中间件的不同之处，我们来看一下KOA的官方示例代码：
+等等，我们的 co 去哪儿了？大家有没有发现上面 Demo 中和我们平时用 KOA 写中间件的不同之处，我们来看一下 KOA 的官方示例代码：
 
 ```
 var koa = require('koa');
@@ -223,19 +223,19 @@ app.listen(3000);
 
 有没有发现？如果还没有发现我就公布答案啦：
 
-> 根据上文，我们已经知道，那个负责把所有中间件串起来的next其实本身也是一个generator，但是，如果在Generater函数内部，调用另一个Generator函数，默认情况下是没有效果的，这个时候我们必须使用yield* next
+> 根据上文，我们已经知道，那个负责把所有中间件串起来的 next 其实本身也是一个 generator，但是，如果在 Generater 函数内部，调用另一个 Generator 函数，默认情况下是没有效果的，这个时候我们必须使用 yield* next
 
-但是，我们写代码的时候明明写的是yield next啊，这就是co的巧妙之处了：
+但是，我们写代码的时候明明写的是 yield next 啊，这就是 co 的巧妙之处了：
 
-co帮我们"自动管理"generator的next，并根据调用返回的value做出不同的响应，这个响应是通过toPromise方法进行的，我们可以在toPromise中发现：
+co 帮我们"自动管理" generator 的 next，并根据调用返回的 value 做出不同的响应，这个响应是通过 toPromise 方法进行的，我们可以在 toPromise 中发现：
 
-* 如果遇到另外一个generator，co会继续调用自己，这就是为什么我们不需要写yield* next的原因，而只要写yield next
+* 如果遇到另外一个 generator，co 会继续调用自己，这就是为什么我们不需要写 yield* next 的原因，而只要写 yield next
 
 ```javascript
 yield next;
 ```
 
-可以看一下这个toPromise
+可以看一下这个 toPromise
 
 ```javascript
 /**
@@ -257,19 +257,19 @@ function toPromise(obj) {
 }
 ```
 
-所以，co对yield后面跟的类型是严格约定的，如果我们在项目中直接使用了DEMO中的
+所以，co 对 yield 后面跟的类型是严格约定的，如果我们在项目中直接使用了 DEMO 中的
 
 ```javascript
 yield 1
 ```
 
-co就会给我们一个错误
+co 就会给我们一个错误
 
 ```
 You may only yield a function, promise, generator, array, or object.
 ```
 
-所以，我们一般在项目中如果想要"同步"写法，都会用Promise封装一下，比如这样：
+所以，我们一般在项目中如果想要"同步"写法，都会用 Promise 封装一下，比如这样：
 
 ```javascript
 let getAuthInfo = function(req) {
@@ -295,7 +295,7 @@ let getAuthInfo = function(req) {
 let authinfo = yield getAuthInfo(authReq);
 ```
 
-执行完所有中间件之后，KOA才会进入到respond
+执行完所有中间件之后，KOA 才会进入到 respond
 
 ```javascript
 fn.call(ctx).then(function () {
@@ -352,14 +352,14 @@ function respond() {
 }
 ```
 
-所以，我们说使用KOA写中间件的时候，我们可以任意修改我们的response body，然后再返回给客户端
+所以，我们说使用 KOA 写中间件的时候，我们可以任意修改我们的 response body，然后再返回给客户端
 
 ### 总结
 
-* KOA通过next将中间件"串"了起来，形成了链表，然后通过最外层的generator function触发整个执行过程
+* KOA 通过 next 将中间件"串"了起来，形成了链表，然后通过最外层的 generator function 触发整个执行过程
 
-* 在compose的时候，拿取中间件的顺序是FILO的，但是拿出来之后做的操作是循环i--赋值next，因此，依然可以保证正确的顺序执行
+* 在 compose 的时候，拿取中间件的顺序是 FILO 的，但是拿出来之后做的操作是循环 i-- 赋值 next，因此，依然可以保证正确的顺序执行
 
-* KOA框架通过co框架包装generator来达到"同步"写法
+* KOA 框架通过 co 框架包装 generator 来达到"同步"写法
 
-* KOA在执行完所有中间件之后才会真正执行respond，在此之前，我们可以对response body做任何你想做的修改，这点与Express有本质上的区别
+* KOA 在执行完所有中间件之后才会真正执行 respond，在此之前，我们可以对 response body 做任何你想做的修改，这点与 Express 有本质上的区别

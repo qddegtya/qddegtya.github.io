@@ -1,6 +1,6 @@
 ---
 layout: singlepost
-title: v-circle - 漂亮的Vue.js圆形进度组件集合
+title: v-circle - 漂亮的 Vue.js 圆形进度组件集合
 tags: javascript vue
 category: work
 ---

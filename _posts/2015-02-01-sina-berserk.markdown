@@ -7,10 +7,11 @@ category: tool
 
 berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。
 
-> 已知bug：
-当加载的页面样式中存在font-size:0;时，由于QT存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方bug链接 https://qt-project.org/forums/viewthread/17097）问题，导致berserkJS无论在界面模式下还是command模式下都会直接崩溃，已向作者提交issue。
+> 已知 bug：
 
-以上引用来自于 BerserkJS 官方github 的大标题，那么，BerserkJS究竟好用在哪里？
+当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方 bug 链接 https://qt-project.org/forums/viewthread/17097）问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交 issue。
+
+以上引用来自于 BerserkJS 官方 github 的大标题，那么，BerserkJS 究竟好用在哪里？
 
 [https://github.com/tapir-dream/berserkJS](https://github.com/tapir-dream/berserkJS)
 
@@ -24,21 +25,21 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 无界面浏览器测试：在不依赖本地任何浏览器的情况下，运行测试框架，如 QUnit，Capybara, QUnit, Mocha, WebDriver, YUI Test, BusterJS, FuncUnit, Robot Framework 等。
 
-（确实如此，berserJS自带command模式，可以进行无界面的浏览器测试）
+（确实如此，berserJS 自带 command 模式，可以进行无界面的浏览器测试）
 
 页面自动化：可以无障碍访问和操作网页的标准 DOM API 以及页面所用 JS 变量、对象、属性等内容。
 
-主要是因为这个实用的API：
+主要是因为这个实用的 API：
 
 App.webview.execScript(sandbox <function> [, argObject <Object>|<Array>|<string>|<number>])
 
 ```javascript
-// 执行当前页面中的console.log方法打印在控制台中打印 'hello'
+// 执行当前页面中的 console.log 方法打印在控制台中打印 'hello'
 App.webview.execScript(function(msg) {
     console.log(msg);
 }, 'hello');
 
-// 执行当前页面中的console.log方法在控制台中打印 'width: 100, height:100''
+// 执行当前页面中的 console.log 方法在控制台中打印 'width: 100, height:100'
 App.webview.execScript(function(size) {
     console.log('width: ' + size.width + ", " + "height: " +  size.height);
 }, {width:100, height:300});
@@ -48,7 +49,7 @@ App.webview.execScript(function(size) {
 
 （也有API进行捕获）
 
-网络监控：自动化的网络性能监控，跟踪页面所有资源加载情况并可简便的将输出结果格式化为标准HAR格式。
+网络监控：自动化的网络性能监控，跟踪页面所有资源加载情况并可简便的将输出结果格式化为标准 HAR 格式。
 
 (var data=JSON.stringify(App.networkData(),undefined,2); 一句话搞定格式化和收集)
 
@@ -66,13 +67,13 @@ App.webview.execScript(function(size) {
 
 (不得不感叹webkit的强大~)
 
-开放性：工具将主要操作均包装为JS语法与数据格式，采用JS语法包装，前端工程师可根据API组装出符合各自预期的检测功能。
+开放性：工具将主要操作均包装为 JS 语法与数据格式，采用 JS 语法包装，前端工程师可根据 API 组装出符合各自预期的检测功能。
 
-(确实是JS语法，前端躁动.......)
+(确实是 JS 语法，前端躁动.......)
 
-接口性：工具本身支持命令行参数，可带参调用。API支持处理外部进程读取输出流、支持HTTP发送数据。可由 WEB 程序远程调用后获取测试的返回结果。
+接口性：工具本身支持命令行参数，可带参调用。API 支持处理外部进程读取输出流、支持 HTTP 发送数据。可由 WEB 程序远程调用后获取测试的返回结果。
 
-(看源码可知，确实支持command模式)
+(看源码可知，确实支持 command 模式)
 
 标准性：完全真实的浏览器环境内 DOM，CSS，JavaScript，Canvas，SVG 可供使用，绝无仿真模拟。
 
@@ -109,34 +110,34 @@ Cisco: 用于 WebEx 项目的自动化测试
 
 ```javascript
 /*
-berserkJS 验证XXX页面加载问题
+berserkJS 验证 XXX 页面加载问题
  */
-//打开网络监听
+// 打开网络监听
 App.netListener(true);
 
-//打开Tujia
+// 打开 Tujia
 App.webview.open("xxxxxxxxxxxx");
 
-//监听加载进度
+// 监听加载进度
 App.webview.addEventListener("loadProgress",function(cur){
     console.log("当前加载进度: %" + cur);
 });
 
-//页面load完成后回调获取数据
+//页面 load 完成后回调获取数据
 App.webview.addEventListener("load",function(){
     var data=JSON.stringify(App.networkData(),undefined,2);
-    //写入文件
+    // 写入文件
     App.writeFile(App.path + "xxxx.txt",data);
 
-    //关闭监听
+    // 关闭监听
     App.netListener(false);
 
-    //退出App
+    // 退出 App
     //App.close();
 });
 ```
 
-berserkJS提供了很多可以监听的事件类型，满足你各种要求，每个回调函数的参数不一样，看一下官方api就知道了。
+berserkJS 提供了很多可以监听的事件类型，满足你各种要求，每个回调函数的参数不一样，看一下官方 api 就知道了。
 
 上述脚本中，我们记录下了页面加载的数据，利用这个数据我们可以做很多事情，开发一个前端性能对比平台应该就不是什么难事了。
 

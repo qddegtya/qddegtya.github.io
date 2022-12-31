@@ -5,6 +5,6 @@ tags: life video
 category: life
 ---
 
-2016年，来年再战，《斗战胜佛》献上。
+2016 年，来年再战，《斗战胜佛》献上。
 
 <!-- more -->
