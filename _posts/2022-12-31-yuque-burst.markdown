@@ -1,6 +1,6 @@
 ---
 layout: singlepost
-title: Yuque - 面向未来的认知优化 - 读《爆裂》后的杂谈
+title: 面向未来的认知优化 - 读《爆裂》后的杂谈
 tags: thinking life
 category: life
 ---
