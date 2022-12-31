@@ -21,14 +21,14 @@ category: lab
 # Android_ScreenSream by Archer
 # Based on Jython, ddmlib
 
-#import jar
+# import jar
 import sys,os
 sys.path.append(r'C:\\ddmlib.jar')
 sys.path.append(r'C:\\guava17.jar')
 sys.path.append(r'C:\\rt.jar')
 from threading import Thread
 
-#import lib
+# import lib
 from java.awt.image import *
 from java.io import *
 from javax.imageio import *
@@ -54,14 +54,14 @@ class AndroidScreenStream(object):
             except:
                 pass
             if(count>60):
-                print "获取设备列表信息超时！"
+                print "获取设备列表信息超时"
                 break
 
     def get_devices(self):
         """获取所有已连接设备"""
         AndroidDebugBridge.init(False)
         mybridge=AndroidDebugBridge.createBridge()
-        self.wait_device_lists(mybridge) #get
+        self.wait_device_lists(mybridge) # get
         self.devices.append(mybridge.getDevices())
         return self
 
@@ -69,17 +69,17 @@ class AndroidScreenStream(object):
         """根据 index 获取单个当前设备"""
         AndroidDebugBridge.init(False)
         mybridge=AndroidDebugBridge.createBridge()
-        self.wait_device_lists(mybridge) #get
+        self.wait_device_lists(mybridge) # get
         try:
             self.currentdevice=mybridge.getDevices()[index]
             return self
         except IndexError:
-            print "不存在序号为"+str(index)+"的设备,请检查 USB 连接!"
+            print "不存在序号为" + str(index) + "的设备，请检查 USB 连接"
             sys.exit()
 
     def get_current_screen_imgbyes(self):
         """获取当前屏幕图像的字节数据"""
-        self.rawimgdata=self.currentdevice.getScreenshot().data #保存图像字节数据
+        self.rawimgdata=self.currentdevice.getScreenshot().data # 保存图像字节数据
         return self
 
     def get_current_rawscreen(self):
@@ -91,7 +91,7 @@ class AndroidScreenStream(object):
         """将当前屏幕图像数据保存为图片"""
         if self.rawscreen is not None:
             landscape=islandscape
-            #横屏尺寸处理
+            # 横屏尺寸处理
             imgwidth=self.rawscreen.height if landscape else self.rawscreen.width
             imgheight=self.rawscreen.width if landscape else self.rawscreen.height
             image=BufferedImage(imgwidth,imgheight,BufferedImage.TYPE_INT_RGB)
@@ -110,10 +110,10 @@ class AndroidScreenStream(object):
             try:
                 ImageIO.write(image,"JPEG",File(path))
             except IOError:
-                print "发生异常!"
+                print "发生异常"
                 sys.exit()
         else:
-            print "rawscreen 为空!"
+            print "rawscreen 为空"
             sys.exit()
 
 if __name__=="__main__":

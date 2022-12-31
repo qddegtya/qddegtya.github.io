@@ -77,7 +77,7 @@ SVG + JS 实现新版手机 QQ 的手势消除红点消息的动画。
       var pX = x0 - ((x0 - x1) / 2);
       var pY = y0 - ((y0 - y1) / 2);
 
-      // 勾股 x,y
+      // 勾股 x, y
       var _gX = Math.abs(x0 - x1);
       var _gY = Math.abs(y0 - y1);
 

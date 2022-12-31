@@ -9,7 +9,7 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 > 已知 bug：
 
-当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方 bug 链接 https://qt-project.org/forums/viewthread/17097）问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交 issue。
+当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方 issue 链接 https://qt-project.org/forums/viewthread/17097）问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交该 issue。
 
 以上引用来自于 BerserkJS 官方 github 的大标题，那么，BerserkJS 究竟好用在哪里？
 
@@ -47,7 +47,7 @@ App.webview.execScript(function(size) {
 
 屏幕捕获：以编程方式获取网页全部或部分内容，可根据 Selector 截取指定 DOM 元素渲染情况；包括 CSS，SVG 和 Canvas。可将截取图片 base64 化，以便发送给远端服务器保存。
 
-（也有API进行捕获）
+（也有 API 进行捕获）
 
 网络监控：自动化的网络性能监控，跟踪页面所有资源加载情况并可简便的将输出结果格式化为标准 HAR 格式。
 
@@ -55,7 +55,7 @@ App.webview.execScript(function(size) {
 
 页面性能监控：自动化的页面渲染监控，可获取 CPU、 内存使用情况数据，根据页面整体情况可简便的输出首次渲染时间、首屏渲染时间等关键数据。
 
-(现成API)
+(现成 API)
 
 ### 工具特性
 
@@ -63,9 +63,9 @@ App.webview.execScript(function(size) {
 
 (界面稍粗糙一点而已....⊙﹏⊙，功能很强大！)
 
-功能性：工具内置 webkit 浏览器内核，可响应浏览器内核事件回调、支持发送鼠标消息给浏览器、包装浏览器网络请求数据为JS数据格式、可与浏览器内JS做数据交互。
+功能性：工具内置 webkit 浏览器内核，可响应浏览器内核事件回调、支持发送鼠标消息给浏览器、包装浏览器网络请求数据为 JS 数据格式、可与浏览器内 JS 做数据交互。
 
-(不得不感叹webkit的强大~)
+(不得不感叹 webkit 的强大~)
 
 开放性：工具将主要操作均包装为 JS 语法与数据格式，采用 JS 语法包装，前端工程师可根据 API 组装出符合各自预期的检测功能。
 
@@ -85,7 +85,7 @@ App.webview.execScript(function(size) {
 
 API 简易: 更直接的 API，如获取网络性能数据，仅需 3 行代码，而非 PhantomJS 的几十行，且信息量比 PhantomJS 丰富。
 
-API 标准化： 常用 API 均采用 W3 规范标准命名，事件处理代码可重复绑定而不相互覆盖，可以无缝兼容 Wind.JS 等异步流程处理库来解决自动化时异步流程控制问题。
+API 标准化： 常用 API 均采用 W3C 规范标准命名，事件处理代码可重复绑定而不相互覆盖，可以无缝兼容 Wind.JS 等异步流程处理库来解决自动化时异步流程控制问题。
 
 页面性能信息丰富：具有页面渲染和 CPU、 内存使用情况数据获取能力，可输出首次渲染时间、首屏渲染时间等页面性能关键数据。
 
@@ -106,7 +106,7 @@ Cisco: 用于 WebEx 项目的自动化测试
 
 ![](https://segmentfault.com/img/bVc5aK)
 
-### 根据API用JS完成我们此次的目标
+### 根据 API 用 JS 完成我们此次的目标
 
 ```javascript
 /*
@@ -133,7 +133,7 @@ App.webview.addEventListener("load",function(){
     App.netListener(false);
 
     // 退出 App
-    //App.close();
+    // App.close();
 });
 ```
 

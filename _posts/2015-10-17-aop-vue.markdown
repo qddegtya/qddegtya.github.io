@@ -74,7 +74,7 @@ export default {
 };
 ```
 
-**$httpWithAuth的实现**
+**$httpWithAuth 的实现**
 
 ```javascript
 function install(Vue) {

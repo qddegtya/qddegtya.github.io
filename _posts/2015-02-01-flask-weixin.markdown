@@ -212,14 +212,14 @@ def all_in_one():
     _time_stamp = int(time.time())
     _random_str = _ge_nonce_str()
     _js_ticket = current_token_ticket.ticket
-    _url = request.host_url[:-1]  # 去除/
+    _url = request.host_url[:-1]  # 去除 /
 
     return json_response({
         'appId': CONFIG['app_id'],
         'timestamp': _time_stamp,
         'nonceStr': _random_str,
         'signature': _sign_ticket(_random_str, _js_ticket, _time_stamp, _url),
-        'url': _url  # POST 过来什么,返回什么
+        'url': _url  # POST 过来什么，返回什么
     })
 
 
