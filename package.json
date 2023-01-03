@@ -12,8 +12,7 @@
     "vinyl-fs": "^3.0.3"
   },
   "scripts": {
-    "pangu": "./scripts/pangu.js",
-    "markdownlint-format": "./node_modules/.bin/markdownlint -f ./_posts",
+    "format-posts": "./scripts/pangu.js && ./node_modules/.bin/markdownlint -f ./_posts",
     "build": "./node_modules/.bin/gulp build",
     "debug": "./node_modules/.bin/gulp debug && bundle exec jekyll serve"
   },
