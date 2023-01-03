@@ -14,7 +14,7 @@
   },
   "scripts": {
     "prettier": "./node_modules/.bin/prettier -w --parser=markdown --config=./.prettierrc.json --loglevel=error  ./_posts",
-    "markdownlint": "markdownlint-cli2 \"./_posts/*.{md,mdx,markdown}\" \"!node_modules\"",
+    "markdownlint": "./node_modules/.bin/markdownlint-cli2 \"./_posts/*.{md,mdx,markdown}\" \"!node_modules\"",
     "build": "./node_modules/.bin/gulp build",
     "debug": "./node_modules/.bin/gulp debug && bundle exec jekyll serve"
   },
