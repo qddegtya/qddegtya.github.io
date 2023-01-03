@@ -5,9 +5,11 @@
   "main": "index.js",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-uglifycss": "^1.1.0"
+    "gulp-uglifycss": "^1.1.0",
+    "markdownlint-cli": "^0.32.2"
   },
   "scripts": {
+    "markdownlint": "./node_modules/.bin/markdownlint -f ./_posts",
     "build": "./node_modules/.bin/gulp build",
     "debug": "./node_modules/.bin/gulp debug && bundle exec jekyll serve"
   },

@@ -69,7 +69,7 @@ const yourController = MixBlendMode.UIController((MixBlendMode) => {
 # Examples
 
 ```shell
-$ npm run dev
+npm run dev
 ```
 
 # Reference

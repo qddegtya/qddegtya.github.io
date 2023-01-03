@@ -18,7 +18,6 @@ category: tool
 
 ### Content of App Script
 
-
 ```javascript
 // search string to delete
 var SEARCH_STRING = 'category:forums'
