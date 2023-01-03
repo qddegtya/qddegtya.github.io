@@ -35,14 +35,17 @@ App.webview.execScript (sandbox <function> [, argObject <Object>|<Array>|<string
 
 ```javascript
 // 执行当前页面中的 console.log 方法打印在控制台中打印 'hello'
-App.webview.execScript (function (msg) {
-    console.log (msg);
-}, 'hello');
+App.webview.execScript(function (msg) {
+  console.log(msg);
+}, "hello");
 
 // 执行当前页面中的 console.log 方法在控制台中打印 'width: 100, height:100'
-App.webview.execScript (function (size) {
-    console.log ('width: ' + size.width + "," + "height:" +  size.height);
-}, {width:100, height:300});
+App.webview.execScript(
+  function (size) {
+    console.log("width: " + size.width + "," + "height:" + size.height);
+  },
+  { width: 100, height: 300 }
+);
 ```
 
 屏幕捕获：以编程方式获取网页全部或部分内容，可根据 Selector 截取指定 DOM 元素渲染情况；包括 CSS，SVG 和 Canvas。可将截取图片 base64 化，以便发送给远端服务器保存。
@@ -113,27 +116,27 @@ Cisco: 用于 WebEx 项目的自动化测试
 berserkJS 验证 XXX 页面加载问题
  */
 // 打开网络监听
-App.netListener (true);
+App.netListener(true);
 
 // 打开 Tujia
-App.webview.open ("xxxxxxxxxxxx");
+App.webview.open("xxxxxxxxxxxx");
 
 // 监听加载进度
-App.webview.addEventListener ("loadProgress",function (cur){
-    console.log ("当前加载进度: %" + cur);
+App.webview.addEventListener("loadProgress", function (cur) {
+  console.log("当前加载进度: %" + cur);
 });
 
 // 页面 load 完成后回调获取数据
-App.webview.addEventListener ("load",function (){
-    var data=JSON.stringify (App.networkData (),undefined,2);
-    // 写入文件
-    App.writeFile (App.path + "xxxx.txt",data);
+App.webview.addEventListener("load", function () {
+  var data = JSON.stringify(App.networkData(), undefined, 2);
+  // 写入文件
+  App.writeFile(App.path + "xxxx.txt", data);
 
-    // 关闭监听
-    App.netListener (false);
+  // 关闭监听
+  App.netListener(false);
 
-    // 退出 App
-    // App.close ();
+  // 退出 App
+  // App.close ();
 });
 ```
 

@@ -32,22 +32,21 @@ Google was much more pragmatic, saying Dark Theme can “reduce power usage by a
 
 ```javascript
 const mbm = MixBlendMode({
-  backgroundColor: '#FFFFFF',
-  enable: true
+  backgroundColor: "#FFFFFF",
+  enable: true,
 });
 
 // toggle
-mbm.toggle()
+mbm.toggle();
 
 // show
-mbm.show()
+mbm.show();
 
 // hide
-mbm.hide()
+mbm.hide();
 
 // get auto-increment zIndex
-mbm.izIndex()
-
+mbm.izIndex();
 ```
 
 # UI Controller
@@ -63,7 +62,7 @@ MixBlendMode.UIController().render()
 ```javascript
 const yourController = MixBlendMode.UIController((MixBlendMode) => {
   // controller logic
-})
+});
 ```
 
 # Examples
@@ -74,4 +73,4 @@ npm run dev
 
 # Reference
 
-* [The past, present, and future of Dark Mode](https://uxdesign.cc/the-past-present-and-future-of-dark-mode-9254f2956ec7)
+- [The past, present, and future of Dark Mode](https://uxdesign.cc/the-past-present-and-future-of-dark-mode-9254f2956ec7)

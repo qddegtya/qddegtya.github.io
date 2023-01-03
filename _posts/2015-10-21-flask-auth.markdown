@@ -6,7 +6,7 @@ category: work
 ---
 
 > 后端 API 通常需要对发送请求的客户端进行合法验证，以确保这些 API 是被 "保护" 起来的。
-前段时间给一个移动应用做 Flask 的 Restful-API 正好涉及到了这方面的内容，其中有用到 python 元编程的相关技巧。
+> 前段时间给一个移动应用做 Flask 的 Restful-API 正好涉及到了这方面的内容，其中有用到 python 元编程的相关技巧。
 
 ### 如何认证？
 
@@ -151,7 +151,7 @@ class RequireAuthClass (MethodViewType):
 
 小 Tip：
 
-app.auth 模块导出的 _get_resource_base 方法由环境变量控制
+app.auth 模块导出的 \_get_resource_base 方法由环境变量控制
 
 如果在调试模式下，则不启用授权
 

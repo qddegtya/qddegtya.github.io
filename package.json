@@ -4,15 +4,17 @@
   "description": "Archer's blog, its name is Colorful.",
   "main": "index.js",
   "devDependencies": {
+    "@github/markdownlint-github": "^0.3.0",
     "gulp": "^4.0.2",
     "gulp-uglifycss": "^1.1.0",
     "map-stream": "^0.0.7",
-    "markdownlint-cli": "^0.32.2",
-    "pangu": "^4.0.7",
+    "markdownlint-cli2": "^0.6.0",
+    "prettier": "2.8.1",
     "vinyl-fs": "^3.0.3"
   },
   "scripts": {
-    "format-posts": "./scripts/pangu.js && ./node_modules/.bin/markdownlint -f ./_posts",
+    "prettier": "./node_modules/.bin/prettier -w --parser=markdown --config=./.prettierrc.json --loglevel=error  ./_posts",
+    "markdownlint": "markdownlint-cli2 \"./_posts/*.{md,mdx,markdown}\" \"!node_modules\"",
     "build": "./node_modules/.bin/gulp build",
     "debug": "./node_modules/.bin/gulp debug && bundle exec jekyll serve"
   },

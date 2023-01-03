@@ -138,7 +138,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 但是通过简单的教学，最终，他使用这样的工具解决了几个这样的「长尾」工作场景。重要的并不是他解决了这个问题，重要的是，**这个世界又多了一个可以真正愿意改变工作方式的人。**
 
-![截屏 2022-05-29 15.48.02.png](<https://cdn.nlark.com/yuque/0/2022/png/359409/1653810498810-011f69b9-ca82-4fe6-8fb3-0463797cd6d3.png#clientId=u20018a98-f638-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uaeb0a4cf&margin=%5Bobject%20Object%5D&name>=% E6%88% AA% E5% B1%8F2022-05-29%2015.48.02.png&originHeight=1584&originWidth=2362&originalType=binary&ratio=1&rotation=0&showTitle=false&size=739012&status=done&style=none&taskId=u1e96152c-3660-4417-b112-ace53c10e56&title=)
+![截屏 2022-05-29 15.48.02.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653810498810-011f69b9-ca82-4fe6-8fb3-0463797cd6d3.png#clientId=u20018a98-f638-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uaeb0a4cf&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2022-05-29%2015.48.02.png&originHeight=1584&originWidth=2362&originalType=binary&ratio=1&rotation=0&showTitle=false&size=739012&status=done&style=none&taskId=u1e96152c-3660-4417-b112-ace53c10e56&title=)
 （n8n.io 编排的工作流）
 
 事实上，在我团队的异地协同和管理中，我一直在使用小而美的工具链来解决团队工作的连接问题，包括和 IM 工具做一些打通，自动化地完成一些看似不起眼的工作，但是可能给工程师文化带来极大熏陶的东西，甚至是我个人本身的日常工作也都在这些新的工具上进行。
@@ -182,7 +182,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 我们在最早期的时候，就已经通过团队内部的一个优秀工程师（此处 at 某人）沉淀了一套 「**CAD 图纸 DXF 解析服务**」并且进行门店室内地图渲染的技术，这套技术其实也依托了 Mapbox 开源的 Leaflet 地图渲染器，但就是这样的一个关键领域突破，给盒马的数字化经营带来了 **无穷的想象力**：
 
-![HSET FY21 碰头会.013.png](<https://cdn.nlark.com/yuque/0/2022/png/359409/1653883971601-5fff4433-dd8a-4097-b5d8-631feba8a675.png#clientId=uae6efd59-9297-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u4e0e1b0f&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20>% E7% A2% B0% E5% A4% B4% E4% BC%9A.013.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=586169&status=done&style=none&taskId=ud0bff85c-0b66-4f11-872e-9907d7bd83a&title=)
+![HSET FY21 碰头会.013.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653883971601-5fff4433-dd8a-4097-b5d8-631feba8a675.png#clientId=uae6efd59-9297-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u4e0e1b0f&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20%E7%A2%B0%E5%A4%B4%E4%BC%9A.013.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=586169&status=done&style=none&taskId=ud0bff85c-0b66-4f11-872e-9907d7bd83a&title=)
 
 1. 可以基于室内空间的算法计算、路径规划实施精准作业调度
 2. 可以结合 AIoT 做智能设备的 Floor Plan、POI 标注，结合 AOI 计算（比如水果档口区域播放打折信息）做设备的智能调度

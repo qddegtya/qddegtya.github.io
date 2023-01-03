@@ -1,7 +1,7 @@
 ---
 layout: singlepost
 title: 2022 in 北京
-tags: photography 
+tags: photography
 category: life
 ---
 

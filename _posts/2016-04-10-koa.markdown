@@ -18,20 +18,22 @@ category: work
  * @api public
  */
 
-app.use = function (fn){
+app.use = function (fn) {
   if (!this.experimental) {
     //es7 async functions are not allowed,
     //so we have to make sure that `fn` is a generator function
-    assert (fn && 'GeneratorFunction' == fn.constructor.name, 'app.use () requires a generator function');
+    assert(
+      fn && "GeneratorFunction" == fn.constructor.name,
+      "app.use () requires a generator function"
+    );
   }
-  debug ('use % s', fn._name || fn.name || '-');
+  debug("use % s", fn._name || fn.name || "-");
 
   // 主要就是做这个事情
   // 根据上面的 assert，这里的 fn 均为 generator function
-  this.middleware.push (fn);
+  this.middleware.push(fn);
   return this;
 };
-
 ```
 
 <!-- more -->
@@ -49,13 +51,13 @@ app.use = function (fn){
  * @api public
  */
 
-app.listen = function (){
-  debug ('listen');
+app.listen = function () {
+  debug("listen");
 
   // 非常熟悉的 createServer
   // 调用的是 app.callback
-  var server = http.createServer (this.callback ());
-  return server.listen.apply (server, arguments);
+  var server = http.createServer(this.callback());
+  return server.listen.apply(server, arguments);
 };
 ```
 
@@ -70,26 +72,30 @@ app.listen = function (){
  * @api public
  */
 
-app.callback = function (){
+app.callback = function () {
   if (this.experimental) {
-    console.error ('Experimental ES7 Async Function support is deprecated. Please look into Koa v2 as the middleware signature has changed.')
+    console.error(
+      "Experimental ES7 Async Function support is deprecated. Please look into Koa v2 as the middleware signature has changed."
+    );
   }
 
   var fn = this.experimental
-    ? compose_es7 (this.middleware)
-    : co.wrap (compose (this.middleware)); // 把中间件串起来
+    ? compose_es7(this.middleware)
+    : co.wrap(compose(this.middleware)); // 把中间件串起来
   var self = this;
 
-  if (!this.listeners ('error').length) this.on ('error', this.onerror);
+  if (!this.listeners("error").length) this.on("error", this.onerror);
 
-  return function (req, res){
+  return function (req, res) {
     res.statusCode = 404;
-    var ctx = self.createContext (req, res);
-    onFinished (res, ctx.onerror);
-    fn.call (ctx).then (function () {
-      respond.call (ctx);
-    }).catch (ctx.onerror);
-  }
+    var ctx = self.createContext(req, res);
+    onFinished(res, ctx.onerror);
+    fn.call(ctx)
+      .then(function () {
+        respond.call(ctx);
+      })
+      .catch(ctx.onerror);
+  };
 };
 ```
 
@@ -112,18 +118,18 @@ module.exports = compose;
  * @api public
  */
 
-function compose (middleware){
-  return function *(next){
-    if (!next) next = noop ();
+function compose(middleware) {
+  return function* (next) {
+    if (!next) next = noop();
 
     var i = middleware.length;
 
     while (i--) {
-      next = middleware [i].call (this, next);
+      next = middleware[i].call(this, next);
     }
 
-    return yield *next;
-  }
+    return yield* next;
+  };
 }
 
 /**
@@ -132,7 +138,7 @@ function compose (middleware){
  * @api private
  */
 
-function *noop (){}
+function* noop() {}
 ```
 
 这么快就看到这行了？我觉得上面的代码信息量很大，道友们再细细品味一下，确定品味完了，下面的开胃 DEMO 可以帮助你更好的理解这个执行过程
@@ -141,41 +147,39 @@ function *noop (){}
 #!/usr/bin/env node
 
 // 中间件 a
-function* a (next) {
+function* a(next) {
   yield 1;
 
   // 执行下一个中间件
   yield* next;
 
-  yield ' 继续执行 A 中间件 ';
+  yield " 继续执行 A 中间件 ";
 }
 
 // 中间件 b
-function* b (next) {
+function* b(next) {
   yield 2;
   yield 3;
 }
 
-
-var next = function* (){};
+var next = function* () {};
 var i = [a, b].length;
 
 // 通过 next 首尾相连
 while (i--) {
-  next = [a, b][i].call (null, next);
+  next = [a, b][i].call(null, next);
 }
 
 // 包裹第一个 middleware
-function* start (ne) {
+function* start(ne) {
   return yield* ne;
 }
 
-
 // 输出
-console.log (start (next).next ());
-console.log (start (next).next ());
-console.log (start (next).next ());
-console.log (start (next).next ());
+console.log(start(next).next());
+console.log(start(next).next());
+console.log(start(next).next());
+console.log(start(next).next());
 ```
 
 输出结果：
@@ -223,13 +227,13 @@ app.listen (3000);
 
 有没有发现？如果还没有发现我就公布答案啦：
 
-> 根据上文，我们已经知道，那个负责把所有中间件串起来的 next 其实本身也是一个 generator，但是，如果在 Generater 函数内部，调用另一个 Generator 函数，默认情况下是没有效果的，这个时候我们必须使用 yield* next
+> 根据上文，我们已经知道，那个负责把所有中间件串起来的 next 其实本身也是一个 generator，但是，如果在 Generater 函数内部，调用另一个 Generator 函数，默认情况下是没有效果的，这个时候我们必须使用 yield\* next
 
 但是，我们写代码的时候明明写的是 yield next 啊，这就是 co 的巧妙之处了：
 
 co 帮我们 "自动管理" generator 的 next，并根据调用返回的 value 做出不同的响应，这个响应是通过 toPromise 方法进行的，我们可以在 toPromise 中发现：
 
-* 如果遇到另外一个 generator，co 会继续调用自己，这就是为什么我们不需要写 yield* next 的原因，而只要写 yield next
+- 如果遇到另外一个 generator，co 会继续调用自己，这就是为什么我们不需要写 yield\* next 的原因，而只要写 yield next
 
 ```javascript
 yield next;
@@ -246,13 +250,13 @@ yield next;
  * @api private
  */
 
-function toPromise (obj) {
+function toPromise(obj) {
   if (!obj) return obj;
-  if (isPromise (obj)) return obj;
-  if (isGeneratorFunction (obj) || isGenerator (obj)) return co.call (this, obj);
-  if ('function' == typeof obj) return thunkToPromise.call (this, obj);
-  if (Array.isArray (obj)) return arrayToPromise.call (this, obj);
-  if (isObject (obj)) return objectToPromise.call (this, obj);
+  if (isPromise(obj)) return obj;
+  if (isGeneratorFunction(obj) || isGenerator(obj)) return co.call(this, obj);
+  if ("function" == typeof obj) return thunkToPromise.call(this, obj);
+  if (Array.isArray(obj)) return arrayToPromise.call(this, obj);
+  if (isObject(obj)) return objectToPromise.call(this, obj);
   return obj;
 }
 ```
@@ -273,18 +277,18 @@ You may only yield a function, promise, generator, array, or object.
 
 ```javascript
 let getAuthInfo = function (req) {
-  return new Promise ((resolve, reject) => {
-    rp (req)
-    .then ((authres) => {
-      if (authres.status === 0 && authres.code === 0) {
-        resolve (authres);
-      } else {
-        resolve (null);
-      }
-    })
-    .catch ((err) => {
-      reject (err);
-    });
+  return new Promise((resolve, reject) => {
+    rp(req)
+      .then((authres) => {
+        if (authres.status === 0 && authres.code === 0) {
+          resolve(authres);
+        } else {
+          resolve(null);
+        }
+      })
+      .catch((err) => {
+        reject(err);
+      });
   });
 };
 ```
@@ -298,9 +302,11 @@ let authinfo = yield getAuthInfo (authReq);
 执行完所有中间件之后，KOA 才会进入到 respond
 
 ```javascript
-fn.call (ctx).then (function () {
-      respond.call (ctx);
-    }).catch (ctx.onerror);
+fn.call(ctx)
+  .then(function () {
+    respond.call(ctx);
+  })
+  .catch(ctx.onerror);
 ```
 
 respond
@@ -310,7 +316,7 @@ respond
  * Response helper.
  */
 
-function respond () {
+function respond() {
   //allow bypassing koa
   if (false === this.respond) return;
 
@@ -321,34 +327,34 @@ function respond () {
   var code = this.status;
 
   //ignore body
-  if (statuses.empty [code]) {
+  if (statuses.empty[code]) {
     //strip headers
     this.body = null;
-    return res.end ();
+    return res.end();
   }
 
-  if ('HEAD' == this.method) {
-    if (isJSON (body)) this.length = Buffer.byteLength (JSON.stringify (body));
-    return res.end ();
+  if ("HEAD" == this.method) {
+    if (isJSON(body)) this.length = Buffer.byteLength(JSON.stringify(body));
+    return res.end();
   }
 
   //status body
   if (null == body) {
-    this.type = 'text';
-    body = this.message || String (code);
-    this.length = Buffer.byteLength (body);
-    return res.end (body);
+    this.type = "text";
+    body = this.message || String(code);
+    this.length = Buffer.byteLength(body);
+    return res.end(body);
   }
 
   //responses
-  if (Buffer.isBuffer (body)) return res.end (body);
-  if ('string' == typeof body) return res.end (body);
-  if (body instanceof Stream) return body.pipe (res);
+  if (Buffer.isBuffer(body)) return res.end(body);
+  if ("string" == typeof body) return res.end(body);
+  if (body instanceof Stream) return body.pipe(res);
 
   //body: json
-  body = JSON.stringify (body);
-  this.length = Buffer.byteLength (body);
-  res.end (body);
+  body = JSON.stringify(body);
+  this.length = Buffer.byteLength(body);
+  res.end(body);
 }
 ```
 
@@ -356,10 +362,10 @@ function respond () {
 
 ### 总结
 
-* KOA 通过 next 将中间件 "串" 了起来，形成了链表，然后通过最外层的 generator function 触发整个执行过程
+- KOA 通过 next 将中间件 "串" 了起来，形成了链表，然后通过最外层的 generator function 触发整个执行过程
 
-* 在 compose 的时候，拿取中间件的顺序是 FILO 的，但是拿出来之后做的操作是循环 i-- 赋值 next，因此，依然可以保证正确的顺序执行
+- 在 compose 的时候，拿取中间件的顺序是 FILO 的，但是拿出来之后做的操作是循环 i-- 赋值 next，因此，依然可以保证正确的顺序执行
 
-* KOA 框架通过 co 框架包装 generator 来达到 "同步" 写法
+- KOA 框架通过 co 框架包装 generator 来达到 "同步" 写法
 
-* KOA 在执行完所有中间件之后才会真正执行 respond，在此之前，我们可以对 response body 做任何你想做的修改，这点与 Express 有本质上的区别
+- KOA 在执行完所有中间件之后才会真正执行 respond，在此之前，我们可以对 response body 做任何你想做的修改，这点与 Express 有本质上的区别

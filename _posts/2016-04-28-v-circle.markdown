@@ -5,13 +5,12 @@ tags: javascript vue
 category: work
 ---
 
-v-circle
-======
+# v-circle
 
 A collection of circle progress with Vue.js.
 
-* Vue 1.0+ use `v-circle 0.1+`
-* Vue 2.0+ use `v-circle 0.2+`
+- Vue 1.0+ use `v-circle 0.1+`
+- Vue 2.0+ use `v-circle 0.2+`
 
 ## Demos & Examples
 
@@ -68,23 +67,23 @@ export default {
 
 ## Circles
 
-* CssCircles
-* SvgCircles
-* CanvasCircles
+- CssCircles
+- SvgCircles
+- CanvasCircles
 
 ## API
 
 ### CssCircles
 
-| prop | type | description | example | default value |
-|:------------- |:--------------- |:------------- |:-------- |:-------- |
-| color | String | circle progress fill color | #000000 | #2ecc71 |
-| width | Number | circle size | 180 | 150 |
-| fontSize | Number | circle progress value size | 64 | 64 |
-| pv | Number | circle progress value | 75 | 0 |
-| textColor | String | circle progress value color | #bdc3c7 | #bdc3c7 |
-| bold | String | circle progress outline width | 10 | 5 |
-| textBgColor | String | circle progress value background-color | #000000 | #f9f9f9 |
-| borderColor | String | circle progress outline color | #000000 | #bdc3c7 |
-| during | Number | circle progress animation dur-time | 2 | 0.8 |
-| bgColor | String | circle progress background-color | #000000 | #f0f0f0 |
+| prop        | type   | description                            | example | default value |
+| :---------- | :----- | :------------------------------------- | :------ | :------------ |
+| color       | String | circle progress fill color             | #000000 | #2ecc71       |
+| width       | Number | circle size                            | 180     | 150           |
+| fontSize    | Number | circle progress value size             | 64      | 64            |
+| pv          | Number | circle progress value                  | 75      | 0             |
+| textColor   | String | circle progress value color            | #bdc3c7 | #bdc3c7       |
+| bold        | String | circle progress outline width          | 10      | 5             |
+| textBgColor | String | circle progress value background-color | #000000 | #f9f9f9       |
+| borderColor | String | circle progress outline color          | #000000 | #bdc3c7       |
+| during      | Number | circle progress animation dur-time     | 2       | 0.8           |
+| bgColor     | String | circle progress background-color       | #000000 | #f0f0f0       |

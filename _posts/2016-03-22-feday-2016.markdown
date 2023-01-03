@@ -34,17 +34,19 @@ Stepan 的演讲精华我觉得可以精简整理为如下几点：
 对于渲染，他先列举了一个非常简单的例子，我认为他要表达的意思是：渲染的本质其实就是模版 + 数据，例如:
 
 ```javascript
-function template (data){ return '<body>${data}</body>'; }
+function template(data) {
+  return "<body>${data}</body>";
+}
 ```
 
-这个函数可以在 server 端直接将数据扔给 res.send，也可以用在 client 端用来生成真实的 dom；但我们的应用往往是复杂的，React (Facebook 的工程师肯定是要来安利 React 的) 的   renderToString 方法可以帮助我们完成 Server-Side Rendering，因为 React 的 vdom 不需要依赖浏览器侧的环境，这是 React 支持服务端渲染的唯一一个方法，好多同学已经知道了，讲到这里，作为一名 Facebook 工程师，他成功地为本次大会率先安利了一把 React
+这个函数可以在 server 端直接将数据扔给 res.send，也可以用在 client 端用来生成真实的 dom；但我们的应用往往是复杂的，React (Facebook 的工程师肯定是要来安利 React 的) 的 renderToString 方法可以帮助我们完成 Server-Side Rendering，因为 React 的 vdom 不需要依赖浏览器侧的环境，这是 React 支持服务端渲染的唯一一个方法，好多同学已经知道了，讲到这里，作为一名 Facebook 工程师，他成功地为本次大会率先安利了一把 React
 
 对于路由，他基本上直接安利了 React-Router，然后贴出了跟 React-Router 官方文档几乎一样的代码，所以，折腾过的同学基本可以略过这个环节，但其实很多同学应该知道，路由共享是同构的重要部分，其实这里的坑还是蛮多的，其中还包括 React-Router 自身的 bug，我在项目里的做法是将这块逻辑以中间件的形式进行处理。
 
 对于数据，不管你有没有用 flux，都要解决初始化数据的问题，因为两端共用一份 render 逻辑，在后端直出的时候，需要将后端得到的数据同步给前端，否则，前端二次 render，会得到不正确的渲染输出，这个相信玩过 React 后端直出的应该也知道，解决方案几乎都是一致的，说到底就是通过:
 
 ```javascript
-window.__STORE__ = {}
+window.__STORE__ = {};
 ```
 
 将数据带给前端。你会发现其他封装好的第三方同构库 ISO 等最终用的都是这个逻辑。
@@ -65,13 +67,13 @@ async function fetchAllData (props) {
 这里的 props 可以传入 React-Router 中 match 方法返回的上下文，由于我们的业务只直出了部分组件数据，所以这里的做法有所不同，我的做法是将 ISO 逻辑置入中间件，当中间件匹配到路由后，将利用 yield next 转交给下一个中间件先拉取数据，然后将数据放入 locals 中，等到执行到 ISO 中间件时，中间件将 locals 中的数据拿出，初始化给 React-Router 匹配到的组件上下文，最后 renderToString
 React ＋ Node.js 打造通用应用的折腾过程中其实只要解决这关键的三点，差不多就可以打造出一个同构应用了，但是他还没有提到的还有：
 
-* 因为前后端共用一份代码，如果 client.js 中包含 require ('fastclick') 之类的只在浏览器才会依赖的组件引入代码时，我们需要做好环境判断，当然，这非常简单，但是不得不考虑
+- 因为前后端共用一份代码，如果 client.js 中包含 require ('fastclick') 之类的只在浏览器才会依赖的组件引入代码时，我们需要做好环境判断，当然，这非常简单，但是不得不考虑
 
-* 如果前端项目中的 jsx 用的是 es6 modules，但是 server 端用的是 require，则需要考虑统一
+- 如果前端项目中的 jsx 用的是 es6 modules，但是 server 端用的是 require，则需要考虑统一
 
-* 同构项目的工程化问题
+- 同构项目的工程化问题
 
-* ......
+- ......
 
 最后，我在星巴克逛 Stepan 博客的时候发现他的博客就是同构的，很有趣，大家可以体验一下：
 
@@ -81,15 +83,15 @@ React ＋ Node.js 打造通用应用的折腾过程中其实只要解决这关�
 
 剑锋幽默风趣的讲演风格显然非常接地气，这个话题从一开始就吸引住了全场的开发者，因为有太多开发者曾经被微信坑过，这个分享我直奔干货总结了：
 
-* JS-SDK 签名过程中提交的 URL 参数中不得带 "#" 及后面部分的内容，会导致签名报错
+- JS-SDK 签名过程中提交的 URL 参数中不得带 "#" 及后面部分的内容，会导致签名报错
 
-* 异步获取签名的时候，要设置正确的 Content-Type
+- 异步获取签名的时候，要设置正确的 Content-Type
 
-* 清缓存黑科技：//triggerWebViewCacheCleanup
+- 清缓存黑科技：//triggerWebViewCacheCleanup
 
-* flex 部分支持
+- flex 部分支持
 
-* 微信真的没有动过你的 localStorage/Cookie，可能原因是进程被杀等
+- 微信真的没有动过你的 localStorage/Cookie，可能原因是进程被杀等
 
 **等等，快后退，我要装逼了：**
 
@@ -99,22 +101,22 @@ React ＋ Node.js 打造通用应用的折腾过程中其实只要解决这关�
 
 士旗也是来自 Facebook 的工程师，讲的也是 React，总结下来就是：士旗在教大家如何正确使用 React：
 
-* 容器组件的存在是为了让它可以专注于数据处理，然后让渲染组件专心负责渲染，只需要管扔进来的是什么数据然后渲染就可以了，这样处理后，我们会发现 component 的代码将变得非常复杂，当我们要管理的 state 太多之后，所以就有了 flux store，但是 flux 的实现中有不必要的实现，对于应用来说，一个 action，一个 state 就可以返回一个新的 state，这完全就是 pure function 就可以搞定的事情，于是有了 redux store
+- 容器组件的存在是为了让它可以专注于数据处理，然后让渲染组件专心负责渲染，只需要管扔进来的是什么数据然后渲染就可以了，这样处理后，我们会发现 component 的代码将变得非常复杂，当我们要管理的 state 太多之后，所以就有了 flux store，但是 flux 的实现中有不必要的实现，对于应用来说，一个 action，一个 state 就可以返回一个新的 state，这完全就是 pure function 就可以搞定的事情，于是有了 redux store
 
-* 将组件拆分，用更好的 pure function 来返回你需要渲染的这些组件，这样可以利用 decorator/HOC 来达到组件复用，还可以减少组件中大量的 _XXX 私有方法，让应用程序变得更加可控，debug 变得更容易，其实这块还是能够产生很多共鸣的，相信各厂都在实践一些营销页面快速产出的技术方案，React 应该是比较合适的技术选型，可以利用 decorator 达到组件的高度复用
+- 将组件拆分，用更好的 pure function 来返回你需要渲染的这些组件，这样可以利用 decorator/HOC 来达到组件复用，还可以减少组件中大量的 \_XXX 私有方法，让应用程序变得更加可控，debug 变得更容易，其实这块还是能够产生很多共鸣的，相信各厂都在实践一些营销页面快速产出的技术方案，React 应该是比较合适的技术选型，可以利用 decorator 达到组件的高度复用
 
-* 善用 FP，RxJS。士旗在这里安利了一把 learnRX 项目（GitHub - ReactiveX/learnrx: A series of interactive exercises for learning Microsoft's Reactive Extensions Library for Javascript.），FP 跟 RxJS 本质上是两个东西，只是 RxJS 中有用到 FP 的思想，编程思维的转变我认为是需要训练和下功夫的，因为习惯思维非常可怕，我有看过 RxJS，这种 “一切皆 Stream” 的咒语一开始令人非常困惑，但豁然开朗后简直仿佛像是看到另外一个世界，这方面，士旗主要强调，我们要善用 Array 的 map/reduce/filter，FP 可以让代码变的简洁，FP 的 “语义化 “方法名可以帮助提升代码可读性。
+- 善用 FP，RxJS。士旗在这里安利了一把 learnRX 项目（GitHub - ReactiveX/learnrx: A series of interactive exercises for learning Microsoft's Reactive Extensions Library for Javascript.），FP 跟 RxJS 本质上是两个东西，只是 RxJS 中有用到 FP 的思想，编程思维的转变我认为是需要训练和下功夫的，因为习惯思维非常可怕，我有看过 RxJS，这种 “一切皆 Stream” 的咒语一开始令人非常困惑，但豁然开朗后简直仿佛像是看到另外一个世界，这方面，士旗主要强调，我们要善用 Array 的 map/reduce/filter，FP 可以让代码变的简洁，FP 的 “语义化 “方法名可以帮助提升代码可读性。
 
 ### 陈子舜 - 下一代 web 技术可以运用的点
 
 子舜的话题中讲到了很多务实的，腾讯正在实践的一些技术：
 
-* 包括离线化，包括对前端性能的不断优化
-之前在阿里 d2 听过腾讯工程师分享过 Node.js 加速 Qzone 的一些细节，离线化这块有领略过腾讯对于追求产品极致用户体验的那种态度，我厂也正在慢慢实践，并且落地了一些初步工作，我们意识到无线端的离线化意义重大。
+- 包括离线化，包括对前端性能的不断优化
+  之前在阿里 d2 听过腾讯工程师分享过 Node.js 加速 Qzone 的一些细节，离线化这块有领略过腾讯对于追求产品极致用户体验的那种态度，我厂也正在慢慢实践，并且落地了一些初步工作，我们意识到无线端的离线化意义重大。
 
-* 然后他讲了 ServiceWorker，http2，这里可以到时候看大会放出的视频
+- 然后他讲了 ServiceWorker，http2，这里可以到时候看大会放出的视频
 
-* 子舜这里还提到了运营商劫持的问题，然后安利了 HTTPDNS
+- 子舜这里还提到了运营商劫持的问题，然后安利了 HTTPDNS
 
 > 中间有一次圆桌，HAX 主持，主要是一些撕逼，没有啥实质内容，而且我对于有同学问出：［你们怎么看待 RN 的出现扰乱了原生开发和 web 开发之间的那种和谐］这种问题感到纳闷。
 
@@ -122,18 +124,18 @@ React ＋ Node.js 打造通用应用的折腾过程中其实只要解决这关�
 
 第一次见到 winter 本尊，我佩服和尊敬这样的前辈，但是我会保持风度和拒绝浮躁，winter 的分享虽然不是技术内容分享，但他分享了他在学习前端过程中的一些他认为的好方法，我觉得现场好多前端工程师应该是可以跟他产生共鸣的：
 
-* 比如，我们都干过 console.dir (window) 这种事情吧，然后看到陌生的 api，赶紧去学习一下，给自己充充电
+- 比如，我们都干过 console.dir (window) 这种事情吧，然后看到陌生的 api，赶紧去学习一下，给自己充充电
 
-* 追求真理的态度，建立自己的知识体系，用权威推翻自己认为的甚至是社区认为的那些权威，比如他提到闭包，通过 Google 学术找到出处论文（追本溯源），然后推翻自己之前的那些认知
+- 追求真理的态度，建立自己的知识体系，用权威推翻自己认为的甚至是社区认为的那些权威，比如他提到闭包，通过 Google 学术找到出处论文（追本溯源），然后推翻自己之前的那些认知
 
-* 他认为要成为专业的前端工程师，20% 靠的是知识，另外 80% 靠的是编码能力，工程能力，架构能力，后者可能需要的就是工作经验，然后不断练习，然后 winter 感慨，他自己成长最快的那几年都是在学校里，到了工作之后就很少有这样的机会快速成长，即使工作多年，但是发现自己的进步缓慢
+- 他认为要成为专业的前端工程师，20% 靠的是知识，另外 80% 靠的是编码能力，工程能力，架构能力，后者可能需要的就是工作经验，然后不断练习，然后 winter 感慨，他自己成长最快的那几年都是在学校里，到了工作之后就很少有这样的机会快速成长，即使工作多年，但是发现自己的进步缓慢
 
 ### Holger Bartel - http/2 时代的 web 性能
 
 因为之前读过几篇关于 http/2 的博文，对 http/2 还是有所了解的，这个话题我没有听完，后来有事情就先走了，听了前面 3/4 场，这部分大家可以阅读相关博客弥补，我可以安利几篇：
 
-* [HTTP2.0 的奇妙日常](https://link.zhihu.com/?target=http%3A//www.alloyteam.com/2015/03/http2-0-di-qi-miao-ri-chang/)
-* [前端开发与 HTTP/2 的羁绊 —— 安利篇](https://link.zhihu.com/?target=http%3A//aotu.io/notes/2016/03/17/http2-char/%3Fo2src%3Djuejin%26o2layout%3Dcompat)
+- [HTTP2.0 的奇妙日常](https://link.zhihu.com/?target=http%3A//www.alloyteam.com/2015/03/http2-0-di-qi-miao-ri-chang/)
+- [前端开发与 HTTP/2 的羁绊 —— 安利篇](https://link.zhihu.com/?target=http%3A//aotu.io/notes/2016/03/17/http2-char/%3Fo2src%3Djuejin%26o2layout%3Dcompat)
 
 ### 结束篇
 
