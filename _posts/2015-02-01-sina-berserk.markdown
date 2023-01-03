@@ -9,7 +9,7 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 > 已知 bug：
 
-当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0(0) 】（官方 issue 链接 <https://qt-project.org/forums/viewthread/17097>）问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交该 issue。
+当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0 (0) 】（官方 issue 链接 <https://qt-project.org/forums/viewthread/17097>）问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交该 issue。
 
 以上引用来自于 BerserkJS 官方 github 的大标题，那么，BerserkJS 究竟好用在哪里？
 
@@ -19,7 +19,7 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 环境：Windows
 
-下面我根据我试用的心得给官方的介绍贴上“注释”
+下面我根据我试用的心得给官方的介绍贴上 “注释”
 
 ### 使用案例
 
@@ -31,17 +31,17 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 主要是因为这个实用的 API：
 
-App.webview.execScript(sandbox <function> [, argObject <Object>|<Array>|<string>|<number>])
+App.webview.execScript (sandbox <function> [, argObject <Object>|<Array>|<string>|<number>])
 
 ```javascript
 // 执行当前页面中的 console.log 方法打印在控制台中打印 'hello'
-App.webview.execScript(function(msg) {
-    console.log(msg);
+App.webview.execScript (function (msg) {
+    console.log (msg);
 }, 'hello');
 
 // 执行当前页面中的 console.log 方法在控制台中打印 'width: 100, height:100'
-App.webview.execScript(function(size) {
-    console.log('width: ' + size.width + ", " + "height: " +  size.height);
+App.webview.execScript (function (size) {
+    console.log ('width: ' + size.width + "," + "height:" +  size.height);
 }, {width:100, height:300});
 ```
 
@@ -51,7 +51,7 @@ App.webview.execScript(function(size) {
 
 网络监控：自动化的网络性能监控，跟踪页面所有资源加载情况并可简便的将输出结果格式化为标准 HAR 格式。
 
-(var data=JSON.stringify(App.networkData(),undefined,2); 一句话搞定格式化和收集)
+(var data=JSON.stringify (App.networkData (),undefined,2); 一句话搞定格式化和收集)
 
 页面性能监控：自动化的页面渲染监控，可获取 CPU、 内存使用情况数据，根据页面整体情况可简便的输出首次渲染时间、首屏渲染时间等关键数据。
 
@@ -65,7 +65,7 @@ App.webview.execScript(function(size) {
 
 功能性：工具内置 webkit 浏览器内核，可响应浏览器内核事件回调、支持发送鼠标消息给浏览器、包装浏览器网络请求数据为 JS 数据格式、可与浏览器内 JS 做数据交互。
 
-(不得不感叹 webkit 的强大~)
+(不得不感叹 webkit 的强大～)
 
 开放性：工具将主要操作均包装为 JS 语法与数据格式，采用 JS 语法包装，前端工程师可根据 API 组装出符合各自预期的检测功能。
 
@@ -83,13 +83,13 @@ App.webview.execScript(function(size) {
 
 与 PhantomJS 相比具有以下不同：
 
-API 简易: 更直接的 API，如获取网络性能数据，仅需 3 行代码，而非 PhantomJS 的几十行，且信息量比 PhantomJS 丰富。
+API 简易：更直接的 API，如获取网络性能数据，仅需 3 行代码，而非 PhantomJS 的几十行，且信息量比 PhantomJS 丰富。
 
 API 标准化： 常用 API 均采用 W3C 规范标准命名，事件处理代码可重复绑定而不相互覆盖，可以无缝兼容 Wind.JS 等异步流程处理库来解决自动化时异步流程控制问题。
 
 页面性能信息丰富：具有页面渲染和 CPU、 内存使用情况数据获取能力，可输出首次渲染时间、首屏渲染时间等页面性能关键数据。
 
-调试便利: 具有 GUI 界面与命令行状态两种形式，开发调试期可使用 GUI 模式定位问题，此模式中可开启 WebKit 的 Inspector 工具辅助调试页面代码与 DOM 。实际运行时可开启命令行状态避免自动执行时 GUI 界面干扰。
+调试便利：具有 GUI 界面与命令行状态两种形式，开发调试期可使用 GUI 模式定位问题，此模式中可开启 WebKit 的 Inspector 工具辅助调试页面代码与 DOM 。实际运行时可开启命令行状态避免自动执行时 GUI 界面干扰。
 
 ### 应用企业
 
@@ -113,27 +113,27 @@ Cisco: 用于 WebEx 项目的自动化测试
 berserkJS 验证 XXX 页面加载问题
  */
 // 打开网络监听
-App.netListener(true);
+App.netListener (true);
 
 // 打开 Tujia
-App.webview.open("xxxxxxxxxxxx");
+App.webview.open ("xxxxxxxxxxxx");
 
 // 监听加载进度
-App.webview.addEventListener("loadProgress",function(cur){
-    console.log("当前加载进度: %" + cur);
+App.webview.addEventListener ("loadProgress",function (cur){
+    console.log ("当前加载进度: %" + cur);
 });
 
-//页面 load 完成后回调获取数据
-App.webview.addEventListener("load",function(){
-    var data=JSON.stringify(App.networkData(),undefined,2);
+// 页面 load 完成后回调获取数据
+App.webview.addEventListener ("load",function (){
+    var data=JSON.stringify (App.networkData (),undefined,2);
     // 写入文件
-    App.writeFile(App.path + "xxxx.txt",data);
+    App.writeFile (App.path + "xxxx.txt",data);
 
     // 关闭监听
-    App.netListener(false);
+    App.netListener (false);
 
     // 退出 App
-    // App.close();
+    // App.close ();
 });
 ```
 

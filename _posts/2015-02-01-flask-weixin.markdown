@@ -6,7 +6,7 @@ category: work
 ---
 
 相信很多做前端的朋友都已经注意到了微信今年的一系列大动作，当然，对于前端开发工作来讲，我觉得这本身就是一种非常不错的开放机会，
-能够让我们更好地利用好微信这个平台，每次写博客都要废话一段前言......好吧，下面说说最近的 JS-SDK 那些事儿。
+能够让我们更好地利用好微信这个平台，每次写博客都要废话一段前言...... 好吧，下面说说最近的 JS-SDK 那些事儿。
 
 ![](/assets/blog-images/2015-2-1-flaskweixin/jssdk.png)
 
@@ -15,8 +15,8 @@ category: work
 ### 前端部分
 
 在前端部分，我们重点来看下 JS-SDK 的接入流程，从前端角度而言，大致是如下三个步骤：
-wx.pre-wx.ready-wx.apicall(实际上没有这个 apicall 方法)。
-我把它翻译成：接入-就绪-调用。
+wx.pre-wx.ready-wx.apicall (实际上没有这个 apicall 方法)。
+我把它翻译成：接入 - 就绪 - 调用。
 OK，如果这么说的话，嗯......So easy......But，当我们用代码的方式写出来，可能是这样一种情况：
 
 ```javascript
@@ -24,32 +24,32 @@ var jsTool = {};
 
 // Get Access Token
 // Need APPID & APPSECRET
-jsTool.getAccessToken = function(callback){
-    $.ajax({}, function(result){
-         callback(result);
+jsTool.getAccessToken = function (callback){
+    $.ajax ({}, function (result){
+         callback (result);
     });
 };
 
 // Get jsapi_ticket
-jsTool.getApiTicket = function(callback){
-    this.getAccessToken(function(acCode){
-            $.ajax({}, function(result){
-                callback(result);
-                //立即存下 ticket
+jsTool.getApiTicket = function (callback){
+    this.getAccessToken (function (acCode){
+            $.ajax ({}, function (result){
+                callback (result);
+                // 立即存下 ticket
             });
     });
 };
 
 // Throw args to backend to checksign
-jsTool.getSignFromBackEnd = function(callback){
-     $ajax({
+jsTool.getSignFromBackEnd = function (callback){
+     $ajax ({
           // 扔给后端参数中的 timestamp 和 nonceStr 必须跟 wx.config 一致
           timestamp: 145672831,
           noncestr: "Wm3WZYTPz0wzccnW"
-          jsapi_ticket: "sM4AOVdWfPE4DxkX" //上面存下的 ticket
+          jsapi_ticket: "sM4AOVdWfPE4DxkX" // 上面存下的 ticket
           url: "https://mp.weixin.qq.com"
-     }, function(sign){
-         wx.config({
+     }, function (sign){
+         wx.config ({
             debug: true, // 开启调试模式
             appId: '', // 必填，公众号的唯一标识
             timestamp: , // 必填，生成签名的时间戳
@@ -91,59 +91,59 @@ import hashlib
 import time
 from flask.ext.sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'  # 相对路径写法
-db = SQLAlchemy(app)
+app = Flask (__name__)
+app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'  # 相对路径写法
+db = SQLAlchemy (app)
 
 
-class TokenAndTicket(db.Model):
+class TokenAndTicket (db.Model):
 
-    id = db.Column(db.Integer, primary_key=True)
-    token = db.Column(db.String(200), unique=True)
-    ticket = db.Column(db.String(200), unique=True)
+    id = db.Column (db.Integer, primary_key=True)
+    token = db.Column (db.String (200), unique=True)
+    ticket = db.Column (db.String (200), unique=True)
 
     def __init__(self, token, ticket):
         self.token = token
         self.ticket = ticket
 
     def __repr__(self):
-        return "<TICKET %r>" % self.ticket
+        return "<TICKET % r>" % self.ticket
 
 
-current_token_ticket = TokenAndTicket.query.first()
+current_token_ticket = TokenAndTicket.query.first ()
 
 # error code
 DONE = 200
 
 # weixin token
 WX_TOKEN_REQ = (
-    "https://api.weixin.qq.com/cgi-bin/token?grant_type=%s&appid=%s&secret=%s"
-    % (CONFIG['client_credential'], CONFIG["app_id"], CONFIG["secret"])
+    "https://api.weixin.qq.com/cgi-bin/token?grant_type=% s&appid=% s&secret=% s"
+    % (CONFIG ['client_credential'], CONFIG ["app_id"], CONFIG ["secret"])
 )
 
 # weixin js_ticket
-WX_TICKET_REQ = lambda x: "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=%s&type=jsapi" % x
+WX_TICKET_REQ = lambda x: "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=% s&type=jsapi" % x
 
 
-@app.route('/nonce', methods=['GET', 'POST'])
-def ge_nonce_str():
-    """随机串单拿接口
+@app.route ('/nonce', methods=['GET', 'POST'])
+def ge_nonce_str ():
+    """ 随机串单拿接口
     """
-    return json_response(
+    return json_response (
         {
-            "nonce_str": ''.join(random.sample(string.ascii_letters, 12))
+            "nonce_str": ''.join (random.sample (string.ascii_letters, 12))
         }
     )
 
 
-def _ge_nonce_str():
+def _ge_nonce_str ():
     """all in one 接口用
     """
-    return ''.join(random.sample(string.ascii_letters, 12))
+    return ''.join (random.sample (string.ascii_letters, 12))
 
 
-def error_res_obj(code, msg):
-    """错误响应
+def error_res_obj (code, msg):
+    """ 错误响应
     """
     return {
         "errcode": code,
@@ -151,40 +151,40 @@ def error_res_obj(code, msg):
     }
 
 
-def json_response(res):
-    """包装 response 为 json
+def json_response (res):
+    """ 包装 response 为 json
     """
-    if isinstance(res, dict) or isinstance(res, list):
-        json_response_body = make_response(json.dumps(res))
+    if isinstance (res, dict) or isinstance (res, list):
+        json_response_body = make_response (json.dumps (res))
     else:
-        json_response_body = make_response(res)
-    json_response_body.headers['Content-Type'] = "application/json;charset=UTF-8"  # 设置
-    # json_response_body.headers['Access-Control-Allow-Origin'] = "*"  # 跨域
+        json_response_body = make_response (res)
+    json_response_body.headers ['Content-Type'] = "application/json;charset=UTF-8"  # 设置
+    # json_response_body.headers ['Access-Control-Allow-Origin'] = "*"  # 跨域
     return json_response_body
 
 
-@app.route('/token', methods=['POST', 'GET'])
-def get_access_token():
+@app.route ('/token', methods=['POST', 'GET'])
+def get_access_token ():
     """token 单拿接口
     """
     token = current_token_ticket.token
-    return json_response({
+    return json_response ({
         "token": token
     })
 
 
-@app.route('/ticket', methods=['POST', 'GET'])
-def js_ticket():
+@app.route ('/ticket', methods=['POST', 'GET'])
+def js_ticket ():
     """ticket 单拿接口
     """
     ticket = current_token_ticket.ticket
-    return json_response({
+    return json_response ({
         "ticket": ticket
     })
 
 
-def _sign_ticket(nonce_str, j_ticket, timestamp, url):
-    """私有签名方法
+def _sign_ticket (nonce_str, j_ticket, timestamp, url):
+    """ 私有签名方法
     """
     sign_dict = {
         "jsapi_ticket": j_ticket,
@@ -196,42 +196,42 @@ def _sign_ticket(nonce_str, j_ticket, timestamp, url):
     tmp = []
 
     # 字典排序
-    sign_sorted_list = sorted(sign_dict.iteritems(), key=lambda x: x[0], reverse=False)
+    sign_sorted_list = sorted (sign_dict.iteritems (), key=lambda x: x [0], reverse=False)
     for item in sign_sorted_list:
-        tmp.append(str(item[0]) + "=" + str(item[1]))
+        tmp.append (str (item [0]) + "=" + str (item [1]))
 
-    _url_string = '&'.join(tmp)
-    final_sign = hashlib.sha1(_url_string).hexdigest()
+    _url_string = '&'.join (tmp)
+    final_sign = hashlib.sha1 (_url_string).hexdigest ()
     return final_sign
 
 
-@app.route('/all', methods=['POST', 'GET'])
-def all_in_one():
+@app.route ('/all', methods=['POST', 'GET'])
+def all_in_one ():
     """all in one 数据返回
     """
-    _time_stamp = int(time.time())
-    _random_str = _ge_nonce_str()
+    _time_stamp = int (time.time ())
+    _random_str = _ge_nonce_str ()
     _js_ticket = current_token_ticket.ticket
-    _url = request.host_url[:-1]  # 去除 /
+    _url = request.host_url [:-1]  # 去除 /
 
-    return json_response({
-        'appId': CONFIG['app_id'],
+    return json_response ({
+        'appId': CONFIG ['app_id'],
         'timestamp': _time_stamp,
         'nonceStr': _random_str,
-        'signature': _sign_ticket(_random_str, _js_ticket, _time_stamp, _url),
+        'signature': _sign_ticket (_random_str, _js_ticket, _time_stamp, _url),
         'url': _url  # POST 过来什么，返回什么
     })
 
 
-def _detect_request():
-    with app.test_request_context('/all', method=['POST', 'GET']):
-        print dir(request)
+def _detect_request ():
+    with app.test_request_context ('/all', method=['POST', 'GET']):
+        print dir (request)
         print request.host_url
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
-    # _detect_request()
+    app.run (debug=True, host="0.0.0.0")
+    # _detect_request ()
     
 ```
 

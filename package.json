@@ -6,10 +6,14 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-uglifycss": "^1.1.0",
-    "markdownlint-cli": "^0.32.2"
+    "map-stream": "^0.0.7",
+    "markdownlint-cli": "^0.32.2",
+    "pangu": "^4.0.7",
+    "vinyl-fs": "^3.0.3"
   },
   "scripts": {
-    "markdownlint": "./node_modules/.bin/markdownlint -f ./_posts",
+    "pangu": "./scripts/pangu.js",
+    "markdownlint-format": "./node_modules/.bin/markdownlint -f ./_posts",
     "build": "./node_modules/.bin/gulp build",
     "debug": "./node_modules/.bin/gulp debug && bundle exec jekyll serve"
   },

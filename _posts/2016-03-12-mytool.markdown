@@ -29,7 +29,7 @@ category: tool
 | codeif | 命名神器 | 听奏写的变量命名服务 |
 | emmet | 前端开发神器 | <https://docs.emmet.io/cheat-sheet/> |
 | terminal-plus | 编辑器集成终端 | 打造 ide 的前奏 |
-| file-icons | 文件图标显示 | 不装逼,很实用 |
+| file-icons | 文件图标显示 | 不装逼，很实用 |
 
 ### OSX 工具集
 

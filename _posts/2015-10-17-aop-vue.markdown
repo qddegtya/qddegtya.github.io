@@ -10,7 +10,7 @@ category: work
 事实上在 js 中，我们不止一次地会用到 AOP，这不，我们又遇到了：
 
 现在有一个需求是这样的：在我们的某个 SPA 项目中需要模拟 Native 侧的登录效果以增强用户体验，
-大概思路是，不管哪个 View 拉取了哪个接口的数据，只要接口返回 403，那么就要"快速"跳转到登录页。
+大概思路是，不管哪个 View 拉取了哪个接口的数据，只要接口返回 403，那么就要 "快速" 跳转到登录页。
 开发人员在调用 $http 方法拉取数据时不需要关心这个逻辑，全程由拦截逻辑透明代理。
 
 ### 思路分析
@@ -38,14 +38,14 @@ export default {
     // 路由勾子
     // 增强体验的推荐做法
     route: {
-        data() {
+        data () {
             return {
                 // 因为 AOP 实现的 $httpWithAuth 方法有性能损耗
                 // 有一些职责清晰的业务可能还是需要直接调用 $http
                 // 所以，通过将 $httpWithAuth 这个全新方法挂载到上下文来解决
                 'testData': this.$httpWithAuth
-                    .get('https://api.test.com/test')
-                    .then(function(res) {
+                    .get ('https://api.test.com/test')
+                    .then (function (res) {
                         return {
                             'testData': res
                         }
@@ -53,11 +53,11 @@ export default {
             }
         }
     },
-    ready() {
-        console.dir(this.$http);
-        console.dir(this.$route);
+    ready () {
+        console.dir (this.$http);
+        console.dir (this.$route);
     },
-    data() {
+    data () {
         return {
             'testData': {}
         }
@@ -74,48 +74,48 @@ export default {
 };
 ```
 
-**$httpWithAuth 的实现**
+**$httpWithAuth 的实现 **
 
 ```javascript
-function install(Vue) {
-  var _ = require('./util')(Vue);
+function install (Vue) {
+  var _ = require ('./util')(Vue);
 
   // $httpWithAuth
   // 代理 Vue.$http
   // Vue.$resource 是 $http 的上层
-  Object.defineProperties(Vue.prototype, {
+  Object.defineProperties (Vue.prototype, {
     $httpWithAuth: {
-      get: function() {
-        return _handleWrapper(this, this.$http);
+      get: function () {
+        return _handleWrapper (this, this.$http);
       }
     }
   });
 
   // 代理 $http 模块
-  function _handleWrapper(vm, originModule) {
+  function _handleWrapper (vm, originModule) {
     // 验证方法
-    function _auth(promise) {
-      promise.then(function(rs) {
+    function _auth (promise) {
+      promise.then (function (rs) {
         // 返回 Promise
         // 这里需要返回 Promise 给组件实例的 route 选项用
         return promise;
-      }, function(err){
+      }, function (err){
         // 重定向到某个业务 path
         // 一般为 /login 登陆业务
-        vm.$route.router.go('/login');
+        vm.$route.router.go ('/login');
       });
     }
 
-    for(var method in originModule) {
-      if(originModule.hasOwnProperty(method) &&
-      _.isFunction(originModule[method])
+    for (var method in originModule) {
+      if (originModule.hasOwnProperty (method) &&
+      _.isFunction (originModule [method])
     ) {
         // 模块原方法
-        var _oF = originModule[method];
-        originModule[method] = function() {
+        var _oF = originModule [method];
+        originModule [method] = function () {
           // 绑定验证
-          return _auth(_oF.apply(this, arguments));
-        }.bind(originModule);
+          return _auth (_oF.apply (this, arguments));
+        }.bind (originModule);
       }
     }
 
@@ -125,7 +125,7 @@ function install(Vue) {
 }
 
 if (window.Vue) {
-  Vue.use(install);
+  Vue.use (install);
 }
 
 module.exports = install;

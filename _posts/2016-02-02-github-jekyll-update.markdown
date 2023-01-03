@@ -18,23 +18,23 @@ Github Pages (以下简称 GP) 服务从今天起正式启用 Jekyll 3.0 版本�
 ```javascript
 'use strict';
 
-var gulp = require('gulp');
-var uglifycss = require('gulp-uglifycss');
+var gulp = require ('gulp');
+var uglifycss = require ('gulp-uglifycss');
 
-gulp.task('css', function () {
-  gulp.src('./assets/css/*.css')
-    .pipe(uglifycss())
-    .pipe(gulp.dest('./assets/dist/'));
+gulp.task ('css', function () {
+  gulp.src ('./assets/css/*.css')
+    .pipe (uglifycss ())
+    .pipe (gulp.dest ('./assets/dist/'));
 });
 
-gulp.task('debug', function() {
-  gulp.src('./assets/css/*.css')
-    // .pipe(uglifycss())
-    .pipe(gulp.dest('./assets/dist/'));
+gulp.task ('debug', function () {
+  gulp.src ('./assets/css/*.css')
+    //.pipe (uglifycss ())
+    .pipe (gulp.dest ('./assets/dist/'));
 })
 
-gulp.task('build', ['css'])
-gulp.task('default', ['debug']);
+gulp.task ('build', ['css'])
+gulp.task ('default', ['debug']);
 ```
 
 可以查看 Github 上的 md 源文件验证上述规则。
