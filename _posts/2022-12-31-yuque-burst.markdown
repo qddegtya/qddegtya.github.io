@@ -191,7 +191,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 并且在后期，我们也顺利做到了 2D 到 3D 室内地图的延展：
 
-![HSET FY21 碰头会.012.png](<https://cdn.nlark.com/yuque/0/2022/png/359409/1653886360648-859caf1f-779a-4fce-aa00-f3e866787aa6.png#clientId=uaa49a612-bcb0-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uccc558b8&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20>% E7% A2% B0% E5% A4% B4% E4% BC%9A.012.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=446177&status=done&style=none&taskId=uf074dc25-c3bb-42df-ba85-261bbbac010&title=)
+![HSET FY21 碰头会.012.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653886360648-859caf1f-779a-4fce-aa00-f3e866787aa6.png#clientId=uaa49a612-bcb0-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uccc558b8&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20%E7%A2%B0%E5%A4%B4%E4%BC%9A.012.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=446177&status=done&style=none&taskId=uf074dc25-c3bb-42df-ba85-261bbbac010&title=)
 
 值得一提的是，我们在这个点上的初心和想法，纵观整个零售行业数字化，其实本身并不算特别创新，布局这个赛道的很多科技公司早就已经入场 **Spatial Analytics** 这个命题了，给我印象最深刻的是（[https://carto.com/industries/retail/](https://carto.com/industries/retail/)）公司出的解决方案，大家可以直观地感受到 **空间数字化** 的价值，尤其是室内地图的多种结合业务的生动场景。
 
