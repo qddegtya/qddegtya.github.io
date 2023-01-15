@@ -2163,8 +2163,8 @@ img.emoji {
 #b2t {
   display: inline-block;
   background-color: #2e2e2e;
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   text-align: center;
   border-radius: 4px;
   position: fixed;
@@ -2174,6 +2174,11 @@ img.emoji {
   opacity: 0;
   visibility: hidden;
   z-index: 1000;
+  -moz-box-shadow: 2px 2px 0 0 #555555;
+  -webkit-box-shadow: 2px 2px 0 0 #555555;
+  box-shadow: 2px 2px 0 0 #555555;
+  border-right: 1px solid #555555;
+  border-bottom: 1px solid #555555;
 }
 #b2t::after {
   content: "🎈";
@@ -2181,7 +2186,7 @@ img.emoji {
   font-weight: normal;
   font-style: normal;
   font-size: 2em;
-  line-height: 50px;
+  line-height: 64px;
   color: #ffffff;
 }
 #b2t:hover {
