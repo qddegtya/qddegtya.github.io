@@ -7,7 +7,7 @@ category: lab
 
 下面的配图仅供卖萌
 
-![](/assets/blog-images/2015-3-5/baymax.jpg)
+![](/assets/blog-images/2015-03-05/baymax.jpg)
 
 很久没有写博客了，今天给大家带来一个小折腾。
 虽然说是小折腾，但还是废了不少劲，某位大神的博客写得好：
