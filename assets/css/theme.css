@@ -2162,7 +2162,7 @@ img.emoji {
 
 #b2t {
   display: inline-block;
-  background-color: #ff9800;
+  background-color: #2e2e2e;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -2182,14 +2182,14 @@ img.emoji {
   font-style: normal;
   font-size: 2em;
   line-height: 50px;
-  color: #fff;
+  color: #ffffff;
 }
 #b2t:hover {
   cursor: pointer;
-  background-color: #333;
+  background-color: #333333;
 }
 #b2t:active {
-  background-color: #555;
+  background-color: #555555;
 }
 #b2t.show {
   opacity: 1;

@@ -17,4 +17,4 @@
     e.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, "300");
   });
-})(window, document, jQuery);
+})(window, document, $);
