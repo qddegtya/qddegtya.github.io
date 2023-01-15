@@ -2173,7 +2173,7 @@ img.emoji {
   transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
   opacity: 0;
   visibility: hidden;
-  z-index: 1000;
+  z-index: 999999;
   -moz-box-shadow: 2px 2px 0 0 #555555;
   -webkit-box-shadow: 2px 2px 0 0 #555555;
   box-shadow: 2px 2px 0 0 #555555;
