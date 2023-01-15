@@ -2176,7 +2176,7 @@ img.emoji {
   z-index: 1000;
 }
 #b2t::after {
-  content: "\f077";
+  content: "🎈";
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
