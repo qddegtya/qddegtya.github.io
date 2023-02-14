@@ -1,6 +1,6 @@
 ---
 layout: singlepost
-title: 面向未来的认知优化 - 读《爆裂》后的杂谈
+title: 面向未来的认知优化之《爆裂》启示录
 tags: thinking life
 category: life
 ---
@@ -156,7 +156,11 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 ![5yCmmhqOdQAonNxKAKMf.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1654931724999-7bc3c44f-e46e-43b7-a68b-baf21b0efb2d.png#clientId=u22d900eb-94a2-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u55d2a2c8&margin=%5Bobject%20Object%5D&name=5yCmmhqOdQAonNxKAKMf.png&originHeight=1280&originWidth=1023&originalType=binary&ratio=1&rotation=0&showTitle=false&size=625212&status=done&style=none&taskId=u91b301c1-785e-486d-9920-698d6690c15&title=)
 （PLG MARKET MAP）
 
-为了方便读者去了解这些工具，我决定建立一个开源仓库：[https://github.com/qddegtya/awesome-ng-tools](https://github.com/qddegtya/awesome-ng-tools) 也欢迎感兴趣的同学参与贡献。
+为了方便读者去了解和使用这些工具，我建立了一个开源的 Awesome List：
+
+[https://github.com/qddegtya/awesome-ng-tools](![awesome-ng-tools](https://cdn.nlark.com/yuque/0/2023/png/359409/1676333840666-afa69919-17c7-4989-820f-f555b1a97bcb.png))
+
+也欢迎感兴趣的同学能够参与到该 Awesome List 的贡献。
 
 **未来？**
 
