@@ -158,7 +158,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 为了方便读者去了解和使用这些工具，我建立了一个开源的 Awesome List：
 
-[https://github.com/qddegtya/awesome-ng-tools](![awesome-ng-tools](https://cdn.nlark.com/yuque/0/2023/png/359409/1676333840666-afa69919-17c7-4989-820f-f555b1a97bcb.png))
+[![awesome-ng-tools](https://cdn.nlark.com/yuque/0/2023/png/359409/1676333840666-afa69919-17c7-4989-820f-f555b1a97bcb.png)](https://github.com/qddegtya/awesome-ng-tools)
 
 也欢迎感兴趣的同学能够参与到该 Awesome List 的贡献。
 
