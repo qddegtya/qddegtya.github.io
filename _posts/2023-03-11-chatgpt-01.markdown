@@ -17,7 +17,7 @@ ChatGPT 是什么、它能做什么、甚至如果你想深入了解它的技术
 
 如此神话、盲目崇拜之风的氛围下，作为一名十多年工作经验的程序员，同时又身处数字化转型的产业互联网赛道，我觉得当下很有必要理性、冷静地对它进行一番打量。
 
-因此，在深度使用了一段时间并开发了一个集成 OpenAI API 的 Dingtalk 机器人服务后，我也终于有资格来讲一讲自己对它的一些看法，这是促使我写下这篇文章的背景。
+因此，在深度使用了一段时间并开发了一个集成 OpenAI API 的 Dingtalk 机器人服务后，我也终于自觉有底气来讲一讲自己对它的一些看法，另外一个补充背景是，笔者所在的产业目前对这块引起了高度的重视，本文也作为一篇偏向工程实践角度的调研报告来呈现，以上是我写下这篇文章的动力来源。
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678326462202-8c22d01a-9e88-47f8-9264-8b9c2dea6bdf.png#averageHue=%23d6ba8b&clientId=u3ee3fdf3-ab5d-4&from=paste&height=925&id=u612de40f&name=image.png&originHeight=925&originWidth=1926&originalType=binary&ratio=1&rotation=0&showTitle=true&size=454416&status=done&style=none&taskId=u3d9ee094-20d1-4138-8727-6e1a1676414&title=%EF%BC%88%E4%BD%BF%E7%94%A8%20OpenAI%20%E6%8F%90%E4%BE%9B%E7%9A%84%20Open%20API%20%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E5%8F%91%E8%80%85%E5%8F%AF%E4%BB%A5%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%AF%B9%E5%85%B6%E9%9B%86%E6%88%90%EF%BC%8C%E5%9B%BE%E4%B8%AD%E6%98%AF%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E7%BB%93%E5%90%88%20Dingtalk%20%E6%9C%BA%E5%99%A8%E4%BA%BA%20Outgoing%20%E7%89%B9%E6%80%A7%E8%BE%BE%E6%88%90%E7%9A%84%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%EF%BC%8C%E8%AF%A5%E6%9C%8D%E5%8A%A1%E6%89%98%E7%AE%A1%E5%9C%A8%20Glitch%20%E5%B9%B3%E5%8F%B0%EF%BC%89&width=1926 "（使用 OpenAI 提供的 Open API 服务，开发者可以方便地对其集成，图中是我开发的一个服务结合 Dingtalk 机器人 Outgoing 特性达成的最终效果，该服务托管在 Glitch 平台）")
 
@@ -31,8 +31,6 @@ ChatGPT 是什么、它能做什么、甚至如果你想深入了解它的技术
 如果说，AI 能力是 ChatGPT 的大脑，那么今天配套的 ChatGPT 的产品 `chat.openai.com` 就是它的身体，即它与人类直接交互的部分，它的重要性不言而喻。
 
 因此，本文将从这个角度切入，随后再看向它的大脑。
-
-<!-- more -->
 
 ### 理解 ChatGPT 目前某些限制的原因
 
@@ -62,9 +60,9 @@ const ChatGPT = ($input) => {
 
 布鲁克斯的《No Silver Bullet — Essence and Accidents of Software Engineering》告诉我们，软件工程没有银弹，任何设计有优点就一定有缺点。
 
-很显然，这里有几个应用架构侧的问题在设计之初就已被埋下了，以此，我们可以从应用侧窥探到，即使背后的 AI 大脑再强大，到了应用侧依然会受到技术设计本身的限制，虽然我们有诸多曲线救国的办法，终究仍会受制于这个短板效应：
+很显然，这里有几个应用架构侧的隐患在设计之初就已被埋下了，以此，我们可以从应用侧窥探到，即使背后的 AI 大脑再强大，到了应用侧依然会受到技术设计本身的限制，虽然我们有诸多曲线救国的办法，终究仍会受制于这个短板效应：
 
-1. 由于需要保持上下文环境的捕获特性，输出要不断继续给到输入，这就意味着，如果从系统架构上，不保留一个类似 `tokens buffer` 缓冲区的设计，整个 ChatGPT 可能会遭遇不可预期的风险（大量的算力消耗甚至会直接拖垮系统，导致崩溃），这也是为什么 OpenAI Open API 中关于 Model 能力调用的参数说明中明确指出了 4097 tokens 的长度限制： [What are tokens and how to count them? OpenAI Help Center](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)。
+1. 由于需要保持上下文环境的捕获特性，输出要不断继续给到输入，这就意味着，如果从系统架构上，不保留一个类似 `tokens buffer` 缓冲区的设计，整个 ChatGPT 可能会遭遇不可预期的风险（大量的算力消耗甚至会直接拖垮系统，导致崩溃），这也是为什么 OpenAI Open API 中关于 Model 能力调用的参数说明中明确指出了 4097 tokens 的长度限制： [What are tokens and how to count them? / OpenAI Help Center](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them)。
 2. 应用侧需要使用会话 id 对每一次完整的会话进行隔离，因为即便是人类的对话，也不可能永远都处于一个全局唯一的上下文环境里：比如你今天和朋友聊的话题是吃饭、明天和家人聊的话题是电影，如果几个话题同时并行，很容易将会话带入到一个混乱不堪的状态，即俗称的：不在一个频道，跨服聊天。
 3. ChatGPT 在实际运行场景中，始终在某个单会话中处于一个 `生生不息` 的状态，什么时候需要停止会话，即告知模型停止生成任务这个事情，需要给到用户主动权。
 
@@ -111,7 +109,7 @@ const ChatGPT = ($input) => {
 
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325744204-9955f585-9681-47e2-a8e6-37031aa510a7.png#averageHue=%23e4e8e8&clientId=u12f550c9-1b61-4&from=paste&height=380&id=ue4c30126&name=image.png&originHeight=380&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=true&size=39901&status=done&style=none&taskId=u699bc885-88ef-417e-a135-eeb0ad5877a&title=%EF%BC%88n8n.io%20%E9%9B%86%E6%88%90%20OpenAI%20%E6%9C%8D%E5%8A%A1%EF%BC%89&width=500 "（n8n.io 集成 OpenAI 服务）")
 
-### 重新审视它的 AI 能力
+### 重新审视它的 AI 能力会发现，其实它在玩文字接龙
 
 从应用侧的视角阐述 ChatGPT 的工作方式是比较直观的，可以帮助我们理解 AIGC 类服务和集成它们的产品之间是怎样一种联系。
 
@@ -121,7 +119,7 @@ const ChatGPT = ($input) => {
 
 ![Pasted image 20230212034337.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325885630-7459a138-5e0c-4eee-b74c-8d2e73cacdd2.png#averageHue=%23f4f3f3&clientId=u12f550c9-1b61-4&from=paste&height=601&id=ua86e3b78&name=Pasted%20image%2020230212034337.png&originHeight=601&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=true&size=240686&status=done&style=none&taskId=u56bf48ac-9d8b-4805-af4b-3a3bae02117&title=%EF%BC%88ChatGPT%20%E8%BF%9B%E5%8C%96%E5%8F%B2%EF%BC%89&width=1000 "（ChatGPT 进化史）")
 
-我们对其能力的解剖，尚有一部分必须要留在 AI 的部分进行阐述，那就是这个 ChatGPT 大脑的核心，它的生成能力：
+我们对其能力的解剖，尚有一部分必须要留在 AI 的范畴进行阐述，那就是这个 ChatGPT 大脑的核心，它的生成能力：
 
 ```javascript
 GPT.generate(inputTokens);
@@ -166,7 +164,7 @@ const GenericModel = function <T>(a, b, c, d, e, x, y, z, ...others) {};
 
 这样做的好处显而易见，通过合并两个函数为一个通用的函数，相当于我们现在**只需要专注搞定这一个 AI 模型就可以了**，参数越多越好，哪怕多达万亿，模型却始终只有这**一个**，不再有特定领域的模型了。
 
-但这也带来了一个新问题：AI 模型肯定是以**精准**地解决一个问题为最终目的的，合并以后，大模型中的处理运算可能不够精准，因为刚才的 ModelA、ModelB 函数（模型）的处理没了，这问题要是从程序的角度去解决它的话，相当容易：
+但这也带来了一个新问题：AI 模型肯定是以**精准**地解决一个问题为最终目的的，合并以后，大模型中的处理运算可能不够精准，因为刚才的 ModelA、ModelB 函数（模型）的处理没了，这问题要是从程序的角度去解决它的话，就容易多了：
 
 ```javascript
 const GenericModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
@@ -193,7 +191,7 @@ const GenericModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
 };
 ```
 
-这在大模型里叫 `兼容下游任务` ，我们通过这两大步骤的处理，最终得到的这个函数，看起来已经相当完美了：
+这在大模型里叫 `兼容下游任务` ，我们通过这两大步骤的处理，最终得到的这个函数，看起来已经接近有效了：
 
 1. 既能够提前先跑出来一个超大规模的 AI 模型（这就是 `预训练` ），精准度上最起码可以基本涵盖 A, B 两个领域，当然，如果能够本身就做到精准就再完美不过了。
 2. 不过没关系，精准度如果不够，下游任务自己来处理，大模型这个大函数本身还支持扩展出更多可能的下游任务。
@@ -230,7 +228,7 @@ const GPTModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
 
 既然如此，我们就重点来看下 GPT 3.5 乃至 GPT 4.0 这个大模型究竟有多强悍，首先它是一个吞金兽，刚才就解释了 AI 大模型的投入成本，相信有了上面的抽象，理解这个点就更加容易了；**此外，OpenAI 投喂了多少数据给它呢？据多方报道的统计数据参考，大概近似整个互联网 10% 的语料内容已经喂给了它，至于来源其实不用去细究，有的数据显然不一定方便公开出来。**
 
-从这个角度上，说它是一个不断在进步的**知识百科之神**都是不过分的，但是**收集知识和学习知识**完全是两码事，我们回到 NLP 自然语言处理，自然语言处理主要用于感知和识别语言上下文，通俗的理解就是去猜测语言意图：
+从这个角度上，说它是**一个永不知疲倦且不断在自我进步的知识工作之神**都是不过分的，**这里有个重点一定要理解及注意，它并不是联网帮你搜寻 wiki 的内容，它在前面说明的训练过程中才会拿互联网上的信息，目的是找到上文所说的函数，一旦找到了，它就不再需要了。**但是**收集知识和学习知识**完全是两码事，我们回到 NLP 自然语言处理，自然语言处理主要用于感知和识别语言上下文，通俗的理解就是去猜测语言意图：
 
 比如，针对 `老王想要 xxx 这个问题` 。因为 NLP 只能从已有的当前上下文去判断，这个时候它肯定不知道老王要干什么，于是我们继续补充上下文，说：老王在肚子饿的时候，想要 xxx，NLP 立刻知道一个关键上下文，那就是他饿了，于是它根据模型和训练数据，发现后面紧随其后出现 `吃东西` 这三字的可能性最大。
 
@@ -242,6 +240,10 @@ const GPTModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
 
 这就是为什么有很多用户会在体验  ChatGPT 后评价它说：**一本正经地胡说八道**，原因正是在这里。
 
+它就是一个函数，它在玩文字接龙。在本节的最后，我想引用李宏毅老师课程的一张总结性示意图来完整地呈现 ChatGPT 达成的三大步骤：
+
+![uTools_1678671018101.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678671243287-0d41d707-d9e0-4d34-9910-b8baa3a3dcca.png#averageHue=%23efeded&clientId=u0d0c6e8c-3d25-4&from=ui&id=u23545e73&name=uTools_1678671018101.png&originHeight=632&originWidth=1132&originalType=binary&ratio=1&rotation=0&showTitle=true&size=208166&status=done&style=none&taskId=u2daad8d8-69f9-48f0-bff9-58ea73ef6d5&title=%E6%9D%8E%E5%AE%8F%E6%AF%85%EF%BC%9AChatGPT%20%E5%8E%9F%E7%90%86%20-%20%E9%A2%84%E8%AE%AD%E7%BB%83 "李宏毅：ChatGPT 原理 - 预训练")
+
 **至此，我们完整识别出来了它的核心能力，以及它的能力边界**。
 
 ### 正确地使用它比神话它更重要
@@ -252,7 +254,7 @@ const GPTModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
 
 仅仅是 AIGC 这个人工智能子领域，在 ChatGPT 大火之前就已经有很多其他 AI 厂商在提供了：
 
-![uTools_1676180541485.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325862394-0602994c-0035-444a-a2d3-f677a718053b.png#averageHue=%23e8e7e7&clientId=u12f550c9-1b61-4&from=paste&height=1357&id=u64d12fc9&name=uTools_1676180541485.png&originHeight=1357&originWidth=2134&originalType=binary&ratio=1&rotation=0&showTitle=true&size=323759&status=done&style=none&taskId=u159f4550-a3f2-47af-94fc-1b652608e01&title=%EF%BC%88Futurepedia%20-%20The%20Largest%20AI%20Tools%20Directory%20%7C%20Home%20%E7%9A%84%E5%AE%98%E7%BD%91%E6%AF%8F%E5%A4%A9%E9%83%BD%E6%9B%B4%E6%96%B0%E5%90%84%E7%A7%8D%20AI%20%E6%9C%8D%E5%8A%A1%E5%8E%82%E5%95%86%EF%BC%89&width=2134 "（Futurepedia - The Largest AI Tools Directory Home 的官网每天都更新各种 AI 服务厂商）")
+![uTools_1676180541485.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325862394-0602994c-0035-444a-a2d3-f677a718053b.png#averageHue=%23e8e7e7&clientId=u12f550c9-1b61-4&from=paste&height=1357&id=u64d12fc9&name=uTools_1676180541485.png&originHeight=1357&originWidth=2134&originalType=binary&ratio=1&rotation=0&showTitle=true&size=323759&status=done&style=none&taskId=u159f4550-a3f2-47af-94fc-1b652608e01&title=%EF%BC%88Futurepedia%20-%20The%20Largest%20AI%20Tools%20Directory%20%7C%20Home%20%E7%9A%84%E5%AE%98%E7%BD%91%E6%AF%8F%E5%A4%A9%E9%83%BD%E6%9B%B4%E6%96%B0%E5%90%84%E7%A7%8D%20AI%20%E6%9C%8D%E5%8A%A1%E5%8E%82%E5%95%86%EF%BC%89&width=2134 "（Futurepedia - The Largest AI Tools Directory / Home 的官网每天都更新各种 AI 服务厂商）")
 
 很多深度实践的知识工作者，包括我本人在内，早就已经在使用类似的工具来尝试提升某些工作的生产力了。
 
