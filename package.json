@@ -15,7 +15,7 @@
     "vinyl-fs": "^3.0.3"
   },
   "scripts": {
-    "prettier": "./node_modules/.bin/prettier -w --parser=markdown --config=./.prettierrc.json --loglevel=error  ./_posts",
+    "prettier": "./node_modules/.bin/prettier -w --parser=markdown --config=./.prettierrc.json --loglevel=error ./_posts",
     "markdownlint": "./node_modules/.bin/markdownlint-cli2 \"./_posts/*.{md,mdx,markdown}\" \"!node_modules\"",
     "textlint-fix": "./node_modules/.bin/textlint ./_posts/*.markdown --fix",
     "textlint": "./node_modules/.bin/textlint ./_posts/*.markdown",
