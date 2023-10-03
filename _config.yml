@@ -74,6 +74,10 @@ follows: [
     title: "Segmentfault",
     url: "https://segmentfault.com/u/xiaoa",
     ico: "https://static.segmentfault.com/main_site_next/e3057aed/favicon.ico"
+  },
+    title: "Bilibili".
+    url: "https://space.bilibili.com/18149298",
+    ico: "https://www.bilibili.com/favicon.ico?v=1"
   }
 ]
 
