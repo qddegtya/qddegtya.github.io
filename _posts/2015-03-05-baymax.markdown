@@ -15,8 +15,6 @@ category: lab
 
 <!-- more -->
 
-![Paper](https://github.com/qddegtya/cute-qq-redpoint/raw/master/paper.jpg "草稿")
-
 此次折腾的相关信息如下：
 
 ### cute-qq-redpoint
