@@ -1,5 +1,5 @@
 ---
-title: "Hlang - A FBP-Inspired language for universal applications."
+title: "A FBP-Inspired language for universal applications."
 excerpt: "Hlang aims to make programming easier, faster and more comfortable. It avoids coding,repetition and frustration."
 header:
   image: assets/images/p-header.jpg
