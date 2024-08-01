@@ -2,6 +2,10 @@
 main:
   - title: "首页"
     url: /
+  - title: "分类"
+    url: /categories/
+  - title: "标签"
+    url: /tags/
   - title: "作品"
     url: /portfolio/
   - title: "关于"
