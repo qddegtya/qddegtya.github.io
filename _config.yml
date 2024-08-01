@@ -353,7 +353,19 @@ defaults:
       author_profile: false
       share: false
 
+  # _cheatsheets
+  - scope:
+      path: ""
+      type: cheatsheets
+    values:
+      layout: single
+      author_profile: false
+      share: false
+
 collections:
+  cheatsheets:
+    output: true
+    permalink: /:collection/:path/
   portfolio:
     output: true
     permalink: /:collection/:path/
