@@ -345,10 +345,10 @@ defaults:
       toc: true
       toc_sticky: true
   
-  # _portfolio
+  # _os
   - scope:
       path: ""
-      type: portfolio
+      type: os
     values:
       layout: single
       author_profile: false
@@ -367,6 +367,6 @@ collections:
   cheatsheets:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  os:
     output: true
     permalink: /:collection/:path/

@@ -1,5 +1,5 @@
 ---
-title: "A FBP-Inspired language for universal applications."
+title: "Hlang - A FBP-Inspired language for universal applications."
 excerpt: "Hlang aims to make programming easier, faster and more comfortable. It avoids coding,repetition and frustration."
 header:
   image: assets/images/p-header.jpg
@@ -7,12 +7,8 @@ header:
 sidebar:
   - title: "Name"
     text: "Hlang"
-  - title: "Type"
-    text: "Open Source Project"
   - title: "Homepage"
     text: "https://github.com/hlang-org/hlang"
-  - title: "Status"
-    text: "Released"
 ---
 
 # Hlang
