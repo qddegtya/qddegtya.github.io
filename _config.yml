@@ -19,7 +19,7 @@ locale                   : "zh-CN"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Colorful"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "一枚数字艺术家的自留地"
 name                     : "Colorful"
 description              : "一枚数字艺术家的自留地"
 url                      : "https://xiaoa.name"
