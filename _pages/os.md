@@ -1,8 +1,8 @@
 ---
-title: Portfolio
+title: Open Source
 layout: collection
-permalink: /portfolio/
-collection: portfolio
+permalink: /os/
+collection: os
 entries_layout: grid
 classes: wide
 ---

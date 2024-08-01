@@ -8,7 +8,7 @@ main:
     url: /tags/
   - title: "归档"
     url: /year-archive/
-  - title: "作品"
-    url: /portfolio/
+  - title: "开源"
+    url: /os/
   - title: "关于"
     url: /about/
