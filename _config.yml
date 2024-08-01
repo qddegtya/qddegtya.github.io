@@ -304,6 +304,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      classes: wide
 
   # _posts
   - scope:
@@ -317,6 +318,7 @@ defaults:
       share: false
       related: true
       show_date: true
+      toc: true
   
   # _portfolio
   - scope:
