@@ -1,17 +1,3 @@
-.idea/
-
-node_modules/
-npm-debug.log
-
-projectFilesBackup/
-
-.jekyll-metadata
-.jekyll-cache/
-
-Gemfile.lock
-Gemfile
-
-# force update
 _site/
-
-*-lock.*
+.bundle/
+.jekyll-cache/

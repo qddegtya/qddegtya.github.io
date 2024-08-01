@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 从编程范式及实时 Web 应用的另类角度看向 ChatGPT 的 AI 大脑
 tags: chatgpt programming
 category: programming

@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: Github Pages 服务启用 Jekyll 3.0，享受纯净 Markdown 写作体验
 tags: github jekyll
 category: lab

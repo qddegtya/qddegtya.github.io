@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: Make your own Dark Mode with mbm.js
 tags: fe javascript
 category: work

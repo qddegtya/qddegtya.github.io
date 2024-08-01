@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: Flask 中让 api 实现客户端授权
 tags: flask python
 category: work
@@ -132,14 +132,14 @@ class RequireAuthClass (MethodViewType):
     """
     接口授权统一处理类
     基本思想是：所有指定 RequireAuthClass 为元类的类，在 type.__new__ 为其实例化时
-    会自动将其下的 post, put, delete 等方法包装上 api_require_auth
+    会自动将其下的 single, put, delete 等方法包装上 api_require_auth
     为了解决元类冲突问题，RequireAuthClass 必须是 MethodViewType 的子类
     而不是 type 的子类
     """
     def __new__(mcs, name, bases, dct):
         for name, value in dct.iteritems ():
             if (
-                name in ['post', 'put', 'delete', 'get']  # restful methods
+                name in ['single', 'put', 'delete', 'get']  # restful methods
                 and type (value) == FunctionType
             ):
                 value = api_require_auth (value)
@@ -208,7 +208,7 @@ class User (_get_resource_base ()):
     """
     用户管理类
     """
-    def post (self, user_id):
+    def single (self, user_id):
         return jsonify ({
             'user_id': user_id,
             'name': ' 测试账号 '
@@ -235,7 +235,7 @@ class HigherVocationalCollege (_get_resource_base ()):
         self.reqparse.add_argument ('description', type = unicode, default = "", location = 'json')
         self.args = self.reqparse.parse_args ()
     @close_db ('db')
-    def post (self):
+    def single (self):
         res = db.hvc.find ()
         res = json_serializable (res)
         return jsonify ({

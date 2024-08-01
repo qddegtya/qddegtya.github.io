@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 前端工程师的工具包
 tags: tool fe
 category: tool
@@ -49,7 +49,7 @@ category: tool
 
 | 名称                    | 推荐理由                                         | 备注                     |
 | :---------------------- | :----------------------------------------------- | :----------------------- |
-| postman                 | 必备神器                                         | /                        |
+| singleman                 | 必备神器                                         | /                        |
 | Avatars for Github      | Github 的动态上显示头像                          | /                        |
 | DevTools Author         | 在 chrome 的 Sources, console 等面板美化代码显示 | /                        |
 | Google 绘图             | 画 UML 咯                                        | /                        |

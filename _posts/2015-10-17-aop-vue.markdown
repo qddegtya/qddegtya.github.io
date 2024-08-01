@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: AOP 实现一个 vue 中带验证的 $http 模块
 tags: vue fe javascript
 category: work

@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: ReactNative App for TesterHome
 tags: react-native javascript
 category: work

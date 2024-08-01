@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: Sketchfab Share - Low poly 80'-90's European Car - Store pack
 tags: play life
 category: play
