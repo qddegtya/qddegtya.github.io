@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 剁手入装备 - 小鸡手柄 G3 增强版
 tags: play life
 category: play

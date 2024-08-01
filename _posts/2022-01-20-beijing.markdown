@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 2022 in 北京
 tags: photography
 category: life

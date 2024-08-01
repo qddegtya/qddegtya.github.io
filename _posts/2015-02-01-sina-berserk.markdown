@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用小记
 tags: fe tool
 category: tool

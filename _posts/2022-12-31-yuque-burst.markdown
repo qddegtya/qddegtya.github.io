@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 面向未来的认知优化之《爆裂》启示录
 tags: thinking life
 category: life

@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: KOA 源码阅读系列（一） - 理解 KOA 中间件的执行
 tags: javascript node
 category: work

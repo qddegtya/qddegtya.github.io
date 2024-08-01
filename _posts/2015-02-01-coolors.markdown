@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 快速色彩搭配 coolors.co
 tags: fe tool
 category: tool

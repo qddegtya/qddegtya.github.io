@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 斗战胜佛
 tags: life video
 category: life

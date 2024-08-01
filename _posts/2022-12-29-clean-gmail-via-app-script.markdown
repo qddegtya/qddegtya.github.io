@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: How to clean email for gmail via app script ?
 tags: google gmail
 category: tool

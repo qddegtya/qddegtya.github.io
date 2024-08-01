@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: Github 上那些炙手可热的技术手册
 tags: github
 category: lab

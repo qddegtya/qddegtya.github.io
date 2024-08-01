@@ -1,0 +1,8 @@
+# main links
+main:
+  - title: "首页"
+    url: /
+  - title: "作品"
+    url: /portfolio/
+  - title: "关于"
+    url: /about/

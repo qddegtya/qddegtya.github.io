@@ -1,5 +1,5 @@
 ---
-layout: singlepost
+layout: single
 title: 微信 JS-SDK 签名接入 flask 版
 tags: weixin flask python
 category: work
