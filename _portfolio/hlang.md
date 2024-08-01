@@ -7,6 +7,10 @@ header:
 sidebar:
   - title: "Name"
     text: "Hlang"
+  - title: "Type"
+    text: "Open Source Project"
+  - title: "Homepage"
+    text: "https://github.com/hlang-org/hlang"
   - title: "Status"
     text: "WIP"
 ---
