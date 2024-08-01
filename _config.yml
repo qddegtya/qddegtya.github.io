@@ -343,6 +343,7 @@ defaults:
       related: true
       show_date: true
       toc: true
+      toc_sticky: true
   
   # _portfolio
   - scope:
