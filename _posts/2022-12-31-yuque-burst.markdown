@@ -48,8 +48,7 @@ category: life
 
 当时我已经开始接触到世界级网游：魔兽世界（以下简称 WoW），复杂到离谱的界面和操作方式当时劝退了一批玩家，时常我们需要用一些 **辅助插件** 来帮助我们在游戏中完成一些更好的操作，注意，这在当时来看是 **革命性** 的东西，尤其是那个外挂满天飞的年代。直到后来正式成为一名技术工作者，我才知道，当时 WoW 使用的是先进的 **Lua** **Language** 作为插件机制的核心实现。如今，Lua 仍然在众多领域发挥着极其重要的作用。（考虑到本文的受众和读者，这里不做更多展开叙述，感兴趣的可以自行 Google）
 
-![41O7tmtbDqL._SX404_BO1,204,203,200_.jpg](https://cdn.nlark.com/yuque/0/2022/jpeg/359409/1653743239435-ada9515d-8d9b-46d8-8000-e5fc8b2d1103.jpeg#clientId=u29c5ee42-c77d-4&crop=0&crop=0&crop=1&crop=1&from=ui&height=388&id=u780cf5e2&margin=%5Bobject%20Object%5D&name=41O7tmtbDqL._SX404_BO1%2C204%2C203%2C200_.jpg&originHeight=500&originWidth=406&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27738&status=done&style=none&taskId=u24b7d7da-48b6-4498-8975-3990010438e&title=&width=315)
-（Beginning Lua with World of Warcraft Add-ons）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/jpeg/359409/1653743239435-ada9515d-8d9b-46d8-8000-e5fc8b2d1103.jpeg#clientId=u29c5ee42-c77d-4&crop=0&crop=0&crop=1&crop=1&from=ui&height=388&id=u780cf5e2&margin=%5Bobject%20Object%5D&name=41O7tmtbDqL._SX404_BO1%2C204%2C203%2C200_.jpg&originHeight=500&originWidth=406&originalType=binary&ratio=1&rotation=0&showTitle=false&size=27738&status=done&style=none&taskId=u24b7d7da-48b6-4498-8975-3990010438e&title=&width=315" alt="Beginning Lua with World of Warcraft Add-ons" caption="Beginning Lua with World of Warcraft Add-ons" %}
 
 这样的机制在当时整个全球的 WoW 社区运作的非常好，商业公司和个人开发者不断涌入，贡献和分享了一大堆非常实用的插件，极大增强了全球玩家的游戏体验，它们改变了这个 “世界”。而且，你可以随意安装和卸载这些插件，如果你有一定的开发能力，你随时随地可以把你的创意分享给全球所有玩家。
 

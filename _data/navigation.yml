@@ -6,6 +6,8 @@ main:
     url: /categories/
   - title: "标签"
     url: /tags/
+  - title: "归档"
+    url: /year-archive/
   - title: "作品"
     url: /portfolio/
   - title: "关于"

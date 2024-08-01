@@ -12,7 +12,7 @@ sidebar:
   - title: "Homepage"
     text: "https://github.com/hlang-org/hlang"
   - title: "Status"
-    text: "WIP"
+    text: "Released"
 ---
 
 # Hlang
