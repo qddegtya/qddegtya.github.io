@@ -3,6 +3,7 @@ layout: single
 title: 微信 JS-SDK 签名接入 flask 版
 tags: weixin flask python
 category: work
+excerpt: ""
 ---
 
 相信很多做前端的朋友都已经注意到了微信今年的一系列大动作，当然，对于前端开发工作来讲，我觉得这本身就是一种非常不错的开放机会，

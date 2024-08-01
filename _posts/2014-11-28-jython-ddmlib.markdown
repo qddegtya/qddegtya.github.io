@@ -3,6 +3,7 @@ layout: single
 title: jython + ddmlib 实现仿豌豆荚效果屏幕实时快照
 tags: python jython
 category: lab
+excerpt: ""
 ---
 
 部分代码思路来源于互联网

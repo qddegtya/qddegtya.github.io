@@ -3,6 +3,7 @@ layout: single
 title: 2022 in 北京
 tags: photography
 category: life
+excerpt: ""
 ---
 
 ![](/assets/blog-images/2022-01-20/20220108_193853.jpg)

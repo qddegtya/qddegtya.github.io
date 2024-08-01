@@ -3,6 +3,7 @@ layout: single
 title: Flask 中让 api 实现客户端授权
 tags: flask python
 category: work
+excerpt: ""
 ---
 
 > 后端 API 通常需要对发送请求的客户端进行合法验证，以确保这些 API 是被 "保护" 起来的。
