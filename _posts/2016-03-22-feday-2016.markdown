@@ -3,6 +3,7 @@ layout: single
 title: FEDAY 2016 之旅
 tags: javascript react node
 category: life
+excerpt: ""
 ---
 
 ### 前戏

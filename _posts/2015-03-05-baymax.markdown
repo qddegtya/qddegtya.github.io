@@ -3,6 +3,7 @@ layout: single
 title: SVG + JS 实现新版手机 QQ 的手势消除红点消息的动画
 tags: svg javascript
 category: lab
+excerpt: ""
 ---
 
 下面的配图仅供卖萌

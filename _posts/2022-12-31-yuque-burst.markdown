@@ -3,6 +3,7 @@ layout: single
 title: 面向未来的认知优化之《爆裂》启示录
 tags: thinking life
 category: life
+excerpt: ""
 ---
 
 > 目前，我们的旅程一直很舒适、惬意，路况一直很好，食物也充足、美味...... 事实上，如果我没经历过那些前所未有的糟糕透顶的事情，我会说，麻烦的事情才刚刚开始呢。 - 塔姆森。唐纳（Tamsen Donner）1846.6.16
