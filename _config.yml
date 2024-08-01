@@ -305,6 +305,24 @@ defaults:
       layout: single
       author_profile: true
       classes: wide
+  
+  # tag
+  - scope:
+      path: ""
+      type: tag
+    values:
+      layout: single
+      author_profile: true
+      classes: wide
+  
+  # category
+  - scope:
+      path: ""
+      type: category
+    values:
+      layout: single
+      author_profile: true
+      classes: wide
 
   # _posts
   - scope:
