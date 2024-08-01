@@ -2,7 +2,7 @@
 title: "Hlang"
 excerpt: "A FBP-Inspired language for universal applications."
 header:
-  teaser: https://raw.githubusercontent.com/hlang-org/hlang/main/media/ui.png
+  teaser: ""
   actions:
     - label: "更多信息"
       url: "https://github.com/hlang-org/hlang"

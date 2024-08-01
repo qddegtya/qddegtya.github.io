@@ -33,12 +33,12 @@ if (proxyAgent) {
 
 // open source project portfolio template
 const PORTFOLIO_OSP = ({
-  excerpt,
-  teaser,
-  projectName,
-  projectHomepage,
-  readmeContent,
-}) => `
+  excerpt = "",
+  teaser = "",
+  projectName = "",
+  projectHomepage = "",
+  readmeContent = "",
+} = {}) => `
 ---
 title: "${projectName}"
 excerpt: "${excerpt}"
