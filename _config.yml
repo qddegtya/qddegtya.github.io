@@ -345,6 +345,7 @@ defaults:
       type: os
     values:
       layout: single
+      classes: wide
       author_profile: false
       share: false
       excerpt: ""
