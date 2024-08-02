@@ -141,6 +141,9 @@ footer:
     - label: "NewsLetter"
       icon: "fas fa-fw fa-r"
       url: "https://r.xiaoa.name"
+    - label: "Sitemap"
+      icon: "fas fa-fw fa-map-pin"
+      url: "/sitemap.xml"
 
 
 # Reading Files
@@ -337,7 +340,6 @@ defaults:
       header:
         overlay_image: /assets/images/posts-header.jpg
         overlay_filter: 0.5
-        caption: "题图来自于: [**Unsplash**](https://unsplash.com)"
 
   # _os
   - scope:
@@ -351,7 +353,6 @@ defaults:
       header:
         overlay_image: /assets/images/os-header.jpg
         overlay_filter: 0.5
-        caption: "题图来自于: [**Unsplash**](https://unsplash.com)"
 
   # _cheatsheets
   - scope:
