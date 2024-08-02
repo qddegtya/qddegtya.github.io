@@ -1,6 +1,7 @@
 ---
 title: "Hlang"
 excerpt: "A FBP-Inspired language for universal applications."
+comments: true
 header:
   teaser: "/assets/os/hlang/teaser.png"
   actions:
