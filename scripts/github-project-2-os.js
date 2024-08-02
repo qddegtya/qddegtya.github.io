@@ -45,7 +45,7 @@ excerpt: "${excerpt}"
 header:
   teaser: ${teaser}
   actions:
-    - label: "更多信息"
+    - label: "Github"
       url: "${projectHomepage}"
 ---
 

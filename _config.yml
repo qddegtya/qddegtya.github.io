@@ -346,7 +346,7 @@ defaults:
       header:
         overlay_image: /assets/images/posts-header.jpg
         overlay_filter: 0.5
-        caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+        caption: "题图来自于: [**Unsplash**](https://unsplash.com)"
 
   # _os
   - scope:
@@ -360,7 +360,7 @@ defaults:
       header:
         overlay_image: /assets/images/os-header.jpg
         overlay_filter: 0.5
-        caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+        caption: "题图来自于: [**Unsplash**](https://unsplash.com)"
 
   # _cheatsheets
   - scope:
