@@ -309,8 +309,8 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
-      classes: wide
+      author_profile: false
+
   
   # tag
   - scope:
@@ -318,8 +318,7 @@ defaults:
       type: tag
     values:
       layout: single
-      author_profile: true
-      classes: wide
+      author_profile: false
   
   # category
   - scope:
@@ -327,8 +326,7 @@ defaults:
       type: category
     values:
       layout: single
-      author_profile: true
-      classes: wide
+      author_profile: false
 
   # _posts
   - scope:

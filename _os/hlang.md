@@ -6,9 +6,6 @@ header:
   actions:
     - label: "更多信息"
       url: "https://github.com/hlang-org/hlang"
-sidebar:
-  - title: "我的角色"
-    text: "Co-Founder, Core Contributor"
 ---
 
 # Hlang

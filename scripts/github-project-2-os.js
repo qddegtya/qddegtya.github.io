@@ -47,9 +47,6 @@ header:
   actions:
     - label: "更多信息"
       url: "${projectHomepage}"
-sidebar:
-  - title: "我的角色"
-    text: "Co-Founder, Core Contributor"
 ---
 
 ${readmeContent}
