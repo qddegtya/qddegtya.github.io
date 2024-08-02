@@ -4,7 +4,7 @@ permalink: /about/
 comments: true
 excerpt: "Tell me and I forget; Show me and I remember; Involve me and I understand."
 header:
-  overlay_color: "#2C3A47"
+  overlay_color: "#000000"
 ---
 
 ![Archer](../assets/images/me.jpeg)
