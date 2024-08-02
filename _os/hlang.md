@@ -2,6 +2,7 @@
 title: "Hlang"
 excerpt: "A FBP-Inspired language for universal applications."
 header:
+  teaser: "/assets/os/hlang/teaser.png"
   actions:
     - label: "Github"
       url: "https://github.com/hlang-org/hlang"
@@ -13,7 +14,7 @@ header:
 <br />
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hlang-org/hlang/main/media/logo.png" width="256" height="256" />
+  <img src="/assets/os/hlang/logo.png" width="256" height="256" />
 </p>
 
 <br />
@@ -42,7 +43,7 @@ header:
 #### UI & Devtool
 
 <p align="center">
-  <img width="800" src="https://raw.githubusercontent.com/hlang-org/hlang/main/media/ui.png" alt="devtool">
+  <img width="800" src="/assets/os/hlang/teaser.png" alt="devtool">
 </p>
 
 ### Feature
