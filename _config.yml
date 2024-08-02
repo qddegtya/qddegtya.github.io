@@ -119,14 +119,14 @@ author:
   location         : "China / Shanghai"
   email            : # "qddegtya@gmail.com"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
+    - label: # "Email"
+      icon: # "fas fa-fw fa-envelope-square"
       url: # "mailto:qddegtya@gmail.com"
     - label: "Bento"
-      icon: "fas fa-fw fa-link"
+      icon: "fas fa-fw fa-border-all"
       url: "https://bento.me/archer"
-    - label: "Yuque"
-      icon: "fas fa-fw fa-link"
+    - label: "Digital Garden"
+      icon: "fas fa-fw fa-house"
       url: "https://www.yuque.com/chiyu-heb0t"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
@@ -138,18 +138,9 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Bento"
-      icon: "fas fa-fw fa-link"
-      url: "https://bento.me/archer"
-    - label: "Yuque"
-      icon: "fas fa-fw fa-link"
-      url: "https://www.yuque.com/chiyu-heb0t"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/qddegtya"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/qddegtya"
+    - label: "NewsLetter"
+      icon: "fas fa-fw fa-r"
+      url: "https://r.xiaoa.name"
 
 
 # Reading Files
