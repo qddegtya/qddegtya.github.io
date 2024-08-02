@@ -141,9 +141,6 @@ footer:
     - label: "NewsLetter"
       icon: "fas fa-fw fa-r"
       url: "https://r.xiaoa.name"
-    - label: "Sitemap"
-      icon: "fas fa-fw fa-map-pin"
-      url: "/sitemap.xml"
 
 
 # Reading Files
