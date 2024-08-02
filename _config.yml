@@ -335,6 +335,7 @@ defaults:
       toc_sticky: true
       excerpt: ""
       header:
+        teaser: ""
         overlay_image: /assets/images/posts-header.jpg
         overlay_filter: 0.5
 
@@ -348,6 +349,7 @@ defaults:
       share: false
       excerpt: ""
       header:
+        teaser: ""
         overlay_image: /assets/images/os-header.jpg
         overlay_filter: 0.5
 
