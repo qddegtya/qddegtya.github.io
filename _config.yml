@@ -336,8 +336,8 @@ defaults:
       excerpt: ""
       header:
         teaser: ""
-        overlay_image: /assets/images/posts-header.jpg
-        overlay_filter: 0.5
+        overlay_color: "#2C3A47"
+
 
   # _os
   - scope:
