@@ -64,6 +64,8 @@ You can Follow my footprints under my avatar (everywhere, 😄).
 
 ### 技能
 
+> 感谢这些让我吃上饭的家伙们
+
 <img width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
 <img width="32" height="32" src="/assets/tech-stack/ts.jpg" />
 <img width="32" height="32" src="/assets/tech-stack/node.png" />
