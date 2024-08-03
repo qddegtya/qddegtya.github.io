@@ -62,7 +62,7 @@ You can Follow my footprints under my avatar (everywhere, 😄).
 
 ---
 
-### 技术栈
+### 技能
 
 <img width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
 <img width="32" height="32" src="/assets/tech-stack/ts.jpg" />
