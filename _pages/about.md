@@ -40,7 +40,7 @@ events-nuffnang:
 
 有一个可爱的女儿，对，就是你们口中的「女儿奴」。
 
-你可以在我头像（随处可见，😄）的下面 Follow 我的足迹。
+> 你可以在我头像（随处可见，😄）的下面 Follow 我的足迹。
 
 ---
 
@@ -50,7 +50,7 @@ Subsequently launched his career so far has been more than ten years, the former
 
 I have a lovely daughter, yes, what you call "daughter slave".
 
-You can Follow my footprints under my avatar (everywhere, 😄).
+> You can Follow my footprints under my avatar (everywhere, 😄).
 
 ---
 
