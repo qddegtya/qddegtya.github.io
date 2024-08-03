@@ -1,5 +1,43 @@
 ---
-layout: home
-author_profile: true
-classes: wide
+title: "Colorful"
+layout: splash
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.5"
+  overlay_image: /assets/images/index-header.jpg
+excerpt: "Hi 👋，I am Archer."
+intro: 
+  - excerpt: '> Tell me and I forget; Show me and I remember; Involve me and I understand.'
+dg:
+  - image_path: /assets/feature_row/dg.jpg
+    alt: "数字花园"
+    title: "数字花园"
+    excerpt: '我使用「语雀」作为我的数字花园，作为一名内容创作者，我喜欢将思考沉淀于文字并且转化为知识，这里是我用来整理和分享这些知识的地方，你可以在这里阅读「关于产品、设计、技术的精选文章」，以及一些有趣的专栏。'
+    url: "https://www.yuque.com/chiyu-heb0t"
+    btn_label: "访问"
+    btn_class: "btn--primary"
+github:
+  - image_path: /assets/feature_row/coding.jpg
+    alt: "Github"
+    title: "Github"
+    excerpt: '毫无疑问，「Github」是开发者的圣地，作为一名独立开发者，你可以看到我在这里正在专注开发中以及参与的开源项目，我经常使用的编程语言为 Javascript，同时关注 Rust / Java / Python 生态。'
+    url: "https://github.com/qddegtya"
+    btn_label: "访问"
+    btn_class: "btn--primary"
+bento:
+  - image_path: /assets/feature_row/bento.jpg
+    alt: "Bio-Link"
+    title: "Bio-Link"
+    excerpt: '你也可以在 `bento.me` 这样的 `Bio-Link` 平台上看到我的身影，这非常酷，在这里，你可以在这里向我进行 AMA 咨询预约，关注我的最新事件和行程。'
+    url: "https://bento.me/archer"
+    btn_label: "访问"
+    btn_class: "btn--primary"
 ---
+
+{% include feature_row id="intro" type="center" %}
+
+{% include feature_row id="github" type="left" %}
+
+{% include feature_row id="dg" type="right" %}
+
+{% include feature_row id="bento" type="center" %}
