@@ -5,6 +5,31 @@ comments: true
 toc: true
 toc_sticky: true
 author_profile: true
+events-nuffnang:
+  - url: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
+    image_path: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
+    alt: "Nuffnang 2011"
+    title: "Nuffnang 2011"
+  - url: /assets/events/nuffnang/2011/p1347938811.png
+    image_path: /assets/events/nuffnang/2011/p1347938811.png
+    alt: "Nuffnang 2011"
+    title: "Nuffnang 2011"
+  - url: /assets/events/nuffnang/2011/p1347940701.png
+    image_path: /assets/events/nuffnang/2011/p1347940701.png
+    alt: "Nuffnang 2011"
+    title: "Nuffnang 2011"
+  - url: /assets/events/nuffnang/2011/p1347941122.png
+    image_path: /assets/events/nuffnang/2011/p1347941122.png
+    alt: "Nuffnang 2011"
+    title: "Nuffnang 2011"
+  - url: /assets/events/nuffnang/2011/p1347942179.png
+    image_path: /assets/events/nuffnang/2011/p1347942179.png
+    alt: "Nuffnang 2011"
+    title: "Nuffnang 2011"
+  - url: /assets/events/nuffnang/2011/p1347962010.png
+    image_path: /assets/events/nuffnang/2011/p1347962010.png
+    alt: "Nuffnang 2011"
+    title: "Nuffnang 2011"
 ---
 
 ### 简介
@@ -26,3 +51,23 @@ Subsequently launched his career so far has been more than ten years, the former
 I have a lovely daughter, yes, what you call "daughter slave".
 
 You can Follow my footprints under my avatar (everywhere, 😄).
+
+---
+
+### 事件
+
+#### Nuffnang 2011
+
+{% include gallery id="events-nuffnang" %}
+
+---
+
+### 技术栈
+
+<img width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
+<img width="32" height="32" src="/assets/tech-stack/ts.jpg" />
+<img width="32" height="32" src="/assets/tech-stack/node.png" />
+<img width="32" height="32" src="/assets/tech-stack/react.png" />
+<img width="32" height="32" src="/assets/tech-stack/vue.png" />
+<img width="32" height="32" src="/assets/tech-stack/python.png" />
+<img width="32" height="32" src="/assets/tech-stack/rust.png" />
