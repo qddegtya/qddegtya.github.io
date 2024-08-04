@@ -7,5 +7,4 @@ gem "webrick", "~> 1.8"
 
 group :jekyll_plugins do
   gem "jekyll-archives"
-  gem "jekyll-github-metadata"
 end
