@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Javascript Sandbox
-tags: workflow n8n
+tags: javascript
 category: javascript
 excerpt: ""
 ---
