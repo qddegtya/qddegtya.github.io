@@ -8,3 +8,7 @@ gem "webrick", "~> 1.8"
 group :jekyll_plugins do
   gem "jekyll-archives"
 end
+
+if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('3.3')
+  s.add_dependency("csv", "~> 3.0")
+end
