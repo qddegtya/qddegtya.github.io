@@ -137,9 +137,6 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "NewsLetter"
-      icon: "fas fa-fw fa-r"
-      url: "https://r.xiaoa.name"
     - label: "SiteMap"
       icon: "fas fa-fw fa-map-pin"
       url: "/sitemap.xml"
