@@ -3,7 +3,7 @@ layout: single
 title: ReactNative App for TesterHome
 tags: react-native javascript
 category: work
-excerpt: ""
+excerpt: "Written By ES6 + JSX + ReactNative"
 ---
 
 ### Github

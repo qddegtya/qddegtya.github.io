@@ -3,7 +3,7 @@ layout: single
 title: FEDAY 2016 之旅
 tags: javascript react node
 category: life
-excerpt: ""
+excerpt: "2016/3/21 补上参会的完整记录，这个问题从一开始我就是准备自问自答的，希望可以通过这种形式把大会的干货分享给更多人。"
 ---
 
 ### 前戏
