@@ -3,7 +3,7 @@ layout: single
 title: Make your own Dark Mode with mbm.js
 tags: fe javascript
 category: work
-excerpt: ""
+excerpt: "Play with your Dark Mode."
 ---
 
 <p><a href="https://github.com/qddegtya/mbm" target="_blank">[mbm] = (🌞 -> 🌛 || 🌛 -> 🌞)</a></p>

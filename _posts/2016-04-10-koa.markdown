@@ -3,7 +3,7 @@ layout: single
 title: KOA 源码阅读系列（一） - 理解 KOA 中间件的执行
 tags: javascript node
 category: work
-excerpt: ""
+excerpt: "源码阅读系列的开篇就不多废话了，开门见山。"
 ---
 
 源码阅读系列的开篇就不多废话了，开门见山。

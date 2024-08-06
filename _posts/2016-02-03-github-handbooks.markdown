@@ -3,7 +3,7 @@ layout: single
 title: Github 上那些炙手可热的技术手册
 tags: github
 category: lab
-excerpt: ""
+excerpt: "Github 上有一些手册类型的开源项目，具有很高的务实价值，因此，本文将保持小碎步更新，请叫我收集狂。"
 ---
 
 Github 上有一些手册类型的开源项目，具有很高的务实价值，因此，本文将保持小碎步更新，请叫我收集狂。

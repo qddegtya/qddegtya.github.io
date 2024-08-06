@@ -3,7 +3,7 @@ layout: single
 title: v-circle - 漂亮的 Vue.js 圆形进度组件集合
 tags: javascript vue
 category: work
-excerpt: ""
+excerpt: "A collection of circle progress with Vue.js."
 ---
 
 # v-circle

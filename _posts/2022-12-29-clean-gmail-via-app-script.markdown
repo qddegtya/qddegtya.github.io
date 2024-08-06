@@ -3,7 +3,7 @@ layout: single
 title: How to clean email for gmail via app script ?
 tags: google gmail
 category: tool
-excerpt: ""
+excerpt: "分享一枚非常实用的 google app script"
 ---
 
 分享一枚非常实用的 **google app script**，需要的同学可以将其安装于 **https://script.google.com/**；

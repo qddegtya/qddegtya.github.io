@@ -3,7 +3,7 @@ layout: single
 title: 「Code & Art」什么是超自动化？
 tags: workflow n8n
 category: video
-excerpt: ""
+excerpt: "介绍 n8n.io"
 ---
 
 {% include video id="BV1L841137g4" provider="bilibili" danmaku="1" %}
