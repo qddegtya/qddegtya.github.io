@@ -1,0 +1,20 @@
+---
+layout: single
+title: 《精读源码》- GoT
+tags: python got llm
+category: llm got
+excerpt: "精读源码系列 - GoT"
+---
+
+源码分析图：
+
+![GoT](/assets/blog-images/2024-08-07/1717084858596.png)
+
+Thoughts 统一结构后，Operation 实例的私有执行方法实际上就变成了前置 T 的转换函数，这个巧妙的设计是 GoT 框架的灵魂所在，比如可以用这个 T 生成新的 T’、也可以原地更新 T、或者其他操作，故名曰：思维变换。
+
+* GoT 在图数据结构上的算法简单高效（默认 Controller 执行策略为 BFS，最终实现在叶子节点上获得所有 Thoughts 的结果整合）
+* Operation 核心是私有执行方法即 T 的变换函数，通过前置/后置指针最终连接在一起，因此支持分形
+* 根节点是没有前置节点的节点；叶子节点是没有后置节点的节点
+* 因为采用的是有向图的结构表达，因此天然支持降级为 IO / CoT / ToT
+
+[Github](https://github.com/spcl/graph-of-thoughts)
