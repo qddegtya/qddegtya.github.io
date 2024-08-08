@@ -8,7 +8,7 @@ excerpt: "精读源码系列 - GoT"
 
 源码分析图：
 
-![GoT](/assets/blog-images/2024-08-07/1717084858596.png)
+{% include figure popup=true image_path="/assets/blog-images/2024-08-07/1717084858596.png" alt="GoT" caption="GoT" %}
 
 Thoughts 统一结构后，Operation 实例的私有执行方法实际上就变成了前置 T 的转换函数，这个巧妙的设计是 GoT 框架的灵魂所在，比如可以用这个 T 生成新的 T’、也可以原地更新 T、或者其他操作，故名曰：思维变换。
 
