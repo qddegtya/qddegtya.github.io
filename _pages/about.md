@@ -64,7 +64,7 @@ I have a lovely daughter, yes, what you call "daughter slave".
 
 ### 技能
 
-> 感谢这些让我吃上饭的家伙们
+> 感谢这些让我「吃上饭」的家伙们
 
 <img width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
 <img width="32" height="32" src="/assets/tech-stack/ts.jpg" />
