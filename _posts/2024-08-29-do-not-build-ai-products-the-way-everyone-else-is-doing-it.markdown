@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Don’t Build AI Products The Way Everyone Else Is Doing It - 【译】
+title: Don’t Build AI Products The Way Everyone Else Is Doing It -【译】
 tags: llm 译文
 category: llm
 excerpt: "如果你想打造独特、有价值且快速的人工智能产品，就不要去做其他人正在做的事情。我会告诉你应该做什么。"
