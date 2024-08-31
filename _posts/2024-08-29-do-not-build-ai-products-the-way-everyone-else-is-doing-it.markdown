@@ -210,4 +210,6 @@ excerpt: "如果你想打造独特、有价值且快速的人工智能产品，�
 
 [尝试视觉副驾驶](https://builder.io/signup)
 
+原文链接：[Don’t Build AI Products The Way Everyone Else Is Doing It](https://www.builder.io/blog/build-ai)
+
 本文使用 [🐝 A `C(Collect) -> T(Transform) -> P(Publish)` automation workflow for content creator.](https://github.com/qddegtya/r) 全自动采集 - 翻译 - 发布
