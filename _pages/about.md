@@ -32,8 +32,6 @@ events-nuffnang:
     title: "Nuffnang 2011"
 ---
 
-Hi 👋，I am Archer.
-
 ---
 
 ![Archer](/assets/images/blog-about-me.jpg)
