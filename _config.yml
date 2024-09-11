@@ -19,9 +19,9 @@ locale                   : "zh-CN"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Colorful"
 title_separator          : "-"
-subtitle                 : "一枚数字艺术家的自留地"
+subtitle                 : "Archer's Blog"
 name                     : "Colorful"
-description              : "一枚数字艺术家的自留地"
+description              : "Archer's Blog"
 url                      : "https://xiaoa.name"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "qddegtya/qddegtya.github.io"
@@ -114,7 +114,7 @@ analytics:
 author:
   name             : "Archer"
   avatar           : "/assets/images/archer-github.png"
-  bio              : "🎨 👷 Full-stack engineer -> [ mobile, infrastructure, ux, language ]. Pay close attention to Python & Java & Rust ecosystem."
+  bio              : "Code & Art 工作室创始人，一枚数字艺术家，全栈工程师；带你探寻数字化世界的宝藏。"
   location         : "China / Shanghai"
   email            : # "qddegtya@gmail.com"
   links:

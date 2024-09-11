@@ -1,6 +1,6 @@
 # main links
 main:
-  - title: "最新文章"
+  - title: "博客"
     url: /blog/
   - title: "分类"
     url: /categories/
@@ -8,5 +8,5 @@ main:
     url: /tags/
   - title: "归档"
     url: /year-archive/
-  - title: "关于我"
+  - title: "关于"
     url: /about/
