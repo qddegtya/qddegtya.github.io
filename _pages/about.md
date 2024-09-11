@@ -36,7 +36,7 @@ Hi 👋，I am Archer.
 
 ---
 
-![Archer](/assets/images/blog-about-me.png)
+![Archer](/assets/images/blog-about-me.jpg)
 
 ---
 
