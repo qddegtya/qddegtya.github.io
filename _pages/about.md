@@ -4,7 +4,8 @@ permalink: /about/
 comments: true
 toc: false
 toc_sticky: true
-author_profile: false
+author_profile: true
+classes: wide
 events-nuffnang:
   - url: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
     image_path: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
