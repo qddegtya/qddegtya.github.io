@@ -1,5 +1,5 @@
 ---
-title: 关于我
+title: 关于
 permalink: /about/
 comments: true
 toc: false
@@ -34,6 +34,8 @@ events-nuffnang:
 ---
 
 ---
+
+Hi 👋，I am:
 
 ![Archer](/assets/images/blog-about-me.jpg)
 
