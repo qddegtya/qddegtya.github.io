@@ -2,9 +2,9 @@
 title: 关于我
 permalink: /about/
 comments: true
-toc: true
+toc: false
 toc_sticky: true
-author_profile: true
+author_profile: false
 events-nuffnang:
   - url: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
     image_path: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
@@ -32,7 +32,13 @@ events-nuffnang:
     title: "Nuffnang 2011"
 ---
 
+Hi 👋，I am Archer.
+
+---
+
 ![Archer](/assets/images/blog-about-me.png)
+
+---
 
 ### 简介
 
