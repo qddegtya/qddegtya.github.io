@@ -6,6 +6,12 @@ toc: false
 toc_sticky: true
 author_profile: true
 classes: wide
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.1"
+  overlay_image: "/assets/images/about-me-header.jpg"
+  caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
+excerpt: "Hi 👋，I am Archer."
 events-nuffnang:
   - url: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
     image_path: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
@@ -32,10 +38,6 @@ events-nuffnang:
     alt: "Nuffnang 2011"
     title: "Nuffnang 2011"
 ---
-
----
-
-Hi 👋，I am:
 
 ![Archer](/assets/images/blog-about-me.jpg)
 
