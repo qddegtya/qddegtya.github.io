@@ -1,6 +1,6 @@
 # main links
 main:
-  - title: "最新文章"
+  - title: "我正在写"
     url: /blog/
   - title: "我正在读"
     url: /ril/
