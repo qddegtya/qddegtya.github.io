@@ -15,4 +15,5 @@ header:
     - label: "Fork me on GitHub"
       url: "https://github.com/qddegtya/r"
 excerpt: "Powered by 🐝 A `C(Collect) -> T(Transform) -> P(Publish)` automation workflow for content creator."
+sort_order: reverse
 ---
