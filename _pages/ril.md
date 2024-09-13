@@ -9,7 +9,7 @@ author_profile: true
 header:
   overlay_color: "#000"
   overlay_filter: "0.1"
-  overlay_image: "/assets/images/blog-header.jpg"
+  overlay_image: "/assets/images/blog-r-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
   actions:
     - label: "Fork me on GitHub"
