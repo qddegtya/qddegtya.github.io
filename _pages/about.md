@@ -57,7 +57,7 @@ events-nuffnang:
 
 After graduating from high school in （20）08, I founded several well-known independent blogs (I-Mee / Hugweb / DiggerPlus, etc.), grew up as a personal webmaster and independent developer, (20) 11 years, invited by the Asia's largest independent blog advertising alliance - Nuffnang, participated in the Asia-Pacific region blogger ceremony, that year 21 years old.
 
-Subsequently launched his career so far has been more than ten years, the former technical experts of a large factory, is currently deeply engaged in enterprise architecture / system design / front-end, open source enthusiasts, a set of knowledge management methods used by themselves and a systematic set of high-efficiency productivity tools, obsessed with writing code, reading, writing, is currently executing their own "NEXT 10 YEARS" programme, so as to constantly urge themselves to stay young and curious, always be the "endless tossing and turning", always be the "endless tossing and turning". Always be the "proud teenager with no end of tossing and turning".
+Subsequently launched his career so far has been more than ten years, the former technical experts of a large factory, is currently deeply engaged in enterprise architecture / system design / front-end, open source enthusiasts, a set of knowledge management methods used by themselves and a systematic set of high-efficiency productivity tools, obsessed with writing code, reading, writing, is currently executing their own "NEXT 10 YEARS" programme, so as to constantly urge themselves to stay young and curious, always be the "endless tossing and turning", Always be the "proud teenager with no end of tossing and turning".
 
 I have a lovely daughter, yes, what you call "daughter slave".
 
