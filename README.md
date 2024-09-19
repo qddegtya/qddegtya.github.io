@@ -2,7 +2,6 @@
 
 🌍 [Colorful](https://xiaoa.name)
 
-* Neon / Cyberpunk Style
 * Multi-Type Layout
 * Https
 * Site-Search / Archieve / RSS / Sitemap / ...
