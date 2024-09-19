@@ -84,13 +84,13 @@ excerpt: "微前端正在从根本上改变我们构建和扩展前端的方式�
 
 [**位**](https://bit.cloud/)允许每个组件或微前端独立版本控制（使用semver规则）。这使得团队可以混合和匹配组件，更新或回滚特定组件而不影响其他组件，从而实现微前端的增量更改和发布。
 
-[![](https://miro.medium.com/v2/resize:fit:700/1*Yrv8YEoaGHv7oFoDxABmeQ.png)]([https://bit.cloud/](https://bit.cloud/))
+[![](https://miro.medium.com/v2/resize:fit:700/1*Yrv8YEoaGHv7oFoDxABmeQ.png)](https://bit.cloud)
 
 使用Bit进行微前端的语义版本控制
 
 此外，您可以比较组件版本之间的变化，不仅仅是代码，还有预览、文档、测试、依赖关系等等：
 
-[![](https://miro.medium.com/v2/resize:fit:1000/1*Nvsh1bskCHSwqShLlalTGg.png)]([https://bit.cloud/teambit/community/ui/header/header/~比较/文档](https://bit.cloud/teambit/community/ui/header/header/~compare/docs))
+[![](https://miro.medium.com/v2/resize:fit:1000/1*Nvsh1bskCHSwqShLlalTGg.png)](https://bit.cloud/teambit/community/ui/header/header/~compare/docs)
 
 每个微前端的版本控制；自动依赖和更新
 
@@ -107,7 +107,7 @@ Bit 会跟踪和管理组件中的每个变化，提供清晰的版本和变更�
 
 Bit 自动定义和管理每个组件的依赖项。当创建或更新组件时，Bit 会解析并安装所有必要的依赖项，确保每个微前端都有它正常运行所需的一切。
 
-[![](https://miro.medium.com/v2/resize:fit:1000/1*lBTUSmjDP5z4lgRhK01tTA.png)]([https://bit.cloud/](https://bit.cloud/))
+[![](https://miro.medium.com/v2/resize:fit:1000/1*lBTUSmjDP5z4lgRhK01tTA.png)](https://bit.cloud/)
 
 每个组件的自动依赖管理
 
@@ -159,7 +159,7 @@ Bit 的模块化架构允许每个组件或微前端独立部署。Bit 与 Webpa
 6.通过中央平台共享微前端
 -------------
 
-[![](https://miro.medium.com/v2/resize:fit:700/1*Nj2EzGOskF51B5AKuR-szw.gif)]([https://bit.cloud/](https://bit.cloud/))
+[![](https://miro.medium.com/v2/resize:fit:700/1*Nj2EzGOskF51B5AKuR-szw.gif)](https://bit.cloud/)
 
 6.1 中央平台
 --------
@@ -188,7 +188,7 @@ Bit.cloud 是一个共享组件（例如微前端）的中心平台。它提供�
 
 在Bit.Cloud上，您可以查看每个组件（或Scope）的直接和间接依赖项和依赖者，不同项目中的使用情况，版本更新，使用的技术等。
 
-[![](https://miro.medium.com/v2/resize:fit:1000/1*5e9sCgtNi0H4qw6uYUUntA.png)]([https://bit.cloud/](https://bit.cloud/))
+[![](https://miro.medium.com/v2/resize:fit:1000/1*5e9sCgtNi0H4qw6uYUUntA.png)](https://bit.cloud/)
 
 7.合作开发
 ------
@@ -212,7 +212,7 @@ Bit.cloud 是一个共享组件（例如微前端）的中心平台。它提供�
 8.自主团队
 ------
 
-[![](https://miro.medium.com/v2/resize:fit:700/1*Lj5tkND0DLFUDuUokKGyHA.png)]([https://bit.cloud/](https://bit.cloud/))
+[![](https://miro.medium.com/v2/resize:fit:700/1*Lj5tkND0DLFUDuUokKGyHA.png)](https://bit.cloud/)
 
 团队拥有并交付领域驱动的微前端
 
@@ -225,7 +225,7 @@ Bit的平台通过提供工具来支持自治团队，使他们能够独立地�
 
 微前端在不同团队偏好使用不同技术栈的组织中尤其强大。这种灵活性允许每个团队为他们正在开发的特定功能选择最佳工具和框架。例如，一个团队可能使用**反应**对于用户仪表板，另一个可能会选择**角的**处理复杂表格，而另一个团队可以利用**Vue.js**对于轻量级、快速加载的组件，如导航栏。
 
-[![](https://miro.medium.com/v2/resize:fit:1000/1*EoVFwzwDO4wwzD1Ip2HI4Q.png)]([https://bit.cloud/](https://bit.cloud/))
+[![](https://miro.medium.com/v2/resize:fit:1000/1*EoVFwzwDO4wwzD1Ip2HI4Q.png)](https://bit.cloud/)
 
 许多组件，许多技术，一个平台
 
