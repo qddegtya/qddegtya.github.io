@@ -209,7 +209,7 @@ permalink: /:categories/:title/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 # Pagination with jekyll-paginate
-paginate: 5 # amount of posts to show
+paginate: 10 # amount of posts to show
 paginate_path: /blog/page:num/
 
 # Pagination with jekyll-paginate-v2
@@ -326,7 +326,7 @@ defaults:
       toc_sticky: true
       excerpt: ""
       header:
-        teaser: ""
+        teaser: "/assets/images/post-thumbnail.jpg"
         overlay_color: "#000000"
 
   # _os
@@ -350,6 +350,10 @@ defaults:
       layout: single
       author_profile: false
       share: false
+      excerpt: ""
+      header:
+        teaser: ""
+        overlay_color: "#000000"
   
   # _ril
   - scope:
