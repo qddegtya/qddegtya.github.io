@@ -3,7 +3,6 @@ title: "我正在读"
 layout: collection
 permalink: /ril/
 collection: ril
-entries_layout: grid
 classes: wide
 author_profile: true
 header:
