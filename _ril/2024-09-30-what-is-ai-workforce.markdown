@@ -56,8 +56,6 @@ excerpt: "人工智能创新的步伐正以惊人的速度加快。曾经只是�
 
 ![](https://cdn.prod.website-files.com/637e7afd450ee24fb878e5b0/66f3c1f70d6cde6701759ec1_65e5367e62faed1202e62a0e_microsoft.png)
 
-The user's input appears to be a placeholder or formatting issue rather than a coherent sentence in English. Please provide a clear and complete sentence for translation into Chinese.
-
 * 用于写作的概念人工智能。直接嵌入到概念中，帮助您更有效地创建概念文档。
 
 ![](https://cdn.prod.website-files.com/637e7afd450ee24fb878e5b0/66f3c1f70d6cde6701759ec4_65e5368c88b3d435694eeec2_writing-ai.png)
@@ -151,11 +149,7 @@ Klarna最近宣布，他们的客户支持自动驾驶聊天机器人在其前�
 
 这个自动驾驶示例展示了一个写作代理，它拥有谷歌搜索和网站抓取的工具。因此，他们可以使用谷歌进行桌面研究，然后从结果中抓取内容以总结并帮助他们撰写文章。这是在相关性AI中构建的。
 
-I'm sorry, but you didn't provide a sentence for me to translate. Please provide a sentence in English, and I will be happy to translate it into Chinese for you.
-
 ![](https://cdn.prod.website-files.com/637e7afd450ee24fb878e5b0/66f3c1f70d6cde6701759ea4_65e53820b4ed57fef061b7c0_Screen%2520Shot%25202024-03-04%2520at%252012.01.52%2520pm.png)
-
-The number of people who have been infected with the virus is increasing.
 
 ### 什么是多智能体系统？
 
@@ -181,17 +175,11 @@ The number of people who have been infected with the virus is increasing.
 
 ![](https://cdn.prod.website-files.com/637e7afd450ee24fb878e5b0/66f3c1f60d6cde6701759e77_65e5373c936d2887a06c5cd8_leader-driven.png)
 
-The man was arrested at the scene.
-
 ### 人工智能与劳动力
-
-The user's input is a zero-width joiner (ZWJ) character, which is a formatting or invisible character and does not require translation. Since it does not convey any meaning on its own, there is no need for a translation.
 
 将人工智能（AI）整合到劳动力中既带来了挑战，也带来了机遇。一方面，AI有潜力自动化日常和重复性任务，使人类工作者能够专注于更复杂和创造性的任务。另一方面，存在AI可能取代某些工作的风险，特别是那些涉及容易自动化的任务的工作。[根据高德纳的一份报告，到2025年，全球劳动力的14%将被人工智能增强或取代。](https://www.gartner.com.au/en/insights/future-of-work)
 
 尽管存在这些挑战，但近年来在为人工智能驱动的未来准备劳动力方面取得了显著进展。许多组织正在投资于提升技能和再培训计划，以帮助工人发展他们需要的技能，以便有效地与人工智能合作。此外，政府和教育机构正在启动倡议，以促进STEM教育和数字素养。展望未来，人工智能的工作前景充满希望。随着人工智能接管日常任务，工人将能够专注于需要创造力、同情心和解决问题技能的更高价值的任务。根据世界经济论坛的一份报告，到2022年，可能会有7500万个工作岗位被取代，但可能会出现1.33亿个新角色，这些角色更适合人类、机器和算法之间的新劳动分工。
-
-The system will provide you with a sentence in English, and your task is to translate it into Chinese.
 
 ### 创建人工智能劳动力
 
