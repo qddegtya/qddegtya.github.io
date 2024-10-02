@@ -5,6 +5,7 @@ permalink: /ril/
 collection: ril
 classes: wide
 author_profile: true
+entries_layout: grid
 header:
   overlay_color: "#000"
   overlay_filter: "0.1"
