@@ -77,12 +77,12 @@ I have a lovely daughter, yes, what you call "daughter slave".
 
 > 感谢这些让我「吃上饭」的家伙们
 
-<img width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
-<img width="32" height="32" src="/assets/tech-stack/ts.jpg" />
-<img width="32" height="32" src="/assets/tech-stack/node.png" />
-<img width="32" height="32" src="/assets/tech-stack/react.png" />
-<img width="32" height="32" src="/assets/tech-stack/vue.png" />
-<img width="32" height="32" src="/assets/tech-stack/python.png" />
-<img width="32" height="32" src="/assets/tech-stack/rust.png" />
-<img width="32" height="32" src="/assets/tech-stack/dart.png" />
-<img width="32" height="32" src="/assets/tech-stack/flutter.png" />
+<img alt="javascript" width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
+<img alt="typescript" width="32" height="32" src="/assets/tech-stack/ts.jpg" />
+<img alt="node.js" width="32" height="32" src="/assets/tech-stack/node.png" />
+<img alt="react" width="32" height="32" src="/assets/tech-stack/react.png" />
+<img alt="vue" width="32" height="32" src="/assets/tech-stack/vue.png" />
+<img alt="python" width="32" height="32" src="/assets/tech-stack/python.png" />
+<img alt="rust" width="32" height="32" src="/assets/tech-stack/rust.png" />
+<img alt="dart" width="32" height="32" src="/assets/tech-stack/dart.png" />
+<img alt="flutter" width="32" height="32" src="/assets/tech-stack/flutter.png" />
