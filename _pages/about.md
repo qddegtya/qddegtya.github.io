@@ -77,12 +77,13 @@ I have a lovely daughter, yes, what you call "daughter slave".
 
 > 感谢这些让我「吃上饭」的家伙们
 
-<img alt="javascript" width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
-<img alt="typescript" width="32" height="32" src="/assets/tech-stack/ts.jpg" />
-<img alt="node.js" width="32" height="32" src="/assets/tech-stack/node.png" />
-<img alt="react" width="32" height="32" src="/assets/tech-stack/react.png" />
-<img alt="vue" width="32" height="32" src="/assets/tech-stack/vue.png" />
-<img alt="python" width="32" height="32" src="/assets/tech-stack/python.png" />
-<img alt="rust" width="32" height="32" src="/assets/tech-stack/rust.png" />
-<img alt="dart" width="32" height="32" src="/assets/tech-stack/dart.png" />
-<img alt="flutter" width="32" height="32" src="/assets/tech-stack/flutter.png" />
+<img alt="Javascript" width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
+<img alt="Typescript" width="32" height="32" src="/assets/tech-stack/ts.jpg" />
+<img alt="Node.js" width="32" height="32" src="/assets/tech-stack/node.png" />
+<img alt="React" width="32" height="32" src="/assets/tech-stack/react.png" />
+<img alt="Vue" width="32" height="32" src="/assets/tech-stack/vue.png" />
+<img alt="Python" width="32" height="32" src="/assets/tech-stack/python.png" />
+<img alt="Rust" width="32" height="32" src="/assets/tech-stack/rust.png" />
+<img alt="Java" width="32" height="32" src="/assets/tech-stack/java.png" />
+<img alt="Dart" width="32" height="32" src="/assets/tech-stack/dart.png" />
+<img alt="Flutter" width="32" height="32" src="/assets/tech-stack/flutter.png" />
