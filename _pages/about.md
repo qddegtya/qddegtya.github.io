@@ -84,3 +84,5 @@ I have a lovely daughter, yes, what you call "daughter slave".
 <img width="32" height="32" src="/assets/tech-stack/vue.png" />
 <img width="32" height="32" src="/assets/tech-stack/python.png" />
 <img width="32" height="32" src="/assets/tech-stack/rust.png" />
+<img width="32" height="32" src="/assets/tech-stack/dart.png" />
+<img width="32" height="32" src="/assets/tech-stack/flutter.png" />
