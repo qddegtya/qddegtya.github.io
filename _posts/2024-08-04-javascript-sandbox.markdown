@@ -12,11 +12,9 @@ excerpt: "今天在整理以前的一些 Research，逐步搬运到博客上来�
 
 ### Something works
 
-Iframe + sandbox attribute: https://www.w3.org/TR/2010/WD-html5-20100624/the-iframe-element.html#attr-iframe-sandbox
-
-webworker + Prevent usage of dangerous objects + SCP https://www.softfluent.com/blog/dev/Executing-untrusted-JavaScript-code-in-a-browser
-
-Further Strict Sandbox (truely sandbox env) - Google Caja https://github.com/google/caja
+* [Iframe + sandbox attribute](https://www.w3.org/TR/2010/WD-html5-20100624/the-iframe-element.html#attr-iframe-sandbox)
+* [webworker + Prevent usage of dangerous objects + SCP](https://www.softfluent.com/blog/dev/Executing-untrusted-JavaScript-code-in-a-browser)
+* [Further Strict Sandbox (truely sandbox env) - Google Caja](https://github.com/google/caja)
 
 ### Lib
 
@@ -33,4 +31,4 @@ Caja supports most HTML and CSS and the recently standardized "strict mode" Java
 
 ### Reference
 
-https://stackoverflow.com/questions/195149/is-it-possible-to-sandbox-javascript-running-in-the-browser
+* https://stackoverflow.com/questions/195149/is-it-possible-to-sandbox-javascript-running-in-the-browser
