@@ -354,25 +354,6 @@ defaults:
       header:
         teaser: ""
         overlay_color: "#000000"
-  
-  # _ril
-  - scope:
-      path: ""
-      type: ril
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: false
-      related: true
-      show_date: true
-      toc: true
-      toc_sticky: true
-      excerpt: ""
-      header:
-        teaser: "/assets/images/ril-thumbnail.jpg"
-        overlay_color: "#000000"
 
 collections:
   cheatsheets:
@@ -381,6 +362,4 @@ collections:
   os:
     output: true
     permalink: /:collection/:path/
-  ril:
-    output: true
-    permalink: /:collection/:path/
+  
