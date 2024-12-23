@@ -1,9 +1,7 @@
 # main links
 main:
-  - title: "我正在写"
+  - title: "最新文章"
     url: /blog/
-  - title: "我正在读"
-    url: /ril/
   - title: "分类"
     url: /categories/
   - title: "标签"
