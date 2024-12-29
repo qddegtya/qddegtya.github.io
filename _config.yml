@@ -144,6 +144,10 @@ footer:
       icon: "fas fa-fw fa-map-pin"
       url: "/sitemap.xml"
 
+    - label: "Creator Telescope"
+      icon: "fas fa-fw fa-newspaper"
+      url: "https://ct-weekly.xiaoa.name"
+
 # Reading Files
 include:
   - .htaccess
