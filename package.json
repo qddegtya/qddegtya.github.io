@@ -1,15 +1,18 @@
 {
-  "name": "qddegtya.github.io",
+  "name": "Colorful",
   "version": "1.0.0",
-  "description": "",
+  "description": "www.xiaoa.name",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "jekyll",
+    "blog"
+  ],
+  "author": "xiaoa",
+  "license": "MIT",
   "devDependencies": {
     "octokit": "^4.0.2",
     "ts-node": "^10.9.2",
