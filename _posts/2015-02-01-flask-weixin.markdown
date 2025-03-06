@@ -19,7 +19,7 @@ wx.pre-wx.ready-wx.apicall (实际上没有这个 apicall 方法)。
 我把它翻译成：接入 - 就绪 - 调用。
 OK，如果这么说的话，嗯......So easy......But，当我们用代码的方式写出来，可能是这样一种情况：
 
-```javascript
+{% highlight javascript linenos %}
 var jsTool = {};
 
 // Get Access Token
@@ -59,7 +59,7 @@ jsTool.getSignFromBackEnd = function (callback){
          });
      });
 }
-```
+{% endhighlight %}
 
 没错，如果按照官方文档的说明进行开发还是稍微显得有些复杂，主要是因为微信这次加入了签名策略。
 那么，我们再来梳理一遍带签名的处理流程：
@@ -80,7 +80,7 @@ token 和 ticket 建议存储，必要时签名等做成中置服务，让所有
 全局的 token 和 ticket 使用 job 的方式去单独处理他们的更新。
 与官方推荐做法基本吻合：
 
-```python
+{% highlight python linenos %}
 # -*- coding:utf-8 -*-
 from flask import Flask,  make_response, request
 from config import CONFIG
@@ -233,7 +233,7 @@ if __name__ == '__main__':
     app.run (debug=True, host="0.0.0.0")
     # _detect_request ()
 
-```
+{% endhighlight %}
 
 冬天写博客手真冷......
 

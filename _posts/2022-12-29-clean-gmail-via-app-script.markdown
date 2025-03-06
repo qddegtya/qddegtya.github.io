@@ -19,7 +19,7 @@ excerpt: "分享一枚非常实用的 google app script"
 
 ### Content of App Script
 
-```javascript
+{% highlight javascript linenos %}
 //search string to delete
 var SEARCH_STRING = "category:forums";
 
@@ -139,4 +139,4 @@ function cleanWithScheduler() {
     scheduleNewJob();
   }
 }
-```
+{% endhighlight %}

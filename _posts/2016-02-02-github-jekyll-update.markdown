@@ -16,7 +16,7 @@ Github Pages (以下简称 GP) 服务从今天起正式启用 Jekyll 3.0 版本�
 
 ### Github 新代码高亮语法测试
 
-```javascript
+{% highlight javascript linenos %}
 "use strict";
 
 var gulp = require("gulp");
@@ -38,6 +38,6 @@ gulp.task("debug", function () {
 
 gulp.task("build", ["css"]);
 gulp.task("default", ["debug"]);
-```
+{% endhighlight %}
 
 可以查看 Github 上的 md 源文件验证上述规则。

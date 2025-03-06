@@ -16,7 +16,7 @@ excerpt: "之前就一直在寻找一种较为完美的移动设备屏幕流回�
 
 ### 代码
 
-```python
+{% highlight python linenos %}
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # Android_ScreenSream by Archer
@@ -122,7 +122,7 @@ if __name__=="__main__":
     ShotDevice=ASS.get_device_by_index (0)
     while True:
         ShotDevice.get_current_rawscreen ().save_screen_img ()
-```
+{% endhighlight %}
 
 ### Github
 
