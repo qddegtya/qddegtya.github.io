@@ -30,7 +30,7 @@ excerpt: "在软件业，AOP 为 Aspect Oriented Programming 的缩写，意为�
 我们项目落地的选型是：vue + es6，想要达到的目的是让开发不关心拦截逻辑，
 像这样：
 
-```javascript
+{% highlight javascript linenos %}
 import header from "../components/header.vue";
 import hotsale from "../components/hotsale.vue";
 import banner from "../components/banner.vue";
@@ -71,11 +71,11 @@ export default {
     banner,
   },
 };
-```
+{% endhighlight %}
 
 **$httpWithAuth 的实现**
 
-```javascript
+{% highlight javascript linenos %}
 function install(Vue) {
   var _ = require("./util")(Vue);
 
@@ -131,7 +131,7 @@ if (window.Vue) {
 }
 
 module.exports = install;
-```
+{% endhighlight %}
 
 1. 通过 Vue.use 勾子我们将 $httpWithAuth 挂载到上下文供业务侧使用，这样可以保证在各个地方都可以按需调用这个模块
 2. 通过简单的 AOP，我们就把 $http 模块的方法进行了验证代理，这样就基本完成了我们的需求。
