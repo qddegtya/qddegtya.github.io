@@ -8,7 +8,7 @@ main:
     url: /about/
 
 life:
-  - title: "影音书"
+  - title: "书影音"
     children:
         - title: "影评"
           url: /movie/
