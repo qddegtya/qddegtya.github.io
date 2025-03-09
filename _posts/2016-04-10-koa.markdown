@@ -37,8 +37,6 @@ app.use = function (fn) {
 };
 ```
 
-<!-- more -->
-
 接着，来看一下 Server 是怎么起来的
 
 ```javascript

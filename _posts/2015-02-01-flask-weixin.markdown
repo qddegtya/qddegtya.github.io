@@ -10,8 +10,6 @@ excerpt: "相信很多做前端的朋友都已经注意到了微信今年的一�
 
 ![](/assets/blog-images/2015-02-01-flaskweixin/jssdk.png)
 
-<!-- more -->
-
 ### 前端部分
 
 在前端部分，我们重点来看下 JS-SDK 的接入流程，从前端角度而言，大致是如下三个步骤：
