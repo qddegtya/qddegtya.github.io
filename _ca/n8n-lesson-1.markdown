@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 「Code & Art」什么是超自动化？- Skill Masters
+title: 什么是超自动化？- Skill Masters 系列
 excerpt: "Lesson 1 of n8n.io"
 header:
   video:
@@ -12,3 +12,6 @@ header:
 ### 视频内容简介
 
 本期视频，带来 N8N 系列分享的前置内容。
+
+本栏目为 `Code & Art` 原创及自营。
+{: .notice--warning}

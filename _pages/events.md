@@ -6,7 +6,7 @@ collection: events
 entries_layout: grid
 author_profile: false
 classes: wide
-excerpt: "我参加过的活动"
+excerpt: "人生是旷野，不是轨道"
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"

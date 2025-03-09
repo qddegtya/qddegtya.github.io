@@ -6,7 +6,7 @@ collection: travel
 entries_layout: grid
 author_profile: false
 classes: wide
-excerpt: "我的足迹"
+excerpt: "世界很大，我想出去走走"
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"

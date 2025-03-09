@@ -1,12 +1,12 @@
 ---
-title: 影评
+title: 电影
 layout: collection
 permalink: /movie/
 collection: movie
 entries_layout: grid
 author_profile: false
 classes: wide
-excerpt: "我看过的电影"
+excerpt: "光影是雕刻时光的刃"
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
