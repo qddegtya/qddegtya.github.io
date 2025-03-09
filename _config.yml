@@ -333,37 +333,30 @@ defaults:
         teaser: "/assets/images/post-thumbnail.jpg"
         overlay_color: "#000000"
 
-  # _os
+  # _movie
   - scope:
       path: ""
-      type: os
+      type: movie
     values:
       layout: single
       author_profile: false
       share: false
+      read_time: false
+      comments: true
+      related: false
+      show_date: false
+      toc: true
+      toc_sticky: true
       excerpt: ""
       header:
         teaser: ""
         overlay_color: "#000000"
-
-  # _cheatsheets
-  - scope:
-      path: ""
-      type: cheatsheets
-    values:
-      layout: single
-      author_profile: false
-      share: false
-      excerpt: ""
-      header:
-        teaser: ""
-        overlay_color: "#000000"
+      sidebar:
+        nav:
+          - life
 
 collections:
-  cheatsheets:
-    output: true
-    permalink: /:collection/:path/
-  os:
+  movie:
     output: true
     permalink: /:collection/:path/
   

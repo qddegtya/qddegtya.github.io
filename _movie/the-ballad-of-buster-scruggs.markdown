@@ -1,15 +1,17 @@
 ---
 layout: single
 title: 影评 -《The Ballad of Buster Scruggs》
-tags: life film
-category: film
+tags: movie
+category: movie
 excerpt: "《巴斯特·斯克鲁格斯的歌谣》（The Ballad of Buster Scruggs）是一部 2018 年由科恩兄弟（Joel 和 Ethan Coen）执导的西部选集电影，通过六个独立的故事探索了美国边疆生活的多面性。这部电影在第 75 届威尼斯国际电影节上首映，并获得了最佳编剧金奥斯卡奖，随后于 2018 年 11 月 16 日在 Netflix 上全球上线，获得了国家评论委员会 2018 年十大电影之一的荣誉，并在第 91 届奥斯卡奖中获得最佳改编剧本、最佳服装设计和最佳原创歌曲提名。
 "
+header:
+  teaser: "/assets/movie/the-ballad-of-buster-scruggs.jpg"
 ---
 
 ### 电影简介
 
-<img alt="《The Ballad of Buster Scruggs》" src="/assets/film-covers/the-ballad-of-buster-scruggs.jpg" width="160" style="margin-bottom: 8px;" class="align-left" /> 《巴斯特·斯克鲁格斯的歌谣》是一部由科恩兄弟（乔尔·科恩和伊桑·科恩）执导的西部题材选集电影，于 2018 年在 Netflix 平台首映。这部电影由六个独立的故事组成，每个故事都以美国边疆生活为背景，探索了生命的荒谬与死亡的无常。影片汇集了蒂姆·布莱克·尼尔森（Tim Blake Nelson）、詹姆斯·弗兰科（James Franco）、利亚姆·尼森（Liam Neeson）等实力派演员，他们的精彩表演为这部电影增添了不少亮点。
+<img alt="《The Ballad of Buster Scruggs》" src="/assets/movie/the-ballad-of-buster-scruggs.jpg" width="160" style="margin-bottom: 8px;" class="align-left" /> 《巴斯特·斯克鲁格斯的歌谣》是一部由科恩兄弟（乔尔·科恩和伊桑·科恩）执导的西部题材选集电影，于 2018 年在 Netflix 平台首映。这部电影由六个独立的故事组成，每个故事都以美国边疆生活为背景，探索了生命的荒谬与死亡的无常。影片汇集了蒂姆·布莱克·尼尔森（Tim Blake Nelson）、詹姆斯·弗兰科（James Franco）、利亚姆·尼森（Liam Neeson）等实力派演员，他们的精彩表演为这部电影增添了不少亮点。
 {: .notice}
 
 科恩兄弟以其一贯的黑色幽默和深刻哲思，将这部电影打造成了一部既经典又独特的西部片。六个故事虽然彼此独立，却通过共同的主题——死亡与人性的复杂性——紧密相连。无论是欢快的歌声还是冷酷的枪声，电影都以一种荒诞的方式展现了西部世界的残酷与美丽。
