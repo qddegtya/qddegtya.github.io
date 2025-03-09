@@ -2,6 +2,8 @@
 main:
   - title: "最新文章"
     url: /blog/
+  - title: "归档"
+    url: /year-archive/
 
 life:
   - title: "书影音"
