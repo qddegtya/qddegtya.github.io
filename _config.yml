@@ -305,9 +305,6 @@ defaults:
     values:
       layout: single
       author_profile: false
-      sidebar:
-        nav:
-          - life
   
   # category
   - scope:
@@ -316,9 +313,6 @@ defaults:
     values:
       layout: single
       author_profile: false
-    sidebar:
-        nav:
-          - life
           
   # _posts
   - scope:
