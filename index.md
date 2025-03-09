@@ -1,5 +1,5 @@
 ---
-title: "Portfolio"
+title: "My Portfolio"
 layout: single
 classes: wide
 sidebar:
