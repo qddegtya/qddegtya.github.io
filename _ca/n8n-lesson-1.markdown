@@ -3,9 +3,7 @@ layout: single
 title: 「Code & Art」什么是超自动化？
 excerpt: "Lesson 1 of n8n.io"
 header:
-  teaser: "/assets/media/ca/n8n/lesson-1/n8n.jpeg"
+  video:
+    id: BV1L841137g4
+    provider: bilibili
 ---
-
-### 视频
-
-{% include video id="BV1L841137g4" provider="bilibili" danmaku="1" %}
