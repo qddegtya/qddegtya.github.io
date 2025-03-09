@@ -7,7 +7,7 @@ sidebar:
     - life
 header:
   overlay_color: "#000"
-  overlay_filter: "0.1"
+  overlay_filter: "0.5"
   overlay_image: "/assets/images/index-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
   actions:
