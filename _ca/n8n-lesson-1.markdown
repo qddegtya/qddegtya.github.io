@@ -1,6 +1,6 @@
 ---
 layout: single
-title: 「Code & Art」什么是超自动化？
+title: 「Code & Art」什么是超自动化？- Skill Masters
 excerpt: "Lesson 1 of n8n.io"
 header:
   video:
