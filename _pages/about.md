@@ -12,31 +12,6 @@ header:
   overlay_image: "/assets/images/about-me-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
 excerpt: "Hi 👋，I am Archer."
-events-nuffnang:
-  - url: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
-    image_path: /assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg
-    alt: "Nuffnang 2011"
-    title: "Nuffnang 2011"
-  - url: /assets/events/nuffnang/2011/p1347938811.png
-    image_path: /assets/events/nuffnang/2011/p1347938811.png
-    alt: "Nuffnang 2011"
-    title: "Nuffnang 2011"
-  - url: /assets/events/nuffnang/2011/p1347940701.png
-    image_path: /assets/events/nuffnang/2011/p1347940701.png
-    alt: "Nuffnang 2011"
-    title: "Nuffnang 2011"
-  - url: /assets/events/nuffnang/2011/p1347941122.png
-    image_path: /assets/events/nuffnang/2011/p1347941122.png
-    alt: "Nuffnang 2011"
-    title: "Nuffnang 2011"
-  - url: /assets/events/nuffnang/2011/p1347942179.png
-    image_path: /assets/events/nuffnang/2011/p1347942179.png
-    alt: "Nuffnang 2011"
-    title: "Nuffnang 2011"
-  - url: /assets/events/nuffnang/2011/p1347962010.png
-    image_path: /assets/events/nuffnang/2011/p1347962010.png
-    alt: "Nuffnang 2011"
-    title: "Nuffnang 2011"
 ---
 
 ![Archer](/assets/images/blog-about-me.jpg)
@@ -65,17 +40,7 @@ I have a lovely daughter, yes, what you call "daughter slave".
 
 ---
 
-### 事件
-
-#### Nuffnang 2011
-
-{% include gallery id="events-nuffnang" %}
-
----
-
 ### 技能
-
-> 感谢这些让我「吃上饭」的家伙们
 
 <img alt="Javascript" width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
 <img alt="Typescript" width="32" height="32" src="/assets/tech-stack/ts.jpg" />
