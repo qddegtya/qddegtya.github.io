@@ -1,8 +1,6 @@
 ---
 layout: single
 title: 影评 -《The Ballad of Buster Scruggs》
-tags: movie
-category: movie
 excerpt: "《巴斯特·斯克鲁格斯的歌谣》（The Ballad of Buster Scruggs）是一部 2018 年由科恩兄弟（Joel 和 Ethan Coen）执导的西部选集电影，通过六个独立的故事探索了美国边疆生活的多面性。这部电影在第 75 届威尼斯国际电影节上首映，并获得了最佳编剧金奥斯卡奖，随后于 2018 年 11 月 16 日在 Netflix 上全球上线，获得了国家评论委员会 2018 年十大电影之一的荣誉，并在第 91 届奥斯卡奖中获得最佳改编剧本、最佳服装设计和最佳原创歌曲提名。
 "
 header:
