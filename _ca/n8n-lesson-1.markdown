@@ -13,5 +13,5 @@ header:
 
 本期视频，带来 N8N 系列分享的前置内容。
 
-本栏目为 `Code & Art` 原创及自营。
+本栏目由 `Code & Art` 工作室原创及自营。
 {: .notice--warning}
