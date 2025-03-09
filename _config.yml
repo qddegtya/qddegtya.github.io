@@ -355,8 +355,32 @@ defaults:
         nav:
           - life
 
+  # _events
+  - scope:
+      path: ""
+      type: events
+    values:
+      layout: single
+      author_profile: false
+      share: false
+      read_time: false
+      comments: true
+      related: false
+      show_date: false
+      toc: true
+      toc_sticky: true
+      excerpt: ""
+      header:
+        teaser: ""
+        overlay_color: "#000000"
+      sidebar:
+        nav:
+          - life
+
 collections:
   movie:
     output: true
     permalink: /:collection/:path/
-  
+  events:
+    output: true
+    permalink: /:collection/:path/

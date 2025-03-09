@@ -4,6 +4,8 @@ main:
     url: /blog/
   - title: "影评"
     url: /movie/
+  - title: "活动"
+    url: /events/
   - title: "关于我"
     url: /about/
 
@@ -12,3 +14,7 @@ life:
     children:
         - title: "影评"
           url: /movie/
+  - title: "社交"
+    children:
+        - title: "活动"
+          url: /events/
