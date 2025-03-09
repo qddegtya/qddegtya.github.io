@@ -8,3 +8,5 @@ header:
     provider: bilibili
   teaser: "/assets/media/ca/n8n/lesson-1/n8n.jpeg"
 ---
+
+本期视频，带来 N8N 系列分享的前置内容。
