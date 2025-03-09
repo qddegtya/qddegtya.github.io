@@ -2,14 +2,6 @@
 main:
   - title: "最新文章"
     url: /blog/
-  - title: "影评"
-    url: /movie/
-  - title: "活动"
-    url: /events/
-  - title: "旅行"
-    url: /travel/
-  - title: "Code & Art"
-    url: /ca/
 
 life:
   - title: "书影音"

@@ -14,5 +14,5 @@ header:
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
 sidebar:
   nav:
-  - life
+    - life
 ---

@@ -320,7 +320,10 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
+      sidebar:
+        nav:
+          - life
       read_time: true
       comments: true
       share: false
@@ -330,7 +333,7 @@ defaults:
       toc_sticky: true
       excerpt: ""
       header:
-        teaser: "/assets/images/post-thumbnail.jpg"
+        teaser: "/assets/teaser/default/post-thumbnail.jpg"
         overlay_color: "#000000"
 
   # _movie
