@@ -6,18 +6,18 @@ main:
     url: /year-archive/
 
 life:
-  - title: "书影音"
-    children:
-        - title: "影评"
-          url: /movie/
-  - title: "社交"
-    children:
-        - title: "活动"
-          url: /events/
-  - title: "自媒体"
+  - title: "工作室"
     children:
         - title: "Code & Art"
           url: /ca/
+  - title: "书影音"
+    children:
+        - title: "电影"
+          url: /movie/
+  - title: "事件"
+    children:
+        - title: "活动"
+          url: /events/
   - title: "生活"
     children:
         - title: "旅行"

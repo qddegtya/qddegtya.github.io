@@ -6,7 +6,7 @@ collection: ca
 entries_layout: grid
 author_profile: false
 classes: wide
-excerpt: "我的自媒体矩阵之一，以长视频方式呈现"
+excerpt: "代码和艺术，严谨与疯狂"
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
