@@ -6,6 +6,10 @@ main:
     url: /movie/
   - title: "活动"
     url: /events/
+  - title: "旅行"
+    url: /travel/
+  - title: "Code & Art"
+    url: /ca/
   - title: "关于我"
     url: /about/
 
@@ -18,3 +22,11 @@ life:
     children:
         - title: "活动"
           url: /events/
+  - title: "自媒体"
+    children:
+        - title: "Code & Art"
+          url: /ca/
+  - title: "生活"
+    children:
+        - title: "旅行"
+          url: /travel/
