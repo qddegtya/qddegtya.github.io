@@ -1,6 +1,6 @@
 ---
 layout: single
-title: FEDAY 第二届前端开发者大会 - 2016
+title: FEDAY 第二届前端开发者大会 - 2016 @ 广州
 excerpt: "我跟同事周周是周六凌晨 1 点才到的广州，住的地方在小区里面，路过楼下的时候看到一家还在营业的啤酒吧，很有 Feel，但是此时的精神状态直接把我们送到了房间里，洗完澡之后就碎觉了，准备次日集中精神好好听讲。"
 header:
   teaser: "/assets/events/feday/2016/feday.jpeg"
