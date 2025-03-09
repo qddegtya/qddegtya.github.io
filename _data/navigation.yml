@@ -10,8 +10,6 @@ main:
     url: /travel/
   - title: "Code & Art"
     url: /ca/
-  - title: "关于我"
-    url: /about/
 
 life:
   - title: "书影音"
