@@ -12,6 +12,9 @@ header:
   overlay_filter: "0.5"
   overlay_image: "/assets/images/movie-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
+  actions:
+    - label: "原始数据"
+      url: "https://github.com/qddegtya/qddegtya.github.io/tree/master/_movie"
 sidebar:
   nav:
     - life
