@@ -332,9 +332,6 @@ defaults:
       toc: true
       toc_sticky: true
       excerpt: ""
-      header:
-        teaser: "/assets/teaser/default/post-thumbnail.jpg"
-        overlay_color: "#000000"
 
   # _movie
   - scope:
@@ -351,9 +348,6 @@ defaults:
       toc: true
       toc_sticky: true
       excerpt: ""
-      header:
-        teaser: ""
-        overlay_color: "#000000"
       sidebar:
         nav:
           - life
@@ -373,9 +367,6 @@ defaults:
       toc: true
       toc_sticky: true
       excerpt: ""
-      header:
-        teaser: ""
-        overlay_color: "#000000"
       sidebar:
         nav:
           - life
@@ -395,9 +386,6 @@ defaults:
       toc: true
       toc_sticky: true
       excerpt: ""
-      header:
-        teaser: ""
-        overlay_color: "#000000"
       sidebar:
         nav:
           - life
@@ -417,9 +405,6 @@ defaults:
       toc: true
       toc_sticky: true
       excerpt: ""
-      header:
-        teaser: ""
-        overlay_color: "#000000"
       sidebar:
         nav:
           - life
