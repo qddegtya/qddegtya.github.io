@@ -1,8 +1,8 @@
 ---
 layout: single
 title: 面向未来的认知优化之《爆裂》启示录
-tags: thinking life
-category: life
+tags: ai
+category: 沉思录
 excerpt: "今天的科技变革速度远远超乎过往所有的理所当然和想象。"
 ---
 

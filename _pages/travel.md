@@ -1,16 +1,16 @@
 ---
-title: 活动
+title: 旅行
 layout: collection
-permalink: /events/
-collection: events
+permalink: /travel/
+collection: travel
 entries_layout: grid
 author_profile: false
 classes: wide
-excerpt: "我参加过的活动"
+excerpt: "我的足迹"
 header:
   overlay_color: "#000"
   overlay_filter: "0.1"
-  overlay_image: "/assets/images/events-header.jpg"
+  overlay_image: "/assets/images/travel-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
 sidebar:
   nav:

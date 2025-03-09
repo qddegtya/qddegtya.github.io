@@ -1,8 +1,8 @@
 ---
 layout: single
 title: 《精读源码》- GoT
-tags: python got llm
-category: llm got
+tags: python got llm ai
+category: ai
 excerpt: "精读源码系列 - GoT"
 ---
 
