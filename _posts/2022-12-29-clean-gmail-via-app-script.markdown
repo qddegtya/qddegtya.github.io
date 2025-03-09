@@ -138,9 +138,3 @@ function cleanWithScheduler() {
   }
 }
 {% endhighlight %}
-
-### Gist 分享
-
-> 也有一些简单实用的公开 gist
-
-<script src="https://gist.github.com/gene1wood/0f455239490e5342fa49.js"></script>
