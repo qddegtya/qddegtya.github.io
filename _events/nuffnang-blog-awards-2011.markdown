@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Nuffnang 2011
-excerpt: "Nuffnang 2011"
+excerpt: "On December 16th, 2011, 500 bloggers from all over the Asia-Pacific region converged on Putrajaya Marriott in Kuala Lumpur, Malaysia for the Nuffnang Asia-Pacific Blog Awards 2011, which aims to honour the crème de la crème of bloggers across the Asia-Pacific region."
 header:
   teaser: "/assets/events/nuffnang/2011/DUT0-fxvixet3954082.jpg"
 events-photos:
@@ -31,4 +31,11 @@ events-photos:
     title: "Nuffnang 2011"
 ---
 
-{% include gallery id="events-nuffnang" %}
+### 活动简介
+
+On December 16th, 2011, 500 bloggers from all over the Asia-Pacific region converged on Putrajaya Marriott in Kuala Lumpur, Malaysia for the Nuffnang Asia-Pacific Blog Awards 2011, which aims to honour the crème de la crème of bloggers across the Asia-Pacific region.
+{: .notice}
+
+### 活动现场
+
+{% include gallery id="events-photos" %}

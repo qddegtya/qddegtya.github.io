@@ -1,12 +1,12 @@
 ---
 layout: single
 title: FEDAY 2016 之旅
-tags: javascript react node
-category: life
 excerpt: "2016/3/21 补上参会的完整记录，这个问题从一开始我就是准备自问自答的，希望可以通过这种形式把大会的干货分享给更多人。"
+header:
+  teaser: "/assets/events/feday/2016/feday.jpeg"
 ---
 
-### 前戏
+### 前言
 
 2016/3/21 补上参会的完整记录，这个问题从一开始我就是准备 “自问自答” 的，希望可以通过这种形式把大会的干货分享给更多人。
 
