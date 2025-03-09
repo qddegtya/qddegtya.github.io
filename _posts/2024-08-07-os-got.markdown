@@ -6,7 +6,7 @@ category: ai
 excerpt: "精读源码系列 - GoT"
 ---
 
-源码分析图：
+### 源码分析图
 
 {% include figure popup=true image_path="/assets/blog-images/2024-08-07/1717084858596.png" alt="GoT" caption="GoT" %}
 

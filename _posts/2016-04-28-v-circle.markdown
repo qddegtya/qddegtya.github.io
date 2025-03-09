@@ -17,8 +17,6 @@ A collection of circle progress with Vue.js.
 
 Live Demo: [xiaoa.name/v-circle](//xiaoa.name/v-circle/)
 
-<!-- more -->
-
 To build the examples locally, run:
 
 ```

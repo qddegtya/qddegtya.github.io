@@ -9,8 +9,6 @@ excerpt: "分享一枚非常实用的 google app script"
 分享一枚非常实用的 **google app script**，需要的同学可以将其安装于 **https://script.google.com/**；
 它支持全自动调度清理任务，清理任务主要根据 **gmail** 中的指定搜索条件。
 
-<!-- more -->
-
 ### Feature
 
 - 指定 `gmail` 搜索条件
