@@ -339,10 +339,10 @@ defaults:
       layout: single
       author_profile: false
       share: false
-      read_time: false
+      read_time: true
       comments: true
       related: false
-      show_date: false
+      show_date: true
       toc: true
       toc_sticky: true
       excerpt: ""
@@ -358,10 +358,10 @@ defaults:
       layout: single
       author_profile: false
       share: false
-      read_time: false
+      read_time: true
       comments: true
       related: false
-      show_date: false
+      show_date: true
       toc: true
       toc_sticky: true
       excerpt: ""
@@ -377,10 +377,10 @@ defaults:
       layout: single
       author_profile: false
       share: false
-      read_time: false
+      read_time: true
       comments: true
       related: false
-      show_date: false
+      show_date: true
       toc: true
       toc_sticky: true
       excerpt: ""
@@ -396,10 +396,10 @@ defaults:
       layout: single
       author_profile: false
       share: false
-      read_time: false
+      read_time: true
       comments: true
       related: false
-      show_date: false
+      show_date: true
       toc: true
       toc_sticky: true
       excerpt: ""
