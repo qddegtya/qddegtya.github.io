@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "最新文章"
-    url: /blog/
+    url: /posts/
   - title: "归档"
     url: /year-archive/
 
