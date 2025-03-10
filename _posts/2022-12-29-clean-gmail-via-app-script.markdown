@@ -17,7 +17,7 @@ excerpt: "分享一枚非常实用的 google app script"
 
 ### Content of App Script
 
-{% highlight javascript linenos %}
+{% highlight javascript linenos mark_lines="1 2" %}
 //search string to delete
 var SEARCH_STRING = "category:forums";
 
