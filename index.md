@@ -49,13 +49,13 @@ After graduating from high school in （20）08, I founded several well-known in
 Skills
 ---
 
-<img alt="Javascript" width="32" height="32" src="/assets/tech-stack/javascript.jpeg" />
-<img alt="Typescript" width="32" height="32" src="/assets/tech-stack/ts.jpg" />
-<img alt="Node.js" width="32" height="32" src="/assets/tech-stack/node.png" />
-<img alt="React" width="32" height="32" src="/assets/tech-stack/react.png" />
-<img alt="Vue" width="32" height="32" src="/assets/tech-stack/vue.png" />
-<img alt="Python" width="32" height="32" src="/assets/tech-stack/python.png" />
-<img alt="Rust" width="32" height="32" src="/assets/tech-stack/rust.png" />
-<img alt="Java" width="32" height="32" src="/assets/tech-stack/java.png" />
-<img alt="Dart" width="32" height="32" src="/assets/tech-stack/dart.png" />
-<img alt="Flutter" width="32" height="32" src="/assets/tech-stack/flutter.png" />
+<img alt="Javascript" width="32" height="32" src="/assets/tech-stack/javascript.jpeg" style="margin-bottom: 4px" />
+<img alt="Typescript" width="32" height="32" src="/assets/tech-stack/ts.jpg" style="margin-bottom: 4px" />
+<img alt="Node.js" width="32" height="32" src="/assets/tech-stack/node.png" style="margin-bottom: 4px" />
+<img alt="React" width="32" height="32" src="/assets/tech-stack/react.png" style="margin-bottom: 4px" />
+<img alt="Vue" width="32" height="32" src="/assets/tech-stack/vue.png" style="margin-bottom: 4px" />
+<img alt="Python" width="32" height="32" src="/assets/tech-stack/python.png" style="margin-bottom: 4px" />
+<img alt="Rust" width="32" height="32" src="/assets/tech-stack/rust.png" style="margin-bottom: 4px" />
+<img alt="Java" width="32" height="32" src="/assets/tech-stack/java.png" style="margin-bottom: 4px" />
+<img alt="Dart" width="32" height="32" src="/assets/tech-stack/dart.png" style="margin-bottom: 4px" />
+<img alt="Flutter" width="32" height="32" src="/assets/tech-stack/flutter.png" style="margin-bottom: 4px" />
