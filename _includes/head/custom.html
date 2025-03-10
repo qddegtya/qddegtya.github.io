@@ -63,13 +63,10 @@
     /* 更适合中文阅读的字体设置 */
     font-family: "Montserrat", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
   }
-  pre.highlight .clipboard-copy-button {
-    /* 解决色差问题 */
-    color: #f21368 !important;
-  }
 
   .grid__item {
-    background-color: #000000;
+    border: 1px solid #f0f0f0;
+    background-color: #f9f9f9;
 
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -81,7 +78,8 @@
   }
 
   .search-content .archive__item {
-    background-color: #000000;
+    border: 1px solid #f0f0f0;
+    background-color: #f9f9f9;
 
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -93,14 +91,25 @@
   }
 
   .search-content .archive__item-excerpt {
-    border-top: 1px solid #141110;
+    border-top: 1px solid #f0f0f0;
     margin-top: 10px;
     padding-top: 10px;
   }
 
   .highlight .hll {
     background: none !important;
-    border-bottom: 1px dashed #141110;
+    border-bottom: 1px dashed #ffffff;
+  }
+
+  .page__content img {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+
+    background-color: #f9f9f9;
+    border: 1px solid #f0f0f0;
   }
 </style>
 
