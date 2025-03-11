@@ -10,7 +10,7 @@ berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 
 
 > 已知 bug：
 
-当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0 (0) 】（官方 issue 链接 <https://qt-project.org/forums/viewthread/17097>）问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交该 issue。
+当加载的页面样式中存在 font-size:0; 时，由于 QT 存在这个【QFont::setPixelSize: Pixel size <= 0 (0) 】问题，导致 berserkJS 无论在界面模式下还是 command 模式下都会直接崩溃，已向作者提交该 issue。
 
 以上引用来自于 BerserkJS 官方 github 的大标题，那么，BerserkJS 究竟好用在哪里？
 
