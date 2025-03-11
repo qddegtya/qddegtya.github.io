@@ -40,8 +40,7 @@ excerpt: "今天的科技变革速度远远超乎过往所有的理所当然和�
 
 由于被狂热的爱好疯狂驱使，作为一个 90 年生人，有幸在 03 年说服爸妈给我买了人生第一台电脑，当时正是 Windows XP 火遍全球的时候。此后的时间里，这台电脑更多的成为了我的娱乐设施，我并没有很好地用它解决什么问题，在我看来，它完全变成了一台游戏机。但是我仍然对 Windows XP 的各项功能惊叹不已，在还没接触互联网的时候，**阅读系统的 Help 脱机文档有时候都能成为一种享受**。
 
-![R-C.jpeg](https://cdn.nlark.com/yuque/0/2022/jpeg/359409/1653742579812-7f76db4e-2c8a-4e77-a3e4-d16056652fe8.jpeg#clientId=u29c5ee42-c77d-4&crop=0&crop=0&crop=1&crop=1&from=ui&height=459&id=ud8318d08&margin=%5Bobject%20Object%5D&name=R-C.jpeg&originHeight=600&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96016&status=done&style=none&taskId=u08f43434-db7f-4933-b20f-c2994e294d4&title=&width=612)
-（Windows XP Help and Support Center）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/jpeg/359409/1653742579812-7f76db4e-2c8a-4e77-a3e4-d16056652fe8.jpeg#clientId=u29c5ee42-c77d-4&crop=0&crop=0&crop=1&crop=1&from=ui&height=459&id=ud8318d08&margin=%5Bobject%20Object%5D&name=R-C.jpeg&originHeight=600&originWidth=800&originalType=binary&ratio=1&rotation=0&showTitle=false&size=96016&status=done&style=none&taskId=u08f43434-db7f-4933-b20f-c2994e294d4&title=&width=612" alt="Windows XP Help and Support Center" caption="Windows XP Help and Support Center" %}
 
 大概在 07 年左右，家里已经接入了宽带，我对这台有些 “古老” 的电脑也做了一次硬件的全面升级，作为那个年代的我们，最早一头扎进互联网的时候，仍然第一时间选择了游戏，但即使在这样眼花缭乱的虚拟世界里总是有非常多的聪明人，可以和现实世界中打理生活一样井井有条。
 
@@ -65,8 +64,7 @@ excerpt: "今天的科技变革速度远远超乎过往所有的理所当然和�
 
 有这么一款「不是游戏」的游戏。它开始套上「元宇宙」的概念火遍全球，资本市场都为之疯狂，它就是 Roblox。
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653746167396-13cc6364-b66a-47d7-8136-2527efaaf63a.png#clientId=u29c5ee42-c77d-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=360&id=u0a96b23b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=720&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=708789&status=done&style=none&taskId=u7c897184-66a2-4edf-a0fc-c76ce54f3c3&title=&width=540)
-(图片来自视觉中国)
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653746167396-13cc6364-b66a-47d7-8136-2527efaaf63a.png#clientId=u29c5ee42-c77d-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=360&id=u0a96b23b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=720&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=708789&status=done&style=none&taskId=u7c897184-66a2-4edf-a0fc-c76ce54f3c3&title=&width=540" alt="图片来自视觉中国" caption="图片来自视觉中国" %}
 
 但是，就在人们认为这个「元宇宙第一股」all in 元宇宙和游戏的时候，Roblox 却突然掉头，直接瞄准了和元宇宙、游戏赛道相去甚远的方向：教育培训。在这个领域，它给自己的定位是「**针对少儿的在线游戏平台**」，其已经在纽交所上市，月度用户将近 2 个亿，并且 2 / 3 的玩家是在校的学生，这样疯狂的数据，让其经营主体直接成为当今世界最有价值的电子游戏公司之一。
 
@@ -84,12 +82,11 @@ excerpt: "今天的科技变革速度远远超乎过往所有的理所当然和�
 
 如下是一个 Minecraft 的化学教育版的演示视频：
 
-[点击查看【bilibili】](https://player.bilibili.com/player.html?bvid=BV1a7411M7MD)
+{% include video id="BV1a7411M7MD" provider="bilibili" %}
 
 Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂模板，剩下的让充满智慧的学生去自然「涌现」，它也可以形成某种激励制度，吸引更多的教育学者进场，带来一个良性的可持续发展。显然，激发独立个体的潜能才是教育真正的意义，不是么？
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653748791328-7c421571-c1e7-43f8-b22d-e7ca1dce4b6b.png#clientId=ubf648caf-d57f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=302&id=u1e71d6a8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=604&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=691937&status=done&style=none&taskId=u2171a37b-381d-42d4-9aa6-81b8bf73700&title=&width=540)
-（Roblox 正在推出儿童编程等课外兴趣课程）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653748791328-7c421571-c1e7-43f8-b22d-e7ca1dce4b6b.png#clientId=ubf648caf-d57f-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=302&id=u1e71d6a8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=604&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=691937&status=done&style=none&taskId=u2171a37b-381d-42d4-9aa6-81b8bf73700&title=&width=540" alt="Roblox 正在推出儿童编程等课外兴趣课程" caption="Roblox 正在推出儿童编程等课外兴趣课程" %}
 
 现在，我们可以感受到：**在技能培训、兴趣教育方面，游戏可能真的是一个非常不错的老师，这在我看来正是「教育」和「学习」的本质区别，我们应该重视学习，而不是教育本身，授人以渔一定好过授人以鱼。**
 
@@ -136,8 +133,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 但是通过简单的教学，最终，他使用这样的工具解决了几个这样的「长尾」工作场景。重要的并不是他解决了这个问题，重要的是，**这个世界又多了一个可以真正愿意改变工作方式的人。**
 
-![截屏 2022-05-29 15.48.02.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653810498810-011f69b9-ca82-4fe6-8fb3-0463797cd6d3.png#clientId=u20018a98-f638-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uaeb0a4cf&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2022-05-29%2015.48.02.png&originHeight=1584&originWidth=2362&originalType=binary&ratio=1&rotation=0&showTitle=false&size=739012&status=done&style=none&taskId=u1e96152c-3660-4417-b112-ace53c10e56&title=)
-（n8n.io 编排的工作流）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653810498810-011f69b9-ca82-4fe6-8fb3-0463797cd6d3.png#clientId=u20018a98-f638-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uaeb0a4cf&margin=%5Bobject%20Object%5D&name=%E6%88%AA%E5%B1%8F2022-05-29%2015.48.02.png&originHeight=1584&originWidth=2362&originalType=binary&ratio=1&rotation=0&showTitle=false&size=739012&status=done&style=none&taskId=u1e96152c-3660-4417-b112-ace53c10e56&title=" alt="n8n.io 编排的工作流" caption="n8n.io 编排的工作流" %}
 
 事实上，在我团队的异地协同和管理中，我一直在使用小而美的工具链来解决团队工作的连接问题，包括和 IM 工具做一些打通，自动化地完成一些看似不起眼的工作，但是可能给工程师文化带来极大熏陶的东西，甚至是我个人本身的日常工作也都在这些新的工具上进行。
 
@@ -151,10 +147,10 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 尤其是目前高估值、高增长的 PLG 赛道：
 
-![5yCmmhqOdQAonNxKAKMf.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1654931724999-7bc3c44f-e46e-43b7-a68b-baf21b0efb2d.png#clientId=u22d900eb-94a2-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u55d2a2c8&margin=%5Bobject%20Object%5D&name=5yCmmhqOdQAonNxKAKMf.png&originHeight=1280&originWidth=1023&originalType=binary&ratio=1&rotation=0&showTitle=false&size=625212&status=done&style=none&taskId=u91b301c1-785e-486d-9920-698d6690c15&title=)
-（PLG MARKET MAP）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1654931724999-7bc3c44f-e46e-43b7-a68b-baf21b0efb2d.png#clientId=u22d900eb-94a2-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u55d2a2c8&margin=%5Bobject%20Object%5D&name=5yCmmhqOdQAonNxKAKMf.png&originHeight=1280&originWidth=1023&originalType=binary&ratio=1&rotation=0&showTitle=false&size=625212&status=done&style=none&taskId=u91b301c1-785e-486d-9920-698d6690c15&title=" alt="PLG MARKET MAP" caption="PLG MARKET MAP" %}
 
 为了方便读者去了解和使用这些工具，我建立了一个开源的 Awesome List：
+
 [![awesome-ng-tools](https://cdn.nlark.com/yuque/0/2023/png/359409/1676333840666-afa69919-17c7-4989-820f-f555b1a97bcb.png)](https://github.com/qddegtya/awesome-ng-tools)
 
 也欢迎感兴趣的同学能够参与到该 Awesome List 的贡献。
@@ -183,7 +179,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 我们在最早期的时候，就已经通过团队内部的一个优秀工程师（此处 at 某人）沉淀了一套 「**CAD 图纸 DXF 解析服务**」并且进行门店室内地图渲染的技术，这套技术其实也依托了 Mapbox 开源的 Leaflet 地图渲染器，但就是这样的一个关键领域突破，给盒马的数字化经营带来了 **无穷的想象力**：
 
-![HSET FY21 碰头会.013.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653883971601-5fff4433-dd8a-4097-b5d8-631feba8a675.png#clientId=uae6efd59-9297-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u4e0e1b0f&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20%E7%A2%B0%E5%A4%B4%E4%BC%9A.013.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=586169&status=done&style=none&taskId=ud0bff85c-0b66-4f11-872e-9907d7bd83a&title=)
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653883971601-5fff4433-dd8a-4097-b5d8-631feba8a675.png#clientId=uae6efd59-9297-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u4e0e1b0f&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20%E7%A2%B0%E5%A4%B4%E4%BC%9A.013.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=586169&status=done&style=none&taskId=ud0bff85c-0b66-4f11-872e-9907d7bd83a&title=" alt="HSET FY21 碰头会" caption="HSET FY21 碰头会" %}
 
 1. 可以基于室内空间的算法计算、路径规划实施精准作业调度
 2. 可以结合 AIoT 做智能设备的 Floor Plan、POI 标注，结合 AOI 计算（比如水果档口区域播放打折信息）做设备的智能调度
@@ -192,7 +188,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 并且在后期，我们也顺利做到了 2D 到 3D 室内地图的延展：
 
-![HSET FY21 碰头会.012.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653886360648-859caf1f-779a-4fce-aa00-f3e866787aa6.png#clientId=uaa49a612-bcb0-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uccc558b8&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20%E7%A2%B0%E5%A4%B4%E4%BC%9A.012.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=446177&status=done&style=none&taskId=uf074dc25-c3bb-42df-ba85-261bbbac010&title=)
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653886360648-859caf1f-779a-4fce-aa00-f3e866787aa6.png#clientId=uaa49a612-bcb0-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=uccc558b8&margin=%5Bobject%20Object%5D&name=HSET%20FY21%20%E7%A2%B0%E5%A4%B4%E4%BC%9A.012.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=446177&status=done&style=none&taskId=uf074dc25-c3bb-42df-ba85-261bbbac010&title=" alt="HSET FY21 碰头会" caption="HSET FY21 碰头会" %}
 
 值得一提的是，我们在这个点上的初心和想法，纵观整个零售行业数字化，其实本身并不算特别创新，布局这个赛道的很多科技公司早就已经入场 **Spatial Analytics** 这个命题了，给我印象最深刻的是（[https://carto.com/industries/retail/](https://carto.com/industries/retail/)）公司出的解决方案，大家可以直观地感受到 **空间数字化** 的价值，尤其是室内地图的多种结合业务的生动场景。
 
@@ -200,8 +196,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 线下门店的陈列是一个非常有意义的命题，没有人知道它的真正威力，一个陈列非常清晰、非常引入注目的门店能否带来直接营收的增长？这里面的深层原因和复杂因子之间的关系和规律，至今仍然是一个谜，即便我们已经通过技术手段可以拿到相应的数据，但是要 **归因分析，找到一个增长密码**，仍然非常困难。
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653928507541-9165858e-669c-4363-8f58-5c91fc02acca.png#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=489&id=ubb8ccc2b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=652&originWidth=981&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1190494&status=done&style=none&taskId=uc6ec3cbc-5d4e-414b-ba04-d522299ab1a&title=&width=735.5)
-（门店陈列全景：图片素材来源于 36kr）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653928507541-9165858e-669c-4363-8f58-5c91fc02acca.png#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=489&id=ubb8ccc2b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=652&originWidth=981&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1190494&status=done&style=none&taskId=uc6ec3cbc-5d4e-414b-ba04-d522299ab1a&title=&width=735.5" alt="门店陈列全景：图片素材来源于 36kr" caption="门店陈列全景：图片素材来源于 36kr" %}
 
 ### 风险优于安全
 
@@ -221,8 +216,10 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 早期，我们通过摸索业界的 case 来获得一些灵感，商业世界中的业务复杂度远远超过所有人的想象。所以，在技术和产品端并没有任何可以直接能够观测到的、或者挖掘到的低成本拿过来直接使用的解决方案。
 
-[03b-WebGL-Retail-Space-Planning-with-WebGL_Aug18.pdf](https://www.yuque.com/attachments/yuque/0/2022/pdf/359409/1653885543511-69cf7273-08d6-48c5-8a3a-d47453be5a9f.pdf)
-（MerchLogix 在 WebGL 领域的探索）
+> [03b-WebGL-Retail-Space-Planning-with-WebGL_Aug18.pdf](https://www.yuque.com/attachments/yuque/0/2022/pdf/359409/1653885543511-69cf7273-08d6-48c5-8a3a-d47453be5a9f.pdf)
+
+MerchLogix 在 WebGL 领域的探索
+{: .notice--info}
 
 当我看到 MerchLogix 的案例后非常兴奋，于是我们开始了在这个领域的有节奏的技术规划和攻坚，从内心上讲，我们认为创新是要付出一定的风险的，但是它是非常有意义的，需要一些有理想主义情结的人在一起去坚持。
 
@@ -245,13 +242,11 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 这其中某一些，我们在 2020 年的 CCFA 上向来自零售行业的所有同行们及生态伙伴、客户进行了展示，在和友商的各种交流学习活动中，我本人也收获颇多，欢迎对零售行业感兴趣的读者与我探讨。
 
-![IMG_20201120_133634.jpg](https://cdn.nlark.com/yuque/0/2022/jpeg/359409/1653929034612-92ea5198-627f-406b-94a0-718618a777aa.jpeg#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=ub092c795&margin=%5Bobject%20Object%5D&name=IMG_20201120_133634.jpg&originHeight=3072&originWidth=4096&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1982163&status=done&style=none&taskId=u067d5e03-bf12-4859-aaba-03bf3d73820&title=)
-（CCFA 2020 客户在我们的展台自行操作数字化场景编排器 + 数字孪生仿真）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/jpeg/359409/1653929034612-92ea5198-627f-406b-94a0-718618a777aa.jpeg#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=ub092c795&margin=%5Bobject%20Object%5D&name=IMG_20201120_133634.jpg&originHeight=3072&originWidth=4096&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1982163&status=done&style=none&taskId=u067d5e03-bf12-4859-aaba-03bf3d73820&title=" alt="CCFA 2020 客户在我们的展台自行操作数字化场景编排器 + 数字孪生仿真" caption="CCFA 2020 客户在我们的展台自行操作数字化场景编排器 + 数字孪生仿真" %}
 
 作为技术团队本身，也在一些少有人走的路上尝试了一些新的探索，并且逐步完善和沉淀成一套成熟的技术框架和上层平台能力。（考虑到本文受众，这里不展开技术讨论）
 
-![AC6B3850-B9A5-4343-A38A-665AAE89B183.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1653929019757-c3a93aa8-e6d0-4b67-b367-704f7483104a.png#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u66d6d402&margin=%5Bobject%20Object%5D&name=AC6B3850-B9A5-4343-A38A-665AAE89B183.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1049011&status=done&style=none&taskId=u6bb49ba6-b28b-4746-8884-7da1d537f2a&title=)
-（hlang - A Flow-based programming language for universal applications）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1653929019757-c3a93aa8-e6d0-4b67-b367-704f7483104a.png#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u66d6d402&margin=%5Bobject%20Object%5D&name=AC6B3850-B9A5-4343-A38A-665AAE89B183.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1049011&status=done&style=none&taskId=u6bb49ba6-b28b-4746-8884-7da1d537f2a&title=" alt="hlang - A Flow-based programming language for universal applications" caption="hlang - A Flow-based programming language for universal applications" %}
 
 没有人告诉我们终点在哪儿、走过的路径该是 AAA 或者 ABC。我们能做过的就是不断地唤醒心中的信念和理想，我们希望门店的经营管理可以从劳动力密集型向智能密集型转变，用数字化的手段解决经营的一系列问题；我们也希望通过数字化的手段，帮助消费者真正在门店内或者是线上感受到前所未有的消费体验。
 
@@ -273,7 +268,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 我的老东家，携程旅行网，就在我离开的那一年，**2015 年 5 月 28 日 11 时许发生了一件非常令人痛心的意外。不夸张地说，这是一次载入中国互联网史册的重大线上瘫痪事件。**
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1654269447233-9276a250-b440-47da-a038-15d6f9c83da5.png#clientId=u7a13d0d3-fb56-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=32&id=u0a6ca848&margin=%5Bobject%20Object%5D&name=image.png&originHeight=64&originWidth=388&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11731&status=done&style=none&taskId=u4b194e20-f654-400f-8d29-3768c26b4be&title=&width=194)
+![](https://cdn.nlark.com/yuque/0/2022/png/359409/1654269447233-9276a250-b440-47da-a038-15d6f9c83da5.png#clientId=u7a13d0d3-fb56-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=32&id=u0a6ca848&margin=%5Bobject%20Object%5D&name=image.png&originHeight=64&originWidth=388&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11731&status=done&style=none&taskId=u4b194e20-f654-400f-8d29-3768c26b4be&title=&width=194)
 
 当时，整个携程旅行网突然陷入瘫痪，主站、App 均彻底无法正常使用。注意，不是简单的局部不可用，是整个瘫痪。
 
@@ -309,8 +304,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 技术上来说，很多同学应该已经很熟悉了，AlphaGo 的核心是一个不断运行的 Loop：「阅读棋盘」->「执行当前步骤最优的策略」，采用 **Monte Carlo tree search（MCTS），即大名鼎鼎的蒙特卡洛搜索树算法**（启发式搜索算法）
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1654269979949-cd3e3a89-60ba-43de-b669-55ad08cfb06f.png#clientId=u7a13d0d3-fb56-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=247&id=u594ef615&margin=%5Bobject%20Object%5D&name=image.png&originHeight=493&originWidth=1600&originalType=binary&ratio=1&rotation=0&showTitle=false&size=107365&status=done&style=none&taskId=udc989cd5-c479-4560-af56-bfe0735c51b&title=&width=800)
-（Steps of MCTS: From wikipedia ）
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1654269979949-cd3e3a89-60ba-43de-b669-55ad08cfb06f.png#clientId=u7a13d0d3-fb56-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=247&id=u594ef615&margin=%5Bobject%20Object%5D&name=image.png&originHeight=493&originWidth=1600&originalType=binary&ratio=1&rotation=0&showTitle=false&size=107365&status=done&style=none&taskId=udc989cd5-c479-4560-af56-bfe0735c51b&title=&width=800" alt="Steps of MCTS: From wikipedia" caption="Steps of MCTS: From wikipedia" %}
 
 同样考虑到读者及相关受众，本文将不会展开讨论技术细节，我可以简单通俗地总结一下：
 
@@ -378,7 +372,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 非常感性、充满自由气息的数字游牧，我相信每一个拥有理想主义情结的人，都向往这样的能够平衡生活和工作的奋斗方式，以让我们活的更加有质量。
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1655175115945-5744c4bd-2a6c-4ae0-ad80-54085a2a0111.png#clientId=u68e270db-2be8-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=414&id=u359c30ad&margin=%5Bobject%20Object%5D&name=image.png&originHeight=828&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=358871&status=done&style=none&taskId=u09edf6eb-d443-4bdf-852f-f9aae01338a&title=&width=540)
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1655175115945-5744c4bd-2a6c-4ae0-ad80-54085a2a0111.png#clientId=u68e270db-2be8-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=414&id=u359c30ad&margin=%5Bobject%20Object%5D&name=image.png&originHeight=828&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=358871&status=done&style=none&taskId=u09edf6eb-d443-4bdf-852f-f9aae01338a&title=&width=540" alt="数字游牧" caption="数字游牧" %}
 
 我们可以关注到一个趋势，全球的疫情大背景催生了新的办公协同方式，近年来企业办公协同软件的使用量激增，因为我对钉钉非常了解，在阿里多年的职业生涯中几乎每天都和钉钉打交道，我也是最早期的一批 slack 用户、teambition 用户，国内外 PLG 赛道的办公协同软件也有过一些深度的使用，**因此我可以从我个人的角度谈谈这类软件的价值。**
 
@@ -437,8 +431,7 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 
 **下一个革命性的人机交互方式会是什么？**
 
-![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1655212319277-edbd1297-f971-44c4-aec0-2cea0433e421.png#clientId=u1464c4d9-0f76-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=370&id=uc3c8496b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=740&originWidth=1200&originalType=binary&ratio=1&rotation=0&showTitle=false&size=905787&status=done&style=none&taskId=u34a76ed6-1fed-4a35-a98e-81aedeb7ce7&title=&width=600)
-(BMW Intelligent Personal Assistant communications system)
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2022/png/359409/1655212319277-edbd1297-f971-44c4-aec0-2cea0433e421.png#clientId=u1464c4d9-0f76-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=370&id=uc3c8496b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=740&originWidth=1200&originalType=binary&ratio=1&rotation=0&showTitle=false&size=905787&status=done&style=none&taskId=u34a76ed6-1fed-4a35-a98e-81aedeb7ce7&title=&width=600" alt="BMW Intelligent Personal Assistant communications system" caption="BMW Intelligent Personal Assistant communications system" %}
 
 人机共生是一个跨学科领域，由来已久，并且在学术领域仍然在大力研究，其中这个问题下有提到一些关键字 **「多模态交互」、「宁静技术」** 等比较有趣。
 
