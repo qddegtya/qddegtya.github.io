@@ -40,7 +40,7 @@ On December 16th, 2011, 500 bloggers from all over the Asia-Pacific region conve
 
 ### 活动现场
 
-{% include gallery id="events-photos" %}
+{% include gallery id="events-photos" caption="Nuffnang Blog Awards - 2011 @ 马来西亚" %}
 
 ---
 
