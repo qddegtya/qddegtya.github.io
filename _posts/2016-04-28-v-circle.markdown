@@ -24,8 +24,6 @@ npm install
 npm run dev
 ```
 
-Then open [http://localhost:8080/examples/home.html](http://localhost:8080/examples/home.html) in a browser.
-
 ## Installation
 
 The easiest way to use `v-circle` is to install it from NPM and include it in your own Vue build process (using [Webpack](https://webpack.github.io/), etc)

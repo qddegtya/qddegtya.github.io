@@ -379,7 +379,6 @@ Roblox 既可以天然寓教于乐，教育工作者只需要预制一些课堂�
 非常感性、充满自由气息的数字游牧，我相信每一个拥有理想主义情结的人，都向往这样的能够平衡生活和工作的奋斗方式，以让我们活的更加有质量。
 
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/359409/1655175115945-5744c4bd-2a6c-4ae0-ad80-54085a2a0111.png#clientId=u68e270db-2be8-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=414&id=u359c30ad&margin=%5Bobject%20Object%5D&name=image.png&originHeight=828&originWidth=1080&originalType=binary&ratio=1&rotation=0&showTitle=false&size=358871&status=done&style=none&taskId=u09edf6eb-d443-4bdf-852f-f9aae01338a&title=&width=540)
-(图片来源：[https://www.zhihu.com/question/55363231](https://www.zhihu.com/question/55363231))
 
 我们可以关注到一个趋势，全球的疫情大背景催生了新的办公协同方式，近年来企业办公协同软件的使用量激增，因为我对钉钉非常了解，在阿里多年的职业生涯中几乎每天都和钉钉打交道，我也是最早期的一批 slack 用户、teambition 用户，国内外 PLG 赛道的办公协同软件也有过一些深度的使用，**因此我可以从我个人的角度谈谈这类软件的价值。**
 
