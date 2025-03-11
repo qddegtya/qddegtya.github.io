@@ -66,7 +66,6 @@
 
   .page__content figure {
     border: 1px solid #50555c;
-    text-align: center;
 
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -78,10 +77,13 @@
     position: relative;
     overflow: hidden;
   }
+  
+  .page__content div.highlighter-rouge {
+    border: 1px solid #50555c !important;
+  }
 
-  .page__content figure > * {
-    display: inline-block;
-    text-align: center;
+  .page__content figure.highlight {
+    padding: 0 !important;
   }
 
   .page__content figure figcaption {
@@ -96,6 +98,8 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     border-radius: 8px;
+
+    text-align: center;
   }
 
   .page__comments {
