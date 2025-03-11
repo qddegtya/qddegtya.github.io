@@ -6,7 +6,7 @@ sidebar:
   nav:
     - life
 header:
-  overlay_color: "#000000"
+  overlay_color: "#e9dcbe"
   overlay_filter: "0.5"
   overlay_image: "/assets/images/index-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
