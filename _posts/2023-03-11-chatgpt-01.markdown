@@ -18,7 +18,7 @@ ChatGPT 是什么、它能做什么、甚至如果你想深入了解它的技术
 
 因此，在深度使用了一段时间并开发了一个集成 OpenAI API 的 Dingtalk 机器人服务后，我也终于自觉有底气来讲一讲自己对它的一些看法，另外一个补充背景是，笔者所在的产业目前对这块引起了高度的重视，本文也作为一篇偏向工程实践角度的调研报告来呈现，以上是我写下这篇文章的动力来源。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678326462202-8c22d01a-9e88-47f8-9264-8b9c2dea6bdf.png#averageHue=%23d6ba8b&clientId=u3ee3fdf3-ab5d-4&from=paste&height=925&id=u612de40f&name=image.png&originHeight=925&originWidth=1926&originalType=binary&ratio=1&rotation=0&showTitle=true&size=454416&status=done&style=none&taskId=u3d9ee094-20d1-4138-8727-6e1a1676414&title=%EF%BC%88%E4%BD%BF%E7%94%A8%20OpenAI%20%E6%8F%90%E4%BE%9B%E7%9A%84%20Open%20API%20%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E5%8F%91%E8%80%85%E5%8F%AF%E4%BB%A5%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%AF%B9%E5%85%B6%E9%9B%86%E6%88%90%EF%BC%8C%E5%9B%BE%E4%B8%AD%E6%98%AF%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E7%BB%93%E5%90%88%20Dingtalk%20%E6%9C%BA%E5%99%A8%E4%BA%BA%20Outgoing%20%E7%89%B9%E6%80%A7%E8%BE%BE%E6%88%90%E7%9A%84%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%EF%BC%8C%E8%AF%A5%E6%9C%8D%E5%8A%A1%E6%89%98%E7%AE%A1%E5%9C%A8%20Glitch%20%E5%B9%B3%E5%8F%B0%EF%BC%89&width=1926 "（使用 OpenAI 提供的 Open API 服务，开发者可以方便地对其集成，图中是我开发的一个服务结合 Dingtalk 机器人 Outgoing 特性达成的最终效果，该服务托管在 Glitch 平台）")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678326462202-8c22d01a-9e88-47f8-9264-8b9c2dea6bdf.png#averageHue=%23d6ba8b&clientId=u3ee3fdf3-ab5d-4&from=paste&height=925&id=u612de40f&name=image.png&originHeight=925&originWidth=1926&originalType=binary&ratio=1&rotation=0&showTitle=true&size=454416&status=done&style=none&taskId=u3d9ee094-20d1-4138-8727-6e1a1676414&title=%EF%BC%88%E4%BD%BF%E7%94%A8%20OpenAI%20%E6%8F%90%E4%BE%9B%E7%9A%84%20Open%20API%20%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E5%8F%91%E8%80%85%E5%8F%AF%E4%BB%A5%E6%96%B9%E4%BE%BF%E5%9C%B0%E5%AF%B9%E5%85%B6%E9%9B%86%E6%88%90%EF%BC%8C%E5%9B%BE%E4%B8%AD%E6%98%AF%E6%88%91%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%B8%AA%E6%9C%8D%E5%8A%A1%E7%BB%93%E5%90%88%20Dingtalk%20%E6%9C%BA%E5%99%A8%E4%BA%BA%20Outgoing%20%E7%89%B9%E6%80%A7%E8%BE%BE%E6%88%90%E7%9A%84%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C%EF%BC%8C%E8%AF%A5%E6%9C%8D%E5%8A%A1%E6%89%98%E7%AE%A1%E5%9C%A8%20Glitch%20%E5%B9%B3%E5%8F%B0%EF%BC%89&width=1926" alt="使用 OpenAI 提供的 Open API 服务，开发者可以方便地对其集成，图中是我开发的一个服务结合 Dingtalk 机器人 Outgoing 特性达成的最终效果，该服务托管在 Glitch 平台" caption="使用 OpenAI 提供的 Open API 服务，开发者可以方便地对其集成，图中是我开发的一个服务结合 Dingtalk 机器人 Outgoing 特性达成的最终效果，该服务托管在 Glitch 平台" %}
 
 目前，它拥有如下 `Features` ：
 
@@ -49,7 +49,7 @@ const ChatGPT = ($input) => {
 
 这里用如下示意图给大家展示，如我上述的 `伪代码` 所示，如果我们把这里的 `输入` 和 `输出` 看成是 ChatGTP 的首和尾，那么这就是一个典型的首尾相连设计。正因为这样的设计，ChatGPT 会在每一轮计算生成之前，将之前的 `输出` 合并 `输入` 后再次给到 `输入`，如此反复，以达到 `生生不息` 的状态。每一次调用执行，一个新的上下文环境就自动生成，并和之前保留的上下文之间天然形成连接。熟悉编程语言的同学应该发现，该特性像极了主流编程语言中的 `闭包` 特性。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325559257-4be2cbd8-1bc7-4cef-9b89-7beddf65afbf.png#averageHue=%23f9f9f9&clientId=u12f550c9-1b61-4&from=paste&height=473&id=ua43fe6da&name=image.png&originHeight=473&originWidth=291&originalType=binary&ratio=1&rotation=0&showTitle=true&size=72839&status=done&style=none&taskId=u75356cb1-9eee-4dc6-8a5c-241f9495db3&title=%EF%BC%88ChatGPT%20%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E7%9A%84%E6%9E%81%E7%AE%80%E7%A4%BA%E6%84%8F%E5%9B%BE%EF%BC%89&width=291 "（ChatGPT 工作方式的极简示意图）")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678325559257-4be2cbd8-1bc7-4cef-9b89-7beddf65afbf.png#averageHue=%23f9f9f9&clientId=u12f550c9-1b61-4&from=paste&height=473&id=ua43fe6da&name=image.png&originHeight=473&originWidth=291&originalType=binary&ratio=1&rotation=0&showTitle=true&size=72839&status=done&style=none&taskId=u75356cb1-9eee-4dc6-8a5c-241f9495db3&title=%EF%BC%88ChatGPT%20%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E7%9A%84%E6%9E%81%E7%AE%80%E7%A4%BA%E6%84%8F%E5%9B%BE%EF%BC%89&width=291" alt="ChatGPT 工作方式的极简示意图" caption="ChatGPT 工作方式的极简示意图" %}
 
 这个特性是 ChatGPT 在会话情境中给人类的第一印象达到**震撼**程度的核心原因，也是最为大家津津乐道的：
 
@@ -67,7 +67,7 @@ const ChatGPT = ($input) => {
 
 上述问题体现到 ChatGPT 应用侧的人机交互上，但凡使用过的同学应该很熟悉了，其中 2、3 完全就是通过纯产品维度的设计来解决的，比如你使用它的时候必须先新建一个会话，然后页面的底部会在生成任务进行到一定时间后，给到你一个停止按钮，让你可以随时停止这次生成。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325649881-4dd4f2ee-c512-404b-a9ba-e8e4897dbfb7.png#averageHue=%236d8075&clientId=u12f550c9-1b61-4&from=paste&height=380&id=ud9699b0d&name=image.png&originHeight=380&originWidth=544&originalType=binary&ratio=1&rotation=0&showTitle=true&size=54761&status=done&style=none&taskId=uce7a05fe-462d-4e81-a1a0-e0af3ae1373&title=%EF%BC%88chat.openai.com%20%E4%B8%BB%E7%95%8C%E9%9D%A2%EF%BC%89&width=544 "（chat.openai.com 主界面）")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678325649881-4dd4f2ee-c512-404b-a9ba-e8e4897dbfb7.png#averageHue=%236d8075&clientId=u12f550c9-1b61-4&from=paste&height=380&id=ud9699b0d&name=image.png&originHeight=380&originWidth=544&originalType=binary&ratio=1&rotation=0&showTitle=true&size=54761&status=done&style=none&taskId=uce7a05fe-462d-4e81-a1a0-e0af3ae1373&title=%EF%BC%88chat.openai.com%20%E4%B8%BB%E7%95%8C%E9%9D%A2%EF%BC%89&width=544" alt="chat.openai.com 主界面" caption="chat.openai.com 主界面" %}
 
 截至此时此刻，你依旧可以找到很多讨论 ChatGPT token 限制的文章，里面的部分核心原因我们从软件工程的角度就可以分析出来，针对这个核心限制，目前 OpenAI 已经开放了 Embedding 的能力，这又是另外一个话题了，感兴趣的同学可以自行 Google。
 
@@ -96,7 +96,7 @@ const ChatGPT = ($input) => {
 
 **由此可见，要想使用好 ChatGPT 这类 AIGC 服务，Dingtalk 等这类人机交互端产品自身的适应能力建设都需要有一个深入的思考和长期的规划才行，这方面我个人认为，微软是业界绝对的表率。**
 
-![微软目前几乎全产品线正在与 OpenAI 深度集成，图为 Power 家族产品 Virtual Agents 的 AI-based boosted conversations](https://cdn.nlark.com/yuque/0/2023/png/359409/1678459011190-dd4d563c-ac39-40e7-af16-582190288134.png#averageHue=%23a4a4a3&clientId=u13f603fe-6aa4-4&from=paste&id=u8aef48c0&originHeight=598&originWidth=875&originalType=url&ratio=1&rotation=0&showTitle=true&status=done&style=none&taskId=ub6a8e684-9725-46f6-99de-8619afde367&title=%E5%BE%AE%E8%BD%AF%E7%9B%AE%E5%89%8D%E5%87%A0%E4%B9%8E%E5%85%A8%E4%BA%A7%E5%93%81%E7%BA%BF%E6%AD%A3%E5%9C%A8%E4%B8%8E%20OpenAI%20%E6%B7%B1%E5%BA%A6%E9%9B%86%E6%88%90%EF%BC%8C%E5%9B%BE%E4%B8%BA%20Power%20%E5%AE%B6%E6%97%8F%E4%BA%A7%E5%93%81%20Virtual%20Agents%20%E7%9A%84%20AI-based%20boosted%20conversations "微软目前几乎全产品线正在与 OpenAI 深度集成，图为 Power 家族产品 Virtual Agents 的 AI-based boosted conversations")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678459011190-dd4d563c-ac39-40e7-af16-582190288134.png#averageHue=%23a4a4a3&clientId=u13f603fe-6aa4-4&from=paste&id=u8aef48c0&originHeight=598&originWidth=875&originalType=url&ratio=1&rotation=0&showTitle=true&status=done&style=none&taskId=ub6a8e684-9725-46f6-99de-8619afde367&title=%E5%BE%AE%E8%BD%AF%E7%9B%AE%E5%89%8D%E5%87%A0%E4%B9%8E%E5%85%A8%E4%BA%A7%E5%93%81%E7%BA%BF%E6%AD%A3%E5%9C%A8%E4%B8%8E%20OpenAI%20%E6%B7%B1%E5%BA%A6%E9%9B%86%E6%88%90%EF%BC%8C%E5%9B%BE%E4%B8%BA%20Power%20%E5%AE%B6%E6%97%8F%E4%BA%A7%E5%93%81%20Virtual%20Agents%20%E7%9A%84%20AI-based%20boosted%20conversations" alt="微软目前几乎全产品线正在与 OpenAI 深度集成，图为 Power 家族产品 Virtual Agents 的 AI-based boosted conversations" caption="微软目前几乎全产品线正在与 OpenAI 深度集成，图为 Power 家族产品 Virtual Agents 的 AI-based boosted conversations" %}
 
 > 值得一提的是，针对这个小场景，我在 Glitch 平台上集成开发 OpenAI 的 Open API 只用了**不到 1 小时**的时间，站在巨人的肩膀上是容易的，站上去之后的事儿才重要。
 
@@ -106,7 +106,7 @@ const ChatGPT = ($input) => {
 
 事实上，业界目前某些顶尖自动化工作流厂商的产品已经内置了 OpenAI 的连接能力，正在赋能 `生产力提升` 的领域大放光彩。
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325744204-9955f585-9681-47e2-a8e6-37031aa510a7.png#averageHue=%23e4e8e8&clientId=u12f550c9-1b61-4&from=paste&height=380&id=ue4c30126&name=image.png&originHeight=380&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=true&size=39901&status=done&style=none&taskId=u699bc885-88ef-417e-a135-eeb0ad5877a&title=%EF%BC%88n8n.io%20%E9%9B%86%E6%88%90%20OpenAI%20%E6%9C%8D%E5%8A%A1%EF%BC%89&width=500 "（n8n.io 集成 OpenAI 服务）")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678325744204-9955f585-9681-47e2-a8e6-37031aa510a7.png#averageHue=%23e4e8e8&clientId=u12f550c9-1b61-4&from=paste&height=380&id=ue4c30126&name=image.png&originHeight=380&originWidth=500&originalType=binary&ratio=1&rotation=0&showTitle=true&size=39901&status=done&style=none&taskId=u699bc885-88ef-417e-a135-eeb0ad5877a&title=%EF%BC%88n8n.io%20%E9%9B%86%E6%88%90%20OpenAI%20%E6%9C%8D%E5%8A%A1%EF%BC%89&width=500" alt="n8n.io 集成 OpenAI 服务" caption="n8n.io 集成 OpenAI 服务" %}
 
 ### 重新审视它的 AI 能力会发现，其实它在玩文字接龙
 
@@ -116,7 +116,7 @@ const ChatGPT = ($input) => {
 
 而 ChatGPT 达到今天的成就，在 AI 能力的塑造上更是下足了苦工：距离初版 GPT-3 的发布都已经过去 2 年了，但事实上 2018 年 OpenAI 就已经开始推出这个自然语言处理模型（NLP） ，**其拥有 1750 亿之多的模型参数，训练成本花费约 1200 万美元**，是同类中参数数量最多、最昂贵的模型之一。
 
-![Pasted image 20230212034337.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325885630-7459a138-5e0c-4eee-b74c-8d2e73cacdd2.png#averageHue=%23f4f3f3&clientId=u12f550c9-1b61-4&from=paste&height=601&id=ua86e3b78&name=Pasted%20image%2020230212034337.png&originHeight=601&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=true&size=240686&status=done&style=none&taskId=u56bf48ac-9d8b-4805-af4b-3a3bae02117&title=%EF%BC%88ChatGPT%20%E8%BF%9B%E5%8C%96%E5%8F%B2%EF%BC%89&width=1000 "（ChatGPT 进化史）")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678325885630-7459a138-5e0c-4eee-b74c-8d2e73cacdd2.png#averageHue=%23f4f3f3&clientId=u12f550c9-1b61-4&from=paste&height=601&id=ua86e3b78&name=Pasted%20image%2020230212034337.png&originHeight=601&originWidth=1000&originalType=binary&ratio=1&rotation=0&showTitle=true&size=240686&status=done&style=none&taskId=u56bf48ac-9d8b-4805-af4b-3a3bae02117&title=%EF%BC%88ChatGPT%20%E8%BF%9B%E5%8C%96%E5%8F%B2%EF%BC%89&width=1000" alt="ChatGPT 进化史" caption="ChatGPT 进化史" %}
 
 我们对其能力的解剖，尚有一部分必须要留在 AI 的范畴进行阐述，那就是这个 ChatGPT 大脑的核心，它的生成能力：
 
@@ -241,7 +241,7 @@ const GPTModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
 
 它就是一个函数，它在玩文字接龙。在本节的最后，我想引用李宏毅老师课程的一张总结性示意图来完整地呈现 ChatGPT 达成的三大步骤：
 
-![uTools_1678671018101.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678671243287-0d41d707-d9e0-4d34-9910-b8baa3a3dcca.png#averageHue=%23efeded&clientId=u0d0c6e8c-3d25-4&from=ui&id=u23545e73&name=uTools_1678671018101.png&originHeight=632&originWidth=1132&originalType=binary&ratio=1&rotation=0&showTitle=true&size=208166&status=done&style=none&taskId=u2daad8d8-69f9-48f0-bff9-58ea73ef6d5&title=%E6%9D%8E%E5%AE%8F%E6%AF%85%EF%BC%9AChatGPT%20%E5%8E%9F%E7%90%86%20-%20%E9%A2%84%E8%AE%AD%E7%BB%83 "李宏毅：ChatGPT 原理 - 预训练")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678671243287-0d41d707-d9e0-4d34-9910-b8baa3a3dcca.png#averageHue=%23efeded&clientId=u0d0c6e8c-3d25-4&from=ui&id=u23545e73&name=uTools_1678671018101.png&originHeight=632&originWidth=1132&originalType=binary&ratio=1&rotation=0&showTitle=true&size=208166&status=done&style=none&taskId=u2daad8d8-69f9-48f0-bff9-58ea73ef6d5&title=%E6%9D%8E%E5%AE%8F%E6%AF%85%EF%BC%9AChatGPT%20%E5%8E%9F%E7%90%86%20-%20%E9%A2%84%E8%AE%AD%E7%BB%83" alt="李宏毅：ChatGPT 原理 - 预训练" caption="李宏毅：ChatGPT 原理 - 预训练" %}
 
 **至此，我们完整识别出来了它的核心能力，以及它的能力边界**。
 
@@ -253,7 +253,7 @@ const GPTModel = function <T>(a, b, c, d, e, x, y, z, ...others) {
 
 仅仅是 AIGC 这个人工智能子领域，在 ChatGPT 大火之前就已经有很多其他 AI 厂商在提供了：
 
-![uTools_1676180541485.png](https://cdn.nlark.com/yuque/0/2023/png/359409/1678325862394-0602994c-0035-444a-a2d3-f677a718053b.png#averageHue=%23e8e7e7&clientId=u12f550c9-1b61-4&from=paste&height=1357&id=u64d12fc9&name=uTools_1676180541485.png&originHeight=1357&originWidth=2134&originalType=binary&ratio=1&rotation=0&showTitle=true&size=323759&status=done&style=none&taskId=u159f4550-a3f2-47af-94fc-1b652608e01&title=%EF%BC%88Futurepedia%20-%20The%20Largest%20AI%20Tools%20Directory%20%7C%20Home%20%E7%9A%84%E5%AE%98%E7%BD%91%E6%AF%8F%E5%A4%A9%E9%83%BD%E6%9B%B4%E6%96%B0%E5%90%84%E7%A7%8D%20AI%20%E6%9C%8D%E5%8A%A1%E5%8E%82%E5%95%86%EF%BC%89&width=2134 "（Futurepedia - The Largest AI Tools Directory / Home 的官网每天都更新各种 AI 服务厂商）")
+{% include figure popup=true image_path="https://cdn.nlark.com/yuque/0/2023/png/359409/1678325862394-0602994c-0035-444a-a2d3-f677a718053b.png#averageHue=%23e8e7e7&clientId=u12f550c9-1b61-4&from=paste&height=1357&id=u64d12fc9&name=uTools_1676180541485.png&originHeight=1357&originWidth=2134&originalType=binary&ratio=1&rotation=0&showTitle=true&size=323759&status=done&style=none&taskId=u159f4550-a3f2-47af-94fc-1b652608e01&title=%EF%BC%88Futurepedia%20-%20The%20Largest%20AI%20Tools%20Directory%20%7C%20Home%20%E7%9A%84%E5%AE%98%E7%BD%91%E6%AF%8F%E5%A4%A9%E9%83%BD%E6%9B%B4%E6%96%B0%E5%90%84%E7%A7%8D%20AI%20%E6%9C%8D%E5%8A%A1%E5%8E%82%E5%95%86%EF%BC%89&width=2134" alt="Futurepedia - The Largest AI Tools Directory / Home 的官网每天都更新各种 AI 服务厂商" caption="Futurepedia - The Largest AI Tools Directory / Home 的官网每天都更新各种 AI 服务厂商" %}
 
 很多深度实践的知识工作者，包括我本人在内，早就已经在使用类似的工具来尝试提升某些工作的生产力了。
 
