@@ -6,9 +6,9 @@ sidebar:
   nav:
     - life
 header:
-  overlay_color: "#0d1117"
+  overlay_color: "#343434"
   overlay_filter: "0.5"
-  overlay_image: "/assets/images/index-header-2.jpg"
+  overlay_image: "/assets/images/index-header.jpg"
   caption: "图片素材来自于：[Unsplash](https://unsplash.com/)"
   actions:
     - label: "Github"
