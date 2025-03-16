@@ -6,6 +6,7 @@ category: lab
 excerpt: "前端工程师要想脱颖而出，就要拿出草稿纸"
 header:
   overlay_color: "#0d1117"
+  teaser: "/assets/blog-images/2015-03-05/baymax.jpg"
 ---
 
 下面的配图仅供卖萌

@@ -6,6 +6,7 @@ category: tool
 excerpt: "色彩无疑是前端设计环节中最为流行和重要的，在 codepen 上偶然捡回来一款体验比较特别的拾色器（他本身的设计就值得学习和推敲一把）在这里推荐给大家。"
 header:
   overlay_color: "#0d1117"
+  teaser: "/assets/blog-images/2015-02-01-coolors/coolors.png"
 ---
 
 ### 前言
