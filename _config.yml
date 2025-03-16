@@ -330,6 +330,8 @@ defaults:
       toc: true
       toc_sticky: true
       excerpt: ""
+      header:
+        overlay_color: "#0d1117"
 
   # _movie
   - scope:
