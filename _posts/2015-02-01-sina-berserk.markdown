@@ -4,6 +4,8 @@ title: 前端测试自动化工具 + 页面性能分析工具 BerserkJS 试用�
 tags: fe tool
 category: tool
 excerpt: "berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。"
+header:
+  overlay_color: "#0d1117"
 ---
 
 berserkJS 是新形态的前端测试自动化工具 + 页面性能分析工具 ，同时也是个使用 JS 语法控制的命令行浏览器。可用 JS 编写前端自动测试用例 + 页面性能分析用例。

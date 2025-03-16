@@ -4,6 +4,8 @@ title: Github Pages 服务启用 Jekyll 3.0，享受纯净 Markdown 写作体验
 tags: github jekyll
 category: lab
 excerpt: "Github Pages (以下简称 GP) 服务从今天起正式启用 Jekyll 3.0 版本。"
+header:
+  overlay_color: "#0d1117"
 ---
 
 Github Pages (以下简称 GP) 服务从今天起正式启用 Jekyll 3.0 版本，各位博主需要特别注意以下两点

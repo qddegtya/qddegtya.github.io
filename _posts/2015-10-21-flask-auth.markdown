@@ -4,6 +4,8 @@ title: Flask 中让 api 实现客户端授权
 tags: flask python
 category: work
 excerpt: "前段时间给一个移动应用做 Flask 的 Restful-API 正好涉及到了这方面的内容，其中有用到 python 元编程的相关技巧。"
+header:
+  overlay_color: "#0d1117"
 ---
 
 后端 API 通常需要对发送请求的客户端进行合法验证，以确保这些 API 是被 "保护" 起来的。

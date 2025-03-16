@@ -4,6 +4,8 @@ title: SVG + JS 实现新版手机 QQ 的手势消除红点消息的动画
 tags: svg javascript
 category: lab
 excerpt: "前端工程师要想脱颖而出，就要拿出草稿纸"
+header:
+  overlay_color: "#0d1117"
 ---
 
 下面的配图仅供卖萌

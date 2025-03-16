@@ -4,6 +4,8 @@ title: 《精读源码》- GoT
 tags: python got llm ai
 category: ai
 excerpt: "精读源码系列 - GoT"
+header:
+  overlay_color: "#0d1117"
 ---
 
 ### 源码分析图
