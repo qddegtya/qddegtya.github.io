@@ -6,6 +6,7 @@ category: 沉思录
 excerpt: "今天的科技变革速度远远超乎过往所有的理所当然和想象。"
 header:
   overlay_color: "#0d1117"
+  teaser: "https://cdn.nlark.com/yuque/0/2022/png/359409/1653929019757-c3a93aa8-e6d0-4b67-b367-704f7483104a.png#clientId=uc992aaed-31df-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u66d6d402&margin=%5Bobject%20Object%5D&name=AC6B3850-B9A5-4343-A38A-665AAE89B183.png&originHeight=1080&originWidth=1920&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1049011&status=done&style=none&taskId=u6bb49ba6-b28b-4746-8884-7da1d537f2a&title="
 ---
 
 > 目前，我们的旅程一直很舒适、惬意，路况一直很好，食物也充足、美味...... 事实上，如果我没经历过那些前所未有的糟糕透顶的事情，我会说，麻烦的事情才刚刚开始呢。 - 塔姆森。唐纳（Tamsen Donner）1846.6.16
