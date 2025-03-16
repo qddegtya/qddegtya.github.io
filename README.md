@@ -3,8 +3,8 @@
 🌍 [Colorful](https://xiaoa.name)
 
 * Multi-Type Layout
-* Https
-* Site-Search / Archieve / RSS / Sitemap / ...
+* Support Https
+* Site-Search / Archive / RSS / Sitemap / ...
 * Support PC / Mobile / Tablet / ...
 
 Enjoy the reading.
