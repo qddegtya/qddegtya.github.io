@@ -4,6 +4,8 @@ title: Make your own Dark Mode with mbm.js
 tags: fe javascript
 category: work
 excerpt: "Play with your Dark Mode."
+header:
+  overlay_color: "#0d1117"
 ---
 
 <p><a href="https://github.com/qddegtya/mbm" target="_blank">[mbm] = (🌞 -> 🌛 || 🌛 -> 🌞)</a></p>
