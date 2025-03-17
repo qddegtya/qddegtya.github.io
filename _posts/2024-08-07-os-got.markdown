@@ -6,6 +6,7 @@ category: ai
 excerpt: "精读源码系列 - GoT"
 header:
   overlay_color: "#0d1117"
+  teaser: "/assets/teaser/2024-08-07-os-got/main.jpg"
 ---
 
 ### 源码分析图
