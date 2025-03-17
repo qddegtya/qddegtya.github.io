@@ -13,10 +13,12 @@
 
 <!-- optimize pre.highlight color for neon theme -->
 <style>
+  /* 普通 code block 样式优化 */
   code.language-plaintext {
     border: 1px solid #50555c !important;
   }
 
+  /* 站点 logo 样式优化 */
   .site-logo {
     border: 1px solid #50555c !important;
 
@@ -29,18 +31,13 @@
     overflow: hidden;
   }
 
-  .grid__item {
-    margin-bottom: 1em !important;
-  }
-
+  /* entries-list-with-teaser 样式优化 */
   .entries-list-with-teaser .list-with-teaser__item .archive__item-title {
     margin-bottom: 12px !important;
   }
-
   .entries-list-with-teaser .list-with-teaser__item .archive__item-teaser {
     margin-bottom: 12px !important;
   }
-
   .entries-list-with-teaser .list-with-teaser__item {
     border: 1px solid #50555c;
     background: #0d1117;
@@ -59,12 +56,12 @@
   
     white-space: normal;
   }
-
   .entries-list-with-teaser .list-with-teaser__item * {
     margin: 0 !important;
     padding: 0 !important;
   }
   
+  /* page__content 样式优化 */
   .page__content {
     border: 1px solid #50555c;
     padding: 1rem;
@@ -82,9 +79,9 @@
   
     white-space: normal;
   }
-
   .page__content figure {
     border: 1px solid #50555c;
+    background: #000000 !important;
 
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -96,15 +93,12 @@
     position: relative;
     overflow: hidden;
   }
-  
   .page__content div.highlighter-rouge {
     border: 1px solid #50555c !important;
   }
-
   .page__content figure.highlight {
     padding: 0 !important;
   }
-
   .page__content figure figcaption {
     margin: 0 !important;
 
@@ -121,6 +115,7 @@
     text-align: center;
   }
 
+  /* page__comments 样式优化 */
   .page__comments {
     border: 1px solid #50555c;
     padding: 1rem;
@@ -135,6 +130,7 @@
     margin-top: 20px !important;
   }
 
+  /* toc 样式优化 */
   .toc .nav__title {
     -webkit-border-top-left-radius: 0 !important;
     -moz-border-top-left-radius: 0 !important;
@@ -143,7 +139,6 @@
 
     border-top-left-radius: 0 !important;
   }
-
   .toc {
     background: none !important;
     border: none !important;
@@ -161,6 +156,7 @@
     border-radius: 0 !important;
   }
 
+  /* archive__item 样式优化 */
   article.archive__item .archive__item-teaser {
     border: 1px solid #50555c;
   }
@@ -216,10 +212,13 @@
     font-family: "Montserrat", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
   }
 
+
+  /* footer 样式优化 */
   #footer {
     background-color: #0d1117 !important;
   }
 
+  /* grid__item 样式优化 */
   .grid__item {
     border: 1px solid #50555c;
     background-color: #0d1117;
@@ -231,8 +230,10 @@
     border-radius: 4px;
 
     padding: 16px;
+    margin-bottom: 1em !important;
   }
 
+  /* search-content 样式优化 */
   .search-content .archive__item {
     border: 1px solid #50555c;
     background-color: #0d1117;
@@ -247,17 +248,18 @@
 
     padding: 16px;
   }
-
   .search-content .archive__item-excerpt {
     border-top: 1px solid #50555c;
     margin-top: 10px;
     padding-top: 10px;
   }
 
+  /* hll 高亮样式优化 */
   .highlight .hll {
     background: #0d1117 !important;
   }
 
+  /* page__content 图片样式优化 */
   .page__content img {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
