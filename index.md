@@ -1,7 +1,9 @@
 ---
-title: "关于我"
+title: "首页"
 layout: single
 toc: true
+toc_label: "关于我"
+toc_icon: "circle-user"
 toc_sticky: true
 sidebar:
   nav:
