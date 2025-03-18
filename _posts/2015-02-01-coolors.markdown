@@ -13,6 +13,6 @@ header:
 
 色彩无疑是前端设计环节中最为流行和重要的，在 codepen 上偶然捡回来一款体验比较特别的拾色器（他本身的设计就值得学习和推敲一把）在这里推荐给大家 [https://coolors.co](https://coolors.co "coolors")
 
-![](/assets/blog-images/2015-02-01-coolors/coolors.png)
+![](/assets/blog-images/2015-02-01-coolors/coolors.png){: .align-center}
 
 可以使用快捷键快速获取到一个唯一的色彩组合，仿佛灵感在瞬间迸发。

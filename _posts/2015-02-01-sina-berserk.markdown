@@ -108,7 +108,7 @@ Cisco: 用于 WebEx 项目的自动化测试
 1. 采集页面加载过程中的所有性能数据并序列化之后进行存储
 2. 在界面上显示加载进度。
 
-![](https://segmentfault.com/img/bVc5aK)
+![](https://segmentfault.com/img/bVc5aK){: .align-center}
 
 ### 根据 API 用 JS 完成我们此次的目标
 
