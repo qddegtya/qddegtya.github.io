@@ -4,6 +4,8 @@ main:
     url: /
   - title: "博客"
     url: /posts/
+  - title: "留言墙"
+    url: /guestbook/
   - title: "归档"
     url: /year-archive/
 
