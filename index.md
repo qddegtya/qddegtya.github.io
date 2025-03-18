@@ -20,28 +20,6 @@ header:
     - label: "Bento"
       url: "https://bento.me/archer"
 excerpt: "Author/Lead Maintainer of [@hlang-tech](https://github.com/hlang-tech). Do some crazy work at [@a-side-project](https://github.com/a-side-project). Make web application development better at [@a-web-studio](https://github.com/a-web-studio). Previously at [@alibaba](https://github.com/alibaba)."
-bio-links:
-  - image_path: /assets/bio-links/dg.jpg
-    alt: "数字花园"
-    title: "数字花园"
-    excerpt: '我使用「语雀」作为我的数字花园（国内中文环境），作为一名内容创作者，我喜欢将思考沉淀至文字并且转化为知识，并且拥有完善的知识加工工作流用于构建第二大脑，这里是我用来整理和分享这些知识的地方，你可以在这里阅读关于「产品、设计、技术」的精选文章，以及一些深度内容专栏。'
-    url: "https://www.yuque.com/chiyu-heb0t"
-    btn_label: "访问"
-    btn_class: "btn--primary"
-  - image_path: /assets/bio-links/coding.jpg
-    alt: "Github"
-    title: "Github"
-    excerpt: '毫无疑问，「Github」是开发者的圣地，作为一名工程师、开源爱好者、独立开发者，你可以看到我在这里正在专注开发中以及参与的开源项目，痴迷 `Yak Shaving`、热爱写代码、热爱创造，我经常使用的编程语言为 Javascript，同时关注 Rust / Java / Python 生态。'
-    url: "https://github.com/qddegtya"
-    btn_label: "访问"
-    btn_class: "btn--primary"
-  - image_path: /assets/bio-links/bento.jpg
-    alt: "Link-in-Bio"
-    title: "Link-in-Bio"
-    excerpt: '`bento.me` 这样的 `Link-in-Bio` 平台上也可以看到我的身影，在这里，你可以向我进行 AMA 咨询服务预约，或者关注我的最新活动和行程。'
-    url: "https://bento.me/archer"
-    btn_label: "访问"
-    btn_class: "btn--primary"
 ---
 
 Hi 👋，I am `Archer`.
