@@ -6,6 +6,8 @@ main:
     url: /posts/
   - title: "留言墙"
     url: /guestbook/
+  - title: "项目"
+    url: /projects/
   - title: "归档"
     url: /year-archive/
 
