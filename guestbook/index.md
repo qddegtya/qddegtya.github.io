@@ -2,9 +2,7 @@
 title: "留言墙"
 layout: single
 comments: true
-sidebar:
-  nav:
-    - life
+author_profile: true
 header:
   overlay_color: "#0d1117"
   overlay_filter: "0.5"
