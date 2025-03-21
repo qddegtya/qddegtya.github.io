@@ -9,7 +9,7 @@ header:
 excerpt: "我的冒险及成长之旅"
 classes: wide
 project-ct:
-  - image_path: /assets/projects/ct/main.png
+  - image_path: /assets/projects/ct/main.jpg
     alt: "Creator Telescope"
     title: "Creator Telescope"
     excerpt: '[`Creator Telescope`](https://ct-weekly.xiaoa.name/) 在内容上聚焦满足「独立开发」、「独立创客」、「创造者」等此类画像的用户可能关注的内容，包含技术指南、产品洞察、成功故事、一线资讯、深度思考等等。'
