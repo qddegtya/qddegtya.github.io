@@ -17,7 +17,7 @@ project-wa:
   - image_path: /assets/projects/wa/wa.png
     alt: "Workflow Automation"
     title: "Workflow Automation"
-    excerpt: '博主在 `Workflow Automation` 领域深耕多年，从最早的 `IFTTT` 狂热爱好者，到深入研究开源世界的 `Noflo.js` 以及 `Node-Red` 的源码，到持续学习和拆解已经成为独角兽 🦄️ 的 `n8n`、`Zapier`、`Albato` 等平台，长期醉心研究其提升个人生产力的相关课题，直至决心在该领域持续布道。与此同时，也正在致力于创造一个类似的平台，让 `Automate Everything` 的理念不再成为阳春白雪。'
+    excerpt: '博主在 `Workflow Automation` 领域深耕多年，从最早的 `IFTTT` 狂热爱好者，到深入研究开源世界的 `Noflo.js` 以及 `Node-Red` 的源码，到持续学习和拆解已经成为独角兽 🦄️ 的 `N8n.io`、`Zapier`、`Albato` 等平台，长期醉心研究其提升个人生产力的相关课题，直至决心在该领域持续布道。与此同时，也正在致力于创造一个类似的平台，让 `Automate Everything` 的理念不再成为阳春白雪。'
 project-hlang:
   - image_path: /assets/projects/hlang/hlang-1.jpg
     alt: "Hlang x CHINASHOP 2020"
