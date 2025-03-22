@@ -349,6 +349,25 @@ defaults:
       sidebar:
         nav:
           - life
+  
+  # _book
+  - scope:
+      path: ""
+      type: book
+    values:
+      layout: single
+      author_profile: false
+      share: false
+      read_time: true
+      comments: true
+      related: false
+      show_date: true
+      toc: true
+      toc_sticky: true
+      excerpt: ""
+      sidebar:
+        nav:
+          - life
 
   # _events
   - scope:
@@ -409,6 +428,9 @@ defaults:
 
 collections:
   movie:
+    output: true
+    permalink: /:collection/:path/
+  book:
     output: true
     permalink: /:collection/:path/
   events:
