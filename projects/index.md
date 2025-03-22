@@ -37,7 +37,7 @@ project-hlang:
 
 ### `Workflow Automation` - `2025` - `WIP`
 
-> 作为 `Code & Art Studio` 的主理人，该课程是即将重磅推出的 `Skills Master` 系列在线课程之一，将以独立站的形式发布。
+> 作为 `Code & Art Studio` 的主理人，该课程是即将重磅推出的 `Skill Masters` 系列在线课程之一，将以独立站的形式发布。
 
 {% include feature_row id="project-wa" type="left" %}
 
