@@ -12,19 +12,21 @@ main:
     url: /year-archive/
 
 life:
-  - title: "工作室"
+  - title: "我的工作室"
     children:
         - title: "Code & Art"
           url: /ca/
-  - title: "书影音"
+  - title: "我的读听看"
     children:
+        - title: "书籍"
+          url: /book/
         - title: "电影"
           url: /movie/
-  - title: "事件"
+  - title: "我参加的"
     children:
         - title: "活动"
           url: /events/
-  - title: "生活"
+  - title: "我的生活"
     children:
         - title: "旅行"
           url: /travel/
