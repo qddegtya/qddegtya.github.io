@@ -6,7 +6,7 @@ author_profile: true
 header:
   overlay_color: "#0d1117"
   overlay_filter: "0.5"
-  overlay_image: "/_vercel/image?url=/assets/images/guestbook-header.jpg&w=640&q=25"
+  overlay_image: "/_vercel/image?url=/assets/images/guestbook-header.jpg&w=1080&q=75"
 excerpt: "有朋自远方来，不亦乐乎"
 ---
 
