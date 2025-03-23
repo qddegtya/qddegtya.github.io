@@ -6,7 +6,7 @@ header:
   video:
     id: BV1L841137g4
     provider: bilibili
-  teaser: "/assets/media/ca/n8n/lesson-1/n8n.jpeg"
+  teaser: "/assets/ca/n8n/lesson-1/n8n.jpeg"
 ---
 
 ### 视频内容简介
