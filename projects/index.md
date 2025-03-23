@@ -5,7 +5,7 @@ author_profile: true
 header:
   overlay_color: "#0d1117"
   overlay_filter: "0.5"
-  overlay_image: "/assets/images/projects-header.jpg"
+  overlay_image: "/_vercel/image?url=/assets/images/projects-header.jpg&w=640&q=25"
 excerpt: "我的冒险及成长之旅"
 classes: wide
 project-ct:
