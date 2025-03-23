@@ -1,9 +1,16 @@
 {
   "images": {
-    "localPatterns": [
-      {
-        "pathname": "^/assets/images/.*$"
-      }
-    ]
+    "sizes": [256, 640, 1080, 2048, 3840],
+    "localPatterns": [{
+      "pathname": "^/assets/.*$",
+      "search": ""
+    }],
+    "remotePatterns": [],
+    "minimumCacheTTL": 60,
+    "qualities": [25, 50, 75],
+    "formats": ["image/webp"],
+    "dangerouslyAllowSVG": false,
+    "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
+    "contentDispositionType": "inline"
   }
 }
