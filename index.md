@@ -11,7 +11,7 @@ sidebar:
 header:
   overlay_color: "#0d1117"
   overlay_filter: "0.5"
-  overlay_image: "/assets/images/index-header-black.jpg"
+  overlay_image: "/_vercel/image?url=/assets/images/index-header-black.jpg&w=640&q=25"
   actions:
     - label: "Github"
       url: "https://github.com/qddegtya"
