@@ -19,7 +19,7 @@ header:
       url: "https://www.yuque.com/chiyu-heb0t"
     - label: "Bento"
       url: "https://bento.me/archer"
-excerpt: "Working on [@astack-tech](https://github.com/astack-tech). Author/Lead Maintainer of [@hlang-tech](https://github.com/hlang-tech). Previously at [@alibaba](https://github.com/alibaba)."
+excerpt: "Author/Lead Maintainer of [@astack-tech](https://github.com/astack-tech) / [@hlang-tech](https://github.com/hlang-tech). Currently working at [@FellouAI](https://github.com/FellouAI). Previously at [@alibaba](https://github.com/alibaba)."
 ---
 
 Hi 👋，I am `Archer`.
