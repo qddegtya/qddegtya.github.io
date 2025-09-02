@@ -31,9 +31,30 @@ project-hlang:
     alt: "Hlang x CHINASHOP 2020"
     title: "Hlang x CHINASHOP 2020"
     excerpt: '[`Hlang`](https://github.com/hlang-tech) 的展台前热闹非凡，客户、同行纷纷驻足围观，讨论和探究它的商业化价值'
+project-fellou-ce:
+  - image_path: /assets/projects/fellou-ce/official-site.png
+    alt: "The World's First Agentic Browser"
+    title: "Go beyond browsing with Fellou AI Browser that takes automated web action"
+    excerpt: 'Automated Complex Web Tasks with One Prompt'
+  - image_path: /assets/projects/fellou-ce/home.png
+    alt: "Fellou CE Home"
+    title: "Home Module for Fellou CE"
+    excerpt: 'Your Personal Dashboard'
+  - image_path: /assets/projects/fellou-ce/eko.png
+    alt: "A Production-Ready Agent Framework"
+    title: "Build Production-ready Agentic Workflow with Natural Language"
+    excerpt: 'Eko is a next-gen, high-efficiency agent  framework for all platforms, tailored for developers who demand flexibility and customization.'
+  - image_path: /assets/projects/fellou-ce/workflow.png
+    alt: "Agentic Task powered by eko & fellou"
+    title: "Automate everything"
+    excerpt: '[`Fellou`](https://fellou.ai) is powered by Eko.'
 ---
 
-😄 以下是我正在主导的，已上线或正在开发中的可公开项目案例：
+😄 以下是我正在主导的/或者共创的，已上线或正在开发中的可公开项目案例：
+
+### `Fellou CE` - `2025` - `已上线`
+
+{% include feature_row id="project-fellou-ce" %}
 
 ### `Workflow Automation` - `2025` - `WIP`
 
