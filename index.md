@@ -1,6 +1,40 @@
 ---
 title: "首页"
-layout: single
+layout: single-photo-wall
+overlay_image: "/assets/images/index-header-black.jpg"
+photo_wall:
+  - image: "/assets/photos/20260202-203942.jpeg"
+    caption: "我"
+    rotation: "-3deg"
+    offset: "10px"
+  - image: "/assets/photos/20260202-203950.jpeg"
+    caption: "桌搭"
+    rotation: "2deg"
+    offset: "-15px"
+  - image: "/assets/photos/20260202-203955.jpeg"
+    caption: "桌搭"
+    rotation: "-4deg"
+    offset: "20px"
+  - image: "/assets/photos/20260202-203959.jpeg"
+    caption: "桌搭"
+    rotation: "3deg"
+    offset: "-10px"
+  - image: "/assets/photos/20260202-204004.jpeg"
+    caption: "桌搭"
+    rotation: "-2deg"
+    offset: "15px"
+  - image: "/assets/photos/20260202-204009.jpeg"
+    caption: "我"
+    rotation: "4deg"
+    offset: "-20px"
+  - image: "/assets/photos/20260202-204730.jpg"
+    caption: "我"
+    rotation: "-3deg"
+    offset: "5px"
+  - image: "/assets/photos/20260202-204736.jpg"
+    caption: "我"
+    rotation: "2deg"
+    offset: "-8px"
 toc: true
 toc_label: "关于我"
 toc_icon: "circle-user"
@@ -8,17 +42,18 @@ toc_sticky: true
 sidebar:
   nav:
     - life
-header:
-  overlay_color: "#0d1117"
-  overlay_filter: "0.5"
-  overlay_image: "/_vercel/image?url=/assets/images/index-header-black.jpg&w=1080&q=75"
-  actions:
-    - label: "Github"
-      url: "https://github.com/qddegtya"
-    - label: "Yuque"
-      url: "https://www.yuque.com/chiyu-heb0t"
-    - label: "Bento"
-      url: "https://bento.me/archer"
+# 使用照片墙替代标准 hero，以下 header 配置已禁用
+# header:
+#   overlay_color: "#0d1117"
+#   overlay_filter: "0.5"
+#   overlay_image: "/_vercel/image?url=/assets/images/index-header-black.jpg&w=1080&q=75"
+#   actions:
+#     - label: "Github"
+#       url: "https://github.com/qddegtya"
+#     - label: "Yuque"
+#       url: "https://www.yuque.com/chiyu-heb0t"
+#     - label: "Bento"
+#       url: "https://bento.me/archer"
 excerpt: "Author/Lead Maintainer of [@astack-tech](https://github.com/astack-tech) / [@hlang-tech](https://github.com/hlang-tech). Focus on Agentic System & Flow-based Programming Inspired System."
 ---
 

@@ -1,0 +1,27 @@
+<!-- Hero Photo Wall - Horizontal Scrolling Gallery -->
+<div class="hero-photo-wall" {% if page.overlay_image %}{% if jekyll.environment == "production" %}style="background-image: url('/_vercel/image?url={{ page.overlay_image }}&w=1080&q=75');"{% else %}style="background-image: url('{{ page.overlay_image }}');"{% endif %}{% endif %}>
+  <div class="hero-photo-wall__container">
+    <div class="hero-photo-wall__scroll">
+
+      {% for photo in page.photo_wall %}
+      <!-- Photo Card {{ forloop.index }} -->
+      <div class="photo-card" style="--rotation: {{ photo.rotation }}; --offset-y: {{ photo.offset }};">
+        <div class="photo-card__inner">
+          {% if jekyll.environment == "production" %}
+          <img src="/_vercel/image?url={{ photo.image }}&w=400&q=75" alt="{{ photo.caption }}">
+          {% else %}
+          <img src="{{ photo.image }}" alt="{{ photo.caption }}">
+          {% endif %}
+          <div class="photo-card__caption">{{ photo.caption }}</div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- Scroll Hint -->
+  <div class="hero-photo-wall__hint">
+    <span>← Scroll to explore →</span>
+  </div>
+</div>

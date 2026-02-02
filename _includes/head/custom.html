@@ -443,7 +443,6 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--glass-border);
-    padding-top: 2rem !important;
   }
 
   /* ========================================
@@ -454,7 +453,7 @@
     background: var(--glass-bg) !important;
     border: 1px solid var(--glass-border) !important;
     border-radius: 12px !important;
-    padding: 1.5rem !important;
+    padding: 0.5rem !important;
     margin-bottom: 1.5em !important;
     box-shadow: var(--glass-shadow);
     backdrop-filter: blur(10px);
@@ -462,6 +461,13 @@
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
+  }
+
+  /* 移动端增加 padding */
+  @media (max-width: 768px) {
+    .grid__item {
+      padding: 1.5rem !important;
+    }
   }
 
   .grid__item::after {
@@ -578,6 +584,196 @@
   a:hover {
     color: var(--accent-color) !important;
   }
+
+  /* ========================================
+     Hero Photo Wall - 横向滚动照片墙
+     Polaroid 风格，不规则摆放
+     ======================================== */
+
+  /* 修复 initial-content 容器的间距 */
+  .initial-content {
+    padding-top: 0 !important;
+  }
+
+  .hero-photo-wall {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 2rem 0;
+    position: relative;
+    min-height: 500px;
+    /* 背景图片通过 inline style 从 front matter 配置 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  /* 背景模糊层 */
+  .hero-photo-wall::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
+  .hero-photo-wall__container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 移除顶部红色强调线 */
+  .hero-photo-wall__container::before {
+    display: none;
+  }
+
+  /* 横向滚动容器 */
+  .hero-photo-wall__scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2rem 1rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* 完全隐藏滚动条 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hero-photo-wall__scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Polaroid 照片卡片 */
+  .photo-card {
+    flex-shrink: 0;
+    width: 280px;
+    /* 使用 CSS 变量实现不规则摆放 */
+    transform: rotate(var(--rotation)) translateY(var(--offset-y));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .photo-card:hover {
+    transform: rotate(0deg) translateY(-10px) scale(1.05);
+    z-index: 10;
+  }
+
+  .photo-card__inner {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.5),
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+  }
+
+  .photo-card__inner::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+  .photo-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .photo-card__caption {
+    margin-top: 12px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* 滚动提示 */
+  .hero-photo-wall__hint {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: pulse 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .hero-photo-wall {
+      padding: 2rem 0;
+      margin: 1rem 0;
+    }
+
+    .hero-photo-wall__container {
+      padding: 1.5rem 0.5rem;
+      border-radius: 12px;
+    }
+
+    .hero-photo-wall__scroll {
+      gap: 1.5rem;
+      padding: 1.5rem 0.5rem;
+    }
+
+    .photo-card {
+      width: 240px;
+    }
+
+    .photo-card img {
+      height: 280px;
+    }
+
+    .photo-card__caption {
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+  }
+
+  /* 小屏幕进一步优化 */
+  @media (max-width: 480px) {
+    .photo-card {
+      width: 200px;
+    }
+
+    .photo-card img {
+      height: 240px;
+    }
+  }
+
 </style>
 
 <!-- referrer -->
