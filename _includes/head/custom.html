@@ -331,6 +331,15 @@
     background: transparent !important;
   }
 
+  /* 精准修复：移除 active 父级下所有子菜单项的背景色 */
+  .toc__menu li.active li,
+  .toc__menu li.active li a,
+  .toc__menu li.active ul li,
+  .toc__menu li.active ul li a {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
   /* 选中态文字颜色变为红色 */
   .toc__menu li.active > a,
   .toc__menu li a.active {

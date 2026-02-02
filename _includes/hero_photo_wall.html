@@ -25,3 +25,51 @@
     <span>← Scroll to explore →</span>
   </div>
 </div>
+
+<!-- Photo Wall Scroll Enhancement Script -->
+<script>
+(function() {
+  const scrollContainer = document.querySelector('.hero-photo-wall__scroll');
+  if (!scrollContainer) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // 鼠标拖拽滚动
+  scrollContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    scrollContainer.style.cursor = 'grabbing';
+    scrollContainer.style.userSelect = 'none';
+    startX = e.pageX - scrollContainer.offsetLeft;
+    scrollLeft = scrollContainer.scrollLeft;
+  });
+
+  scrollContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    scrollContainer.style.cursor = 'grab';
+  });
+
+  scrollContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    scrollContainer.style.cursor = 'grab';
+  });
+
+  scrollContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainer.offsetLeft;
+    const walk = (x - startX) * 2; // 滚动速度倍数
+    scrollContainer.scrollLeft = scrollLeft - walk;
+  });
+
+  // 鼠标滚轮横向滚动
+  scrollContainer.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    scrollContainer.scrollLeft += e.deltaY;
+  }, { passive: false });
+
+  // 初始化鼠标样式
+  scrollContainer.style.cursor = 'grab';
+})();
+</script>
