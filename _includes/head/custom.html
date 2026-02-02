@@ -670,13 +670,16 @@
   }
 
   .photo-card__inner {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
     border-radius: 12px;
     box-shadow:
       0 8px 24px rgba(0, 0, 0, 0.5),
       0 4px 12px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
   }
 
@@ -687,7 +690,7 @@
     left: 8px;
     right: 8px;
     bottom: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     pointer-events: none;
   }
@@ -705,7 +708,7 @@
     text-align: center;
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
-    color: #333;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
     letter-spacing: 0.02em;
   }
