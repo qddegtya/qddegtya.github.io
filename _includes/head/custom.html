@@ -31,6 +31,10 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.3);
     --glass-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.4);
+    /* 方向性阴影 - 向下投射 */
+    --glass-shadow-down: 0 4px 12px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4);
+    /* 方向性阴影 - 向上投射 */
+    --glass-shadow-up: 0 -4px 12px rgba(0, 0, 0, 0.6), 0 -8px 24px rgba(0, 0, 0, 0.4);
     --accent-color: #f13b03;
     --accent-glow: rgba(241, 59, 3, 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -374,9 +378,9 @@
     background: transparent !important;
   }
 
-  /* Masthead 外层容器 - 底部犀利阴影 */
+  /* Masthead 外层容器 - 向下投射阴影 */
   .masthead {
-    box-shadow: var(--glass-shadow) !important;
+    box-shadow: var(--glass-shadow-down) !important;
   }
 
   /* ========================================
@@ -437,7 +441,7 @@
   }
 
   /* ========================================
-     Footer 页脚样式 - Glassmorphism
+     Footer 页脚样式 - Glassmorphism + 向上投射阴影
      ======================================== */
 
   #footer {
@@ -445,6 +449,7 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-up) !important;
   }
 
   /* ========================================
