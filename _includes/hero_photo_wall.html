@@ -8,7 +8,7 @@
       <div class="photo-card" style="--rotation: {{ photo.rotation }}; --offset-y: {{ photo.offset }};">
         <div class="photo-card__inner">
           {% if jekyll.environment == "production" %}
-          <img src="/_vercel/image?url={{ photo.image }}&w=400&q=75" alt="{{ photo.caption }}">
+          <img src="/_vercel/image?url={{ photo.image }}&w=1080&q=75" alt="{{ photo.caption }}">
           {% else %}
           <img src="{{ photo.image }}" alt="{{ photo.caption }}">
           {% endif %}
