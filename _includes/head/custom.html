@@ -29,8 +29,8 @@
   :root {
     --glass-bg: rgba(13, 17, 23, 0.75);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --glass-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+    --glass-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.3);
+    --glass-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.7), 0 12px 32px rgba(0, 0, 0, 0.4);
     --accent-color: #f13b03;
     --accent-glow: rgba(241, 59, 3, 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -49,14 +49,12 @@
     border: 1px solid var(--glass-border) !important;
     border-radius: 6px !important;
     padding: 0.2em 0.4em !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     transition: var(--transition-smooth);
     /* 移除 backdrop-filter 避免文字模糊 */
   }
 
   code.language-plaintext:hover {
     border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     background: rgba(13, 17, 23, 1) !important;
   }
 
