@@ -586,6 +586,45 @@
   }
 
   /* ========================================
+     分页导航样式 - 红色渐变底线
+     ======================================== */
+
+  .pagination a,
+  .pager a,
+  .page__nav a {
+    position: relative;
+    background: transparent !important;
+    transition: var(--transition-smooth);
+  }
+
+  .pagination a::before,
+  .pager a::before,
+  .page__nav a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .pagination a:hover,
+  .pager a:hover,
+  .page__nav a:hover {
+    background: transparent !important;
+    color: var(--accent-color) !important;
+  }
+
+  .pagination a:hover::before,
+  .pager a:hover::before,
+  .page__nav a:hover::before {
+    opacity: 1;
+  }
+
+  /* ========================================
      Hero Photo Wall - 横向滚动照片墙
      Polaroid 风格，不规则摆放
      ======================================== */
