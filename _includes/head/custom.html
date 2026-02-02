@@ -240,19 +240,13 @@
      ======================================== */
 
   .toc {
-    /* 径向渐变背景 - 从中心向外淡出 */
-    background: radial-gradient(
-      ellipse at center,
-      rgba(13, 17, 23, 0.25) 0%,
-      rgba(13, 17, 23, 0.15) 50%,
-      transparent 100%
-    ) !important;
+    /* 完全透明背景 - 无背景色 */
+    background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    /* 极轻微的模糊，保持文字清晰 */
-    backdrop-filter: blur(3px) !important;
-    -webkit-backdrop-filter: blur(3px) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     overflow: visible;
     position: relative;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -268,7 +262,6 @@
 
   .toc .nav__title {
     background: transparent !important;
-    /* 极细的底部渐变分隔 */
     border-bottom: none !important;
     border-radius: 0 !important;
     padding: 0.5rem 0.75rem !important;
@@ -374,6 +367,14 @@
      ======================================== */
 
   /* 不做任何布局修改，让主题自己处理 */
+
+  /* ========================================
+     站点导航样式 - 移除背景色
+     ======================================== */
+
+  .greedy-nav {
+    background: transparent !important;
+  }
 
   /* ========================================
      Archive 归档项样式 - Glassmorphism
@@ -548,16 +549,14 @@
 
   .page__content img {
     border-radius: 10px !important;
-    background-color: rgba(13, 17, 23, 0.5) !important;
-    border: 1px solid var(--glass-border) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     transition: var(--transition-smooth);
   }
 
   .page__content img:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.15);
   }
 
   /* ========================================
