@@ -20,157 +20,377 @@
 <meta name="msapplication-TileColor" content="#603cba">
 <meta name="theme-color" content="#ffffff">
 
-<!-- optimize pre.highlight color for neon theme -->
+<!-- Glassmorphism/Neumorphism Enhanced Styles -->
 <style>
-  /* 普通 code block 样式优化 */
+  /* ========================================
+     全局基础样式 - Glassmorphism Foundation
+     ======================================== */
+
+  :root {
+    --glass-bg: rgba(13, 17, 23, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --glass-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5);
+    --accent-color: #f13b03;
+    --accent-glow: rgba(241, 59, 3, 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 全局背景渐变 */
+  body {
+    background: linear-gradient(135deg, #000000 0%, #0a0e14 50%, #0d1117 100%) !important;
+    background-attachment: fixed !important;
+    font-family: "Montserrat", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+  }
+
+  /* 普通 code block 样式优化 - 移除模糊效果保持清晰 */
   code.language-plaintext {
-    border: 1px solid #50555c !important;
+    background: rgba(13, 17, 23, 0.95) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 6px !important;
+    padding: 0.2em 0.4em !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: var(--transition-smooth);
+    /* 移除 backdrop-filter 避免文字模糊 */
   }
 
-  /* 站点 logo 样式优化 */
+  code.language-plaintext:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: rgba(13, 17, 23, 1) !important;
+  }
+
+  /* 站点 logo 样式优化 - 质感提升 */
   .site-logo {
-    border: 1px solid #50555c !important;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 8px !important;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
-  /* entries-list-with-teaser 样式优化 */
+  .site-logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ========================================
+     列表项样式 - Glassmorphism Cards
+     ======================================== */
+
   .entries-list-with-teaser .list-with-teaser__item .archive__item-title {
     margin-bottom: 12px !important;
   }
+
   .entries-list-with-teaser .list-with-teaser__item .archive__item-teaser {
     margin-bottom: 12px !important;
   }
+
   .entries-list-with-teaser .list-with-teaser__item {
-    border: 1px solid #50555c;
-    background: #0d1117;
-    padding: 16px !important;
-    margin-bottom: 1em !important;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 1.5em !important;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
-  
     white-space: normal;
+    position: relative;
+    overflow: hidden;
   }
+
+  .entries-list-with-teaser .list-with-teaser__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .entries-list-with-teaser .list-with-teaser__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .entries-list-with-teaser .list-with-teaser__item:hover::before {
+    opacity: 1;
+  }
+
   .entries-list-with-teaser .list-with-teaser__item * {
     margin: 0 !important;
     padding: 0 !important;
   }
   
-  /* page__content 样式优化 */
+  /* ========================================
+     页面内容区 - Glassmorphism Main Content
+     ======================================== */
+
   .page__content {
-    border: 1px solid #50555c;
-    padding: 1rem;
-    background: #0d1117;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
-  
     white-space: normal;
+    line-height: 1.75 !important;
+    letter-spacing: 0 !important;
+    position: relative;
   }
-  .page__content figure {
-    border: 1px solid #50555c;
-    background: #000000 !important;
 
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-    
-    padding: 8px;
+  .page__content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .page__content {
+      padding: 1.5rem !important;
+      border-radius: 10px !important;
+    }
+  }
+  /* Figure 和代码块样式 */
+  .page__content figure {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
+
   .page__content figure * {
     margin-left: auto;
     margin-right: auto;
   }
+
   .page__content div.highlighter-rouge {
-    border: 1px solid #50555c !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
   }
+
   .page__content figure.highlight {
     padding: 0 !important;
   }
+
   .page__content figure figcaption {
     margin: 0 !important;
-
     width: 100%;
-    padding: 4px;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
+    padding: 8px !important;
+    border-radius: 6px !important;
     text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
   }
 
-  /* page__comments 样式优化 */
+  /* ========================================
+     评论区样式 - Glassmorphism Comments
+     ======================================== */
+
   .page__comments {
-    border: 1px solid #50555c;
-    padding: 1rem;
-    background: #0d1117;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
-    margin-top: 20px !important;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    margin-top: 2rem !important;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
   }
 
-  /* toc 样式优化 */
-  .toc .nav__title {
-    -webkit-border-top-left-radius: 0 !important;
-    -moz-border-top-left-radius: 0 !important;
-    -ms-border-top-left-radius: 0 !important;
-    -o-border-top-left-radius: 0 !important;
-
-    border-top-left-radius: 0 !important;
+  @media (max-width: 768px) {
+    .page__comments {
+      padding: 1.5rem !important;
+    }
   }
+
+  /* ========================================
+     TOC 目录样式 - "Ambient Presence" 氛围融合设计
+     无边界，纯渐变背景，自然融入页面氛围
+     ======================================== */
+
   .toc {
-    background: none !important;
+    /* 径向渐变背景 - 从中心向外淡出 */
+    background: radial-gradient(
+      ellipse at center,
+      rgba(13, 17, 23, 0.25) 0%,
+      rgba(13, 17, 23, 0.15) 50%,
+      transparent 100%
+    ) !important;
     border: none !important;
-
-    -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    -ms-box-shadow: none !important;
-    -o-box-shadow: none !important;
-    box-shadow: none !important;
-
-    -webkit-border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    -ms-border-radius: 0 !important;
-    -o-border-radius: 0 !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
+    /* 极轻微的模糊，保持文字清晰 */
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+    overflow: visible;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.5rem 1rem !important;
   }
 
-  /* archive__item 样式优化 */
+  /* 移除所有边框线条 - 纯氛围感 */
+  .toc::before {
+    display: none;
+  }
+
+  /* hover 时增强氛围光晕 */
+  .toc:hover {
+    background: radial-gradient(
+      ellipse at center,
+      rgba(13, 17, 23, 0.35) 0%,
+      rgba(13, 17, 23, 0.2) 50%,
+      rgba(241, 59, 3, 0.03) 80%,
+      transparent 100%
+    ) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+  }
+
+  .toc .nav__title {
+    background: transparent !important;
+    /* 极细的底部渐变分隔 */
+    border-bottom: none !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 0.75rem !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5) !important;
+    position: relative;
+    margin-bottom: 0.75rem;
+  }
+
+  /* 标题下方极细渐变线 */
+  .toc .nav__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 20%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.1) 80%,
+      transparent 100%
+    );
+  }
+
+  /* TOC 菜单项样式 - 红色渐变线条 hover 效果 */
+  .toc__menu li {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .toc__menu li a {
+    display: block;
+    padding: 0.5rem 0.75rem !important;
+    transition: var(--transition-smooth);
+    position: relative;
+    border-radius: 4px;
+  }
+
+  /* 移除默认的背景色变化 - hover 和选中态 */
+  .toc__menu li a:hover,
+  .toc__menu li.active > a,
+  .toc__menu li a.active {
+    background: transparent !important;
+  }
+
+  /* 选中态文字颜色变为红色 */
+  .toc__menu li.active > a,
+  .toc__menu li a.active {
+    color: var(--accent-color) !important;
+  }
+
+  /* hover 时文字也变红色 */
+  .toc__menu li a:hover {
+    color: var(--accent-color) !important;
+  }
+
+  /* 添加红色渐变线条 - 放在底部，默认隐藏 */
+  .toc__menu li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  /* hover 时显示红色线条 */
+  .toc__menu li a:hover::before {
+    opacity: 1;
+  }
+
+  /* 当前激活项也显示红色线条 */
+  .toc__menu li.active > a::before,
+  .toc__menu li a.active::before {
+    opacity: 0.7;
+  }
+
+  /* ========================================
+     侧边栏对齐优化 - 保持原始布局不变
+     ======================================== */
+
+  /* 不做任何布局修改，让主题自己处理 */
+
+  /* ========================================
+     Archive 归档项样式 - Glassmorphism
+     ======================================== */
+
   article.archive__item .archive__item-teaser {
-    border: 1px solid #50555c;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+  }
+
+  article.archive__item .archive__item-teaser:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   }
 
   /* montserrat-regular - latin */
@@ -214,73 +434,149 @@
         url("/assets/fonts/montserrat/montserrat-v23-latin-600italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
 
-  .page__content {
-    /* 更适合中文阅读 */
-    line-height: 1.75 !important;
-    letter-spacing: 0 !important;
-  }
-  body {
-    /* 更适合中文阅读的字体设置 */
-    font-family: "Montserrat", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
-  }
+  /* ========================================
+     Footer 页脚样式 - Glassmorphism
+     ======================================== */
 
-
-  /* footer 样式优化 */
   #footer {
-    background-color: #0d1117 !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(13, 17, 23, 0.8) 100%) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border);
+    padding-top: 2rem !important;
   }
 
-  /* grid__item 样式优化 */
+  /* ========================================
+     Grid 网格项样式 - Glassmorphism
+     ======================================== */
+
   .grid__item {
-    border: 1px solid #50555c;
-    background-color: #0d1117;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
-    padding: 16px;
-    margin-bottom: 1em !important;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5em !important;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* search-content 样式优化 */
+  .grid__item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .grid__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .grid__item:hover::after {
+    opacity: 1;
+  }
+
+  /* ========================================
+     搜索结果样式 - Glassmorphism with Accent Line
+     ======================================== */
+
   .search-content .archive__item {
-    border: 1px solid #50555c;
-    background-color: #0d1117;
-
-    margin-bottom: 1em !important;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-
-    padding: 16px;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5em !important;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
   }
+
+  /* 添加红色强调线条 */
+  .search-content .archive__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .search-content .archive__item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .search-content .archive__item:hover::before {
+    opacity: 1;
+  }
+
   .search-content .archive__item-excerpt {
-    border-top: 1px solid #50555c;
-    margin-top: 10px;
-    padding-top: 10px;
+    border-top: 1px solid var(--glass-border) !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
   }
 
-  /* hll 高亮样式优化 */
+  /* ========================================
+     代码高亮和图片样式 - Glassmorphism
+     ======================================== */
+
   .highlight .hll {
-    background: #0d1117 !important;
+    background: rgba(13, 17, 23, 0.8) !important;
+    border-left: 2px solid var(--accent-color);
   }
 
-  /* page__content 图片样式优化 */
   .page__content img {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
+    border-radius: 10px !important;
+    background-color: rgba(13, 17, 23, 0.5) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
+  }
 
-    background-color: #0d1117;
-    border: 1px solid #50555c;
+  .page__content img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ========================================
+     额外增强 - 按钮和链接
+     ======================================== */
+
+  .btn {
+    border-radius: 8px !important;
+    transition: var(--transition-smooth) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  a {
+    transition: var(--transition-smooth);
+  }
+
+  a:hover {
+    color: var(--accent-color) !important;
   }
 </style>
 
