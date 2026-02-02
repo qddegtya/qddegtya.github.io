@@ -264,18 +264,7 @@
     display: none;
   }
 
-  /* hover 时增强氛围光晕 */
-  .toc:hover {
-    background: radial-gradient(
-      ellipse at center,
-      rgba(13, 17, 23, 0.35) 0%,
-      rgba(13, 17, 23, 0.2) 50%,
-      rgba(241, 59, 3, 0.03) 80%,
-      transparent 100%
-    ) !important;
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
-  }
+  /* 移除 hover 时的整体背景变化 - 保持静态氛围 */
 
   .toc .nav__title {
     background: transparent !important;
