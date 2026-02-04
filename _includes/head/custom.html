@@ -40,9 +40,37 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* 全局背景渐变 */
+  /* 全局背景渐变 + 纹理 */
   body {
-    background: linear-gradient(135deg, #000000 0%, #0a0e14 50%, #0d1117 100%) !important;
+    background:
+      /* 细腻噪点纹理层 */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.015) 2px,
+        rgba(255, 255, 255, 0.015) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.015) 2px,
+        rgba(255, 255, 255, 0.015) 4px
+      ),
+      /* 微妙的噪点效果 */
+      radial-gradient(
+        circle at 20% 50%,
+        rgba(255, 255, 255, 0.02) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 50%,
+        rgba(255, 255, 255, 0.02) 0%,
+        transparent 50%
+      ),
+      /* 主渐变背景 */
+      linear-gradient(135deg, #000000 0%, #0a0e14 50%, #0d1117 100%) !important;
     background-attachment: fixed !important;
     font-family: "Montserrat", "SF UI Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
   }
