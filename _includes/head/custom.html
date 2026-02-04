@@ -672,12 +672,14 @@
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
     padding: 2rem 0;
+    margin-bottom: 4em;
     position: relative;
     min-height: 500px;
     /* 背景图片通过 inline style 从 front matter 配置 */
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
+    box-shadow: var(--glass-shadow-down);
   }
 
   /* 背景模糊层 */
@@ -795,8 +797,8 @@
   /* 滚动提示 */
   .hero-photo-wall__hint {
     text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.5);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -844,6 +846,14 @@
     .photo-card img {
       height: 240px;
     }
+  }
+
+  /* ========================================
+     Header Overlay 增强 - 向下阴影
+     ======================================== */
+
+  .page__hero--overlay {
+    box-shadow: var(--glass-shadow-down) !important;
   }
 
 </style>
