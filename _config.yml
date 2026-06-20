@@ -133,9 +133,6 @@ author:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/qddegtya"
-    - label: "Bento"
-      icon: "fas fa-fw fa-person"
-      url: "https://bento.me/archer"
 
 # Site Footer
 footer:
