@@ -72,8 +72,6 @@ sidebar:
 #       url: "https://github.com/qddegtya"
 #     - label: "Yuque"
 #       url: "https://www.yuque.com/chiyu-heb0t"
-#     - label: "Bento"
-#       url: "https://bento.me/archer"
 excerpt: "Author/Lead Maintainer of [@astack-tech](https://github.com/astack-tech) / [@hlang-tech](https://github.com/hlang-tech). Focus on Agentic System & Flow-based Programming Inspired System."
 ---
 
