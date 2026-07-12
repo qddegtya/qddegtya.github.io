@@ -319,31 +319,32 @@
   color: var(--_hue); }
 
 // notices / callouts (minimal-mistakes .notice + .notice--TYPE) -------------
-// semantic hue mapping + a matching icon chip (injected by article.js). Soft
-// tinted plate, hue rule, inset highlight - a proper callout card, not a bar.
-// The icon floats top-left; content stays a normal flow so any markup inside
-// (images, floats, lists, multiple paragraphs) is unaffected.
+// semantic hue mapping + a matching icon chip (injected by article.js, which
+// also wraps the original content in .c-notice__body). Laid out as a flex row
+// [icon | body]; the body is its own block-formatting context, so any floated
+// image inside it (.align-left) is fully contained and can't collide with the
+// icon. No padding trick, no absolute positioning.
 .c-prose .notice, .c-prose [class*="notice--"] {
   --_n: var(--_hue);
-  position: relative; margin: 1.9em 0; padding: 16px 18px; border-radius: var(--r-md);
+  margin: 1.9em 0; padding: 16px 18px; border-radius: var(--r-md);
   font-size: 15px; line-height: 1.65;
   background: var(--c-surface);
   background: color-mix(in srgb, var(--_n) 8%, var(--c-surface));
   border: 1px solid var(--c-hairline);
   border-color: color-mix(in srgb, var(--_n) 22%, transparent);
   border-left: 3px solid var(--_n); box-shadow: var(--hl-inset); }
-// when an icon was injected, indent the content and float the icon chip in
-.c-prose .notice.has-ico, .c-prose [class*="notice--"].has-ico { padding-left: 58px; }
-.c-prose .c-notice__ico { position: absolute; top: 15px; left: 16px;
-  width: 30px; height: 30px; border-radius: var(--r-sm);
-  display: grid; place-items: center; color: var(--_n);
+.c-prose .notice.has-ico, .c-prose [class*="notice--"].has-ico {
+  display: flex; align-items: flex-start; gap: 13px; }
+.c-prose .c-notice__ico { flex-shrink: 0; width: 30px; height: 30px; border-radius: var(--r-sm);
+  display: grid; place-items: center; color: var(--_n); margin-top: 1px;
   background: color-mix(in srgb, var(--_n) 15%, var(--c-surface));
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_n) 24%, transparent); }
-// the icon is absolute (out of flow); the first real content child leads the box
-.c-prose .notice > :first-child:not(.c-notice__ico),
-.c-prose [class*="notice--"] > :first-child:not(.c-notice__ico),
-.c-prose .c-notice__ico + * { margin-top: 0; }
-.c-prose .notice > :last-child, .c-prose [class*="notice--"] > :last-child { margin-bottom: 0; }
+.c-prose .c-notice__body { flex: 1; min-width: 0; display: flow-root; }   // contains floats
+.c-prose .c-notice__body > :first-child { margin-top: 0; }
+.c-prose .c-notice__body > :last-child { margin-bottom: 0; }
+// notices without an icon (bare .notice) still reset edge margins
+.c-prose .notice:not(.has-ico) > :first-child, .c-prose [class*="notice--"]:not(.has-ico) > :first-child { margin-top: 0; }
+.c-prose .notice:not(.has-ico) > :last-child, .c-prose [class*="notice--"]:not(.has-ico) > :last-child { margin-bottom: 0; }
 .c-prose .notice--primary { --_n: var(--h-codeart); }
 .c-prose .notice--info    { --_n: var(--h-travel); }
 .c-prose .notice--success { --_n: var(--h-reading); }

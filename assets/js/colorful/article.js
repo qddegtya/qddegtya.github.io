@@ -93,13 +93,19 @@
     note:    '<path d="M12 16v-4M12 8h.01"/><circle cx="12" cy="12" r="9"/>'
   };
   document.querySelectorAll(".c-prose .notice, .c-prose [class*='notice--']").forEach(function (n) {
-    if (n.querySelector(".c-notice__ico")) return;
+    if (n.classList.contains("has-ico")) return;
     var type = "note";
     ["info", "success", "warning", "danger", "primary"].forEach(function (t) {
       if (n.classList.contains("notice--" + t)) type = t;
     });
+    // move the notice's original content into a body wrapper, then lay out the
+    // notice as [icon | body]. Any floated image (.align-left) now floats INSIDE
+    // the body, fully isolated from the icon - no overlap, no padding trick.
+    var body = el("div", { "class": "c-notice__body" });
+    while (n.firstChild) body.appendChild(n.firstChild);
     var ico = el("span", { "class": "c-notice__ico" }, [svg(NOTICE_ICON[type] || NOTICE_ICON.note, 17)]);
-    n.insertBefore(ico, n.firstChild);
+    n.appendChild(ico);
+    n.appendChild(body);
     n.classList.add("has-ico");
   });
 
