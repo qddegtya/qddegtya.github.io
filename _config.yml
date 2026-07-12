@@ -109,9 +109,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider               : "google-gtag"
   google:
-    tracking_id          :
+    tracking_id          : "G-PCB3BLDLS9"
     anonymize_ip         : # true, false (default)
 
 # Site Author
