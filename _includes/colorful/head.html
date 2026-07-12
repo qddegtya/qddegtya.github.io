@@ -20,12 +20,11 @@
 <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
 <link rel="stylesheet" href="{{ '/assets/css/colorful.css' | relative_url }}">
 <script>
-  // set theme before paint to avoid FOUC
+  // set theme before paint to avoid FOUC. Default is dark; a saved user choice wins.
   (function () {
     try {
-      var t = localStorage.getItem("colorful-theme");
-      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      var t = localStorage.getItem("colorful-theme") || "dark";
       document.documentElement.setAttribute("data-theme", t);
-    } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+    } catch (e) { document.documentElement.setAttribute("data-theme", "dark"); }
   })();
 </script>

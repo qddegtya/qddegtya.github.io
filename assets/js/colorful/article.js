@@ -181,12 +181,23 @@
     });
   }
 
-  /* ---- Image lightbox (minimal-mistakes .image-popup) ------------------ *
-   * MM ships these as anchor links to the full image (old theme used a jQuery
-   * magnific-popup). This is a tiny dependency-free, accessible replacement. */
-  var popups = document.querySelectorAll(".c-prose a.image-popup");
-  if (popups.length) {
+  /* ---- Image lightbox --------------------------------------------------- *
+   * Opens any content image that links to a larger image: minimal-mistakes
+   * `.image-popup` links AND gallery/feature links (`<a><img></a>` whose href
+   * is an image). Uses event delegation so it also covers dynamically-wrapped
+   * content. Dependency-free and accessible. */
+  var prose = document.querySelector(".c-prose");
+  if (prose) {
     var box = null, boxImg = null, closeBtn = null, lastFocus = null;
+    var IMG_RE = /\.(png|jpe?g|gif|webp|avif|svg|bmp)(\?|#|$)/i;
+
+    function isImageLink(a) {
+      if (!a) return false;
+      if (a.classList.contains("image-popup")) return true;
+      var href = a.getAttribute("href") || "";
+      // a link that wraps only an image and points at an image file
+      return a.querySelector("img") && IMG_RE.test(href);
+    }
     function close() {
       if (!box || !box.classList.contains("is-open")) return;
       box.classList.remove("is-open");
@@ -195,11 +206,7 @@
       if (reduce) done(); else setTimeout(done, 250);
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
-    function trap(e) {
-      if (e.key !== "Tab") return;
-      // only the close button is focusable inside - keep focus on it
-      e.preventDefault(); closeBtn.focus();
-    }
+    function trap(e) { if (e.key === "Tab") { e.preventDefault(); closeBtn.focus(); } }
     function open(src, alt, trigger) {
       lastFocus = trigger || document.activeElement;
       if (!box) {
@@ -217,12 +224,12 @@
       document.body.classList.add("c-scroll-lock");
       requestAnimationFrame(function () { box.classList.add("is-open"); closeBtn.focus(); });
     }
-    popups.forEach(function (a) {
-      a.addEventListener("click", function (e) {
-        e.preventDefault();
-        var img = a.querySelector("img");
-        open(a.getAttribute("href"), img ? img.alt : "", a);
-      });
+    prose.addEventListener("click", function (e) {
+      var a = e.target.closest("a");
+      if (!a || !prose.contains(a) || !isImageLink(a)) return;
+      e.preventDefault();
+      var img = a.querySelector("img");
+      open(a.getAttribute("href"), img ? img.alt : "", a);
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
   }

@@ -1,5 +1,6 @@
 ---
-title: 站内搜索
-layout: search
+title: Search
+layout: colorful-search
 permalink: /search/
+sitemap: false
 ---

@@ -250,6 +250,8 @@
   background: var(--_hue); opacity: 0.6; flex-shrink: 0; }
 // minimal-mistakes image lightbox links (.image-popup) - zoom cursor affordance
 .c-prose a.image-popup { display: inline-block; cursor: zoom-in; }
+// gallery / feature image links also open the lightbox - show the zoom cursor
+.c-prose figure.half > a, .c-prose figure.third > a { cursor: zoom-in; }
 .c-prose a.image-popup img { transition: transform 0.4s var(--ease); }
 .c-prose a.image-popup:hover img { transform: scale(1.01); }
 // float alignment (.align-left / .align-right / .align-center)
@@ -280,6 +282,53 @@
 .c-prose figure.half figcaption, .c-prose figure.third figcaption { grid-column: 1 / -1; margin-top: 4px; }
 @media (max-width: 620px) {
   .c-prose figure.half, .c-prose figure.third { grid-template-columns: repeat(2, 1fr); }
+}
+
+// feature rows (minimal-mistakes {% include feature_row %}) ------------------
+// Used on the projects page: a stack of project cards (image + title + body +
+// button). Default = image on top; `--left` = image beside the text. Rendered
+// as colorful glass cards consistent with the rest of the theme.
+.c-prose .feature__wrapper { display: flex; flex-direction: column; gap: 20px; margin: 1.9em 0; }
+.c-prose .feature__item, .c-prose .feature__item--left, .c-prose .feature__item--right,
+.c-prose .feature__item--center { margin: 0; }
+.c-prose .feature__item .archive__item,
+.c-prose [class^="feature__item"] .archive__item {
+  display: grid; grid-template-columns: 1fr; gap: 0; overflow: hidden;
+  border-radius: var(--r-lg); background: var(--c-surface); border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-1), var(--hl-inset);
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease), border-color 0.3s; }
+.c-prose .feature__item .archive__item:hover,
+.c-prose [class^="feature__item"] .archive__item:hover {
+  transform: translateY(-4px); box-shadow: var(--shadow-2), var(--hl-inset); border-color: transparent; }
+// image beside text on wide screens for --left / --right
+@media (min-width: 720px) {
+  .c-prose .feature__item--left .archive__item { grid-template-columns: 42% 1fr; align-items: stretch; }
+  .c-prose .feature__item--right .archive__item { grid-template-columns: 1fr 42%; }
+  .c-prose .feature__item--right .archive__item-teaser { order: 2; }
+}
+.c-prose .archive__item-teaser { position: relative; overflow: hidden; background: var(--c-surface-2); }
+.c-prose .archive__item-teaser img { width: 100%; height: 100%; object-fit: cover; margin: 0;
+  border-radius: 0; box-shadow: none; display: block; transition: transform 0.6s var(--ease); }
+.c-prose [class^="feature__item"] .archive__item:hover .archive__item-teaser img { transform: scale(1.04); }
+.c-prose .archive__item-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 12px;
+  font-family: var(--font-mono); font-size: 11px; color: #fff;
+  background: linear-gradient(to top, rgba(8,8,14,0.7), transparent); }
+.c-prose .archive__item-body { padding: 22px 24px; display: flex; flex-direction: column; }
+.c-prose .archive__item-title { font-family: var(--font-display); font-weight: 650; font-size: 20px;
+  letter-spacing: -0.015em; color: var(--c-text); margin: 0 0 10px; line-height: 1.25; }
+.c-prose .archive__item-excerpt { font-size: 14.5px; line-height: 1.65; color: var(--c-muted); margin: 0; }
+.c-prose .archive__item-excerpt > :first-child { margin-top: 0; }
+.c-prose .archive__item-excerpt > :last-child { margin-bottom: 0; }
+.c-prose .archive__item-body .btn { align-self: flex-start; margin-top: 16px; display: inline-flex;
+  align-items: center; gap: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  padding: 9px 18px; border-radius: var(--r-pill); text-decoration: none;
+  color: var(--c-bg); background: var(--c-text); box-shadow: var(--shadow-1);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s; }
+.c-prose .archive__item-body .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+@media (prefers-reduced-motion: reduce) {
+  .c-prose [class^="feature__item"] .archive__item:hover,
+  .c-prose .archive__item-body .btn:hover { transform: none; }
+  .c-prose [class^="feature__item"] .archive__item:hover .archive__item-teaser img { transform: none; }
 }
 
 // embedded video (minimal-mistakes {% include video %}) ----------------------

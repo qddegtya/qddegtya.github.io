@@ -1,0 +1,36 @@
+---
+# Colorful 404 - playful, dopamine-hued, self-contained.
+layout: null
+---
+{%- assign hues = site.data.colorful.hues -%}
+<!doctype html>
+<html lang="{{ site.locale | default: 'en' }}" class="no-js">
+<head>
+  {% include colorful/head.html title="Page not found" %}
+</head>
+<body class="c-doc" style="--_hue:{{ hues.writing }}">
+
+  {% include colorful/nav.html %}
+
+  <main id="main" role="main">
+    <div class="c-404">
+      <div class="c-404__code">404</div>
+      <h1 class="c-404__title">{{ page.title | default: "You wandered off the map" }}</h1>
+      <p class="c-404__lead">{% if page.content and page.content != "" %}{{ content | markdownify | strip_html }}{% else %}This page doesn't exist (or moved). Head back home, or search for what you were after.{% endif %}</p>
+      <div class="c-404__actions">
+        <a class="c-btn c-btn--primary" href="{{ '/' | relative_url }}">Back home
+          <span class="c-btn__ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button class="c-btn c-btn--ghost" data-search-open type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          Search the site</button>
+      </div>
+    </div>
+  </main>
+
+  {% include colorful/footer.html %}
+  {% include colorful/search.html %}
+
+  <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
+</body>
+</html>

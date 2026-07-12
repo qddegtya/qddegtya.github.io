@@ -1,0 +1,24 @@
+{%- comment -%}
+  One archive group: a heading (year / category / tag + count) and a COMPACT LIST
+  of its entries - one row each (title + meta), built for fast scanning, not a
+  card wall. Params: include.id, include.title, include.count, include.posts,
+  include.hue.
+{%- endcomment -%}
+<section id="{{ include.id }}" class="c-arch__section">
+  <div class="c-arch__head">
+    <h2 class="c-arch__title">{{ include.title }}</h2>
+    <span class="c-arch__count">{{ include.count }}</span>
+  </div>
+  <ul class="c-arch__list">
+    {% for post in include.posts %}
+    <li class="c-arch__row">
+      <a class="c-arch__link" href="{{ post.url | relative_url }}" style="--_hue:{{ include.hue }}">
+        <span class="c-arch__dot"></span>
+        <span class="c-arch__name">{{ post.title }}</span>
+        {% if include.show_cat and post.category %}<span class="c-arch__cat">{{ post.category }}</span>{% endif %}
+        {% if post.date %}<time class="c-arch__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

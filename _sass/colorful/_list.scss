@@ -1,0 +1,197 @@
+// ===========================================================================
+// COLORFUL - LIST / ENTRY PAGES
+// Collection & blog indexes, archives, taxonomy. A page wears its collection's
+// dopamine hue (--_hue on <body>). Entries reuse the home .c-card system; the
+// config-driven sidebar (nav: life) becomes a glass rail on wide screens. The
+// paginate-v2 markup is restyled, never rewritten.
+// ===========================================================================
+
+// .c-list is also the #main element on these pages; scope with the id so its
+// padding wins over the article layout's `#main` rule (equal specificity trap).
+#main.c-list { padding-top: clamp(96px, 13vh, 134px); padding-bottom: clamp(64px, 10vw, 110px); }
+
+// layout: optional left sidebar rail + main column
+.c-list--sided { display: block; }
+@media (min-width: 1000px) {
+  .c-list--sided { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 48px;
+    align-items: start; }
+}
+.c-list__main { min-width: 0; }
+
+// --- SIDEBAR (glass rail, life nav groups) ----------------------------------
+.c-sidebar { display: none; }
+@media (min-width: 1000px) {
+  .c-sidebar { display: block; }
+  .c-sidebar__inner { position: sticky; top: 108px; padding: 18px 16px;
+    border-radius: var(--r-lg); border: 1px solid var(--c-hairline);
+    background: var(--c-surface);
+    background: color-mix(in srgb, var(--c-surface) 78%, transparent);
+    box-shadow: var(--shadow-1), var(--hl-inset);
+    max-height: calc(100dvh - 132px); overflow-y: auto; scrollbar-width: thin; }
+}
+.c-sidebar__group { margin-bottom: 18px; }
+.c-sidebar__group:last-child { margin-bottom: 0; }
+.c-sidebar__head { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--c-faint); margin: 0 0 8px; }
+.c-sidebar__list { list-style: none; margin: 0; padding: 0; }
+.c-sidebar__list li { margin: 0; }
+.c-sidebar__list a { display: flex; align-items: center; gap: 9px; padding: 6px 0;
+  font-size: 14px; color: var(--c-muted); transition: color 0.2s; }
+.c-sidebar__list a .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  background: var(--c-faint); transition: background 0.2s, transform 0.2s var(--ease-spring); }
+.c-sidebar__list a:hover { color: var(--c-text); }
+.c-sidebar__list a:hover .dot { background: var(--_hue); }
+.c-sidebar__list a.is-active { color: var(--_hue); font-weight: 500; }
+.c-sidebar__list a.is-active .dot { background: var(--_hue); transform: scale(1.3); }
+
+// --- INTRO HEADER -----------------------------------------------------------
+.c-list__head { margin-bottom: clamp(30px, 5vw, 48px); }
+.c-list__title { font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.03em;
+  color: var(--c-text); margin: 12px 0 0; text-wrap: balance; }
+.c-list__lead { font-size: clamp(16px, 2vw, 19px); line-height: 1.6; color: var(--c-muted);
+  max-width: 60ch; margin: 16px 0 0; }
+.c-list__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px;
+  margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--c-hairline);
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--c-muted); }
+.c-list__count { color: var(--_hue); }
+.c-list__action { display: inline-flex; align-items: center; gap: 6px; color: var(--c-muted);
+  transition: color 0.2s, gap 0.2s; }
+.c-list__action:hover { color: var(--_hue); gap: 9px; }
+// any markdown body the page carries (e.g. a licence note)
+.c-list__intro { margin-bottom: clamp(24px, 4vw, 40px); font-size: 15px; color: var(--c-muted); }
+.c-list__intro a { color: var(--_hue); text-decoration: underline; text-underline-offset: 2px; }
+
+// --- ENTRY CARD GRID --------------------------------------------------------
+// The grid reuses the home .c-writing system (3/2/1 responsive columns + the
+// card/list view toggle + .is-list timeline), so list pages and the home
+// "Latest writing" share one behaviour. Nothing to redefine here.
+.c-list__toggle { margin-left: auto; }
+@media (max-width: 500px) { .c-list__toggle { margin-left: 0; } }
+
+// --- PAGINATION (restyle the paginate-v2 .pagination output) -----------------
+.pagination { margin-top: clamp(40px, 7vw, 64px); }
+.pagination ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center; gap: 6px; }
+.pagination li { margin: 0; }
+.pagination a { display: inline-flex; align-items: center; justify-content: center;
+  min-width: 40px; height: 40px; padding: 0 12px; border-radius: var(--r-pill);
+  font-family: var(--font-mono); font-size: 13.5px; color: var(--c-muted);
+  background: var(--c-surface); border: 1px solid var(--c-hairline);
+  box-shadow: var(--hl-inset); text-decoration: none;
+  transition: transform 0.25s var(--ease-spring), color 0.2s, background 0.2s, border-color 0.2s; }
+.pagination a:hover { color: var(--c-text); transform: translateY(-2px); box-shadow: var(--shadow-1), var(--hl-inset); }
+.pagination a.current { color: #fff; background: var(--_hue); border-color: transparent;
+  box-shadow: var(--shadow-1); }
+.pagination a.disabled { color: var(--c-faint); background: transparent; border-color: transparent;
+  box-shadow: none; cursor: default; pointer-events: none; }
+.pagination a.disabled.current { color: #fff; background: var(--_hue); pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pagination a:hover, .c-sidebar__list a.is-active .dot { transform: none; }
+}
+
+// --- AUTHOR PROFILE CARD (sidebar top, from _config.yml author:) -------------
+// Carries the home signature: an inner plate with a hue wash behind the avatar,
+// inset highlight, and hue-tinted social chips - so the rail reads as premium,
+// not a plain blog byline.
+.c-author { margin-bottom: 18px; padding: 0 0 16px; border-bottom: 1px solid var(--c-hairline);
+  text-align: center; }
+.c-author__avatar { width: 66px; height: 66px; border-radius: var(--r-pill); object-fit: cover;
+  margin: 0 auto 12px; display: block;
+  border: 3px solid var(--c-surface);
+  box-shadow: var(--shadow-2), 0 0 0 1px var(--c-hairline),
+    0 0 0 7px color-mix(in srgb, var(--_hue) 10%, transparent); }
+.c-author__name { font-family: var(--font-display); font-weight: 650; font-size: 17px;
+  letter-spacing: -0.015em; color: var(--c-text); }
+.c-author__bio { font-size: 12.5px; line-height: 1.55; color: var(--c-muted); margin: 8px 0 0; }
+.c-author__bio a { color: var(--_hue); }
+.c-author__loc { display: inline-flex; align-items: center; gap: 6px; margin: 11px 0 0;
+  font-family: var(--font-mono); font-size: 11px; color: var(--c-faint); }
+.c-author__links { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
+.c-author__links a { width: 32px; height: 32px; border-radius: var(--r-sm); display: grid;
+  place-items: center; color: var(--_hue);
+  background: color-mix(in srgb, var(--_hue) 14%, var(--c-surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue) 22%, transparent);
+  transition: color 0.2s, background 0.2s, transform 0.25s var(--ease-spring); }
+.c-author__links a:hover { color: #fff; background: var(--_hue); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .c-author__links a:hover { transform: none; } }
+
+// --- ARCHIVE (year / category / tag grouped sections) -----------------------
+.c-sidebar__list--index a { justify-content: flex-start; }
+.c-sidebar__n { margin-left: auto; font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--c-faint); }
+.c-arch__section { margin-bottom: clamp(36px, 5vw, 52px); scroll-margin-top: 100px; }
+.c-arch__head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--c-hairline); }
+.c-arch__title { font-family: var(--font-display); font-weight: 650; font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: -0.02em; color: var(--c-text); margin: 0; }
+.c-arch__count { font-family: var(--font-mono); font-size: 12px; color: var(--_hue);
+  padding: 2px 9px; border-radius: var(--r-pill);
+  background: var(--c-surface-2);
+  background: color-mix(in srgb, var(--_hue) 12%, var(--c-surface)); }
+// compact scannable list: one row per entry, hairline dividers, hover-lit
+.c-arch__list { list-style: none; margin: 0; padding: 0; }
+.c-arch__row { margin: 0; }
+.c-arch__link { display: flex; align-items: center; gap: 12px; padding: 13px 12px;
+  border-radius: var(--r-md); border-bottom: 1px solid var(--c-hairline-2);
+  text-decoration: none; transition: background 0.2s var(--ease); }
+.c-arch__row:last-child .c-arch__link { border-bottom: none; }
+.c-arch__link:hover { background: var(--c-surface); }
+.c-arch__dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+  background: var(--c-hairline); transition: background 0.2s, transform 0.2s var(--ease-spring); }
+.c-arch__link:hover .c-arch__dot { background: var(--_hue); transform: scale(1.4); }
+.c-arch__name { flex: 1; min-width: 0; font-family: var(--font-display); font-weight: 500;
+  font-size: 15.5px; color: var(--c-text); line-height: 1.35;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s; }
+.c-arch__link:hover .c-arch__name { color: var(--_hue); }
+.c-arch__cat { flex-shrink: 0; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.03em;
+  text-transform: uppercase; color: var(--c-faint); padding: 2px 8px; border-radius: var(--r-pill);
+  background: var(--c-surface-2); }
+.c-arch__date { flex-shrink: 0; font-family: var(--font-mono); font-size: 12px; color: var(--c-faint);
+  white-space: nowrap; }
+@media (max-width: 560px) {
+  .c-arch__cat { display: none; }
+  .c-arch__name { white-space: normal; }
+  .c-arch__link { align-items: flex-start; }
+  .c-arch__dot { margin-top: 7px; }
+}
+@media (prefers-reduced-motion: reduce) { .c-arch__link:hover .c-arch__dot { transform: none; } }
+
+// --- SEARCH PAGE ------------------------------------------------------------
+.c-searchpage { max-width: 760px; margin-inline: auto; }
+.c-searchpage__box { display: flex; align-items: center; gap: 12px; margin-top: 28px;
+  padding: 4px 4px 4px 18px; border-radius: var(--r-pill);
+  background: var(--c-surface); border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-1), var(--hl-inset); }
+.c-searchpage__box svg { color: var(--c-faint); flex-shrink: 0; }
+.c-searchpage__input { flex: 1; min-width: 0; border: none; background: transparent; outline: none;
+  font-family: var(--font-body); font-size: 17px; color: var(--c-text); padding: 12px 0; }
+.c-searchpage__input::placeholder { color: var(--c-faint); }
+// kill the browser's default (ugly blue) search clear button + decorations
+.c-searchpage__input::-webkit-search-cancel-button,
+.c-searchpage__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.c-searchpage__kbd { font-family: var(--font-mono); font-size: 11px; color: var(--c-faint);
+  padding: 6px 10px; border-radius: var(--r-pill); background: var(--c-surface-2); }
+.c-searchpage__results { margin-top: 24px; }
+.c-searchpage__hint { margin-top: 24px; font-family: var(--font-mono); font-size: 13px; color: var(--c-faint);
+  text-align: center; }
+
+// --- 404 --------------------------------------------------------------------
+.c-404 { min-height: 72vh; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 120px var(--wrap-pad) 80px; }
+.c-404__code { font-family: var(--font-display); font-weight: 700; line-height: 0.9;
+  font-size: clamp(96px, 20vw, 180px); letter-spacing: -0.04em;
+  color: var(--_hue, var(--c-text));   // solid fallback if background-clip:text fails
+  background: linear-gradient(120deg, var(--h-writing), var(--h-projects) 30%, var(--h-reading) 55%, var(--h-travel) 78%, var(--h-codeart)); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .c-404__code { -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent; }
+}
+@media (forced-colors: active) { .c-404__code { -webkit-text-fill-color: currentColor; color: CanvasText; } }
+.c-404__title { font-family: var(--font-display); font-weight: 650; font-size: clamp(22px, 4vw, 32px);
+  letter-spacing: -0.02em; color: var(--c-text); margin: 8px 0 0; }
+.c-404__lead { font-size: 16px; color: var(--c-muted); margin: 14px 0 0; max-width: 46ch; }
+.c-404__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+
+

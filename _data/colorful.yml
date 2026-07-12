@@ -9,12 +9,15 @@ hues:
 
 # Primary navigation - shared by the floating nav and the mobile menu on every
 # page. hue is the key into `hues` above (the moving colour block on hover).
+# Primary navigation - the top-level menu. Collections (Reading/Travel/Code&Art)
+# are intentionally NOT here: they live in the home page's "A colorful world"
+# section, so listing them again in the nav would be redundant. Home is rendered
+# first by the nav include; these follow. hue is the key into `hues` above.
 nav:
-  - { label: "Writing",     url: "/posts/",   hue: writing  }
-  - { label: "Projects",    url: "/projects/", hue: projects }
-  - { label: "Reading",     url: "/book/",    hue: reading  }
-  - { label: "Travel",      url: "/travel/",  hue: travel   }
-  - { label: "Code & Art",  url: "/ca/",      hue: codeart  }
+  - { label: "Blog",       url: "/posts/",      hue: writing  }
+  - { label: "Guestbook",  url: "/guestbook/",  hue: reading  }
+  - { label: "Projects",   url: "/projects/",   hue: projects }
+  - { label: "Archive",    url: "/year-archive/", hue: codeart }
 
 # Site footer - shared by home and every inner page.
 footer:

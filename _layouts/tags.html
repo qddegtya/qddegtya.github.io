@@ -1,8 +1,7 @@
 ---
-layout: archive
+# Tag archive (/tags/). Inherits the colorful archive layout, grouping posts
+# by tag.
+layout: colorful-archive
+archive_type: tag
 ---
-{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
-
 {{ content }}
-
-{% include posts-taxonomy.html locale=locale taxonomies=site.tags %}

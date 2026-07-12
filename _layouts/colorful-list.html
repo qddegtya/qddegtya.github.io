@@ -1,0 +1,135 @@
+---
+# Colorful list / entry page - collection & blog indexes, archives, taxonomy.
+# Self-contained (shared colorful/* shell), loads only colorful.css. Preserves
+# jekyll-paginate-v2 (consumes `paginator` when present) and renders the
+# config-driven sidebar (page.sidebar.nav) as a glass rail. Entries reuse the
+# home .c-card system. Structure only; content/config come from the page.
+layout: null
+---
+{%- assign hues = site.data.colorful.hues -%}
+{%- comment -%} accent hue + kicker from the page's collection (blog = writing) {%- endcomment -%}
+{%- case page.collection -%}
+  {%- when 'movie' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Watching' -%}
+  {%- when 'book' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Reading' -%}
+  {%- when 'events' -%}{%- assign hue = hues.projects -%}{%- assign kicker = 'Out in the world' -%}
+  {%- when 'travel' -%}{%- assign hue = hues.travel -%}{%- assign kicker = 'Footprints' -%}
+  {%- when 'ca' -%}{%- assign hue = hues.codeart -%}{%- assign kicker = 'Code & Art' -%}
+  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = page.kicker | default: 'Writing' -%}
+{%- endcase -%}
+{%- comment -%} entries: paginator.posts when paginating, else the collection/site.posts {%- endcomment -%}
+{%- if paginator -%}
+  {%- assign entries = paginator.posts -%}
+{%- elsif page.collection and page.collection != 'posts' -%}
+  {%- assign entries = site[page.collection] | sort: 'date' | reverse -%}
+{%- else -%}
+  {%- assign entries = site.posts -%}
+{%- endif -%}
+{%- assign grid = false -%}{%- if page.entries_layout == 'grid' -%}{%- assign grid = true -%}{%- endif -%}
+{%- comment -%} sidebar shows when either a nav or the author profile is configured {%- endcomment -%}
+{%- assign show_author = false -%}{%- if page.author_profile -%}{%- assign show_author = true -%}{%- endif -%}
+{%- assign has_side = false -%}{%- if page.sidebar.nav or show_author -%}{%- assign has_side = true -%}{%- endif -%}
+<!doctype html>
+<html lang="{{ page.locale | default: site.locale | default: 'en' }}" class="no-js">
+<head>
+  {% include colorful/head.html %}
+</head>
+<body class="c-doc c-listpage" style="--_hue:{{ hue }}">
+
+  {% include colorful/nav.html %}
+
+  <main id="main" role="main" class="c-list c-wrap{% if has_side %} c-list--sided{% endif %}">
+    {%- comment -%} ---------- SIDEBAR (list pages only, config-driven) ---------- {%- endcomment -%}
+    {% if has_side %}
+    <aside class="c-sidebar" aria-label="Sections">
+      <div class="c-sidebar__inner">
+        {% if show_author %}{% include colorful/author.html %}{% endif %}
+        {% if page.sidebar.nav %}
+        {% for navname in page.sidebar.nav %}
+        {%- assign navigation = site.data.navigation[navname] -%}
+        {% for group in navigation %}
+        <div class="c-sidebar__group">
+          <p class="c-sidebar__head">{{ group.title }}</p>
+          {% if group.children %}
+          <ul class="c-sidebar__list">
+            {% for child in group.children %}
+            <li><a href="{{ child.url | relative_url }}"{% if child.url == page.url %} class="is-active"{% endif %}><span class="dot"></span>{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% elsif group.url %}
+          <ul class="c-sidebar__list"><li><a href="{{ group.url | relative_url }}"{% if group.url == page.url %} class="is-active"{% endif %}><span class="dot"></span>{{ group.title }}</a></li></ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% endif %}
+      </div>
+    </aside>
+    {% endif %}
+
+    <div class="c-list__main">
+      {%- comment -%} ---------- INTRO HEADER ---------- {%- endcomment -%}
+      <header class="c-list__head">
+        <span class="c-article__kicker"><span class="dot"></span>{{ kicker }}</span>
+        <h1 class="c-list__title">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>
+        {% if page.excerpt %}<p class="c-list__lead">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>{% endif %}
+        <div class="c-list__meta">
+          {%- assign total = entries | size -%}
+          {% if paginator %}
+          <span class="c-list__count">{{ paginator.total_posts }} {% if page.collection %}items{% else %}posts{% endif %}</span>
+          {% else %}
+          <span class="c-list__count">{{ total }} {% if page.collection %}items{% else %}posts{% endif %}</span>
+          {% endif %}
+          {% if page.header.actions %}
+          {% for action in page.header.actions %}
+          <a class="c-list__action" href="{{ action.url }}" rel="nofollow noopener">{{ action.label }}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          {% endfor %}
+          {% endif %}
+          <div class="c-viewtoggle c-list__toggle" role="tablist" aria-label="View mode">
+            <button data-view="card" class="is-active" aria-label="Card view">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              Cards
+            </button>
+            <button data-view="list" aria-label="List view">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+              List
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {%- comment -%} any markdown body from the page itself ---------- {%- endcomment -%}
+      {% if content and content != "" %}<div class="c-list__intro c-prose">{{ content }}</div>{% endif %}
+
+      {%- comment -%} ---------- ENTRY CARDS (reuse home .c-card + view toggle) ---------- {%- endcomment -%}
+      <div class="c-writing c-listgrid{% if grid %} c-listgrid--grid{% endif %}" id="c-writing">
+        {% for post in entries %}
+        {%- assign p_hue = hue -%}
+        <a class="c-card c-reveal" style="--_hue:{{ p_hue }}" href="{{ post.url | relative_url }}">
+          {% if post.header.teaser %}
+          <div class="c-card__media"><img src="{{ post.header.teaser | relative_url }}" alt="" loading="lazy"></div>
+          {% else %}
+          <div class="c-card__media c-card__media--none"><svg class="c-card__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
+          {% endif %}
+          <div class="c-card__body">
+            {% if post.category %}<span class="c-card__cat"><span class="dot"></span>{{ post.category }}</span>{% endif %}
+            <span class="c-card__title">{{ post.title }}</span>
+            {% if post.excerpt %}<span class="c-card__excerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncate: 120 }}</span>{% endif %}
+            {% if post.date %}<span class="c-card__meta">{{ post.date | date: "%b %-d, %Y" }}</span>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+      {%- comment -%} ---------- PAGINATION (unchanged Liquid, restyled) ---------- {%- endcomment -%}
+      {% include paginator.html %}
+    </div>
+  </main>
+
+  {% include colorful/footer.html %}
+  {% include colorful/search.html %}
+
+  <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
+</body>
+</html>

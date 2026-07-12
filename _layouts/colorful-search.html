@@ -1,0 +1,39 @@
+---
+# Colorful full-page search (/search/). Self-contained; reuses the same lunr
+# index + result rendering as the global overlay (assets/js/colorful/search.js),
+# but as an always-open page with a large input.
+layout: null
+---
+{%- assign hues = site.data.colorful.hues -%}
+<!doctype html>
+<html lang="{{ page.locale | default: site.locale | default: 'en' }}" class="no-js">
+<head>
+  {% include colorful/head.html %}
+</head>
+<body class="c-doc c-listpage" style="--_hue:{{ hues.writing }}">
+
+  {% include colorful/nav.html %}
+
+  <main id="main" role="main" class="c-list c-wrap">
+    <div class="c-searchpage">
+      <header class="c-list__head">
+        <span class="c-article__kicker"><span class="dot"></span>Search</span>
+        <h1 class="c-list__title">{{ page.title | default: "Search" }}</h1>
+      </header>
+
+      <div class="c-searchpage__box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="c-searchpage-input" class="c-searchpage__input" type="search" placeholder="Search posts, projects, films, books..." autocomplete="off" spellcheck="false" autofocus>
+      </div>
+      <div id="c-searchpage-results" class="c-searchpage__results"></div>
+      <p class="c-searchpage__hint" data-search-hint>Type to search across everything on the site.</p>
+    </div>
+  </main>
+
+  {% include colorful/footer.html %}
+  {% include colorful/search.html %}
+
+  <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
+</body>
+</html>

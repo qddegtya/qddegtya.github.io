@@ -1,24 +1,18 @@
 /* ==========================================================================
    Colorful theme - search (vanilla, no jQuery)
-   Reuses the existing lunr index data (assets/js/lunr/lunr-store.js) and the
-   lunr UMD build, but replaces the legacy jQuery query/render layer with a
-   self-contained module that powers the full-screen search overlay and renders
-   rich results (teaser image + title + excerpt). Feature parity with the old
-   search, plus imagery the old results never showed.
+   Reuses the lunr index data (assets/js/lunr/lunr-store.js) + lunr UMD build.
+   Powers BOTH the global full-screen overlay and the dedicated /search/ page,
+   from one lazily-built index. Rich results (teaser + title + excerpt).
 
    Public API: window.ColorfulSearch.open() / .close()
-   Requires markup: an element .c-search containing #c-search-input and
-   #c-search-results, and a trigger with [data-search-open].
    ========================================================================== */
 (function () {
   "use strict";
+  if (window.ColorfulSearch) return;   // single-load guard (script is on 6 layouts)
 
-  var idx = null;         // lunr index (built lazily on first open)
-  var loading = false;
-  var scriptBase = document.currentScript ? getBase(document.currentScript.src) : "/assets/js/colorful/";
+  var idx = null;              // lunr index (built once, lazily)
+  var buildPromise = null;     // in-flight build (shared so callers wait for the real index)
   var lunrBase = "/assets/js/lunr/";
-
-  function getBase(src) { return src.replace(/[^/]+$/, ""); }
 
   function loadScript(src) {
     return new Promise(function (resolve, reject) {
@@ -28,14 +22,15 @@
     });
   }
 
-  // Build the lunr index from the generated `store`. Mirrors the fields the
-  // theme's lunr-store.js emits (title / excerpt / categories / tags).
+  // Build the lunr index from `store` (fields mirror the theme's lunr-store.js).
+  // Returns a promise that resolves only once the index truly exists; concurrent
+  // callers share the same in-flight promise (no "resolve early with null idx").
   function buildIndex() {
-    if (idx || loading) return Promise.resolve();
-    loading = true;
+    if (idx) return Promise.resolve();
+    if (buildPromise) return buildPromise;
     var needLunr = typeof window.lunr === "undefined" ? loadScript(lunrBase + "lunr.min.js") : Promise.resolve();
     var needStore = typeof window.store === "undefined" ? loadScript(lunrBase + "lunr-store.js") : Promise.resolve();
-    return Promise.all([needLunr, needStore]).then(function () {
+    buildPromise = Promise.all([needLunr, needStore]).then(function () {
       idx = window.lunr(function () {
         this.field("title", { boost: 10 });
         this.field("excerpt");
@@ -46,8 +41,8 @@
         var store = window.store;
         for (var i in store) { this.add({ title: store[i].title, excerpt: store[i].excerpt, categories: store[i].categories, tags: store[i].tags, id: i }); }
       });
-      loading = false;
     });
+    return buildPromise;
   }
 
   function query(q) {
@@ -63,24 +58,29 @@
   }
 
   function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+  // only allow safe URL schemes into href/src (author content, but be strict)
+  function safeUrl(u) { return /^(https?:|\/|\.|#)/.test(u || "") ? u : "#"; }
 
-  function render(results, resultsEl, term) {
+  // hintClass lets each container use its own hint style
+  function render(results, resultsEl, term, hintClass) {
     var store = window.store || [];
-    if (!term) { resultsEl.innerHTML = '<p class="c-search__hint">Type to search across all writing, projects, and collections.</p>'; return; }
-    if (!results.length) { resultsEl.innerHTML = '<p class="c-search__hint">No results for "' + esc(term) + '".</p>'; return; }
-    var html = '<p class="c-search__hint">' + results.length + ' result' + (results.length > 1 ? "s" : "") + '</p>';
+    var hc = hintClass || "c-search__hint";
+    if (!term) { resultsEl.innerHTML = '<p class="' + hc + '">Type to search across all writing, projects, and collections.</p>'; return; }
+    if (!results.length) { resultsEl.innerHTML = '<p class="' + hc + '">No results for "' + esc(term) + '".</p>'; return; }
+    var html = '<p class="' + hc + '">' + results.length + ' result' + (results.length > 1 ? "s" : "") + '</p>';
     results.slice(0, 20).forEach(function (r) {
       var item = store[r.ref];
       if (!item) return;
       var excerpt = (item.excerpt || "").slice(0, 160);
-      var thumb = item.teaser ? '<span class="thumb"><img src="' + esc(item.teaser) + '" alt="" loading="lazy"></span>' : "";
-      html += '<article>'
+      var thumb = item.teaser ? '<span class="c-result__thumb"><img src="' + esc(safeUrl(item.teaser)) + '" alt="" loading="lazy"></span>' : "";
+      html += '<a class="c-result" href="' + esc(safeUrl(item.url)) + '">'
         + thumb
-        + '<span class="txt">'
-        + '<h3><a href="' + esc(item.url) + '">' + esc(item.title) + '</a></h3>'
-        + '<p>' + esc(excerpt) + '</p>'
+        + '<span class="c-result__txt">'
+        + '<span class="c-result__title">' + esc(item.title) + '</span>'
+        + '<span class="c-result__excerpt">' + esc(excerpt) + '</span>'
         + '</span>'
-        + '</article>';
+        + '<svg class="c-result__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
+        + '</a>';
     });
     resultsEl.innerHTML = html;
   }
@@ -106,22 +106,59 @@
     overlay = document.querySelector(".c-search");
     input = document.getElementById("c-search-input");
     resultsEl = document.getElementById("c-search-results");
-    if (!overlay || !input || !resultsEl) return;
 
-    document.querySelectorAll("[data-search-open]").forEach(function (t) {
-      t.addEventListener("click", function (e) { e.preventDefault(); open(); });
-    });
-    document.querySelectorAll(".c-search__close, [data-search-close]").forEach(function (t) {
-      t.addEventListener("click", close);
-    });
-    input.addEventListener("input", run);
+    var pageInput = document.getElementById("c-searchpage-input");
+    var pageResults = document.getElementById("c-searchpage-results");
+    var onSearchPage = !!(pageInput && pageResults);
 
-    // keyboard: Cmd/Ctrl+K to open, Esc to close, "/" to open when not typing
-    document.addEventListener("keydown", function (e) {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); open(); }
-      else if (e.key === "Escape" && document.body.classList.contains("c-search-open")) { close(); }
-      else if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); open(); }
-    });
+    // --- overlay mode (present on every page) ---
+    if (overlay && input && resultsEl) {
+      document.querySelectorAll("[data-search-open]").forEach(function (t) {
+        t.addEventListener("click", function (e) { e.preventDefault(); open(); });
+      });
+      document.querySelectorAll(".c-search__close, [data-search-close]").forEach(function (t) {
+        t.addEventListener("click", close);
+      });
+      input.addEventListener("input", run);
+
+      // keyboard: Cmd/Ctrl+K opens, Esc closes, "/" opens when not typing.
+      // On the dedicated /search/ page the overlay hotkeys are suppressed so the
+      // two search UIs don't collide.
+      document.addEventListener("keydown", function (e) {
+        var k = e.key; if (!k) return;
+        var ae = document.activeElement;
+        var typing = ae && (/input|textarea|select/i.test(ae.tagName) || ae.isContentEditable);
+        if ((e.metaKey || e.ctrlKey) && k.toLowerCase() === "k") {
+          if (onSearchPage) { e.preventDefault(); if (pageInput) pageInput.focus(); }
+          else { e.preventDefault(); open(); }
+        } else if (k === "Escape" && document.body.classList.contains("c-search-open")) {
+          close();
+        } else if (k === "/" && !typing && !onSearchPage) {
+          e.preventDefault(); open();
+        }
+      });
+    }
+
+    // --- full-page mode (/search/) ---
+    if (onSearchPage) {
+      var pageHint = document.querySelector("[data-search-hint]");
+      var pageLast = null;
+      function runPage() {
+        var term = pageInput.value.trim();
+        if (pageHint) pageHint.style.display = term ? "none" : "";
+        render(term ? query(term) : [], pageResults, term, "c-searchpage__hint");
+      }
+      // set the value from ?q= BEFORE building, then render once the index exists
+      var m = location.search.match(/[?&]q=([^&]*)/);
+      if (m) { try { pageInput.value = decodeURIComponent(m[1].replace(/\+/g, " ")); } catch (e) {} }
+      buildIndex().then(runPage);
+      pageInput.addEventListener("input", function () {
+        var term = pageInput.value.trim();
+        if (term === pageLast) return;
+        pageLast = term;
+        runPage();
+      });
+    }
   });
 
   window.ColorfulSearch = { open: open, close: close };

@@ -1,0 +1,82 @@
+---
+# Colorful archive layout - year / category / tag grouped views. Self-contained
+# (shared colorful/* shell). Grouping chosen by `page.archive_type` (set by the
+# thin posts/categories/tags layouts). Left sticky rail = jump index to each
+# group; main = grouped .c-card sections (reuses colorful/archive-section).
+layout: null
+---
+{%- assign hues = site.data.colorful.hues -%}
+{%- assign hue = hues.writing -%}
+{%- assign atype = page.archive_type | default: layout.archive_type | default: 'year' -%}
+<!doctype html>
+<html lang="{{ page.locale | default: site.locale | default: 'en' }}" class="no-js">
+<head>
+  {% include colorful/head.html %}
+</head>
+<body class="c-doc c-listpage" style="--_hue:{{ hue }}">
+
+  {% include colorful/nav.html %}
+
+  <main id="main" role="main" class="c-list c-wrap c-list--sided">
+    {%- comment -%} ---------- LEFT RAIL: jump index ---------- {%- endcomment -%}
+    <aside class="c-sidebar" aria-label="Jump to">
+      <div class="c-sidebar__inner">
+        <div class="c-sidebar__group">
+          <p class="c-sidebar__head">{{ page.title }}</p>
+          <ul class="c-sidebar__list c-sidebar__list--index">
+            {%- case atype -%}
+            {%- when 'year' -%}
+              {%- assign groups = site.posts | where_exp: "p", "p.hidden != true" | group_by_exp: 'p', 'p.date | date: "%Y"' -%}
+              {% for g in groups %}<li><a href="#y-{{ g.name }}"><span class="dot"></span>{{ g.name }}<span class="c-sidebar__n">{{ g.items | size }}</span></a></li>{% endfor %}
+            {%- when 'category' -%}
+              {% for item in site.categories %}<li><a href="#c-{{ item[0] | slugify }}"><span class="dot"></span>{{ item[0] }}<span class="c-sidebar__n">{{ item[1] | size }}</span></a></li>{% endfor %}
+            {%- when 'tag' -%}
+              {% for item in site.tags %}<li><a href="#t-{{ item[0] | slugify }}"><span class="dot"></span>{{ item[0] }}<span class="c-sidebar__n">{{ item[1] | size }}</span></a></li>{% endfor %}
+            {%- endcase -%}
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <div class="c-list__main">
+      <header class="c-list__head">
+        <span class="c-article__kicker"><span class="dot"></span>Archive</span>
+        <h1 class="c-list__title">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>
+        {% if page.excerpt %}<p class="c-list__lead">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>{% endif %}
+      </header>
+
+      {% if content and content != "" %}<div class="c-list__intro c-prose">{{ content }}</div>{% endif %}
+
+      {%- case atype -%}
+      {%- when 'year' -%}
+        {%- assign groups = site.posts | where_exp: "p", "p.hidden != true" | group_by_exp: 'p', 'p.date | date: "%Y"' -%}
+        {% for g in groups %}
+        {%- capture gid %}y-{{ g.name }}{% endcapture -%}
+        {%- assign gcount = g.items | size -%}
+        {% include colorful/archive-section.html id=gid title=g.name count=gcount posts=g.items hue=hue show_cat=true %}
+        {% endfor %}
+      {%- when 'category' -%}
+        {% for item in site.categories %}
+        {%- assign gname = item[0] -%}{%- assign gposts = item[1] | sort: 'date' | reverse -%}
+        {%- capture gid %}c-{{ gname | slugify }}{% endcapture -%}
+        {%- assign gcount = gposts | size -%}
+        {% include colorful/archive-section.html id=gid title=gname count=gcount posts=gposts hue=hue show_cat=false %}
+        {% endfor %}
+      {%- when 'tag' -%}
+        {% for item in site.tags %}
+        {%- assign gname = item[0] -%}{%- assign gposts = item[1] | sort: 'date' | reverse -%}
+        {%- capture gid %}t-{{ gname | slugify }}{% endcapture -%}
+        {%- assign gcount = gposts | size -%}
+        {% include colorful/archive-section.html id=gid title=gname count=gcount posts=gposts hue=hue show_cat=true %}
+        {% endfor %}
+      {%- endcase -%}
+    </div>
+  </main>
+
+  {% include colorful/footer.html %}
+  {% include colorful/search.html %}
+
+  <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
+</body>
+</html>

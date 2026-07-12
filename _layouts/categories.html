@@ -1,8 +1,7 @@
 ---
-layout: archive
+# Category archive (/categories/). Inherits the colorful archive layout,
+# grouping posts by category.
+layout: colorful-archive
+archive_type: category
 ---
-{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
-
 {{ content }}
-
-{% include posts-taxonomy.html locale=locale taxonomies=site.categories %}
