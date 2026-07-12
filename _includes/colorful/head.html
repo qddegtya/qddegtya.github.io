@@ -1,0 +1,31 @@
+{%- comment -%}
+  Shared <head> for every colorful page. Loads only colorful.css (no legacy
+  main.css, no FontAwesome CDN - icons are inline SVG), sets the theme before
+  paint to avoid a flash, and emits basic SEO/meta. `page_title` and
+  `page_desc` may be passed by the caller; sensible site-level fallbacks apply.
+{%- endcomment -%}
+{%- assign _title = include.title | default: page.title -%}
+{%- assign _desc = include.desc | default: page.excerpt | default: site.description -%}
+{%- assign _desc = _desc | markdownify | strip_html | strip_newlines | truncate: 160 -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if _title %}{{ _title | markdownify | strip_html | strip_newlines }} {{ site.title_separator }} {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ _desc }}">
+{% if _title %}<meta property="og:title" content="{{ _title | markdownify | strip_html | strip_newlines }}">{% endif %}
+<meta property="og:description" content="{{ _desc }}">
+<meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{% if site.twitter.username %}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@{{ site.twitter.username }}">{% endif %}
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+<link rel="stylesheet" href="{{ '/assets/css/colorful.css' | relative_url }}">
+<script>
+  // set theme before paint to avoid FOUC
+  (function () {
+    try {
+      var t = localStorage.getItem("colorful-theme");
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+  })();
+</script>

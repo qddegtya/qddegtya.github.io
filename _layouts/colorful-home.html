@@ -12,68 +12,13 @@ layout: null
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="{{ '/assets/css/colorful.css' | relative_url }}">
-  <script>
-    // set theme before paint to avoid FOUC
-    (function () {
-      try {
-        var t = localStorage.getItem("colorful-theme");
-        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", t);
-      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
-    })();
-  </script>
+  {% include colorful/head.html %}
 </head>
 <body>
 
 
-  {%- comment -%} ---------- NAV ---------- {%- endcomment -%}
-  <nav class="c-nav">
-    <div class="c-nav__bar">
-      <a class="c-brand" href="{{ '/' | relative_url }}" aria-label="Colorful home">
-        <svg class="c-brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="6" cy="18" r="3.1" fill="#FF5A6E"/>
-          <circle cx="13" cy="15" r="3.1" fill="#FF9F45"/>
-          <circle cx="18" cy="9" r="3.1" fill="#22C58B"/>
-          <circle cx="16" cy="3.4" r="2.5" fill="#6E76FF"/>
-        </svg>
-        Colorful
-      </a>
-      <div class="c-nav__links">
-        <a class="c-nav__link is-active" href="{{ '/' | relative_url }}">Home</a>
-        <a class="c-nav__link" style="--_hue:{{ hues.writing }}" href="{{ '/posts/' | relative_url }}">Writing</a>
-        <a class="c-nav__link" style="--_hue:{{ hues.projects }}" href="{{ '/projects/' | relative_url }}">Projects</a>
-        <a class="c-nav__link" style="--_hue:{{ hues.reading }}" href="{{ '/book/' | relative_url }}">Reading</a>
-        <a class="c-nav__link" style="--_hue:{{ hues.travel }}" href="{{ '/travel/' | relative_url }}">Travel</a>
-        <a class="c-nav__link" style="--_hue:{{ hues.codeart }}" href="{{ '/ca/' | relative_url }}">Code &amp; Art</a>
-      </div>
-      <div class="c-nav__right">
-        <button class="c-nav__search" data-search-open aria-label="Search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          <span class="label">Search</span>
-          <span class="kbd">/</span>
-        </button>
-        <button class="c-theme-toggle" aria-label="Toggle color theme">
-          <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.5 4.5l1.5 1.5M18 18l1.5 1.5M2.5 12h2.2M19.3 12h2.2M4.5 19.5l1.5-1.5M18 6l1.5-1.5"/></svg>
-          <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
-        </button>
-        <button class="c-burger" aria-label="Open menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </nav>
-
-  {%- comment -%} ---------- MOBILE MENU ---------- {%- endcomment -%}
-  <div class="c-menu">
-    <a class="c-menu__link" style="--_hue:{{ hues.writing }}" href="{{ '/posts/' | relative_url }}"><span class="dot"></span>Writing</a>
-    <a class="c-menu__link" style="--_hue:{{ hues.projects }}" href="{{ '/projects/' | relative_url }}"><span class="dot"></span>Projects</a>
-    <a class="c-menu__link" style="--_hue:{{ hues.reading }}" href="{{ '/book/' | relative_url }}"><span class="dot"></span>Reading</a>
-    <a class="c-menu__link" style="--_hue:{{ hues.travel }}" href="{{ '/travel/' | relative_url }}"><span class="dot"></span>Travel</a>
-    <a class="c-menu__link" style="--_hue:{{ hues.codeart }}" href="{{ '/ca/' | relative_url }}"><span class="dot"></span>Code &amp; Art</a>
-  </div>
+  {%- comment -%} ---------- NAV + MOBILE MENU ---------- {%- endcomment -%}
+  {% include colorful/nav.html %}
 
   {%- comment -%} ---------- HERO ---------- {%- endcomment -%}
   <header class="c-hero">
@@ -177,7 +122,7 @@ layout: null
       </div>
     </div>
     <div class="c-writing" id="c-writing">
-      {%- for post in site.posts limit: 6 -%}
+      {%- for post in site.posts limit: site.home.latest_count -%}
         <a class="c-card c-reveal" style="--_hue:{{ hues.writing }}; --_wash:var(--w-writing)" href="{{ post.url | relative_url }}">
           {%- if post.header.teaser -%}
             <div class="c-card__media">
@@ -254,7 +199,7 @@ layout: null
     {%- assign stream = site.ca | concat: site.movie | concat: site.book | concat: site.events | concat: site.travel | sort: 'date' | reverse -%}
     <div class="c-timeline c-reveal" id="c-timeline">
       <div class="c-tl">
-        {%- for it in stream limit: 16 -%}
+        {%- for it in stream limit: site.home.timeline_count -%}
           {%- case it.collection -%}
             {%- when 'ca' -%}{% assign hue = hues.codeart %}{% assign verb = 'released' %}{% assign tag = 'Code & Art' %}
             {%- when 'movie' -%}{% assign hue = hues.reading %}{% assign verb = 'watched' %}{% assign tag = 'Film' %}
@@ -308,44 +253,10 @@ layout: null
   {%- endif -%}
 
   {%- comment -%} ---------- FOOTER ---------- {%- endcomment -%}
-  <footer class="c-footer">
-    <div class="c-wrap">
-      <div class="c-footer__grid">
-        <div class="c-footer__lead c-reveal">
-          <div class="c-footer__big">{{ home.footer.tagline }}</div>
-          <div class="c-footer__sign" aria-label="{{ home.footer.sign }}">{{ home.footer.sign }}</div>
-        </div>
-        <div class="c-footer__links c-reveal">
-          {%- for col in home.footer.columns -%}
-          <div class="c-footer__col">
-            <h4>{{ col.head }}</h4>
-            {%- for link in col.links -%}
-            <a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"{% if link.me %} rel="me"{% endif %}>{{ link.label }}</a>
-            {%- endfor -%}
-          </div>
-          {%- endfor -%}
-        </div>
-      </div>
-      <div class="c-footer__base">
-        <span>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</span>
-        <span>Built with <a href="https://jekyllrb.com" rel="nofollow noopener">Jekyll</a>, deployed on <a href="https://vercel.com" rel="nofollow noopener">Vercel</a></span>
-      </div>
-    </div>
-  </footer>
+  {% include colorful/footer.html %}
 
-  {%- comment -%} ---------- SEARCH: top-expanding wide bar (vanilla lunr) ---------- {%- endcomment -%}
-  <div class="c-search-scrim" data-search-close></div>
-  <div class="c-search" role="dialog" aria-modal="true" aria-label="Search">
-    <div class="c-search__box">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="c-search-input" class="c-search__input" type="search" placeholder="Search everything..." autocomplete="off" spellcheck="false">
-      <button class="c-search__close" aria-label="Close search">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-        ESC
-      </button>
-    </div>
-    <div id="c-search-results" class="c-search__results"></div>
-  </div>
+  {%- comment -%} ---------- SEARCH ---------- {%- endcomment -%}
+  {% include colorful/search.html %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>

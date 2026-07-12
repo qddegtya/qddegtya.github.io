@@ -1,0 +1,167 @@
+---
+# Colorful inner page - the reading stage. Self-contained (its own head/nav/
+# footer via shared colorful/* includes), loads only colorful.css. Used by every
+# post, page and collection item. Structure only; content comes from the doc.
+layout: null
+---
+{%- assign hues = site.data.colorful.hues -%}
+{%- comment -%}
+  Accent hue + kicker come from the document's collection, so an article wears
+  the same dopamine colour it has everywhere else on the site.
+{%- endcomment -%}
+{%- case page.collection -%}
+  {%- when 'movie' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Watching' -%}{%- assign kroot = '/movie/' -%}
+  {%- when 'book' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Reading' -%}{%- assign kroot = '/book/' -%}
+  {%- when 'events' -%}{%- assign hue = hues.projects -%}{%- assign kicker = 'Out in the world' -%}{%- assign kroot = '/events/' -%}
+  {%- when 'travel' -%}{%- assign hue = hues.travel -%}{%- assign kicker = 'Footprints' -%}{%- assign kroot = '/travel/' -%}
+  {%- when 'ca' -%}{%- assign hue = hues.codeart -%}{%- assign kicker = 'Code & Art' -%}{%- assign kroot = '/ca/' -%}
+  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = 'Writing' -%}{%- assign kroot = '/posts/' -%}
+{%- endcase -%}
+{%- if page.tagline -%}{%- assign lead = page.tagline -%}{%- elsif page.excerpt -%}{%- assign lead = page.excerpt -%}{%- endif -%}
+<!doctype html>
+<html lang="{{ page.locale | default: site.locale | default: 'en' }}" class="no-js">
+<head>
+  {% include colorful/head.html %}
+</head>
+<body class="c-doc" style="--_hue:{{ hue }}">
+
+  {% include colorful/nav.html %}
+
+  <main id="main" role="main">
+    <article class="c-article h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+      {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+      {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+
+      {%- comment -%} ---------- HEADER: kicker, title, lead, meta ---------- {%- endcomment -%}
+      <header class="c-article__head c-wrap--reading">
+        {% if site.breadcrumbs and page.url != '/' %}
+        <nav class="c-crumbs" aria-label="Breadcrumb">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <span class="c-crumbs__sep">/</span>
+          <a href="{{ kroot | relative_url }}">{{ kicker }}</a>
+        </nav>
+        {% endif %}
+
+        <span class="c-article__kicker"><span class="dot"></span>{{ kicker }}</span>
+
+        {% if page.title %}<h1 class="c-article__title p-name" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+
+        {% if lead %}<p class="c-article__lead">{{ lead | markdownify | strip_html | strip_newlines }}</p>{% endif %}
+
+        <div class="c-article__meta">
+          {% if page.show_date and page.date %}
+          <span class="c-meta__item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+          </span>
+          {% endif %}
+          {% if page.read_time %}
+          {%- assign words = content | strip_html | number_of_words -%}
+          {%- assign wpm = page.words_per_minute | default: site.words_per_minute | default: 200 -%}
+          {%- assign mins = words | divided_by: wpm | at_least: 1 -%}
+          <span class="c-meta__item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            {{ mins }} min read
+          </span>
+          {% endif %}
+          {% if page.categories and page.categories.size > 0 %}
+          <span class="c-meta__item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V3h10z"/><circle cx="7.5" cy="7.5" r="1.4" fill="currentColor" stroke="none"/></svg>
+            {% for c in page.categories %}<a href="{{ '/categories/#' | append: c | relative_url }}">{{ c }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+          </span>
+          {% endif %}
+        </div>
+      </header>
+
+      {%- comment -%} ---------- BODY + RIGHT-RAIL STICKY TOC ---------- {%- endcomment -%}
+      <div class="c-article__grid c-wrap--reading">
+        <div class="c-prose e-content" itemprop="text">
+          {{ content }}
+          {% if page.link %}<p><a href="{{ page.link }}" class="c-btn c-btn--primary">Direct link
+            <span class="c-btn__ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></p>{% endif %}
+        </div>
+
+        {% if page.toc %}
+        <aside class="c-toc" aria-label="Table of contents">
+          <div class="c-toc__inner">
+            <p class="c-toc__head">On this page</p>
+            {% include toc.html sanitize=true html=content h_min=2 h_max=4 class="c-toc__list" skip_no_ids=true %}
+          </div>
+        </aside>
+        {% endif %}
+      </div>
+
+      {%- comment -%} ---------- TAGS ---------- {%- endcomment -%}
+      {% if page.tags and page.tags.size > 0 %}
+      <div class="c-article__tags c-wrap--reading">
+        {% for tag in page.tags %}<a class="c-tag" href="{{ '/tags/#' | append: tag | relative_url }}">#{{ tag }}</a>{% endfor %}
+      </div>
+      {% endif %}
+
+      {%- comment -%} ---------- PREV / NEXT ---------- {%- endcomment -%}
+      {% if page.previous or page.next %}
+      <nav class="c-pn c-wrap--reading" aria-label="Post navigation">
+        {% if page.previous %}
+        <a class="c-pn__link c-pn__link--prev" href="{{ page.previous.url | relative_url }}">
+          <span class="c-pn__dir"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg> Previous</span>
+          <span class="c-pn__title">{{ page.previous.title | markdownify | strip_html | strip_newlines }}</span>
+        </a>
+        {% else %}<span></span>{% endif %}
+        {% if page.next %}
+        <a class="c-pn__link c-pn__link--next" href="{{ page.next.url | relative_url }}">
+          <span class="c-pn__dir">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+          <span class="c-pn__title">{{ page.next.title | markdownify | strip_html | strip_newlines }}</span>
+        </a>
+        {% else %}<span></span>{% endif %}
+      </nav>
+      {% endif %}
+    </article>
+
+    {%- comment -%} ---------- RELATED: reuses the home .c-card system (+ placeholder) ---------- {%- endcomment -%}
+    {% if page.id and page.related and site.related_posts.size > 0 %}
+    {%- assign related = site.related_posts -%}
+    {% elsif page.id and page.related %}
+    {%- assign related = site.posts | where_exp: "p", "p.url != page.url" -%}
+    {% endif %}
+    {% if related and related.size > 0 %}
+    <section class="c-related c-wrap--reading">
+      <h2 class="c-related__head">Keep reading</h2>
+      <div class="c-related__grid">
+        {% for post in related limit: 3 %}
+        <a class="c-card c-reveal" style="--_hue:{{ hue }}" href="{{ post.url | relative_url }}">
+          {% if post.header.teaser %}
+          <div class="c-card__media"><img src="{{ post.header.teaser | relative_url }}" alt="" loading="lazy"></div>
+          {% else %}
+          <div class="c-card__media c-card__media--none"><svg class="c-card__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
+          {% endif %}
+          <div class="c-card__body">
+            {% if post.category %}<span class="c-card__cat"><span class="dot"></span>{{ post.category }}</span>{% endif %}
+            <span class="c-card__title">{{ post.title }}</span>
+            {% if post.excerpt %}<span class="c-card__excerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines }}</span>{% endif %}
+            {% if post.date %}<span class="c-card__meta">{{ post.date | date: "%b %-d, %Y" }}</span>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {%- comment -%} ---------- COMMENTS (giscus, theme-synced) ---------- {%- endcomment -%}
+    {% if site.comments.provider and page.comments %}
+    {% if jekyll.environment == 'production' %}
+    <section class="c-comments c-wrap--reading">
+      <h2 class="c-comments__head">Comments</h2>
+      {% include colorful/comments.html %}
+    </section>
+    {% endif %}
+    {% endif %}
+  </main>
+
+  {% include colorful/footer.html %}
+  {% include colorful/search.html %}
+
+  <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/article.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
+</body>
+</html>

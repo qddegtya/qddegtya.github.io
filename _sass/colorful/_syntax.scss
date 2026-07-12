@@ -1,0 +1,55 @@
+// ===========================================================================
+// COLORFUL - Rouge syntax highlighting
+// Maps Rouge's token classes to the --code-* custom properties (defined in
+// _tokens.scss for both light and dark), so code blocks recolour instantly
+// with the theme toggle. Scoped under .c-prose so it only touches article code.
+// ===========================================================================
+.c-prose .highlight,
+.c-prose pre.highlight {
+  .c  { color: var(--code-comment); font-style: italic; } // Comment
+  .cm { color: var(--code-comment); font-style: italic; }
+  .cp { color: var(--code-comment); }
+  .c1 { color: var(--code-comment); font-style: italic; }
+  .cs { color: var(--code-comment); font-style: italic; }
+
+  .k  { color: var(--code-keyword); }                       // Keyword
+  .kc { color: var(--code-keyword); }
+  .kd { color: var(--code-keyword); }
+  .kn { color: var(--code-keyword); }
+  .kp { color: var(--code-keyword); }
+  .kr { color: var(--code-keyword); }
+  .kt { color: var(--code-class); }
+
+  .o  { color: var(--code-punct); }                         // Operator
+  .ow { color: var(--code-keyword); }
+  .p  { color: var(--code-punct); }                         // Punctuation
+
+  .s  { color: var(--code-string); }                        // String
+  .sb, .sc, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss { color: var(--code-string); }
+  .dl { color: var(--code-string); }
+
+  .m  { color: var(--code-number); }                        // Number
+  .mb, .mf, .mh, .mi, .mo, .il { color: var(--code-number); }
+
+  .nb { color: var(--code-builtin); }                       // Name.Builtin
+  .bp { color: var(--code-builtin); }
+  .nf { color: var(--code-func); }                          // Name.Function
+  .nc { color: var(--code-class); }                         // Name.Class
+  .nn { color: var(--code-class); }                         // Name.Namespace
+  .no { color: var(--code-class); }                         // Name.Constant
+  .na { color: var(--code-func); }                          // Name.Attribute
+  .nt { color: var(--code-tag); }                           // Name.Tag
+  .nv, .vc, .vg, .vi { color: var(--code-var); }            // Name.Variable
+  .nd { color: var(--code-func); }                          // Decorator
+  .ni, .ne, .nl, .nx, .py { color: var(--c-code-fg); }
+
+  .gd { color: var(--code-keyword); }                       // Generic.Deleted
+  .gi { color: var(--code-string); }                        // Generic.Inserted
+  .gh { color: var(--code-func); font-weight: 600; }
+  .gu { color: var(--code-class); font-weight: 600; }
+  .gp { color: var(--code-comment); }
+  .gs { font-weight: 600; }
+  .ge { font-style: italic; }
+  .err { color: var(--h-writing); }                         // Error
+  .w  { color: transparent; }                               // Whitespace
+}

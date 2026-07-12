@@ -42,6 +42,20 @@
   // Top inner highlight: the 1px lit edge that makes a surface read as physical glass.
   --hl-inset:  inset 0 1px 0 rgba(255, 255, 255, 0.65);
 
+  // --- Code block (light): a soft slate plate with warm-neutral syntax ---
+  --c-code-bg: #F7F8FA;
+  --c-code-fg: #2B2B38;
+  --code-comment: #9AA0AC;
+  --code-keyword: #C5416B;   // coral-magenta
+  --code-string:  #2E9E6B;   // green
+  --code-number:  #C77A2E;   // amber
+  --code-func:    #5A63E0;   // iris
+  --code-class:   #B8842A;   // gold
+  --code-builtin: #2B8FB8;   // teal-blue
+  --code-var:     #2B2B38;
+  --code-tag:     #C5416B;
+  --code-punct:   #63636F;
+
   // --- Type ---
   --font-display: "General Sans", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-body:    "General Sans", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -94,4 +108,18 @@
   // On dark, the surface is lighter than the page, so the highlight is subtle.
   --c-glass:   color-mix(in srgb, var(--c-surface) 72%, transparent);
   --hl-inset:  inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  // --- Code block (dark): deep plate, luminous but easy syntax ---
+  --c-code-bg: #12121A;
+  --c-code-fg: #D4D4E0;
+  --code-comment: #6B6B7A;
+  --code-keyword: #FF7A9C;
+  --code-string:  #5DD6A0;
+  --code-number:  #F0A860;
+  --code-func:    #9AA0FF;
+  --code-class:   #E8C070;
+  --code-builtin: #6FC7E8;
+  --code-var:     #D4D4E0;
+  --code-tag:     #FF7A9C;
+  --code-punct:   #9A9AA6;
 }

@@ -1,0 +1,46 @@
+{%- comment -%}
+  Shared floating glass nav. Links come from _data/colorful.yml so the nav is
+  consistent and data-driven on every page. The active link is derived from the
+  current URL. `search` and `theme` controls are always present.
+{%- endcomment -%}
+{%- assign hues = site.data.colorful.hues -%}
+<nav class="c-nav">
+  <div class="c-nav__bar">
+    <a class="c-brand" href="{{ '/' | relative_url }}" aria-label="Colorful home">
+      <svg class="c-brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="6" cy="18" r="3.1" fill="#FF5A6E"/>
+        <circle cx="13" cy="15" r="3.1" fill="#FF9F45"/>
+        <circle cx="18" cy="9" r="3.1" fill="#22C58B"/>
+        <circle cx="16" cy="3.4" r="2.5" fill="#6E76FF"/>
+      </svg>
+      Colorful
+    </a>
+    <div class="c-nav__links">
+      <a class="c-nav__link{% if page.url == '/' %} is-active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      {%- for item in site.data.colorful.nav -%}
+      {%- assign _active = false -%}
+      {%- if page.url contains item.url and item.url != '/' -%}{%- assign _active = true -%}{%- endif -%}
+      <a class="c-nav__link{% if _active %} is-active{% endif %}" style="--_hue:{{ hues[item.hue] }}" href="{{ item.url | relative_url }}">{{ item.label }}</a>
+      {%- endfor -%}
+    </div>
+    <div class="c-nav__right">
+      <button class="c-nav__search" data-search-open aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="label">Search</span>
+        <span class="kbd">/</span>
+      </button>
+      <button class="c-theme-toggle" aria-label="Toggle color theme">
+        <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.5 4.5l1.5 1.5M18 18l1.5 1.5M2.5 12h2.2M19.3 12h2.2M4.5 19.5l1.5-1.5M18 6l1.5-1.5"/></svg>
+        <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="c-burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+{%- comment -%} mobile full-screen menu {%- endcomment -%}
+<div class="c-menu">
+  {%- for item in site.data.colorful.nav -%}
+  <a class="c-menu__link" style="--_hue:{{ hues[item.hue] }}" href="{{ item.url | relative_url }}"><span class="dot"></span>{{ item.label }}</a>
+  {%- endfor -%}
+</div>

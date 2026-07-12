@@ -1,0 +1,29 @@
+{%- comment -%}
+  Shared site footer, data-driven from _data/colorful.yml so it's identical on
+  the home page and every inner page.
+{%- endcomment -%}
+{%- assign f = site.data.colorful.footer -%}
+<footer class="c-footer">
+  <div class="c-wrap">
+    <div class="c-footer__grid">
+      <div class="c-footer__lead c-reveal">
+        <div class="c-footer__big">{{ f.tagline }}</div>
+        <div class="c-footer__sign" aria-label="{{ f.sign }}">{{ f.sign }}</div>
+      </div>
+      <div class="c-footer__links c-reveal">
+        {%- for col in f.columns -%}
+        <div class="c-footer__col">
+          <h4>{{ col.head }}</h4>
+          {%- for link in col.links -%}
+          <a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"{% if link.me %} rel="me"{% endif %}>{{ link.label }}</a>
+          {%- endfor -%}
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="c-footer__base">
+      <span>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</span>
+      <span>Built with <a href="https://jekyllrb.com" rel="nofollow noopener">Jekyll</a>, deployed on <a href="https://vercel.com" rel="nofollow noopener">Vercel</a></span>
+    </div>
+  </div>
+</footer>

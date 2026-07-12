@@ -1,0 +1,32 @@
+{%- comment -%}
+  Colorful comments (giscus). The initial data-theme is chosen from the site's
+  current colour mode via a tiny inline script (so the first paint matches),
+  and article.js keeps it in sync with the theme toggle afterwards. All giscus
+  settings still come from _config.yml (site.comments.giscus.*).
+{%- endcomment -%}
+{%- assign g = site.comments.giscus -%}
+<div id="giscus-comments"></div>
+<script>
+  (function () {
+    var host = document.getElementById("giscus-comments");
+    if (!host) return;
+    var dark = document.documentElement.getAttribute("data-theme") === "dark";
+    var s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.setAttribute("data-repo", "{{ site.repository | downcase }}");
+    s.setAttribute("data-repo-id", "{{ g.repo_id }}");
+    s.setAttribute("data-category", "{{ g.category_name }}");
+    s.setAttribute("data-category-id", "{{ g.category_id }}");
+    s.setAttribute("data-mapping", "{{ g.discussion_term | default: 'pathname' }}");
+    s.setAttribute("data-strict", "{{ g.strict | default: 0 }}");
+    s.setAttribute("data-reactions-enabled", "{{ g.reactions_enabled | default: 1 }}");
+    s.setAttribute("data-emit-metadata", "{{ g.emit_metadata | default: 0 }}");
+    s.setAttribute("data-input-position", "{{ g.input_position | default: 'top' }}");
+    s.setAttribute("data-theme", dark ? "dark" : "light");
+    s.setAttribute("data-lang", "{{ g.lang | default: 'en' }}");
+    {% if g.lazy %}s.setAttribute("data-loading", "lazy");{% endif %}
+    s.setAttribute("crossorigin", "anonymous");
+    s.async = true;
+    host.appendChild(s);
+  })();
+</script>

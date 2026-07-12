@@ -19,7 +19,8 @@
 {%- endcomment -%}
 {%- assign items = include.items -%}
 {%- assign total = items | size -%}
-{%- assign deck = items | slice: 0, 5 -%}
+{%- assign deck_count = site.home.collection_count | default: 5 -%}
+{%- assign deck = items | slice: 0, deck_count -%}
 {%- assign shown = deck | size -%}
 <div class="c-coll c-reveal{% if total == 0 %} c-coll--empty{% endif %}"
      style="--_hue:{{ include.hue }}" data-coll data-count="{{ shown }}">

@@ -6,3 +6,30 @@ hues:
   reading:  "#22C58B"   # spring green
   travel:   "#2BA9F4"   # sky
   codeart:  "#6E76FF"   # iris
+
+# Primary navigation - shared by the floating nav and the mobile menu on every
+# page. hue is the key into `hues` above (the moving colour block on hover).
+nav:
+  - { label: "Writing",     url: "/posts/",   hue: writing  }
+  - { label: "Projects",    url: "/projects/", hue: projects }
+  - { label: "Reading",     url: "/book/",    hue: reading  }
+  - { label: "Travel",      url: "/travel/",  hue: travel   }
+  - { label: "Code & Art",  url: "/ca/",      hue: codeart  }
+
+# Site footer - shared by home and every inner page.
+footer:
+  tagline: "Still the restless kid, still shipping."
+  sign: "Archer"
+  columns:
+    - head: "Content"
+      links:
+        - { label: "Writing", url: "/posts/" }
+        - { label: "Projects", url: "/projects/" }
+        - { label: "Code & Art", url: "/ca/" }
+        - { label: "Archive", url: "/year-archive/" }
+    - head: "Elsewhere"
+      links:
+        - { label: "GitHub", url: "https://github.com/qddegtya", me: true }
+        - { label: "Twitter", url: "https://twitter.com/qddegtya", me: true }
+        - { label: "Digital Garden", url: "https://www.yuque.com/chiyu-heb0t", me: true }
+

@@ -1,0 +1,16 @@
+{%- comment -%}
+  Shared full-screen search overlay (vanilla lunr). Present on every page so the
+  nav search button and the "/" shortcut work everywhere.
+{%- endcomment -%}
+<div class="c-search-scrim" data-search-close></div>
+<div class="c-search" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="c-search__box">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="c-search-input" class="c-search__input" type="search" placeholder="Search everything..." autocomplete="off" spellcheck="false">
+    <button class="c-search__close" aria-label="Close search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      ESC
+    </button>
+  </div>
+  <div id="c-search-results" class="c-search__results"></div>
+</div>

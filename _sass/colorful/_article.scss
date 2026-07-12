@@ -1,0 +1,427 @@
+// ===========================================================================
+// COLORFUL - ARTICLE / READING PAGE
+// The reading stage. A quiet canvas; the article wears its collection's dopamine
+// hue (--_hue on <body class="c-doc">) as a restrained accent - kicker, links,
+// rules, code accent, tags. Never a flood. Editorial dials: VARIANCE 6 / MOTION
+// 4 / DENSITY 3 - calm, big vertical rhythm, quiet motion. Body is measured for
+// long-form reading (~68ch, 1.75 line-height, General Sans). No hero band: a
+// minimal kicker + title + lead + meta opens every article.
+// ===========================================================================
+
+// --- reading-width wrapper --------------------------------------------------
+.c-wrap--reading { max-width: 720px; margin-inline: auto; padding-inline: var(--wrap-pad); }
+
+#main { padding-top: clamp(94px, 13vh, 132px); padding-bottom: clamp(64px, 10vw, 110px); }
+
+// --- ARTICLE HEADER ---------------------------------------------------------
+.c-article__head { margin-bottom: clamp(32px, 6vw, 52px); }
+
+.c-crumbs { display: flex; align-items: center; gap: 9px; font-family: var(--font-mono);
+  font-size: 12px; color: var(--c-faint); margin-bottom: 24px; }
+.c-crumbs a { color: var(--c-muted); transition: color 0.2s; }
+.c-crumbs a:hover { color: var(--_hue); }
+.c-crumbs__sep { opacity: 0.5; }
+
+.c-article__kicker { display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--_hue); margin-bottom: 18px; }
+.c-article__kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--_hue);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--_hue) 18%, transparent); }
+
+.c-article__title { font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(31px, 5vw, 50px); line-height: 1.08; letter-spacing: -0.025em;
+  color: var(--c-text); margin: 0 0 22px; text-wrap: balance; }
+
+.c-article__lead { font-size: clamp(17px, 2.2vw, 20px); line-height: 1.6; color: var(--c-muted);
+  max-width: 60ch; margin: 0 0 28px; }
+
+.c-article__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px;
+  padding-top: 20px; border-top: 1px solid var(--c-hairline);
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--c-muted); }
+.c-meta__item { display: inline-flex; align-items: center; gap: 7px; }
+.c-meta__item svg { color: var(--c-faint); }
+.c-meta__item a { color: var(--c-muted); transition: color 0.2s; }
+.c-meta__item a:hover { color: var(--_hue); }
+
+// --- BODY + FLOATING RIGHT TOC ----------------------------------------------
+// The reading column is ALWAYS centered and measured (same left edge as the
+// header). The TOC does not live in a grid track - it floats as a sticky rail
+// pinned just outside the reading column's right edge, so it can appear or
+// vanish without ever nudging the prose off-centre.
+.c-article__grid { position: relative; }
+
+.c-toc { display: none; }
+@media (min-width: 1200px) {
+  .c-toc { display: block; position: absolute; top: 0; left: calc(100% + 40px); width: 200px; height: 100%; }
+  .c-toc__inner { position: sticky; top: 112px; padding: 16px 16px 16px 18px;
+    border-radius: var(--r-md); border: 1px solid var(--c-hairline);
+    background: color-mix(in srgb, var(--c-surface) 60%, transparent);
+    box-shadow: var(--hl-inset); max-height: calc(100vh - 140px); overflow-y: auto;
+    scrollbar-width: thin; }
+  .c-toc__head { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono);
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-faint);
+    margin: 0 0 14px; }
+  .c-toc__head::before { content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--_hue); flex-shrink: 0; }
+  .c-toc__list, .c-toc__list ul { list-style: none; margin: 0; padding: 0; }
+  .c-toc__list ul { padding-left: 14px; }
+  .c-toc__list li { margin: 0; }
+  // A single hue marker slides along a constant track (built by article.js).
+  // Because ONE element moves via transform, fast scrolling reads as smooth
+  // motion, never per-link flicker. Links only change colour.
+  .c-toc__list { position: relative; padding-left: 14px; }
+  .c-toc__list::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; border-radius: 1px; background: var(--c-hairline); }
+  .c-toc__marker { position: absolute; left: 0; top: 0; width: 2px; height: 0;
+    border-radius: 1px; background: var(--_hue); opacity: 0;
+    transform: translateY(0); will-change: transform, height;
+    transition: transform 0.32s var(--ease), height 0.32s var(--ease), opacity 0.25s var(--ease); }
+  .c-toc__marker.is-on { opacity: 1; }
+  .c-toc__list ul { padding-left: 14px; }
+  .c-toc__list li { margin: 0; }
+  .c-toc__list a { display: -webkit-box; padding: 5px 0; font-size: 12.5px;
+    line-height: 1.45; color: var(--c-muted); transition: color 0.25s var(--ease);
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .c-toc__list a:hover { color: var(--c-text); }
+  .c-toc__list a.is-active { color: var(--_hue); }
+}
+
+// ===========================================================================
+// PROSE - the markdown body (rendered kramdown / Rouge output).
+// ===========================================================================
+.c-prose { font-family: var(--font-body); font-size: 17px; line-height: 1.75;
+  color: var(--c-text); }
+.c-prose > *:first-child { margin-top: 0; }
+// wide elements (code, tables, media) may use the full column width
+.c-prose > .highlight, .c-prose > pre, .c-prose > figure, .c-prose > table,
+.c-prose > .responsive-video-container { max-width: 100%; }
+@media (max-width: 700px) { .c-prose { font-size: 16px; line-height: 1.7; } }
+
+// headings ------------------------------------------------------------------
+.c-prose h1, .c-prose h2, .c-prose h3, .c-prose h4, .c-prose h5, .c-prose h6 {
+  font-family: var(--font-display); font-weight: 650; color: var(--c-text);
+  letter-spacing: -0.02em; line-height: 1.28; scroll-margin-top: 100px; position: relative; }
+.c-prose h2 { font-size: clamp(23px, 3.4vw, 28px); margin: 2.2em 0 0.7em; }
+.c-prose h3 { font-size: clamp(19px, 2.6vw, 22px); margin: 1.9em 0 0.6em; }
+.c-prose h4 { font-size: 17px; margin: 1.6em 0 0.5em; color: var(--c-muted); }
+.c-prose h5, .c-prose h6 { font-size: 15px; margin: 1.4em 0 0.4em; color: var(--c-muted);
+  font-weight: 600; }
+// a hue tick appears left of an h2 on hover (subtle anchor affordance)
+.c-prose h2::before { content: ""; position: absolute; left: -20px; top: 0.72em;
+  width: 8px; height: 8px; border-radius: 2px; background: var(--_hue); opacity: 0;
+  transition: opacity 0.2s; }
+.c-prose h2:hover::before { opacity: 1; }
+@media (max-width: 760px) { .c-prose h2::before { display: none; } }
+
+// text ----------------------------------------------------------------------
+.c-prose p { margin: 0 0 1.15em; }
+.c-prose a:not(.c-btn) { color: var(--_hue); text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2.5px;
+  text-decoration-color: color-mix(in srgb, var(--_hue) 40%, transparent);
+  transition: text-decoration-color 0.2s; }
+.c-prose a:not(.c-btn):hover { text-decoration-color: var(--_hue); }
+.c-prose strong { font-weight: 650; color: var(--c-text); }
+.c-prose em { font-style: italic; }
+.c-prose mark { background: color-mix(in srgb, var(--_hue) 22%, transparent); color: inherit;
+  padding: 0.05em 0.2em; border-radius: 3px; }
+.c-prose small, .c-prose .small { font-size: 0.85em; color: var(--c-muted); }
+.c-prose sup, .c-prose sub { font-size: 0.72em; }
+.c-prose kbd { font-family: var(--font-mono); font-size: 0.82em; padding: 0.12em 0.5em;
+  border-radius: 6px; background: var(--c-surface-2); color: var(--c-text);
+  border: 1px solid var(--c-hairline); box-shadow: 0 1px 0 var(--c-hairline); }
+
+// lists ---------------------------------------------------------------------
+.c-prose ul, .c-prose ol { margin: 0 0 1.15em; padding-left: 1.5em; }
+.c-prose li { margin: 0.4em 0; }
+.c-prose li > ul, .c-prose li > ol { margin: 0.4em 0; }
+.c-prose ul > li::marker { color: var(--_hue); }
+.c-prose ol > li::marker { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.9em; }
+.c-prose li input[type="checkbox"] { margin-right: 0.5em; accent-color: var(--_hue); }
+.c-prose dl { margin: 0 0 1.15em; }
+.c-prose dt { font-weight: 650; margin-top: 0.8em; }
+.c-prose dd { margin: 0.2em 0 0 1.2em; color: var(--c-muted); }
+
+// blockquote - a refined hue-tinted plate with a big quotation mark ----------
+.c-prose blockquote { position: relative; margin: 1.9em 0; padding: 20px 22px 20px 26px;
+  border-radius: var(--r-md); border: 1px solid color-mix(in srgb, var(--_hue) 18%, transparent);
+  border-left: 3px solid var(--_hue);
+  background: color-mix(in srgb, var(--_hue) 6%, var(--c-surface));
+  box-shadow: var(--hl-inset); color: var(--c-text); font-style: italic;
+  font-size: 1.02em; line-height: 1.65; }
+.c-prose blockquote::before { content: "\201C"; position: absolute; top: 2px; right: 18px;
+  font-family: var(--font-display); font-weight: 700; font-size: 46px; line-height: 1; font-style: normal;
+  color: var(--_hue); opacity: 0.18; pointer-events: none; }
+.c-prose blockquote p:last-child { margin-bottom: 0; }
+.c-prose blockquote cite, .c-prose blockquote .small { display: block; margin-top: 10px;
+  font-style: normal; font-family: var(--font-mono); font-size: 12px; color: var(--c-faint); }
+
+// inline code ----------------------------------------------------------------
+// solid fallbacks first (older engines without color-mix keep readable colours),
+// then the hue-tinted enhancement.
+.c-prose :not(pre) > code { font-family: var(--font-mono); font-size: 0.85em;
+  background: var(--c-surface-2); color: var(--c-text);
+  background: color-mix(in srgb, var(--_hue) 9%, var(--c-surface-2));
+  color: color-mix(in srgb, var(--_hue) 50%, var(--c-text));
+  padding: 0.14em 0.42em; border-radius: 6px;
+  border: 1px solid var(--c-hairline);
+  border-color: color-mix(in srgb, var(--_hue) 14%, transparent);
+  word-break: break-word; }
+
+// code blocks ----------------------------------------------------------------
+// Rouge emits two shapes; the OUTERMOST element is always figure.highlight or
+// div.highlight (never a bare pre). The fenced shape also puts .highlight on its
+// inner <pre>, so we must target the OUTER element types explicitly - not the
+// bare `.highlight` class - to avoid framing the block twice.
+//   fenced (```)            -> div.highlight > pre.highlight > code
+//   {% highlight linenos %}  -> figure.highlight > pre > code > table.rouge-table
+// The frame mimics the home page's mac window (bar injected by article.js).
+%c-code-frame {
+  position: relative; margin: 1.9em 0; border-radius: var(--r-lg);
+  background: var(--c-code-bg); border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-2), var(--hl-inset); overflow: hidden;
+  font-family: var(--font-mono); font-size: 13.5px; line-height: 1.7;
+}
+.c-prose figure.highlight, .c-prose div.highlight { @extend %c-code-frame; }
+// the inner pre.highlight of the fenced shape is only a scroller: strip any frame
+.c-prose div.highlight pre.highlight { margin: 0; border: none; border-radius: 0;
+  box-shadow: none; background: none; }
+
+// the window top bar (built by JS). A distinct fill (not translucent glass) so
+// it reads as a real bar even in light mode over the near-white code plate.
+.c-prose .c-code__bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  background: color-mix(in srgb, var(--c-text) 5%, var(--c-code-bg));
+  border-bottom: 1px solid var(--c-hairline); box-shadow: var(--hl-inset); }
+.c-prose .c-code__dots { display: inline-flex; gap: 7px; flex-shrink: 0; }
+.c-prose .c-code__dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+.c-prose .c-code__dots i:nth-child(1) { background: #ff5f57; }
+.c-prose .c-code__dots i:nth-child(2) { background: #febc2e; }
+.c-prose .c-code__dots i:nth-child(3) { background: #28c840; }
+.c-prose .c-code__lang { font-family: var(--font-mono); font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.03em; text-transform: uppercase; color: var(--c-muted); flex: 1; text-align: center; }
+.c-prose .c-code__copy { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+  border: none; cursor: pointer; font-family: var(--font-mono); font-size: 11px; color: var(--c-muted);
+  background: color-mix(in srgb, var(--c-text) 6%, transparent); padding: 5px 10px; border-radius: var(--r-pill);
+  transition: color 0.2s, background 0.2s; }
+.c-prose .c-code__copy:hover { color: var(--c-text); background: color-mix(in srgb, var(--c-text) 10%, transparent); }
+.c-prose .c-code__copy.is-done { color: var(--h-reading); background: color-mix(in srgb, var(--h-reading) 14%, transparent); }
+// the code scroller (the real <pre> that holds text or the rouge-table)
+.c-prose .highlight pre { margin: 0; padding: 16px 18px; overflow-x: auto;
+  -webkit-overflow-scrolling: touch; background: none; border: none;
+  font-family: var(--font-mono); color: var(--c-code-fg); }
+.c-prose .highlight code { font-family: var(--font-mono); background: none; border: none;
+  padding: 0; color: inherit; font-size: inherit; }
+// rouge line-number table: NOT a content table - reset it fully (no borders, no
+// hover, no cell padding); the gutter is a quiet non-selectable rail.
+.c-prose .highlight table.rouge-table { margin: 0; border: none; background: none; width: 100%;
+  border-collapse: collapse; display: table; }
+.c-prose .highlight table.rouge-table tr:hover { background: none; }
+.c-prose .highlight table.rouge-table td { border: none; padding: 0; vertical-align: top; background: none; }
+.c-prose .highlight td.gutter { width: 1%; white-space: nowrap; }
+.c-prose .highlight td.gutter pre, .c-prose .highlight pre.lineno {
+  padding-right: 16px; color: var(--c-faint); text-align: right; opacity: 0.45;
+  user-select: none; -webkit-user-select: none; }
+.c-prose .highlight td.code { width: 100%; }
+.c-prose .highlight td.code pre { padding-left: 6px; }
+// a bare <pre> without .highlight (rare) still gets the plate
+.c-prose > pre:not(.highlight) { margin: 1.9em 0; padding: 18px 20px; border-radius: var(--r-lg);
+  background: var(--c-code-bg); color: var(--c-code-fg); border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-2), var(--hl-inset); overflow-x: auto; font-family: var(--font-mono);
+  font-size: 13.5px; line-height: 1.7; }
+
+// horizontal rule -----------------------------------------------------------
+.c-prose hr { border: none; height: 1px; background: var(--c-hairline); margin: 2.4em auto; }
+
+// images / figures ----------------------------------------------------------
+.c-prose img { max-width: 100%; height: auto; border-radius: var(--r-md);
+  box-shadow: var(--shadow-1), var(--hl-inset); }
+.c-prose p > img, .c-prose figure img { display: block; margin-inline: auto; }
+// a standalone <figure> (single image + caption) becomes a matted plate.
+// Exclude gallery figures (.half/.third) AND code figures (.highlight).
+.c-prose > figure:not(.half):not(.third):not(.highlight) { margin: 1.9em 0; padding: 6px; border-radius: var(--r-lg);
+  background: var(--c-surface); border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-1), var(--hl-inset); }
+.c-prose > figure:not(.half):not(.third):not(.highlight) img { margin: 0; width: 100%;
+  border-radius: calc(var(--r-lg) - 6px); box-shadow: none; }
+.c-prose figure:not(.highlight) { margin: 1.8em 0; }
+.c-prose figure:not(.highlight) figcaption { margin-top: 11px; padding: 0 8px 4px; text-align: center;
+  font-family: var(--font-mono); font-size: 12px; color: var(--c-faint); line-height: 1.5;
+  display: flex; align-items: center; justify-content: center; gap: 7px; }
+.c-prose figure:not(.highlight) figcaption::before { content: ""; width: 12px; height: 1px; border-radius: 1px;
+  background: var(--_hue); opacity: 0.6; flex-shrink: 0; }
+// minimal-mistakes image lightbox links (.image-popup) - zoom cursor affordance
+.c-prose a.image-popup { display: inline-block; cursor: zoom-in; }
+.c-prose a.image-popup img { transition: transform 0.4s var(--ease); }
+.c-prose a.image-popup:hover img { transform: scale(1.01); }
+// float alignment (.align-left / .align-right / .align-center)
+.c-prose .align-left { float: left; margin: 0.4em 1.5em 1em 0; max-width: 46%; }
+.c-prose .align-right { float: right; margin: 0.4em 0 1em 1.5em; max-width: 46%; }
+.c-prose .align-center { display: block; margin-inline: auto; }
+.c-prose .align-full { width: 100%; }
+@media (max-width: 620px) {
+  .c-prose .align-left, .c-prose .align-right { float: none; max-width: 100%; margin-inline: 0; }
+}
+
+// galleries (minimal-mistakes {% include gallery %}) -------------------------
+// The include emits a single <figure class="half|third"> holding N <a><img></a>
+// (or bare <img>). Lay them out as an even grid of rounded, matted tiles.
+.c-prose figure.half, .c-prose figure.third { display: grid; gap: 8px; margin: 1.9em 0; }
+.c-prose figure.half { grid-template-columns: repeat(2, 1fr); }
+.c-prose figure.third { grid-template-columns: repeat(3, 1fr); }
+.c-prose figure.half > a, .c-prose figure.third > a,
+.c-prose figure.half > img, .c-prose figure.third > img {
+  display: block; margin: 0; aspect-ratio: 4 / 3; border-radius: var(--r-md); overflow: hidden;
+  box-shadow: var(--shadow-1), var(--hl-inset); }
+.c-prose figure.half > a img, .c-prose figure.third > a img,
+.c-prose figure.half > img, .c-prose figure.third > img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: var(--r-md); margin: 0;
+  box-shadow: none; transition: transform 0.5s var(--ease); }
+.c-prose figure.half > a { border-radius: var(--r-md); }
+.c-prose figure.half > a:hover img, .c-prose figure.third > a:hover img { transform: scale(1.05); }
+.c-prose figure.half figcaption, .c-prose figure.third figcaption { grid-column: 1 / -1; margin-top: 4px; }
+@media (max-width: 620px) {
+  .c-prose figure.half, .c-prose figure.third { grid-template-columns: repeat(2, 1fr); }
+}
+
+// embedded video (minimal-mistakes {% include video %}) ----------------------
+// the include ships a bare .responsive-video-container > iframe; give it a 16:9
+// frame with the colorful plate treatment.
+.c-prose .responsive-video-container { position: relative; margin: 1.8em 0; padding: 0;
+  aspect-ratio: 16 / 9; border-radius: var(--r-md); overflow: hidden;
+  background: var(--c-surface-2); box-shadow: var(--shadow-1), var(--hl-inset); }
+.c-prose .responsive-video-container iframe { position: absolute; inset: 0; width: 100%;
+  height: 100%; display: block; border: 0; }
+
+// tables --------------------------------------------------------------------
+// article.js wraps each content table in a .c-table card frame (rounded, glass
+// header, soft shadow) with horizontal scroll. Sparse row dividers only.
+.c-prose .c-table { margin: 1.9em 0; border-radius: var(--r-md); overflow: hidden;
+  border: 1px solid var(--c-hairline); box-shadow: var(--shadow-1), var(--hl-inset);
+  overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--c-surface); }
+.c-prose .c-table table { width: 100%; margin: 0; border-collapse: collapse; font-size: 14.5px; }
+.c-prose .c-table thead { background: var(--c-glass); box-shadow: var(--hl-inset); }
+.c-prose .c-table th { text-align: left; font-family: var(--font-display); font-weight: 600;
+  padding: 12px 16px; color: var(--c-text); white-space: nowrap;
+  border-bottom: 1px solid var(--c-hairline); }
+.c-prose .c-table td { padding: 11px 16px; border-bottom: 1px solid var(--c-hairline-2);
+  color: var(--c-muted); }
+.c-prose .c-table tbody tr:last-child td { border-bottom: none; }
+.c-prose .c-table tbody tr:hover { background: var(--c-surface-2); }
+// numbers read as mono
+.c-prose .c-table td { font-variant-numeric: tabular-nums; }
+
+
+// footnotes -----------------------------------------------------------------
+.c-prose .footnotes { margin-top: 3em; padding-top: 1.4em; border-top: 1px solid var(--c-hairline);
+  font-size: 14px; color: var(--c-muted); }
+.c-prose .footnotes ol { padding-left: 1.4em; }
+.c-prose .footnotes li { margin: 0.4em 0; }
+.c-prose a.footnote, .c-prose a.reversefootnote { text-decoration: none; font-family: var(--font-mono);
+  color: var(--_hue); }
+
+// notices / callouts (minimal-mistakes .notice + .notice--TYPE) -------------
+// semantic hue mapping + a matching icon chip (injected by article.js). Soft
+// tinted plate, hue rule, inset highlight - a proper callout card, not a bar.
+// The icon floats top-left; content stays a normal flow so any markup inside
+// (images, floats, lists, multiple paragraphs) is unaffected.
+.c-prose .notice, .c-prose [class*="notice--"] {
+  --_n: var(--_hue);
+  position: relative; margin: 1.9em 0; padding: 16px 18px; border-radius: var(--r-md);
+  font-size: 15px; line-height: 1.65;
+  background: var(--c-surface);
+  background: color-mix(in srgb, var(--_n) 8%, var(--c-surface));
+  border: 1px solid var(--c-hairline);
+  border-color: color-mix(in srgb, var(--_n) 22%, transparent);
+  border-left: 3px solid var(--_n); box-shadow: var(--hl-inset); }
+// when an icon was injected, indent the content and float the icon chip in
+.c-prose .notice.has-ico, .c-prose [class*="notice--"].has-ico { padding-left: 58px; }
+.c-prose .c-notice__ico { position: absolute; top: 15px; left: 16px;
+  width: 30px; height: 30px; border-radius: var(--r-sm);
+  display: grid; place-items: center; color: var(--_n);
+  background: color-mix(in srgb, var(--_n) 15%, var(--c-surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_n) 24%, transparent); }
+// the icon is absolute (out of flow); the first real content child leads the box
+.c-prose .notice > :first-child:not(.c-notice__ico),
+.c-prose [class*="notice--"] > :first-child:not(.c-notice__ico),
+.c-prose .c-notice__ico + * { margin-top: 0; }
+.c-prose .notice > :last-child, .c-prose [class*="notice--"] > :last-child { margin-bottom: 0; }
+.c-prose .notice--primary { --_n: var(--h-codeart); }
+.c-prose .notice--info    { --_n: var(--h-travel); }
+.c-prose .notice--success { --_n: var(--h-reading); }
+.c-prose .notice--warning { --_n: var(--h-projects); }
+.c-prose .notice--danger  { --_n: var(--h-writing); }
+
+
+
+// gist embeds ----------------------------------------------------------------
+.c-prose .gist { margin: 1.8em 0; }
+
+// --- TAGS -------------------------------------------------------------------
+.c-article__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(36px, 6vw, 52px); }
+.c-tag { font-family: var(--font-mono); font-size: 12.5px; padding: 6px 13px; border-radius: var(--r-pill);
+  color: var(--_hue); background: color-mix(in srgb, var(--_hue) 10%, var(--c-surface));
+  border: 1px solid color-mix(in srgb, var(--_hue) 20%, transparent);
+  transition: background 0.2s, color 0.2s; }
+.c-tag:hover { background: var(--_hue); color: #fff; }
+
+// --- PREV / NEXT ------------------------------------------------------------
+.c-pn { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: clamp(44px, 7vw, 64px); }
+.c-pn__link { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px;
+  border-radius: var(--r-lg); background: var(--c-surface); border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-1), var(--hl-inset); text-decoration: none;
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease), border-color 0.3s; }
+.c-pn__link:hover { transform: translateY(-3px); box-shadow: var(--shadow-2), var(--hl-inset);
+  border-color: transparent; }
+.c-pn__link--next { text-align: right; align-items: flex-end; }
+.c-pn__dir { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono);
+  font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--_hue); }
+.c-pn__title { font-family: var(--font-display); font-weight: 600; font-size: 15px; line-height: 1.35;
+  color: var(--c-text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; transition: color 0.2s; }
+.c-pn__link:hover .c-pn__title { color: var(--_hue); }
+@media (max-width: 560px) { .c-pn { grid-template-columns: 1fr; }
+  .c-pn__link--next { text-align: left; align-items: flex-start; } }
+
+// --- RELATED ("Keep reading") reuses the home .c-card system ----------------
+.c-related { margin-top: clamp(64px, 10vw, 100px); }
+.c-related__head { font-family: var(--font-display); font-weight: 650; font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: -0.02em; color: var(--c-text); margin: 0 0 24px; }
+.c-related__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 760px) { .c-related__grid { grid-template-columns: 1fr; } }
+
+// --- COMMENTS ---------------------------------------------------------------
+.c-comments { margin-top: clamp(64px, 10vw, 100px); }
+.c-comments__head { font-family: var(--font-display); font-weight: 650; font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: -0.02em; color: var(--c-text); margin: 0 0 24px; }
+
+// --- IMAGE LIGHTBOX (for .image-popup, built by article.js) -----------------
+.c-lightbox { position: fixed; inset: 0; z-index: var(--z-overlay); display: grid; place-items: center;
+  padding: clamp(20px, 5vw, 60px); background: color-mix(in srgb, #06060a 78%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity 0.25s var(--ease); }
+.c-lightbox.is-open { opacity: 1; }
+.c-lightbox[hidden] { display: none; }
+.c-lightbox img { max-width: 100%; max-height: 100%; border-radius: var(--r-md);
+  box-shadow: var(--shadow-3); transform: scale(0.98); transition: transform 0.25s var(--ease-spring); }
+.c-lightbox.is-open img { transform: scale(1); }
+.c-lightbox__close { position: absolute; top: clamp(16px, 3vw, 28px); right: clamp(16px, 3vw, 28px);
+  width: 40px; height: 40px; border-radius: var(--r-pill); border: none; cursor: pointer;
+  display: grid; place-items: center; color: #fff;
+  background: rgba(255,255,255,0.12); transition: background 0.2s, transform 0.2s var(--ease-spring); }
+.c-lightbox__close:hover { background: rgba(255,255,255,0.22); transform: scale(1.06); }
+
+// copy button "failed" state (clipboard rejected / unsupported)
+.c-prose .c-code__copy.is-fail { color: var(--h-writing);
+  background: color-mix(in srgb, var(--h-writing) 14%, transparent); }
+
+// --- MOTION: everything above uses transform/opacity; gate it all here ------
+@media (prefers-reduced-motion: reduce) {
+  .c-prose img, .c-prose a.image-popup img,
+  .c-prose figure.half > a img, .c-prose figure.third > a img,
+  .c-pn__link, .c-lightbox, .c-lightbox img,
+  .c-related__card, .c-related__card * {
+    transition: none !important; }
+  .c-pn__link:hover, .c-related__card:hover { transform: none; }
+  .c-lightbox img { transform: none; }
+  .c-toc__list a, .c-toc__list a::before { transition: none; }
+}
+

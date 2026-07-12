@@ -29,6 +29,12 @@ masthead_title           : "Colorful"
 breadcrumbs              : true
 words_per_minute         : 200
 enable_copy_code_button  : true
+
+# Colorful home - data-fetch counts (the layout reads these, never hardcodes them)
+home:
+  latest_count      : 6    # posts shown in "Latest writing"
+  collection_count  : 5    # newest entries per collection card in "A colorful world"
+  timeline_count    : 16   # entries in the interleaved Timeline view
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
 comments:
@@ -284,7 +290,7 @@ defaults:
       path: ""
       type: pages
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
   
   # tag
@@ -308,7 +314,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
       sidebar:
         nav:
@@ -327,7 +333,7 @@ defaults:
       path: ""
       type: movie
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
       share: false
       read_time: true
@@ -346,7 +352,7 @@ defaults:
       path: ""
       type: book
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
       share: false
       read_time: true
@@ -365,7 +371,7 @@ defaults:
       path: ""
       type: events
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
       share: false
       read_time: true
@@ -384,7 +390,7 @@ defaults:
       path: ""
       type: travel
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
       share: false
       read_time: true
@@ -403,7 +409,7 @@ defaults:
       path: ""
       type: ca
     values:
-      layout: single
+      layout: colorful-page
       author_profile: false
       share: false
       read_time: true
