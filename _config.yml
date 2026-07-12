@@ -7,11 +7,9 @@
 
 # Theme Settings
 #
-# Review documentation to determine if you should use `theme` or `remote_theme`
-# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
-
-theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes@4.27.3"
+# The "colorful" theme is vendored directly into this repository under
+# _layouts / _includes / _sass / assets (forked from minimal-mistakes-jekyll
+# 4.28.0). No theme gem is used, so there is no `theme` / `remote_theme` key.
 minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings

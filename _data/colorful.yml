@@ -1,0 +1,8 @@
+# Colorful theme data - content type to dopamine hue mapping.
+# Single source consumed by templates so hues stay consistent site-wide.
+hues:
+  writing:  "#FF5A6E"   # coral
+  projects: "#FF9F45"   # amber
+  reading:  "#22C58B"   # spring green
+  travel:   "#2BA9F4"   # sky
+  codeart:  "#6E76FF"   # iris

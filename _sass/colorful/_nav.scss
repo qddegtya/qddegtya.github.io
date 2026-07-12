@@ -1,0 +1,96 @@
+// =============================================================================
+// Colorful theme - navigation (floating glass pill)
+// Responsive: full pill on desktop, condensed with a morphing hamburger +
+// full-screen glass overlay menu on mobile.
+// =============================================================================
+
+.c-nav {
+  position: fixed; inset: 0 0 auto 0; z-index: var(--z-nav);
+  display: flex; justify-content: center; padding: 16px; pointer-events: none;
+}
+.c-nav__bar {
+  pointer-events: auto; display: flex; align-items: center; gap: 8px;
+  background: color-mix(in srgb, var(--c-surface) 72%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--c-hairline);
+  border-radius: var(--r-pill);
+  padding: 7px 8px 7px 16px; box-shadow: var(--shadow-1);
+  max-width: calc(100vw - 32px);
+}
+
+.c-brand { display: flex; align-items: center; gap: 9px; font-family: var(--font-display);
+  font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: var(--c-text); padding-right: 6px; }
+.c-brand__mark { width: 22px; height: 22px; display: block; flex-shrink: 0; }
+
+.c-nav__links { display: flex; align-items: center; gap: 2px; }
+.c-nav__link {
+  position: relative; padding: 8px 14px; border-radius: var(--r-pill);
+  font-size: 14.5px; font-weight: 500; color: var(--c-muted); white-space: nowrap;
+  transition: color 0.25s var(--ease);
+}
+.c-nav__link:hover, .c-nav__link.is-active { color: var(--c-text); }
+// hover underline in the link's own content hue
+.c-nav__link::after {
+  content: ""; position: absolute; left: 14px; right: 14px; bottom: 5px; height: 2px;
+  border-radius: 2px; background: var(--_hue, currentColor);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease);
+}
+.c-nav__link:hover::after, .c-nav__link.is-active::after { transform: scaleX(1); }
+
+.c-nav__right { display: flex; align-items: center; gap: 4px; }
+.c-theme-toggle {
+  width: 34px; height: 34px; border-radius: var(--r-pill); border: none; margin-left: 2px;
+  background: var(--c-surface-2); display: grid; place-items: center; cursor: pointer; color: var(--c-muted);
+  transition: transform 0.4s var(--ease-spring), color 0.25s, background 0.25s;
+}
+.c-theme-toggle:hover { transform: rotate(18deg); color: var(--c-text); }
+.c-theme-toggle .moon { display: none; }
+[data-theme="dark"] .c-theme-toggle .sun { display: none; }
+[data-theme="dark"] .c-theme-toggle .moon { display: block; }
+
+// hamburger (hidden on desktop)
+.c-burger {
+  display: none; width: 34px; height: 34px; border-radius: var(--r-pill); border: none;
+  background: var(--c-surface-2); cursor: pointer; position: relative; margin-left: 2px;
+}
+.c-burger span {
+  position: absolute; left: 9px; right: 9px; height: 2px; border-radius: 2px; background: var(--c-text);
+  transition: transform 0.4s var(--ease-spring), opacity 0.3s;
+}
+.c-burger span:nth-child(1) { top: 12px; }
+.c-burger span:nth-child(2) { top: 16px; }
+.c-burger span:nth-child(3) { top: 20px; }
+body.c-menu-open .c-burger span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+body.c-menu-open .c-burger span:nth-child(2) { opacity: 0; }
+body.c-menu-open .c-burger span:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
+
+// full-screen overlay menu (mobile)
+// while it's open the body is pinned (JS adds .c-scroll-lock + a top offset), so
+// the page behind can't scroll - prevents iOS Safari scroll bleed-through.
+body.c-scroll-lock { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }
+.c-menu {
+  position: fixed; inset: 0; z-index: var(--z-overlay);
+  background: color-mix(in srgb, var(--c-bg) 82%, transparent);
+  backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%);
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  padding: 0 var(--wrap-pad);
+  opacity: 0; visibility: hidden; transition: opacity 0.4s var(--ease), visibility 0.4s;
+}
+body.c-menu-open .c-menu { opacity: 1; visibility: visible; }
+.c-menu__link {
+  font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 9vw, 60px);
+  letter-spacing: -0.03em; color: var(--c-text); display: flex; align-items: center; gap: 16px;
+  transform: translateY(24px); opacity: 0; transition: transform 0.5s var(--ease), opacity 0.5s var(--ease);
+}
+body.c-menu-open .c-menu__link { transform: none; opacity: 1; }
+.c-menu__link .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--_hue, var(--c-muted)); flex-shrink: 0; }
+@for $i from 1 through 6 { body.c-menu-open .c-menu__link:nth-child(#{$i}) { transition-delay: #{0.06 * $i}s; } }
+
+@media (max-width: 820px) {
+  .c-nav__links { display: none; }
+  .c-burger { display: block; }
+}
+@media (min-width: 821px) {
+  .c-menu { display: none; }
+}

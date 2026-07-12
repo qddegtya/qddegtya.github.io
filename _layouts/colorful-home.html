@@ -1,0 +1,354 @@
+---
+layout: null
+---
+{%- comment -%}
+  Colorful theme - home layout (site root, real data).
+  Self-contained full document, independent of the legacy minimal-mistakes
+  layout. Pulls real posts, collections, projects, and photos via Liquid.
+  Category -> hue mapping lives in _data/colorful.yml.
+{%- endcomment -%}
+{%- assign hues = site.data.colorful.hues -%}
+{%- assign home = page.home -%}
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="{{ '/assets/css/colorful.css' | relative_url }}">
+  <script>
+    // set theme before paint to avoid FOUC
+    (function () {
+      try {
+        var t = localStorage.getItem("colorful-theme");
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+    })();
+  </script>
+</head>
+<body>
+
+
+  {%- comment -%} ---------- NAV ---------- {%- endcomment -%}
+  <nav class="c-nav">
+    <div class="c-nav__bar">
+      <a class="c-brand" href="{{ '/' | relative_url }}" aria-label="Colorful home">
+        <svg class="c-brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="6" cy="18" r="3.1" fill="#FF5A6E"/>
+          <circle cx="13" cy="15" r="3.1" fill="#FF9F45"/>
+          <circle cx="18" cy="9" r="3.1" fill="#22C58B"/>
+          <circle cx="16" cy="3.4" r="2.5" fill="#6E76FF"/>
+        </svg>
+        Colorful
+      </a>
+      <div class="c-nav__links">
+        <a class="c-nav__link is-active" href="{{ '/' | relative_url }}">Home</a>
+        <a class="c-nav__link" style="--_hue:{{ hues.writing }}" href="{{ '/posts/' | relative_url }}">Writing</a>
+        <a class="c-nav__link" style="--_hue:{{ hues.projects }}" href="{{ '/projects/' | relative_url }}">Projects</a>
+        <a class="c-nav__link" style="--_hue:{{ hues.reading }}" href="{{ '/book/' | relative_url }}">Reading</a>
+        <a class="c-nav__link" style="--_hue:{{ hues.travel }}" href="{{ '/travel/' | relative_url }}">Travel</a>
+        <a class="c-nav__link" style="--_hue:{{ hues.codeart }}" href="{{ '/ca/' | relative_url }}">Code &amp; Art</a>
+      </div>
+      <div class="c-nav__right">
+        <button class="c-nav__search" data-search-open aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="label">Search</span>
+          <span class="kbd">/</span>
+        </button>
+        <button class="c-theme-toggle" aria-label="Toggle color theme">
+          <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.5 4.5l1.5 1.5M18 18l1.5 1.5M2.5 12h2.2M19.3 12h2.2M4.5 19.5l1.5-1.5M18 6l1.5-1.5"/></svg>
+          <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="c-burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  {%- comment -%} ---------- MOBILE MENU ---------- {%- endcomment -%}
+  <div class="c-menu">
+    <a class="c-menu__link" style="--_hue:{{ hues.writing }}" href="{{ '/posts/' | relative_url }}"><span class="dot"></span>Writing</a>
+    <a class="c-menu__link" style="--_hue:{{ hues.projects }}" href="{{ '/projects/' | relative_url }}"><span class="dot"></span>Projects</a>
+    <a class="c-menu__link" style="--_hue:{{ hues.reading }}" href="{{ '/book/' | relative_url }}"><span class="dot"></span>Reading</a>
+    <a class="c-menu__link" style="--_hue:{{ hues.travel }}" href="{{ '/travel/' | relative_url }}"><span class="dot"></span>Travel</a>
+    <a class="c-menu__link" style="--_hue:{{ hues.codeart }}" href="{{ '/ca/' | relative_url }}"><span class="dot"></span>Code &amp; Art</a>
+  </div>
+
+  {%- comment -%} ---------- HERO ---------- {%- endcomment -%}
+  <header class="c-hero">
+    <div class="c-wrap c-hero__grid">
+      <div class="c-hero__copy">
+        <span class="c-hero__eyebrow">
+          <span class="c-hero__dots">
+            <i style="background:{{ hues.writing }}"></i><i style="background:{{ hues.projects }}"></i><i style="background:{{ hues.reading }}"></i><i style="background:{{ hues.travel }}"></i><i style="background:{{ hues.codeart }}"></i>
+          </span>
+          {{ home.eyebrow }}
+        </span>
+
+        <h1 class="c-hero__title">
+          {%- for line in home.title_lines -%}
+          {%- if forloop.index0 == home.title_accent_index -%}
+          <span class="line"><span class="word-color"><span class="fill">{{ line }}</span></span></span>
+          {%- else -%}
+          <span class="line"><span>{{ line }}</span></span>
+          {%- endif -%}
+          {%- endfor -%}
+        </h1>
+
+        {%- comment -%} sticker floats right; the intro text below wraps around it {%- endcomment -%}
+        <div class="c-hero__sticker">
+          <div class="c-hero__note" aria-hidden="true">
+            <b>{{ home.sticker_note }}</b>
+            <svg viewBox="0 0 70 58" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6 C 30 3, 56 8, 58 48" stroke-dasharray="3 6"/>
+              <path d="M49 39 L58 50 L67 41"/>
+            </svg>
+          </div>
+          <div class="c-hero__portrait">
+            <img src="{{ home.portrait | relative_url }}" alt="Archer" width="2089" height="1653">
+          </div>
+        </div>
+
+        <p class="c-hero__intro">{{ home.intro }}</p>
+
+        <div class="c-hero__cta">
+          <a class="c-btn c-btn--primary" href="{{ home.cta.url | relative_url }}">{{ home.cta.label }}
+            <span class="c-btn__ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+
+        {%- comment -%} clickable category nav (replaces the old dead pills) {%- endcomment -%}
+        <nav class="c-cats" aria-label="Browse by kind">
+          <a class="c-cat" style="--_hue:{{ hues.writing }}" href="{{ '/posts/' | relative_url }}"><span class="c-cat__dot"></span><b>Writing</b><span class="c-cat__n">{{ site.posts | size }}</span></a>
+          <a class="c-cat" style="--_hue:{{ hues.projects }}" href="{{ '/projects/' | relative_url }}"><span class="c-cat__dot"></span><b>Projects</b></a>
+          <a class="c-cat" style="--_hue:{{ hues.codeart }}" href="{{ '/ca/' | relative_url }}"><span class="c-cat__dot"></span><b>Code &amp; Art</b><span class="c-cat__n">{{ site.ca | size }}</span></a>
+          <a class="c-cat" style="--_hue:{{ hues.reading }}" href="{{ '/book/' | relative_url }}"><span class="c-cat__dot"></span><b>Reading</b><span class="c-cat__n">{{ site.book | size }}</span></a>
+          <a class="c-cat" style="--_hue:{{ hues.travel }}" href="{{ '/travel/' | relative_url }}"><span class="c-cat__dot"></span><b>Travel</b><span class="c-cat__n">{{ site.travel | size }}</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  {%- comment -%} ---------- ABOUT: bilingual intro, portrait, tech stack (preserved from the old homepage) ---------- {%- endcomment -%}
+  <section class="c-section c-wrap">
+    <div class="c-section__head c-reveal">
+      <h2 class="c-section__title" style="--_hue:{{ hues.codeart }}">About <span class="accent">me</span></h2>
+      <div class="c-lang" role="tablist" aria-label="Language">
+        <button data-lang="en" class="is-active">EN</button>
+        <button data-lang="zh">中</button>
+      </div>
+    </div>
+    <div class="c-about">
+      <div class="c-about__text c-reveal">
+        <p class="c-about__lead">Hi <span class="wave" id="c-wave">👋</span>, I am <code>Archer</code>.</p>
+        <p class="c-about__p" data-lang="en">{{ home.about.en }}</p>
+        <p class="c-about__p" data-lang="zh" hidden>{{ home.about.zh }}</p>
+      </div>
+      <aside class="c-about__aside c-reveal">
+        <p class="c-about__stackhead">Tech stack</p>
+        <div class="c-stack">
+          {%- for s in home.tech_stack -%}
+          <span class="c-stack__i"><img src="{{ '/assets/tech-stack/' | append: s | relative_url }}" alt="" loading="lazy"></span>
+          {%- endfor -%}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {%- comment -%} ---------- LATEST WRITING: card / list dual view ---------- {%- endcomment -%}
+  <section class="c-section c-wrap">
+    <div class="c-section__head c-reveal">
+      <h2 class="c-section__title" style="--_hue:{{ hues.writing }}">Latest <span class="accent">writing</span></h2>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+        <div class="c-viewtoggle" role="tablist" aria-label="View mode">
+          <button data-view="card" class="is-active" aria-label="Card view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            Cards
+          </button>
+          <button data-view="list" aria-label="List view">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>
+            List
+          </button>
+        </div>
+        <a class="c-section__link" href="{{ '/posts/' | relative_url }}">All {{ site.posts | size }} posts
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="c-writing" id="c-writing">
+      {%- for post in site.posts limit: 6 -%}
+        <a class="c-card c-reveal" style="--_hue:{{ hues.writing }}; --_wash:var(--w-writing)" href="{{ post.url | relative_url }}">
+          {%- if post.header.teaser -%}
+            <div class="c-card__media">
+              <img src="{{ post.header.teaser | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">
+            </div>
+          {%- else -%}
+            <div class="c-card__media c-card__media--none">
+              <svg class="c-card__glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H14l6 6v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5z"/><path d="M14 4v6h6M8 13h8M8 17h5"/></svg>
+            </div>
+          {%- endif -%}
+          <div class="c-card__body">
+            {%- if post.category -%}<span class="c-card__cat"><span class="dot"></span>{{ post.category }}</span>{%- endif -%}
+            <span class="c-card__title">{{ post.title }}</span>
+            {%- if post.excerpt -%}<span class="c-card__excerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines }}</span>{%- endif -%}
+            <span class="c-card__meta">
+              <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+              {%- if post.tags.size > 0 -%}<span class="sep"></span><span>{{ post.tags | first }}</span>{%- endif -%}
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} ---------- A COLORFUL WORLD: dynamic bento - the highlight ----------
+    Each collection is ONE tile. Its column/row span is derived from the LIVE
+    item count, so the mosaic grows with content (no hard-coded numbers):
+      count >= 5 -> 2x2   |  count >= 3 -> 2x1  |  count == 2 -> 1x2  |  else 1x1
+    A tile with a single item shows it full-bleed; a tile with many shows an
+    auto-filling inner grid (no inner scroll). Neutral shadows, one radius.
+  {%- endcomment -%}
+  {%- assign ca_items    = site.ca     | sort: 'date' | reverse -%}
+  {%- assign movie_items = site.movie  | sort: 'date' | reverse -%}
+  {%- assign book_items  = site.book   | sort: 'date' | reverse -%}
+  {%- assign event_items = site.events | sort: 'date' | reverse -%}
+  {%- assign travel_items= site.travel | sort: 'date' | reverse -%}
+
+  {%- comment -%} icon glyphs, defined once {%- endcomment -%}
+  {%- capture ic_ca -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="3"/></svg>{%- endcapture -%}
+  {%- capture ic_film -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M17 9h4M3 15h4M17 15h4"/></svg>{%- endcapture -%}
+  {%- capture ic_book -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5V21h15"/></svg>{%- endcapture -%}
+  {%- capture ic_pin -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>{%- endcapture -%}
+  {%- capture ic_map -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg>{%- endcapture -%}
+
+  <section class="c-section c-wrap">
+    <div class="c-section__head c-reveal">
+      <div style="--_hue:{{ hues.codeart }}">
+        <span class="c-section__eyebrow" style="--_hue:{{ hues.codeart }}">Beyond the blog</span>
+        <h2 class="c-section__title">A <span class="accent">colorful</span> world</h2>
+      </div>
+      <div class="c-world__toggle" id="c-world-toggle" role="tablist" aria-label="World view">
+        <button data-wview="cards" class="is-active">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          Explore
+        </button>
+        <button data-wview="timeline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><path d="M5 8v8M11 6h9M11 18h9"/></svg>
+          Timeline
+        </button>
+      </div>
+    </div>
+
+    <div class="c-world c-reveal" id="c-world">
+      {%- comment -%} Each collection is one stack-card; the section grows itself
+         as collections gain entries. Newest 5 per collection. {%- endcomment -%}
+      {% include colorful-collection-card.html items=ca_items     hue=hues.codeart  icon=ic_ca   label="Code & Art"      unit="works"  url="/ca/" %}
+      {% include colorful-collection-card.html items=movie_items  hue=hues.reading  icon=ic_film label="Watching"        unit="films"  url="/movie/" %}
+      {% include colorful-collection-card.html items=book_items   hue=hues.reading  icon=ic_book label="Reading"         unit="books"  url="/book/" %}
+      {% include colorful-collection-card.html items=event_items  hue=hues.projects icon=ic_pin  label="Out in the world" unit="events" url="/events/" %}
+      {% include colorful-collection-card.html items=travel_items hue=hues.travel   icon=ic_map  label="Footprints"      unit="places" url="/travel/" %}
+    </div>
+
+    {%- comment -%} ===== Timeline view: everything, interleaved by date ===== {%- endcomment -%}
+    {%- assign stream = site.ca | concat: site.movie | concat: site.book | concat: site.events | concat: site.travel | sort: 'date' | reverse -%}
+    <div class="c-timeline c-reveal" id="c-timeline">
+      <div class="c-tl">
+        {%- for it in stream limit: 16 -%}
+          {%- case it.collection -%}
+            {%- when 'ca' -%}{% assign hue = hues.codeart %}{% assign verb = 'released' %}{% assign tag = 'Code & Art' %}
+            {%- when 'movie' -%}{% assign hue = hues.reading %}{% assign verb = 'watched' %}{% assign tag = 'Film' %}
+            {%- when 'book' -%}{% assign hue = hues.reading %}{% assign verb = 'read' %}{% assign tag = 'Book' %}
+            {%- when 'events' -%}{% assign hue = hues.projects %}{% assign verb = 'showed up at' %}{% assign tag = 'Event' %}
+            {%- when 'travel' -%}{% assign hue = hues.travel %}{% assign verb = 'wandered through' %}{% assign tag = 'Travel' %}
+            {%- else -%}{% assign hue = hues.writing %}{% assign verb = 'noted' %}{% assign tag = 'Note' %}
+          {%- endcase -%}
+          <a class="c-tl__row" href="{{ it.url | relative_url }}" style="--_hue:{{ hue }}">
+            {%- if it.header.teaser -%}<span class="c-tl__thumb"><img src="{{ it.header.teaser | relative_url }}" alt="" loading="lazy"></span>{%- endif -%}
+            <span class="c-tl__body">
+              <span class="c-tl__act"><span class="who">Archer</span> {{ verb }} <span class="title">{{ it.title }}</span></span>
+              <span class="c-tl__when">{% if it.date %}{{ it.date | date: "%Y.%m.%d" }}{% endif %}<span class="c-tl__tag">{{ tag }}</span></span>
+            </span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ---------- MOMENTS: a desktop pile of photos you flip through ---------- {%- endcomment -%}
+  {%- if page.photo_wall -%}
+  <section class="c-section c-wrap">
+    <div class="c-section__head c-reveal">
+      <div style="--_hue:{{ hues.travel }}">
+        <span class="c-section__eyebrow" style="--_hue:{{ hues.travel }}">Off the clock</span>
+        <h2 class="c-section__title"><span class="accent">Moments</span></h2>
+      </div>
+      <span class="c-moments__hint">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V6.5a1.5 1.5 0 0 1 3 0V11m0-1.2a1.5 1.5 0 0 1 3 0V11m0-.8a1.5 1.5 0 0 1 3 0V13c0 3.5-1.8 6.5-5.5 6.5S8.5 17 7.4 15.4l-1.6-2.3a1.5 1.5 0 0 1 2.4-1.8l.8 1"/></svg>
+        grab a photo, flip through them
+      </span>
+    </div>
+    <div class="c-window c-reveal">
+      <div class="c-window__bar">
+        <span class="c-window__dots"><i></i><i></i><i></i></span>
+        <span class="c-window__title">~/moments</span>
+      </div>
+      <div class="c-moments-wrap">
+        <div class="c-moments" id="c-moments">
+          {%- for photo in page.photo_wall -%}
+          <figure class="c-snap" data-snap>
+            <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" loading="lazy" draggable="false">
+            <figcaption>{{ photo.caption }}</figcaption>
+          </figure>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} ---------- FOOTER ---------- {%- endcomment -%}
+  <footer class="c-footer">
+    <div class="c-wrap">
+      <div class="c-footer__grid">
+        <div class="c-footer__lead c-reveal">
+          <div class="c-footer__big">{{ home.footer.tagline }}</div>
+          <div class="c-footer__sign" aria-label="{{ home.footer.sign }}">{{ home.footer.sign }}</div>
+        </div>
+        <div class="c-footer__links c-reveal">
+          {%- for col in home.footer.columns -%}
+          <div class="c-footer__col">
+            <h4>{{ col.head }}</h4>
+            {%- for link in col.links -%}
+            <a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"{% if link.me %} rel="me"{% endif %}>{{ link.label }}</a>
+            {%- endfor -%}
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+      <div class="c-footer__base">
+        <span>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</span>
+        <span>Built with <a href="https://jekyllrb.com" rel="nofollow noopener">Jekyll</a>, deployed on <a href="https://vercel.com" rel="nofollow noopener">Vercel</a></span>
+      </div>
+    </div>
+  </footer>
+
+  {%- comment -%} ---------- SEARCH: top-expanding wide bar (vanilla lunr) ---------- {%- endcomment -%}
+  <div class="c-search-scrim" data-search-close></div>
+  <div class="c-search" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="c-search__box">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="c-search-input" class="c-search__input" type="search" placeholder="Search everything..." autocomplete="off" spellcheck="false">
+      <button class="c-search__close" aria-label="Close search">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        ESC
+      </button>
+    </div>
+    <div id="c-search-results" class="c-search__results"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
+</body>
+</html>

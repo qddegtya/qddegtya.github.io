@@ -1,0 +1,138 @@
+// =============================================================================
+// Colorful theme - base
+// Reset-lite, document typography, and shared primitives (buttons, grain).
+// Consumes tokens from _tokens.scss. Applies site-wide.
+// =============================================================================
+
+// All theme fonts are self-hosted in the repo (no CDN dependency), matching how
+// the theme self-hosts its other fonts. Chinese falls back to the curated system
+// stack (PingFang SC / Hiragino / Microsoft YaHei) declared in the tokens.
+@font-face { font-family: "General Sans"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("/assets/fonts/general-sans/general-sans-400.woff2") format("woff2"); }
+@font-face { font-family: "General Sans"; font-weight: 500; font-style: normal; font-display: swap;
+  src: url("/assets/fonts/general-sans/general-sans-500.woff2") format("woff2"); }
+@font-face { font-family: "General Sans"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("/assets/fonts/general-sans/general-sans-600.woff2") format("woff2"); }
+@font-face { font-family: "General Sans"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("/assets/fonts/general-sans/general-sans-700.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono/jetbrains-mono-400.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; font-style: normal; font-display: swap;
+  src: url("/assets/fonts/jetbrains-mono/jetbrains-mono-500.woff2") format("woff2"); }
+// Archer's handwritten signature (footer only)
+@font-face {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/caveat/caveat-v23-latin-600.woff2") format("woff2");
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0; position: relative;
+  font-family: var(--font-body);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+// faint fixed grain so the flat canvas never feels dead (GPU-safe: fixed layer)
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: var(--z-grain);
+  pointer-events: none; opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[data-theme="dark"] body::after { opacity: 0.035; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+button { font-family: inherit; }
+
+// --- Focus: one consistent, on-brand ring -----------------------------------
+// Kill the browser's default blue outline everywhere, but restore a crisp,
+// token-driven ring for KEYBOARD users only (:focus-visible). Mouse clicks show
+// nothing; Tab/arrow navigation shows a clear hue-tinted ring. Accessible and
+// consistent across every interactive element in the theme.
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--_hue, var(--c-text));
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+// pill-shaped controls get a pill ring so the offset ring follows their shape
+.c-coll__arrow:focus-visible, .c-nav__search:focus-visible,
+.c-world__toggle button:focus-visible, .c-viewtoggle button:focus-visible,
+.c-btn:focus-visible { border-radius: var(--r-pill); }
+
+.c-wrap { max-width: var(--wrap-max); margin: 0 auto; padding-inline: var(--wrap-pad); }
+
+// --- Reusable buttons -------------------------------------------------------
+.c-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  border: 1px solid transparent; border-radius: var(--r-pill);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease), background 0.25s, color 0.25s;
+}
+.c-btn:active { transform: scale(0.98); }
+
+.c-btn--primary {
+  background: var(--c-text); color: var(--c-bg);
+  padding: 8px 8px 8px 22px; box-shadow: var(--shadow-1);
+}
+.c-btn--primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+.c-btn--primary .c-btn__ico {
+  width: 30px; height: 30px; border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--c-bg) 20%, transparent);
+  display: grid; place-items: center;
+  transition: transform 0.3s var(--ease-spring);
+}
+.c-btn--primary:hover .c-btn__ico { transform: translate(2px, -1px); }
+
+.c-btn--ghost {
+  color: var(--c-text); padding: 11px 20px;
+  border-color: var(--c-hairline); background: var(--c-surface);
+}
+.c-btn--ghost:hover { transform: translateY(-2px); box-shadow: var(--shadow-1); }
+
+// --- Section heading rhythm -------------------------------------------------
+.c-section { padding-block: var(--space-section); }
+
+// section-title accent keyword: single content hue (rainbow is reserved for the
+// hero signature only - one bold moment per page, per taste-skill).
+.c-section__eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--c-faint); }
+.c-section__eyebrow::before { content: ""; width: 22px; height: 2px; border-radius: 2px;
+  background: var(--_hue, var(--c-faint)); }
+
+.c-section__head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: clamp(32px, 5vh, 56px); flex-wrap: wrap;
+}
+.c-section__title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(30px, 4.5vw, 56px); letter-spacing: -0.035em; line-height: 1.0;
+}
+.c-section__title .accent { color: var(--_hue, var(--c-text)); }
+.c-section__link {
+  font-size: 14.5px; font-weight: 500; color: var(--c-muted);
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: color 0.25s, gap 0.25s var(--ease);
+}
+.c-section__link:hover { color: var(--c-text); gap: 11px; }
+
+// motion primitive: reveal-on-scroll base state (JS adds .is-in)
+.c-reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.c-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .c-reveal { opacity: 1 !important; transform: none !important; }
+}

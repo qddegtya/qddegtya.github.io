@@ -1,0 +1,11 @@
+---
+# Colorful theme stylesheet. Compiled by Jekyll to /assets/css/colorful.css.
+# Self-contained: imports only the colorful partials, independent of the
+# legacy minimal-mistakes stylesheet.
+---
+@charset "utf-8";
+
+@import "colorful/tokens";
+@import "colorful/base";
+@import "colorful/nav";
+@import "colorful/home";

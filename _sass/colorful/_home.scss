@@ -1,0 +1,460 @@
+// =============================================================================
+// Colorful theme - home page sections
+// Hero (giant type), latest writing, content world, projects, photo wall.
+// =============================================================================
+
+// --- HERO -------------------------------------------------------------------
+.c-hero { position: relative; min-height: calc(100dvh - 20px); display: flex; flex-direction: column;
+  justify-content: center; padding: 116px 0 48px; }
+
+.c-hero__grid { width: 100%; position: relative; }
+.c-hero__copy { position: relative; min-width: 0; }
+
+// Portrait sticker floats right; the intro paragraph below the headline wraps
+// naturally around it (classic float text-wrap - simple and rock-solid on every
+// device). A small handwritten "that's me" note tucks onto the sticker.
+.c-hero__sticker { float: right; width: clamp(180px, 22vw, 300px); margin: 6px 0 8px clamp(20px, 3vw, 40px);
+  position: relative; shape-margin: 18px; }
+.c-hero__portrait { transform: rotate(3deg); }
+.c-hero__portrait img { width: 100%; height: auto; display: block;
+  filter: drop-shadow(0 16px 30px rgba(28,28,50,0.16)); }
+.c-hero__note { position: absolute; top: -46px; left: 8px; text-align: left; pointer-events: none; }
+.c-hero__note b { display: block; font-family: var(--font-sign); font-size: 24px; line-height: 1;
+  color: var(--c-text); transform: rotate(-5deg); margin-bottom: 2px; }
+.c-hero__note svg { width: 52px; height: auto; color: var(--h-writing); }
+// the note + arrow only make sense when the sticker sits in generous whitespace
+@media (max-width: 900px) { .c-hero__note { display: none; } }
+@media (max-width: 560px) {
+  .c-hero__sticker { float: none; width: 62vw; margin: 0 auto 18px; }
+}
+
+.c-hero__eyebrow { display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.01em; color: var(--c-muted); }
+.c-hero__dots { display: inline-flex; gap: 4px; }
+.c-hero__dots i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+
+.c-hero__title {
+  margin-top: 24px; font-family: var(--font-display); font-weight: 600;
+  letter-spacing: -0.045em; line-height: 0.9; font-size: clamp(48px, 9.5vw, 150px);
+}
+.c-hero__title .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
+.c-hero__title .line > span { display: block; }
+.c-hero__title .word-color .fill {
+  background: linear-gradient(92deg, var(--h-writing), var(--h-projects) 28%, var(--h-reading) 52%, var(--h-travel) 76%, var(--h-codeart));
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+// intro paragraph wraps around the floated sticker
+.c-hero__intro { margin-top: clamp(22px, 3.5vh, 38px); font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.7; color: var(--c-muted); }
+.c-hero__intro b { color: var(--c-text); font-weight: 600; }
+.c-hero__cta { clear: none; margin-top: clamp(24px, 3.5vh, 36px); display: flex; align-items: center; gap: 12px; }
+
+// clickable category strip (replaces the old dead "stars"), lives under the hero copy
+.c-cats { clear: both; margin-top: clamp(30px, 5vh, 52px); display: flex; gap: 10px; flex-wrap: wrap; }
+.c-cat { display: inline-flex; align-items: center; gap: 9px; padding: 9px 15px 9px 12px;
+  background: var(--c-surface); border: 1px solid var(--c-hairline); border-radius: var(--r-pill);
+  font-size: 13.5px; font-weight: 500; color: var(--c-muted); box-shadow: var(--shadow-1);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease), color 0.25s, border-color 0.25s; }
+.c-cat:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); color: var(--c-text);
+  border-color: color-mix(in srgb, var(--_hue) 45%, var(--c-hairline)); }
+.c-cat__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--_hue); flex-shrink: 0; }
+.c-cat b { color: var(--c-text); font-weight: 600; }
+.c-cat__n { font-family: var(--font-mono); font-size: 11.5px; color: var(--c-faint); }
+
+// --- SEARCH: nav-level trigger + top-expanding wide bar ----------------------
+// Trigger lives in the nav (primary level). A compact pill on desktop; icon-only
+// on small screens. Clicking expands a full-width bar from the top of the page.
+.c-nav__search { display: inline-flex; align-items: center; gap: 10px; cursor: text;
+  background: var(--c-surface-2); border: 1px solid transparent; border-radius: var(--r-pill);
+  padding: 7px 10px 7px 13px; color: var(--c-muted); font-size: 13.5px; white-space: nowrap;
+  transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.c-nav__search:hover { color: var(--c-text); border-color: var(--c-hairline); }
+.c-nav__search svg { flex-shrink: 0; }
+.c-nav__search .label { }
+.c-nav__search .kbd { font-family: var(--font-mono); font-size: 11px; color: var(--c-faint);
+  border: 1px solid var(--c-hairline); border-radius: 6px; padding: 2px 6px; }
+@media (max-width: 560px) { .c-nav__search .label, .c-nav__search .kbd { display: none; } .c-nav__search { padding: 8px; } }
+
+// dim scrim behind the expanding bar
+.c-search-scrim { position: fixed; inset: 0; z-index: var(--z-overlay);
+  background: color-mix(in srgb, var(--c-bg) 55%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  opacity: 0; visibility: hidden; transition: opacity 0.3s var(--ease), visibility 0.3s; }
+body.c-search-open .c-search-scrim { opacity: 1; visibility: visible; }
+
+// full-screen search: fills the whole viewport. Input pinned at the top,
+// results fill the remaining height and scroll. Same shape on every device.
+.c-search { position: fixed; inset: 0; z-index: calc(var(--z-overlay) + 1);
+  background: color-mix(in srgb, var(--c-bg) 94%, transparent);
+  backdrop-filter: saturate(180%) blur(28px); -webkit-backdrop-filter: saturate(180%) blur(28px);
+  display: flex; flex-direction: column; height: 100dvh;
+  transform: translateY(-14px); opacity: 0; visibility: hidden;
+  transition: transform 0.4s var(--ease-spring), opacity 0.3s var(--ease), visibility 0.4s; }
+body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible; }
+.c-search__box { flex-shrink: 0; width: 100%; max-width: 900px; margin: 0 auto;
+  padding: clamp(20px, 4vh, 40px) var(--wrap-pad) 20px; display: flex; align-items: center; gap: 16px;
+  border-bottom: 1px solid var(--c-hairline); }
+.c-search__box > svg { color: var(--c-muted); flex-shrink: 0; }
+.c-search__input { flex: 1; min-width: 0; border: none; background: transparent; outline: none; color: var(--c-text);
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(24px, 3.6vw, 44px); letter-spacing: -0.02em; }
+.c-search__input::placeholder { color: var(--c-faint); }
+// kill the native (blue on some themes) clear/cancel button; we ship our own
+.c-search__input::-webkit-search-cancel-button,
+.c-search__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
+// close: theme-token pill with an inline currentColor glyph (never a stray blue icon)
+.c-search__close { flex-shrink: 0; border: 1px solid var(--c-hairline); background: var(--c-surface-2);
+  color: var(--c-muted); cursor: pointer; height: 36px; padding: 0 14px; border-radius: var(--r-pill);
+  display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11.5px;
+  transition: color 0.2s, background 0.2s, border-color 0.2s; }
+.c-search__close:hover { color: var(--c-text); background: var(--c-surface); border-color: var(--c-hairline); }
+.c-search__results { flex: 1; min-height: 0; width: 100%; max-width: 900px; margin: 0 auto;
+  padding: 8px var(--wrap-pad) 40px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.c-search__hint { color: var(--c-faint); font-family: var(--font-mono); font-size: 13px; padding: 20px 0; }
+.c-search__results article { padding: 16px 0; border-bottom: 1px solid var(--c-hairline-2);
+  display: flex; align-items: center; gap: 16px; }
+.c-search__results article .thumb { flex: 0 0 68px; height: 68px; border-radius: var(--r-sm);
+  overflow: hidden; background: var(--c-surface-2); border: 1px solid var(--c-hairline-2); }
+.c-search__results article .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.c-search__results article .txt { min-width: 0; }
+.c-search__results article h3 { font-family: var(--font-display); font-weight: 600; font-size: 18px;
+  letter-spacing: -0.015em; margin: 0 0 4px; }
+.c-search__results article h3 a { transition: color 0.2s; }
+.c-search__results article h3 a:hover { color: var(--h-writing); }
+.c-search__results article p { color: var(--c-muted); font-size: 13.5px; line-height: 1.5; margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.c-stars { margin-top: clamp(44px, 7vh, 84px); display: flex; gap: 12px; flex-wrap: wrap; }
+.c-star { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px 9px 12px;
+  background: var(--c-surface); border: 1px solid var(--c-hairline); border-radius: var(--r-pill);
+  font-size: 13.5px; font-weight: 500; color: var(--c-muted); box-shadow: var(--shadow-1);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease), color 0.25s; }
+.c-star:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); color: var(--c-text); }
+.c-star .dot { width: 9px; height: 9px; border-radius: 50%; display: block; }
+.c-star b { color: var(--c-text); font-weight: 600; }
+
+// --- ABOUT: bilingual intro (EN default, toggle) + tech stack ---------------
+.c-lang { display: inline-flex; gap: 2px; padding: 3px; background: var(--c-surface-2);
+  border: 1px solid var(--c-hairline); border-radius: var(--r-pill); }
+.c-lang button { border: none; cursor: pointer; background: transparent; color: var(--c-muted);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: var(--r-pill);
+  transition: color 0.2s, background 0.3s var(--ease); }
+.c-lang button.is-active { color: var(--c-text); background: var(--c-surface); box-shadow: var(--shadow-1); }
+.c-about { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px);
+  align-items: start; }
+.c-about__lead { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.025em;
+  font-size: clamp(28px, 3.6vw, 42px); line-height: 1.2; margin-bottom: 22px; }
+.c-about__lead .wave { display: inline-block; transform-origin: 70% 70%; }
+.c-about__p { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.75; color: var(--c-muted); margin: 0; max-width: 62ch; }
+.c-about__p[data-lang="zh"] { line-height: 1.9; }
+// editorial drop-cap on the opening letter of the English intro
+.c-about__p[data-lang="en"]::first-letter {
+  float: left; font-family: var(--font-display); font-weight: 600; font-size: 3.4em; line-height: 0.78;
+  padding: 6px 12px 0 0; color: var(--h-writing); }
+.c-about__p code, .c-about code { font-family: var(--font-mono); font-size: 0.84em;
+  background: var(--c-surface-2); border: 1px solid var(--c-hairline-2); border-radius: 6px; padding: 1px 6px;
+  color: var(--c-text); }
+.c-about__p a { color: var(--h-writing); font-family: var(--font-mono); font-size: 0.8em; vertical-align: super;
+  text-decoration: none; padding: 0 2px; }
+.c-about__aside { position: sticky; top: 96px; }
+.c-about__stackhead { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--c-faint); margin: 0 0 14px; }
+.c-stack { display: flex; flex-wrap: wrap; gap: 10px; }
+.c-stack__i { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
+  background: var(--c-surface); border: 1px solid var(--c-hairline); box-shadow: var(--shadow-1), var(--hl-inset);
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease); }
+.c-stack__i:hover { transform: translateY(-3px) rotate(-4deg); box-shadow: var(--shadow-2), var(--hl-inset); }
+.c-stack__i img { width: 26px; height: 26px; object-fit: contain; border-radius: 5px; }
+@media (max-width: 820px) {
+  .c-about { grid-template-columns: 1fr; gap: 28px; }
+  .c-about__aside { position: static; }
+}
+
+// --- SECTION HEAD: view toggle (card / list) --------------------------------
+.c-viewtoggle { display: inline-flex; gap: 2px; padding: 3px; background: var(--c-surface-2);
+  border-radius: var(--r-pill); border: 1px solid var(--c-hairline); }
+.c-viewtoggle button { display: inline-flex; align-items: center; gap: 6px; border: none; cursor: pointer;
+  background: transparent; color: var(--c-muted); font-family: var(--font-mono); font-size: 12px;
+  font-weight: 500; padding: 7px 13px; border-radius: var(--r-pill); transition: color 0.2s, background 0.3s var(--ease); }
+.c-viewtoggle button.is-active { color: var(--c-text); background: var(--c-surface); box-shadow: var(--shadow-1), var(--hl-inset); }
+
+// --- LATEST WRITING: dual view (cards default, list optional) ----------------
+// Card grid
+.c-writing { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .c-writing { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .c-writing { grid-template-columns: 1fr; } }
+
+// Nested "double-bezel": the card is an outer shell (p-1.5, big radius) holding
+// an inner media plate with a concentric smaller radius, then the text body.
+.c-card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--c-surface); border: 1px solid var(--c-hairline);
+  border-radius: var(--r-lg); padding: 6px;
+  box-shadow: var(--shadow-1), var(--hl-inset);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease), border-color 0.3s;
+}
+.c-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-3), var(--hl-inset); border-color: transparent; }
+// during a card<->list swap, transitions are suppressed to avoid a border flash
+.c-writing.no-anim .c-card, .c-writing.no-anim .c-card * { transition: none !important; }
+.c-card__media { position: relative; aspect-ratio: 16 / 11; overflow: hidden;
+  border-radius: calc(var(--r-lg) - 6px); background: var(--c-surface-2);
+  box-shadow: inset 0 0 0 1px var(--c-hairline-2); }
+.c-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+.c-card:hover .c-card__media img { transform: scale(1.06); }
+// tasteful no-teaser cover: ONE shared placeholder used across blog cards and
+// the colorful-world tiles - soft hue wash + faint dot-grid + a hue glyph.
+.c-card__media--none, .c-coll__media--none {
+  display: grid; place-items: center; position: relative;
+  background: color-mix(in srgb, var(--_hue) 7%, var(--c-surface-2)); }
+.c-card__media--none::before, .c-coll__media--none::before {
+  content: ""; position: absolute; inset: 0; opacity: 0.5;
+  background-image: radial-gradient(var(--c-hairline) 1px, transparent 1px); background-size: 16px 16px; }
+.c-card__glyph, .c-coll__media--none svg {
+  position: relative; color: var(--_hue); opacity: 0.7; }
+.c-card__glyph { width: 34px; height: 34px; }
+.c-coll__media--none svg { width: 40px; height: 40px; }
+// category chip: small label at the top of the body (card mode) / inline (list)
+.c-card__cat { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--c-muted); }
+.c-card__cat .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--_hue); }
+.c-card__body { padding: 16px 14px 14px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+.c-card__title { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: -0.015em;
+  line-height: 1.3; transition: color 0.25s;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.c-card:hover .c-card__title { color: var(--_hue); }
+.c-card__excerpt { font-size: 13.5px; line-height: 1.55; color: var(--c-muted);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.c-card__meta { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--c-hairline-2);
+  font-family: var(--font-mono); font-size: 11.5px; color: var(--c-faint); display: flex; align-items: center; gap: 10px; }
+.c-card__meta .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--c-faint); opacity: 0.5; }
+
+// --- List view: a dense text timeline (no media, no wasted whitespace) --------
+// Applied when .c-writing carries .is-list. Reads like the "colorful world"
+// timeline: category + title on one line, date + excerpt as a quiet second line.
+.c-writing.is-list { display: flex; flex-direction: column; gap: 0; }
+.is-list .c-card { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: baseline;
+  column-gap: 24px; row-gap: 6px; padding: 20px 6px; border: none; border-radius: 0; box-shadow: none;
+  background: transparent; border-bottom: 1px solid var(--c-hairline-2); }
+.is-list .c-card:hover { transform: none; box-shadow: none; }
+.is-list .c-card__media, .is-list .c-card__glyph { display: none; }
+.is-list .c-card__body { display: contents; }               // let grid place body children directly
+.is-list .c-card__cat { grid-column: 1; font-size: 11px; margin-bottom: -2px; }
+.is-list .c-card__title { grid-column: 1; grid-row: 2; font-size: clamp(19px, 2.4vw, 26px); -webkit-line-clamp: 1;
+  display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.is-list .c-card__excerpt { grid-column: 1; grid-row: 3; -webkit-line-clamp: 1; font-size: 14px; margin-top: 2px; }
+.is-list .c-card__meta { grid-column: 2; grid-row: 1 / 3; align-self: center; margin: 0; padding: 0; border: none;
+  white-space: nowrap; }
+@media (max-width: 620px) {
+  .is-list .c-card { grid-template-columns: 1fr; }
+  .is-list .c-card__meta { grid-column: 1; grid-row: 4; margin-top: 4px; }
+  .is-list .c-card__title { white-space: normal; -webkit-line-clamp: 2; }
+}
+
+// --- A COLORFUL WORLD --------------------------------------------------------
+// Each collection is ONE card - a small STACK of its latest entries you flip
+// through with < / > arrows. The cards sit in the SAME responsive grid as the
+// blog list (.c-writing), so the two sections read as one family. No manual
+// spans, no bento math: pure equal-size cards, robust on every device.
+.c-world { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .c-world { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .c-world { grid-template-columns: 1fr; } }
+
+.c-world__toggle { display: inline-flex; gap: 2px; padding: 3px; background: var(--c-surface-2);
+  border: 1px solid var(--c-hairline); border-radius: var(--r-pill); }
+.c-world__toggle button { display: inline-flex; align-items: center; gap: 6px; border: none; cursor: pointer;
+  background: transparent; color: var(--c-muted); font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  padding: 7px 13px; border-radius: var(--r-pill); transition: color 0.2s, background 0.3s var(--ease); }
+.c-world__toggle button.is-active { color: var(--c-text); background: var(--c-surface); box-shadow: var(--shadow-1), var(--hl-inset); }
+
+// The collection card: an outer glass shell (double-bezel), holding a stack deck
+// and a hue-tinted caption/nav bar. Same shell language as the blog card.
+.c-coll {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--c-surface); border: 1px solid var(--c-hairline);
+  border-radius: var(--r-lg); padding: 6px;
+  box-shadow: var(--shadow-1), var(--hl-inset);
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease), border-color 0.3s; }
+.c-coll:hover { transform: translateY(-6px); box-shadow: var(--shadow-3), var(--hl-inset); border-color: transparent; }
+
+// The deck: a fixed-ratio window onto a horizontal track of full-width cards.
+// A classic carousel: the track slides by whole card-widths. overflow:hidden on
+// the deck clips the off-screen cards - no magic numbers, works for any count.
+.c-coll__deck { position: relative; border-radius: calc(var(--r-lg) - 6px);
+  aspect-ratio: 5 / 4; overflow: hidden; background: var(--c-surface-2);
+  box-shadow: inset 0 0 0 1px var(--c-hairline-2); }
+// the track holds N cards in a row; JS sets --active (0..N-1) and the whole flip
+// is this one transform. That is the entire state change - nothing else moves.
+.c-coll__track { position: absolute; inset: 0; display: flex; width: 100%; height: 100%;
+  transform: translateX(calc(var(--active, 0) * -100%));
+  transition: transform 0.5s var(--ease-spring); will-change: transform; }
+.c-coll__card { position: relative; flex: 0 0 100%; width: 100%; height: 100%;
+  border-radius: inherit; overflow: hidden; }
+// only the on-screen card is interactive; the rest are scrolled out of view
+.c-coll__card:not(.is-front) { pointer-events: none; }
+
+.c-coll__media { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: inherit; }
+.c-coll__media img { width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.7s var(--ease); }
+.c-coll__card.is-front:hover .c-coll__media img { transform: scale(1.05); }
+// scrim so the title stays legible over any teaser
+.c-coll__scrim { position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(to top, rgba(8,8,14,0.72) 0%, rgba(8,8,14,0.24) 34%, transparent 62%); }
+.c-coll__title { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2;
+  font-family: var(--font-display); font-weight: 600; font-size: 16px; line-height: 1.25;
+  letter-spacing: -0.01em; color: #fff; text-decoration: none;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.4); }
+a.c-coll__title:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+// video card: play button, click swaps in the theme-rendered iframe in place
+.c-coll__card--video .c-coll__media { cursor: pointer; }
+.c-coll__play { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; }
+.c-coll__play span { width: 58px; height: 58px; border-radius: var(--r-pill); display: grid; place-items: center;
+  color: #fff; background: color-mix(in srgb, var(--_hue) 88%, #000);
+  box-shadow: var(--shadow-2); transition: transform 0.3s var(--ease-spring); }
+.c-coll__card--video .c-coll__media:hover .c-coll__play span { transform: scale(1.1); }
+.c-coll__card.is-playing .c-coll__play,
+.c-coll__card.is-playing .c-coll__scrim,
+.c-coll__card.is-playing .c-coll__title { display: none; }
+.c-coll__card.is-playing .c-coll__media img { display: none; }
+.c-coll__card.is-playing .responsive-video-container {
+  position: absolute; inset: 0; margin: 0; padding: 0; height: 100%; max-width: none; }
+.c-coll__card.is-playing .responsive-video-container iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+// caption / nav bar: hue-tinted glass, concentric bottom radius, sits in the shell
+.c-coll__foot { display: flex; align-items: center; gap: 10px; margin-top: 6px;
+  padding: 9px 10px 9px 12px; border-radius: calc(var(--r-lg) - 6px);
+  background: color-mix(in srgb, var(--_hue) 9%, var(--c-glass));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue) 12%, transparent), var(--hl-inset); }
+.c-coll__id { display: inline-flex; align-items: center; gap: 9px; flex: 1; min-width: 0; text-decoration: none; }
+.c-coll__ico { width: 30px; height: 30px; border-radius: var(--r-sm); flex-shrink: 0; display: grid; place-items: center;
+  color: var(--_hue); background: color-mix(in srgb, var(--_hue) 16%, var(--c-surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue) 22%, transparent); }
+.c-coll__ico svg { width: 16px; height: 16px; }
+.c-coll__name { min-width: 0; font-family: var(--font-display); font-weight: 600; font-size: 14.5px;
+  letter-spacing: -0.01em; color: var(--c-text); line-height: 1.2; transition: color 0.25s;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-coll__id:hover .c-coll__name { color: var(--_hue); }
+
+// the arrow cluster: two round glass buttons + a mono position readout
+.c-coll__nav { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.c-coll__pos { font-family: var(--font-mono); font-size: 10.5px; color: var(--c-muted);
+  min-width: 30px; text-align: center; }
+.c-coll__pos b { color: var(--_hue); font-weight: 600; }
+.c-coll__arrow { width: 28px; height: 28px; border-radius: var(--r-pill); border: none; cursor: pointer;
+  display: grid; place-items: center; color: var(--c-text);
+  background: color-mix(in srgb, var(--_hue) 14%, var(--c-surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue) 20%, transparent);
+  transition: transform 0.25s var(--ease-spring), background 0.25s, color 0.25s; }
+.c-coll__arrow:hover { background: var(--_hue); color: #fff; transform: scale(1.08); }
+.c-coll__arrow:active { transform: scale(0.94); }
+.c-coll__arrow:disabled { opacity: 0.3; cursor: default; pointer-events: none; transform: none; }
+// single-item (or empty) collections show a plain count pill instead of arrows
+.c-coll__n { flex-shrink: 0; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500;
+  color: var(--_hue); padding: 3px 9px; border-radius: var(--r-pill); white-space: nowrap;
+  background: color-mix(in srgb, var(--_hue) 15%, var(--c-surface)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .c-coll__track { transition: none; will-change: auto; }
+}
+
+
+
+// --- Timeline view: interleaved dated stream of everything -------------------
+.c-world.is-timeline { display: none; }
+.c-timeline { display: none; }
+.c-timeline.is-on { display: block; }
+.c-tl { position: relative; max-width: 720px; margin: 0 auto; }
+.c-tl__row { position: relative; display: flex; gap: 18px; padding: 16px 4px 16px 34px; text-decoration: none;
+  border-bottom: 1px solid var(--c-hairline-2); transition: background 0.25s var(--ease); border-radius: var(--r-md); }
+.c-tl__row:last-child { border-bottom: none; }
+.c-tl__row:hover { background: var(--c-surface); }
+// the rail line + node, drawn crisply (no glow)
+.c-tl__row::before { content: ""; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: var(--c-hairline); }
+.c-tl__row:first-child::before { top: 24px; }
+.c-tl__row:last-child::before { bottom: calc(100% - 24px); }
+.c-tl__row::after { content: ""; position: absolute; left: 5px; top: 22px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--_hue); border: 3px solid var(--c-bg); }
+.c-tl__thumb { flex: 0 0 96px; height: 66px; border-radius: var(--r-sm); overflow: hidden;
+  background: var(--c-surface-2); border: 1px solid var(--c-hairline); }
+.c-tl__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.c-tl__body { min-width: 0; flex: 1; align-self: center; }
+.c-tl__act { font-size: 15px; color: var(--c-muted); line-height: 1.45; }
+.c-tl__act .who { color: var(--c-text); font-weight: 600; }
+.c-tl__act .title { color: var(--c-text); font-weight: 600; }
+.c-tl__row:hover .c-tl__act .title { color: var(--_hue); }
+.c-tl__when { margin-top: 4px; font-family: var(--font-mono); font-size: 11.5px; color: var(--c-faint);
+  display: inline-flex; align-items: center; gap: 7px; }
+.c-tl__tag { color: var(--_hue); }
+
+// --- MOMENTS: draggable photo pile inside a Mac-style desktop window ----------
+// A window chrome (traffic-light dots + title) wraps a graph-paper surface; the
+// photos start stacked in the centre like a pile you flip through. Everything is
+// clamped inside the window, on every device.
+.c-window { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-2), var(--hl-inset); background: var(--c-surface); }
+.c-window__bar { display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+  border-bottom: 1px solid var(--c-hairline); background: var(--c-glass);
+  box-shadow: var(--hl-inset); }
+.c-window__dots { display: inline-flex; gap: 7px; }
+.c-window__dots i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+.c-window__dots i:nth-child(1) { background: #ff5f57; }
+.c-window__dots i:nth-child(2) { background: #febc2e; }
+.c-window__dots i:nth-child(3) { background: #28c840; }
+.c-window__title { font-family: var(--font-mono); font-size: 12px; color: var(--c-faint); }
+.c-moments-wrap { position: relative; overflow: hidden;
+  background:
+    linear-gradient(var(--c-hairline-2) 1px, transparent 1px) 0 0 / 26px 26px,
+    linear-gradient(90deg, var(--c-hairline-2) 1px, transparent 1px) 0 0 / 26px 26px,
+    var(--c-surface); }
+.c-moments { position: relative; width: 100%; padding: clamp(16px, 3vw, 32px); touch-action: pan-y;
+  user-select: none; -webkit-user-select: none; }
+.c-snap {
+  position: absolute; top: 0; left: 0;
+  background: var(--c-surface); padding: 8px; border-radius: var(--r-sm);
+  border: 1px solid var(--c-hairline);
+  box-shadow: var(--shadow-1);
+  transform-origin: center; cursor: grab;
+  transition: transform 0.5s var(--ease-spring), box-shadow 0.3s var(--ease); touch-action: none; }
+.c-snap.is-dragging { cursor: grabbing; will-change: transform; transition: box-shadow 0.2s var(--ease);
+  box-shadow: var(--shadow-3); }
+.c-snap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 2px;
+  filter: saturate(0.92) contrast(1.02); pointer-events: none; }
+.c-snap figcaption { margin-top: 7px; text-align: center;
+  font-family: var(--font-sign); font-size: clamp(14px, 1.4vw, 18px); color: var(--c-muted); line-height: 1; }
+.c-moments__hint { display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--c-muted); }
+.c-moments__hint svg { color: var(--h-travel); flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { .c-snap { cursor: default; } }
+
+// --- FOOTER -----------------------------------------------------------------
+.c-footer { border-top: 1px solid var(--c-hairline); padding-block: clamp(48px, 8vh, 96px) 40px; margin-top: var(--space-section); }
+.c-footer__grid { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.c-footer__big { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 5vw, 60px);
+  letter-spacing: -0.035em; line-height: 1.0; max-width: 16ch; }
+.c-footer__sign { margin-top: 20px; font-family: var(--font-sign); font-weight: 600;
+  font-size: clamp(46px, 6vw, 72px); line-height: 0.8; color: var(--_hue, var(--h-writing));
+  transform: rotate(-4deg); transform-origin: left center; width: max-content; }
+.c-footer__links { display: flex; gap: 40px; flex-wrap: wrap; }
+.c-footer__col h4 { font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--c-faint); margin: 0 0 14px; font-weight: 500; }
+.c-footer__col a { display: block; font-size: 15px; color: var(--c-muted); padding: 4px 0; transition: color 0.2s; }
+.c-footer__col a:hover { color: var(--c-text); }
+.c-footer__base { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--c-hairline-2);
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-size: 13px; color: var(--c-faint); font-family: var(--font-mono); }
+.c-footer__base a { color: var(--c-muted); text-decoration: underline; text-decoration-color: var(--c-hairline);
+  text-underline-offset: 2px; transition: color 0.2s, text-decoration-color 0.2s; }
+.c-footer__base a:hover { color: var(--c-text); text-decoration-color: var(--h-writing); }
+
+// --- Responsive collapse ----------------------------------------------------
+@media (max-width: 900px) {
+  .c-world { grid-template-columns: 1fr; }
+  .c-col--lead { grid-column: span 1; }
+}
+@media (max-width: 620px) {
+  .c-hero__foot { flex-direction: column; align-items: flex-start; }
+}

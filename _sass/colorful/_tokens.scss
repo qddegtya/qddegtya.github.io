@@ -1,0 +1,97 @@
+// =============================================================================
+// Colorful theme - design tokens
+// The single source of truth for color, type, space, radius, shadow, motion.
+// Concept: "Colorful = content is the color." A quiet near-white canvas where
+// each content type owns one dopamine hue. Whitespace leads; color punctuates.
+// Dual theme: light is default, dark overrides under [data-theme="dark"].
+// =============================================================================
+
+:root {
+  // --- Neutral canvas (light, default) ---
+  --c-bg:        #FCFCFD;   // cloud-white cool
+  --c-surface:   #FFFFFF;   // cards / elevated
+  --c-surface-2: #F6F7F9;   // recessed / subtle fills
+  --c-text:      #14141C;   // near-black, never pure
+  --c-muted:     #63636F;   // secondary text
+  --c-faint:     #9A9AA6;   // tertiary / meta
+  --c-hairline:  rgba(20, 20, 28, 0.08);
+  --c-hairline-2:rgba(20, 20, 28, 0.04);
+
+  // --- Content spectrum: each content type owns ONE hue ---
+  --h-writing:  #FF5A6E;   // coral
+  --h-projects: #FF9F45;   // amber
+  --h-reading:  #22C58B;   // spring green
+  --h-travel:   #2BA9F4;   // sky
+  --h-codeart:  #6E76FF;   // iris
+  // tinted washes (for soft backgrounds / badges) - light mode
+  --w-writing:  rgba(255, 90, 110, 0.10);
+  --w-projects: rgba(255, 159, 69, 0.10);
+  --w-reading:  rgba(34, 197, 139, 0.10);
+  --w-travel:   rgba(43, 169, 244, 0.10);
+  --w-codeart:  rgba(110, 118, 255, 0.10);
+
+  // --- Soft, cool-tinted diffuse shadows (Soft Structuralism) ---
+  --shadow-1: 0 2px 6px rgba(28, 28, 50, 0.04), 0 8px 24px rgba(28, 28, 50, 0.05);
+  --shadow-2: 0 4px 12px rgba(28, 28, 50, 0.05), 0 18px 50px rgba(28, 28, 50, 0.08);
+  --shadow-3: 0 30px 80px rgba(28, 28, 50, 0.12);
+
+  // --- Glass / "lit plate" language (matches the nav, minus the blur) ---
+  // Semi-transparent surface for raised panels; the nav uses this + backdrop-blur,
+  // scrolling surfaces use it WITHOUT blur (perf rule) and rely on --hl-inset instead.
+  --c-glass:   color-mix(in srgb, var(--c-surface) 76%, transparent);
+  // Top inner highlight: the 1px lit edge that makes a surface read as physical glass.
+  --hl-inset:  inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  // --- Type ---
+  --font-display: "General Sans", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-body:    "General Sans", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-sign:    "Caveat", "Segoe Script", cursive;   // Archer's handwritten signature (footer only)
+
+  // --- Radius scale (documented, applied everywhere) ---
+  --r-sm:   8px;    // inputs, small chips
+  --r-md:   16px;   // cards, panels
+  --r-lg:   24px;   // large feature tiles
+  --r-pill: 999px;  // interactive pills, buttons
+
+  // --- Spacing rhythm ---
+  --space-section: clamp(72px, 12vh, 160px);
+  --wrap-max: 1240px;
+  --wrap-pad: clamp(20px, 5vw, 44px);
+
+  // --- Motion ---
+  --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  // z-index scale
+  --z-nav: 50;
+  --z-overlay: 90;
+  --z-grain: 100;
+}
+
+// --- Dark theme overrides ---
+[data-theme="dark"] {
+  --c-bg:        #0D0D13;
+  --c-surface:   #16161F;
+  --c-surface-2: #1D1D28;
+  --c-text:      #ECECF3;
+  --c-muted:     #9A9AAB;
+  --c-faint:     #6A6A78;
+  --c-hairline:  rgba(255, 255, 255, 0.10);
+  --c-hairline-2:rgba(255, 255, 255, 0.05);
+
+  // hues stay recognisable, tinted washes get slightly stronger on dark
+  --w-writing:  rgba(255, 90, 110, 0.16);
+  --w-projects: rgba(255, 159, 69, 0.16);
+  --w-reading:  rgba(34, 197, 139, 0.16);
+  --w-travel:   rgba(43, 169, 244, 0.16);
+  --w-codeart:  rgba(110, 118, 255, 0.16);
+
+  --shadow-1: 0 2px 6px rgba(0, 0, 0, 0.30), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.35), 0 18px 50px rgba(0, 0, 0, 0.40);
+  --shadow-3: 0 30px 80px rgba(0, 0, 0, 0.55);
+
+  // On dark, the surface is lighter than the page, so the highlight is subtle.
+  --c-glass:   color-mix(in srgb, var(--c-surface) 72%, transparent);
+  --hl-inset:  inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}

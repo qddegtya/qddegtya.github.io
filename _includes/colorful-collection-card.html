@@ -1,0 +1,78 @@
+{%- comment -%}
+  A "collection" card for the "A colorful world" section.
+
+  It renders the latest few entries of one collection as a small STACK of cards
+  you flip through with the < / > arrows (or swipe / arrow keys). The front card
+  shows the entry's teaser (or a hue placeholder); a video entry shows a play
+  button and plays in place via the theme's own video include.
+
+  Params (all required unless noted):
+    include.items   - a pre-sorted (newest first) array of collection docs
+    include.hue     - the collection's dopamine hue (a CSS colour)
+    include.icon    - captured SVG markup for the collection's glyph
+    include.label   - human name, e.g. "Reading"
+    include.unit    - plural noun for the count pill, e.g. "books"
+    include.url     - the collection's index URL (caption is a link to it)
+
+  The whole card is data-driven: drop new docs into the collection and the stack
+  updates on the next build. Cap at 5 so the pile stays light.
+{%- endcomment -%}
+{%- assign items = include.items -%}
+{%- assign total = items | size -%}
+{%- assign deck = items | slice: 0, 5 -%}
+{%- assign shown = deck | size -%}
+<div class="c-coll c-reveal{% if total == 0 %} c-coll--empty{% endif %}"
+     style="--_hue:{{ include.hue }}" data-coll data-count="{{ shown }}">
+  <div class="c-coll__deck">
+    <div class="c-coll__track" data-track>
+    {%- for it in deck -%}
+    {%- assign idx = forloop.index0 -%}
+    <article class="c-coll__card{% if idx == 0 %} is-front{% endif %}{% if it.header.video %} c-coll__card--video{% endif %}"
+             {% if it.header.video %}data-video{% endif %}>
+      <div class="c-coll__media"{% if it.header.video %} role="button" tabindex="{% if idx == 0 %}0{% else %}-1{% endif %}" aria-label="Play {{ it.title | escape }}"{% endif %}>
+        {%- if it.header.teaser -%}
+          <img src="{{ it.header.teaser | relative_url }}" alt="" loading="lazy">
+        {%- else -%}
+          <span class="c-coll__media--none">{{ include.icon }}</span>
+        {%- endif -%}
+        {%- if it.header.video -%}
+        <span class="c-coll__play"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
+        <template class="c-coll__player">{% include video id=it.header.video.id provider=it.header.video.provider danmaku=it.header.video.danmaku %}</template>
+        {%- endif -%}
+        <span class="c-coll__scrim"></span>
+        <a class="c-coll__title" href="{{ it.url | relative_url }}">{{ it.title | escape }}</a>
+      </div>
+    </article>
+    {%- endfor -%}
+    {%- if total == 0 -%}
+    <article class="c-coll__card is-front">
+      <div class="c-coll__media">
+        <span class="c-coll__media--none">{{ include.icon }}</span>
+        <span class="c-coll__scrim"></span>
+        <span class="c-coll__title">Nothing here yet</span>
+      </div>
+    </article>
+    {%- endif -%}
+    </div>
+  </div>
+
+  <div class="c-coll__foot">
+    <a class="c-coll__id" href="{{ include.url | relative_url }}">
+      <span class="c-coll__ico">{{ include.icon }}</span>
+      <span class="c-coll__name">{{ include.label }}</span>
+    </a>
+    {%- if shown > 1 -%}
+    <div class="c-coll__nav">
+      <button type="button" class="c-coll__arrow" data-prev aria-label="Previous {{ include.label }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="c-coll__pos"><b data-pos>1</b>/{{ shown }}</span>
+      <button type="button" class="c-coll__arrow" data-next aria-label="Next {{ include.label }}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    {%- else -%}
+    <span class="c-coll__n">{{ total }} {{ include.unit }}</span>
+    {%- endif -%}
+  </div>
+</div>
