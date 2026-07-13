@@ -49,19 +49,27 @@
 .c-hero__intro { margin-top: clamp(22px, 3.5vh, 38px); font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1.7; color: var(--c-muted); }
 .c-hero__intro b { color: var(--c-text); font-weight: 600; }
+.c-hero__intro a { color: var(--h-writing); text-decoration: underline;
+  text-decoration-thickness: 1px; text-underline-offset: 2.5px;
+  text-decoration-color: color-mix(in srgb, var(--h-writing) 40%, transparent);
+  transition: text-decoration-color 0.2s; }
+.c-hero__intro a:hover { text-decoration-color: var(--h-writing); }
 .c-hero__cta { clear: none; margin-top: clamp(24px, 3.5vh, 36px); display: flex; align-items: center; gap: 12px; }
 
 // clickable category strip (replaces the old dead "stars"), lives under the hero copy
-.c-cats { clear: both; margin-top: clamp(30px, 5vh, 52px); display: flex; gap: 10px; flex-wrap: wrap; }
-.c-cat { display: inline-flex; align-items: center; gap: 9px; padding: 9px 15px 9px 12px;
-  background: var(--c-surface); border: 1px solid var(--c-hairline); border-radius: var(--r-pill);
-  font-size: 13.5px; font-weight: 500; color: var(--c-muted); box-shadow: var(--shadow-1);
-  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease), color 0.25s, border-color 0.25s; }
-.c-cat:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); color: var(--c-text);
-  border-color: color-mix(in srgb, var(--_hue) 45%, var(--c-hairline)); }
-.c-cat__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--_hue); flex-shrink: 0; }
-.c-cat b { color: var(--c-text); font-weight: 600; }
-.c-cat__n { font-family: var(--font-mono); font-size: 11.5px; color: var(--c-faint); }
+// In-page jump nav under the hero CTA. Deliberately lighter than the primary
+// CTA - a lead-in word + hue-dotted text links - so it reads as "or wander in",
+// a secondary way to roam this page, not a competing set of buttons.
+.c-jump { clear: both; margin-top: clamp(22px, 3.2vh, 34px); display: flex; align-items: center;
+  gap: 6px 16px; flex-wrap: wrap; }
+.c-jump__lead { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--c-faint); }
+.c-jump__link { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px;
+  font-weight: 500; color: var(--c-muted); transition: color 0.2s; }
+.c-jump__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--_hue); flex-shrink: 0;
+  transition: transform 0.25s var(--ease-spring); }
+.c-jump__link:hover { color: var(--c-text); }
+.c-jump__link:hover .c-jump__dot { transform: scale(1.35); }
 
 // --- SEARCH: nav-level trigger + top-expanding wide bar ----------------------
 // Trigger lives in the nav (primary level). A compact pill on desktop; icon-only
@@ -457,6 +465,9 @@ a.c-coll__title:hover { text-decoration: underline; text-underline-offset: 3px; 
   color: var(--c-faint); margin: 0 0 14px; font-weight: 500; }
 .c-footer__col a { display: block; font-size: 15px; color: var(--c-muted); padding: 4px 0; transition: color 0.2s; }
 .c-footer__col a:hover { color: var(--c-text); }
+.c-footer__feed { display: inline-flex; align-items: center; gap: 7px; }
+.c-footer__feed svg { color: var(--c-faint); transition: color 0.2s; flex: none; }
+.c-footer__feed:hover svg { color: var(--h-projects); }
 .c-footer__base { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--c-hairline-2);
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   font-size: 13px; color: var(--c-faint); font-family: var(--font-mono); }

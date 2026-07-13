@@ -26,13 +26,14 @@ footer:
   columns:
     - head: "Content"
       links:
-        - { label: "Writing", url: "/posts/" }
+        - { label: "Blog", url: "/posts/" }
+        - { label: "Guestbook", url: "/guestbook/" }
         - { label: "Projects", url: "/projects/" }
-        - { label: "Code & Art", url: "/ca/" }
         - { label: "Archive", url: "/year-archive/" }
     - head: "Elsewhere"
       links:
         - { label: "GitHub", url: "https://github.com/qddegtya", me: true }
         - { label: "Twitter", url: "https://twitter.com/qddegtya", me: true }
         - { label: "Digital Garden", url: "https://www.yuque.com/chiyu-heb0t", me: true }
+        - { label: "RSS Feed", url: "/feed.xml", feed: true }
 

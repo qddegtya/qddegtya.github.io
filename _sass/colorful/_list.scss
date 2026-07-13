@@ -21,7 +21,11 @@
 // --- SIDEBAR (glass rail, life nav groups) ----------------------------------
 .c-sidebar { display: none; }
 @media (min-width: 1000px) {
-  .c-sidebar { display: block; }
+  // The rail is a grid item. The grid sets `align-items: start`, which shrinks
+  // this column to its content height - leaving the sticky inner no travel room,
+  // so it scrolls away instead of pinning. Stretch the column to the full row
+  // height so the sticky child has a tall containing block to pin within.
+  .c-sidebar { display: block; align-self: stretch; }
   .c-sidebar__inner { position: sticky; top: 108px; padding: 18px 16px;
     border-radius: var(--r-lg); border: 1px solid var(--c-hairline);
     background: var(--c-surface);
@@ -95,8 +99,10 @@
 // Carries the home signature: an inner plate with a hue wash behind the avatar,
 // inset highlight, and hue-tinted social chips - so the rail reads as premium,
 // not a plain blog byline.
-.c-author { margin-bottom: 18px; padding: 0 0 16px; border-bottom: 1px solid var(--c-hairline);
-  text-align: center; }
+// Separator only when a life-nav (or other group) follows; a lone author card
+// in the rail shouldn't trail a dangling hairline.
+.c-author { margin-bottom: 18px; padding: 0; text-align: center; }
+.c-author:not(:last-child) { padding-bottom: 16px; border-bottom: 1px solid var(--c-hairline); }
 .c-author__avatar { width: 66px; height: 66px; border-radius: var(--r-pill); object-fit: cover;
   margin: 0 auto 12px; display: block;
   border: 3px solid var(--c-surface);

@@ -105,6 +105,8 @@ button { font-family: inherit; }
 
 // --- Section heading rhythm -------------------------------------------------
 .c-section { padding-block: var(--space-section); }
+// jump-nav targets: keep the pinned nav from covering the heading on anchor jumps
+.c-section[id] { scroll-margin-top: 92px; }
 
 // section-title accent keyword: single content hue (rainbow is reserved for the
 // hero signature only - one bold moment per page, per taste-skill).

@@ -11,7 +11,7 @@ excerpt: "Building ego at [citrolabs](https://github.com/citrolabs). Author/Lead
 # ---------------------------------------------------------------------------
 home:
   # hero -------------------------------------------------------------------
-  eyebrow: "Archer's corner of the internet"
+  eyebrow: "archer's website"
   # three display lines; the middle one is rendered in the colour-fill style
   title_lines:
     - "Ideas worth"
@@ -21,13 +21,24 @@ home:
   portrait: "/assets/images/avatar-about-me.png"
   sticker_note: "that's me"
   intro: >-
-    <b>Architect, product engineer, indie hacker.</b> I write, build, and collect
-    the things that keep me curious. This is where a decade of systems work,
-    side projects, films, books, and travels all live together, one colorful
-    corner at a time.
+    Building ego at <a href="https://github.com/citrolabs">citrolabs</a>.
+    <b>Author / Lead Maintainer</b> of
+    <a href="https://github.com/astack-tech">@astack-tech</a> /
+    <a href="https://github.com/hlang-tech">@hlang-tech</a>. Focus on
+    Agentic System &amp; Flow-based Programming Inspired System.
   cta:
     label: "Read the blog"
     url: "/posts/"
+  # in-page jump nav shown under the hero CTA. These are anchors into this page's
+  # own sections (see the matching id="..." on each <section>), NOT site links -
+  # so they never duplicate the top nav or the "colorful life" section below.
+  jumpnav:
+    lead: "or wander in"
+    links:
+      - { label: "About", anchor: "about", hue: codeart }
+      - { label: "Blog", anchor: "blog", hue: writing }
+      - { label: "Life", anchor: "world", hue: reading }
+      - { label: "Moments", anchor: "moments", hue: travel }
 
   # about ------------------------------------------------------------------
   about:

@@ -321,9 +321,9 @@
     tl.to(ln, { yPercent: 0, duration: 1.0 }, i === 0 ? 0.15 : "-=0.82");
   });
 
-  var fades = [".c-hero__eyebrow", ".c-hero__foot", ".c-cats"];
+  var fades = [".c-hero__eyebrow", ".c-hero__foot", ".c-jump"];
   gsap.set(fades, { opacity: 0, y: 20 });
   tl.to(".c-hero__eyebrow", { opacity: 1, y: 0, duration: 0.7 }, 0.0)
     .to(".c-hero__foot",    { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
-    .to(".c-cats",         { opacity: 1, y: 0, duration: 0.7 }, "-=0.5");
+    .to(".c-jump",         { opacity: 1, y: 0, duration: 0.7 }, "-=0.5");
 })();

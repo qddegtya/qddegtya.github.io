@@ -15,7 +15,18 @@
         <div class="c-footer__col">
           <h4>{{ col.head }}</h4>
           {%- for link in col.links -%}
+          {%- if link.feed -%}
+          <a class="c-footer__feed" href="{{ link.url | relative_url }}" type="application/atom+xml" rel="alternate">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <circle cx="5" cy="19" r="2.2"/>
+              <path d="M3 10.2a10.8 10.8 0 0 1 10.8 10.8h3A13.8 13.8 0 0 0 3 7.2z"/>
+              <path d="M3 3.6A17.4 17.4 0 0 1 20.4 21h3A20.4 20.4 0 0 0 3 .6z"/>
+            </svg>
+            <span>{{ link.label }}</span>
+          </a>
+          {%- else -%}
           <a href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"{% if link.me %} rel="me"{% endif %}>{{ link.label }}</a>
+          {%- endif -%}
           {%- endfor -%}
         </div>
         {%- endfor -%}

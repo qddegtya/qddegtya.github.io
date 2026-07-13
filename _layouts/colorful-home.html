@@ -63,20 +63,22 @@ layout: null
           </a>
         </div>
 
-        {%- comment -%} clickable category nav (replaces the old dead pills) {%- endcomment -%}
-        <nav class="c-cats" aria-label="Browse by kind">
-          <a class="c-cat" style="--_hue:{{ hues.writing }}" href="{{ '/posts/' | relative_url }}"><span class="c-cat__dot"></span><b>Writing</b><span class="c-cat__n">{{ site.posts | size }}</span></a>
-          <a class="c-cat" style="--_hue:{{ hues.projects }}" href="{{ '/projects/' | relative_url }}"><span class="c-cat__dot"></span><b>Projects</b></a>
-          <a class="c-cat" style="--_hue:{{ hues.codeart }}" href="{{ '/ca/' | relative_url }}"><span class="c-cat__dot"></span><b>Code &amp; Art</b><span class="c-cat__n">{{ site.ca | size }}</span></a>
-          <a class="c-cat" style="--_hue:{{ hues.reading }}" href="{{ '/book/' | relative_url }}"><span class="c-cat__dot"></span><b>Reading</b><span class="c-cat__n">{{ site.book | size }}</span></a>
-          <a class="c-cat" style="--_hue:{{ hues.travel }}" href="{{ '/travel/' | relative_url }}"><span class="c-cat__dot"></span><b>Travel</b><span class="c-cat__n">{{ site.travel | size }}</span></a>
+        {%- comment -%} in-page jump nav (data-driven; anchors into this page's own
+           sections, so it never duplicates the top nav or the world section) {%- endcomment -%}
+        {%- if home.jumpnav -%}
+        <nav class="c-jump" aria-label="Jump to a section on this page">
+          {%- if home.jumpnav.lead -%}<span class="c-jump__lead">{{ home.jumpnav.lead }}</span>{%- endif -%}
+          {%- for link in home.jumpnav.links -%}
+          <a class="c-jump__link" style="--_hue:{{ hues[link.hue] }}" href="#{{ link.anchor }}"><span class="c-jump__dot"></span>{{ link.label }}</a>
+          {%- endfor -%}
         </nav>
+        {%- endif -%}
       </div>
     </div>
   </header>
 
   {%- comment -%} ---------- ABOUT: bilingual intro, portrait, tech stack (preserved from the old homepage) ---------- {%- endcomment -%}
-  <section class="c-section c-wrap">
+  <section class="c-section c-wrap" id="about">
     <div class="c-section__head c-reveal">
       <h2 class="c-section__title" style="--_hue:{{ hues.codeart }}">About <span class="accent">me</span></h2>
       <div class="c-lang" role="tablist" aria-label="Language">
@@ -101,10 +103,10 @@ layout: null
     </div>
   </section>
 
-  {%- comment -%} ---------- LATEST WRITING: card / list dual view ---------- {%- endcomment -%}
-  <section class="c-section c-wrap">
+  {%- comment -%} ---------- LATEST BLOG: card / list dual view ---------- {%- endcomment -%}
+  <section class="c-section c-wrap" id="blog">
     <div class="c-section__head c-reveal">
-      <h2 class="c-section__title" style="--_hue:{{ hues.writing }}">Latest <span class="accent">writing</span></h2>
+      <h2 class="c-section__title" style="--_hue:{{ hues.writing }}">Latest <span class="accent">blog</span></h2>
       <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
         <div class="c-viewtoggle" role="tablist" aria-label="View mode">
           <button data-view="card" class="is-active" aria-label="Card view">
@@ -167,11 +169,11 @@ layout: null
   {%- capture ic_pin -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>{%- endcapture -%}
   {%- capture ic_map -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg>{%- endcapture -%}
 
-  <section class="c-section c-wrap">
+  <section class="c-section c-wrap" id="world">
     <div class="c-section__head c-reveal">
       <div style="--_hue:{{ hues.codeart }}">
         <span class="c-section__eyebrow" style="--_hue:{{ hues.codeart }}">Beyond the blog</span>
-        <h2 class="c-section__title">A <span class="accent">colorful</span> world</h2>
+        <h2 class="c-section__title">A <span class="accent">colorful</span> life</h2>
       </div>
       <div class="c-world__toggle" id="c-world-toggle" role="tablist" aria-label="World view">
         <button data-wview="cards" class="is-active">
@@ -222,7 +224,7 @@ layout: null
 
   {%- comment -%} ---------- MOMENTS: a desktop pile of photos you flip through ---------- {%- endcomment -%}
   {%- if page.photo_wall -%}
-  <section class="c-section c-wrap">
+  <section class="c-section c-wrap" id="moments">
     <div class="c-section__head c-reveal">
       <div style="--_hue:{{ hues.travel }}">
         <span class="c-section__eyebrow" style="--_hue:{{ hues.travel }}">Off the clock</span>
