@@ -15,7 +15,7 @@
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border: 1px solid var(--c-hairline);
   border-radius: var(--r-pill);
-  padding: 7px 8px 7px 16px; box-shadow: var(--shadow-1);
+  padding: 7px 8px 7px 16px; box-shadow: var(--shadow-1), var(--hl-inset);
   max-width: calc(100vw - 32px);
 }
 
@@ -41,7 +41,7 @@
 .c-nav__right { display: flex; align-items: center; gap: 4px; }
 .c-theme-toggle {
   width: 34px; height: 34px; border-radius: var(--r-pill); border: none; margin-left: 2px;
-  background: var(--c-surface-2); display: grid; place-items: center; cursor: pointer; color: var(--c-muted);
+  background: var(--c-surface-2); box-shadow: var(--hl-inset); display: grid; place-items: center; cursor: pointer; color: var(--c-muted);
   transition: transform 0.4s var(--ease-spring), color 0.25s, background 0.25s;
 }
 .c-theme-toggle:hover { transform: rotate(18deg); color: var(--c-text); }
@@ -52,7 +52,7 @@
 // hamburger (hidden on desktop)
 .c-burger {
   display: none; width: 34px; height: 34px; border-radius: var(--r-pill); border: none;
-  background: var(--c-surface-2); cursor: pointer; position: relative; margin-left: 2px;
+  background: var(--c-surface-2); box-shadow: var(--hl-inset); cursor: pointer; position: relative; margin-left: 2px;
 }
 .c-burger span {
   position: absolute; left: 9px; right: 9px; height: 2px; border-radius: 2px; background: var(--c-text);
@@ -77,6 +77,9 @@ body.c-scroll-lock { position: fixed; left: 0; right: 0; width: 100%; overflow: 
   padding: 0 var(--wrap-pad);
   opacity: 0; visibility: hidden; transition: opacity 0.4s var(--ease), visibility 0.4s;
 }
+// dark: base the frosted sheet on the raised surface, not the near-black bg, so
+// the glass plate sits lighter than the canvas instead of black-on-black.
+[data-theme="dark"] .c-menu { background: color-mix(in srgb, var(--c-surface) 78%, transparent); }
 body.c-menu-open .c-menu { opacity: 1; visibility: visible; }
 .c-menu__link {
   font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 9vw, 60px);

@@ -15,9 +15,31 @@
 // device). A small handwritten "that's me" note tucks onto the sticker.
 .c-hero__sticker { float: right; width: clamp(180px, 22vw, 300px); margin: 6px 0 8px clamp(20px, 3vw, 40px);
   position: relative; shape-margin: 18px; }
-.c-hero__portrait { transform: rotate(3deg); }
+// faint coral glow behind the sticker, echoing the "that's me" tag - gives the
+// cut-out a warm halo so it reads as a placed object, not a floating cut-out.
+.c-hero__sticker::before { content: ""; position: absolute; z-index: -1;
+  inset: 12% 8% 4% 12%; border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--h-writing) 34%, transparent), transparent 72%);
+  filter: blur(26px); opacity: 0.9; pointer-events: none; }
+// dark: the coral halo needs a higher hue share to survive the near-black canvas
+[data-theme="dark"] .c-hero__sticker::before {
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--h-writing) 44%, transparent), transparent 72%); }
+.c-hero__portrait { transform: rotate(3deg); transition: transform 0.4s var(--ease-spring); }
+// Die-cut photo-sticker treatment for the cut-out portrait PNG. Four tight white
+// drop-shadows trace a crisp sticker border around the silhouette; two softer
+// dark shadows lift it off the canvas (a close contact shadow + a wider float
+// shadow), and a faint hue glow behind ties it to the "that's me" tag colour.
 .c-hero__portrait img { width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 16px 30px rgba(28,28,50,0.16)); }
+  filter:
+    drop-shadow(2px 0 0 var(--c-sticker-edge)) drop-shadow(-2px 0 0 var(--c-sticker-edge))
+    drop-shadow(0 2px 0 var(--c-sticker-edge)) drop-shadow(0 -2px 0 var(--c-sticker-edge))
+    var(--sticker-lift); }
+// hover: peel it up a touch - lift, straighten, and deepen the float shadow
+.c-hero__sticker:hover .c-hero__portrait { transform: rotate(1deg) translateY(-6px) scale(1.02); }
+@media (prefers-reduced-motion: reduce) {
+  .c-hero__portrait { transition: none; }
+  .c-hero__sticker:hover .c-hero__portrait { transform: rotate(3deg); }
+}
 .c-hero__note { position: absolute; top: -46px; left: 8px; text-align: left; pointer-events: none; }
 .c-hero__note b { display: block; font-family: var(--font-sign); font-size: 24px; line-height: 1;
   color: var(--c-text); transform: rotate(-5deg); margin-bottom: 2px; }
@@ -152,7 +174,7 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
   background: var(--c-surface); border: 1px solid var(--c-hairline); border-radius: var(--r-pill);
   font-size: 13.5px; font-weight: 500; color: var(--c-muted); box-shadow: var(--shadow-1);
   transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease), color 0.25s; }
-.c-star:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); color: var(--c-text); }
+.c-star:hover { transform: translateY(-3px); box-shadow: var(--shadow-2), var(--glow-hue); color: var(--c-text); }
 .c-star .dot { width: 9px; height: 9px; border-radius: 50%; display: block; }
 .c-star b { color: var(--c-text); font-weight: 600; }
 
@@ -216,7 +238,7 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
   box-shadow: var(--shadow-1), var(--hl-inset);
   transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease), border-color 0.3s;
 }
-.c-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-3), var(--hl-inset); border-color: transparent; }
+.c-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-3), var(--hl-inset), var(--glow-hue); border-color: color-mix(in srgb, var(--_hue) 40%, var(--c-hairline)); }
 // during a card<->list swap, transitions are suppressed to avoid a border flash
 .c-writing.no-anim .c-card, .c-writing.no-anim .c-card * { transition: none !important; }
 .c-card__media { position: relative; aspect-ratio: 16 / 11; overflow: hidden;
@@ -229,6 +251,9 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
 .c-card__media--none, .c-coll__media--none {
   display: grid; place-items: center; position: relative;
   background: color-mix(in srgb, var(--_hue) 7%, var(--c-surface-2)); }
+[data-theme="dark"] .c-card__media--none,
+[data-theme="dark"] .c-coll__media--none {
+  background: color-mix(in srgb, var(--_hue) 14%, var(--c-surface-2)); }
 .c-card__media--none::before, .c-coll__media--none::before {
   content: ""; position: absolute; inset: 0; opacity: 0.5;
   background-image: radial-gradient(var(--c-hairline) 1px, transparent 1px); background-size: 16px 16px; }
@@ -298,7 +323,7 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
   border-radius: var(--r-lg); padding: 6px;
   box-shadow: var(--shadow-1), var(--hl-inset);
   transition: transform 0.45s var(--ease-spring), box-shadow 0.45s var(--ease), border-color 0.3s; }
-.c-coll:hover { transform: translateY(-6px); box-shadow: var(--shadow-3), var(--hl-inset); border-color: transparent; }
+.c-coll:hover { transform: translateY(-6px); box-shadow: var(--shadow-3), var(--hl-inset), var(--glow-hue); border-color: color-mix(in srgb, var(--_hue) 40%, var(--c-hairline)); }
 
 // The deck: a fixed-ratio window onto a horizontal track of full-width cards.
 // A classic carousel: the track slides by whole card-widths. overflow:hidden on
@@ -442,14 +467,16 @@ a.c-coll__title:hover { text-decoration: underline; text-underline-offset: 3px; 
   transform-origin: center; cursor: grab;
   transition: transform 0.5s var(--ease-spring), box-shadow 0.3s var(--ease); touch-action: none; }
 .c-snap.is-dragging { cursor: grabbing; will-change: transform; transition: box-shadow 0.2s var(--ease);
-  box-shadow: var(--shadow-3); }
+  box-shadow: var(--shadow-3), 0 0 30px rgba(255,255,255,0.05); }
 .c-snap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 2px;
   filter: saturate(0.92) contrast(1.02); pointer-events: none; }
 .c-snap figcaption { margin-top: 7px; text-align: center;
   font-family: var(--font-sign); font-size: clamp(14px, 1.4vw, 18px); color: var(--c-muted); line-height: 1; }
 .c-moments__hint { display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-mono); font-size: 13px; color: var(--c-muted); }
-.c-moments__hint svg { color: var(--h-travel); flex-shrink: 0; }
+// grab-hand hint: the travel hue lifted brighter + bolder stroke so the little
+// hand reads as round and playful, not a cold thin outline.
+.c-moments__hint svg { color: color-mix(in srgb, var(--h-travel) 82%, white); flex-shrink: 0; }
 @media (prefers-reduced-motion: reduce) { .c-snap { cursor: default; } }
 
 // --- FOOTER -----------------------------------------------------------------

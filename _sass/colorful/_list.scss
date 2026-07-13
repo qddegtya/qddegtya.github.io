@@ -86,7 +86,7 @@
   transition: transform 0.25s var(--ease-spring), color 0.2s, background 0.2s, border-color 0.2s; }
 .pagination a:hover { color: var(--c-text); transform: translateY(-2px); box-shadow: var(--shadow-1), var(--hl-inset); }
 .pagination a.current { color: #fff; background: var(--_hue); border-color: transparent;
-  box-shadow: var(--shadow-1); }
+  box-shadow: var(--shadow-1), 0 4px 14px color-mix(in srgb, var(--_hue) 30%, transparent); }
 .pagination a.disabled { color: var(--c-faint); background: transparent; border-color: transparent;
   box-shadow: none; cursor: default; pointer-events: none; }
 .pagination a.disabled.current { color: #fff; background: var(--_hue); pointer-events: none; }
@@ -108,6 +108,12 @@
   border: 3px solid var(--c-surface);
   box-shadow: var(--shadow-2), 0 0 0 1px var(--c-hairline),
     0 0 0 7px color-mix(in srgb, var(--_hue) 10%, transparent); }
+// dark: the hue halo (10%) is swallowed and the black shadow-2 adds no lift, so
+// raise the ring share and add a soft coloured ambient glow for the medallion.
+[data-theme="dark"] .c-author__avatar {
+  box-shadow: var(--shadow-2), 0 0 0 1px var(--c-hairline),
+    0 0 0 7px color-mix(in srgb, var(--_hue) 24%, transparent),
+    0 6px 22px color-mix(in srgb, var(--_hue) 22%, transparent); }
 .c-author__name { font-family: var(--font-display); font-weight: 650; font-size: 17px;
   letter-spacing: -0.015em; color: var(--c-text); }
 .c-author__bio { font-size: 12.5px; line-height: 1.55; color: var(--c-muted); margin: 8px 0 0; }
@@ -121,6 +127,10 @@
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue) 22%, transparent);
   transition: color 0.2s, background 0.2s, transform 0.25s var(--ease-spring); }
 .c-author__links a:hover { color: #fff; background: var(--_hue); transform: translateY(-2px); }
+// dark: raise the wash + lit-edge shares so the chip's tint and bevel stay legible
+[data-theme="dark"] .c-author__links a {
+  background: color-mix(in srgb, var(--_hue) 22%, var(--c-surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue) 30%, transparent); }
 @media (prefers-reduced-motion: reduce) { .c-author__links a:hover { transform: none; } }
 
 // --- ARCHIVE (year / category / tag grouped sections) -----------------------

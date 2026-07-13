@@ -11,6 +11,7 @@
   --c-bg:        #FCFCFD;   // cloud-white cool
   --c-surface:   #FFFFFF;   // cards / elevated
   --c-surface-2: #F6F7F9;   // recessed / subtle fills
+  --c-surface-3: #EDEEF1;   // raised hover/active fill (elevation = brighter surface)
   --c-text:      #14141C;   // near-black, never pure
   --c-muted:     #63636F;   // secondary text
   --c-faint:     #9A9AA6;   // tertiary / meta
@@ -34,6 +35,13 @@
   --shadow-1: 0 2px 6px rgba(28, 28, 50, 0.04), 0 8px 24px rgba(28, 28, 50, 0.05);
   --shadow-2: 0 4px 12px rgba(28, 28, 50, 0.05), 0 18px 50px rgba(28, 28, 50, 0.08);
   --shadow-3: 0 30px 80px rgba(28, 28, 50, 0.12);
+  --c-sticker-edge: #FFFFFF;   // die-cut white border for the cut-out portrait
+  // Portrait-sticker lift (drop-shadow chain, applied after the white edge).
+  // Light: a close contact + wide float shadow. Dark overrides to a coral glow.
+  --sticker-lift: drop-shadow(0 3px 4px rgba(20,20,40,0.28)) drop-shadow(0 22px 34px rgba(20,20,40,0.30));
+  // Interaction-scoped hue glow (hover/active/drag + hero objects only). Capped
+  // low so colour stays punctuation, never a resting glow. --_hue is set locally.
+  --glow-hue: 0 8px 24px color-mix(in srgb, var(--_hue) 12%, transparent);
 
   // --- Glass / "lit plate" language (matches the nav, minus the blur) ---
   // Semi-transparent surface for raised panels; the nav uses this + backdrop-blur,
@@ -88,6 +96,7 @@
   --c-bg:        #0D0D13;
   --c-surface:   #16161F;
   --c-surface-2: #1D1D28;
+  --c-surface-3: #26262F;   // raised hover/active fill - clearly above --c-surface
   --c-text:      #ECECF3;
   --c-muted:     #9A9AAB;
   --c-faint:     #6A6A78;
@@ -101,13 +110,24 @@
   --w-travel:   rgba(43, 169, 244, 0.16);
   --w-codeart:  rgba(110, 118, 255, 0.16);
 
-  --shadow-1: 0 2px 6px rgba(0, 0, 0, 0.30), 0 8px 24px rgba(0, 0, 0, 0.28);
-  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.35), 0 18px 50px rgba(0, 0, 0, 0.40);
-  --shadow-3: 0 30px 80px rgba(0, 0, 0, 0.55);
+  // On dark, elevation reads as BRIGHTER, not darker: each shadow leads with a
+  // baked white top-lit edge, keeps a tight black contact layer, and demotes the
+  // wide black diffuse to support. shadow-3 adds a 1px light rim (a lit edge, not
+  // a border) since an 80px black blur is invisible on near-black.
+  --shadow-1: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.40);
+  --shadow-2: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 6px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.45);
+  --shadow-3: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(255,255,255,0.04), 0 24px 70px rgba(0,0,0,0.60);
+  --c-sticker-edge: #F4F4F6;   // slightly softened white so the edge isn't harsh on dark
+  // Dark: a tight dark contact drop + a warm coral glow, so the sticker lifts by
+  // casting light (brightness) rather than an invisible near-black float shadow.
+  --sticker-lift: drop-shadow(0 2px 3px rgba(0,0,0,0.55)) drop-shadow(0 14px 30px color-mix(in srgb, var(--h-writing) 30%, transparent));
+  --glow-hue: 0 8px 24px color-mix(in srgb, var(--_hue) 20%, transparent);   // 20% = taste ceiling on dark
 
   // On dark, the surface is lighter than the page, so the highlight is subtle.
-  --c-glass:   color-mix(in srgb, var(--c-surface) 72%, transparent);
-  --hl-inset:  inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  // hl-inset is THE primary lift cue on dark (black shadows fail), held at .10 -
+  // a visible lit rim, but short of a hard ruled-border look.
+  --c-glass:   color-mix(in srgb, var(--c-surface) 80%, transparent);
+  --hl-inset:  inset 0 1px 0 rgba(255, 255, 255, 0.10);
 
   // --- Code block (dark): deep plate, luminous but easy syntax ---
   --c-code-bg: #12121A;
