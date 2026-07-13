@@ -11,12 +11,12 @@ excerpt: "Building ego at [citrolabs](https://github.com/citrolabs). Author/Lead
 # ---------------------------------------------------------------------------
 home:
   # hero -------------------------------------------------------------------
-  eyebrow: "archer's website"
+  eyebrow: "Archer's Website"
   # three display lines; the middle one is rendered in the colour-fill style
   title_lines:
-    - "Ideas worth"
-    - "a thousand"
-    - "colors."
+    - "Make it"
+    - "colorful,"
+    - "make it count."
   title_accent_index: 1        # which line (0-based) gets the colour fill
   portrait: "/assets/images/avatar-about-me.png"
   sticker_note: "that's me"
