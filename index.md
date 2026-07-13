@@ -59,9 +59,9 @@ home:
       <code>NEXT 10 YEARS</code> plan, to stay young and curious, and always be
       the proud teenager with no end of tossing and turning.
     zh: >-
-      （20）08 年高中毕业后，创办了多个知名独立博客（<code>I-Mee</code> /
+      2008 年高中毕业后，创办了多个知名独立博客（<code>I-Mee</code> /
       <code>Hugweb</code> / <code>DiggerPlus</code> 等），以 <code>个人站长</code>
-      及 <code>独立开发者</code> 身份一路成长。（20）11 年，受亚洲地区最大的独立博客广告联盟拿福能的邀请，参加了那一届的亚太地区博主盛典，那一年
+      及 <code>独立开发者</code> 身份一路成长。2011 年，受亚洲地区最大的独立博客广告联盟拿福能的邀请，参加了那一届的亚太地区博主盛典，那一年
       21 岁。随后开启职业生涯至今已十年多，前 <code>阿里巴巴集团</code>
       技术专家，目前深耕 <code>企业架构</code> / <code>系统设计</code> /
       <code>前端</code>，<code>开源爱好者</code>，有自用的一套知识管理方法<a href="https://github.com/qddegtya/r">[1]</a>以及成体系的高效生产力工具集<a href="https://github.com/qddegtya/awesome-ng-tools">[2]</a>，痴迷于

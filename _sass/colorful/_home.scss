@@ -192,8 +192,10 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
 .c-about__lead .wave { display: inline-block; transform-origin: 70% 70%; }
 .c-about__p { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.75; color: var(--c-muted); margin: 0; max-width: 62ch; }
 .c-about__p[data-lang="zh"] { line-height: 1.9; }
-// editorial drop-cap on the opening letter of the English intro
-.c-about__p[data-lang="en"]::first-letter {
+// editorial drop-cap on the opening character of the intro - both languages, so
+// the EN and ZH versions read as an equal, deliberate opening.
+.c-about__p[data-lang="en"]::first-letter,
+.c-about__p[data-lang="zh"]::first-letter {
   float: left; font-family: var(--font-display); font-weight: 600; font-size: 3.4em; line-height: 0.78;
   padding: 6px 12px 0 0; color: var(--h-writing); }
 .c-about__p code, .c-about code { font-family: var(--font-mono); font-size: 0.84em;
