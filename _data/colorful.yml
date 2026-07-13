@@ -7,6 +7,17 @@ hues:
   travel:   "#2BA9F4"   # sky
   codeart:  "#6E76FF"   # iris
 
+# Timeline ("A colorful life" > Timeline view) - per-collection copy. The layout
+# looks each entry's collection up here, so verb/tag/hue are data, not hardcoded
+# in the template. hue is a key into `hues` above. `default` covers anything else.
+timeline:
+  ca:      { verb: "made",     tag: "Code & Art", hue: codeart  }
+  movie:   { verb: "watched",  tag: "Film",       hue: reading  }
+  book:    { verb: "read",     tag: "Book",       hue: reading  }
+  events:  { verb: "spoke at", tag: "Event",      hue: projects }
+  travel:  { verb: "wandered through", tag: "Travel", hue: travel }
+  default: { verb: "noted",    tag: "Note",       hue: writing  }
+
 # Primary navigation - shared by the floating nav and the mobile menu on every
 # page. hue is the key into `hues` above (the moving colour block on hover).
 # Primary navigation - the top-level menu. Collections (Reading/Travel/Code&Art)

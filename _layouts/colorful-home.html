@@ -201,15 +201,12 @@ layout: null
     {%- assign stream = site.ca | concat: site.movie | concat: site.book | concat: site.events | concat: site.travel | sort: 'date' | reverse -%}
     <div class="c-timeline c-reveal" id="c-timeline">
       <div class="c-tl">
+        {%- assign tl_map = site.data.colorful.timeline -%}
         {%- for it in stream limit: site.home.timeline_count -%}
-          {%- case it.collection -%}
-            {%- when 'ca' -%}{% assign hue = hues.codeart %}{% assign verb = 'released' %}{% assign tag = 'Code & Art' %}
-            {%- when 'movie' -%}{% assign hue = hues.reading %}{% assign verb = 'watched' %}{% assign tag = 'Film' %}
-            {%- when 'book' -%}{% assign hue = hues.reading %}{% assign verb = 'read' %}{% assign tag = 'Book' %}
-            {%- when 'events' -%}{% assign hue = hues.projects %}{% assign verb = 'showed up at' %}{% assign tag = 'Event' %}
-            {%- when 'travel' -%}{% assign hue = hues.travel %}{% assign verb = 'wandered through' %}{% assign tag = 'Travel' %}
-            {%- else -%}{% assign hue = hues.writing %}{% assign verb = 'noted' %}{% assign tag = 'Note' %}
-          {%- endcase -%}
+          {%- assign meta = tl_map[it.collection] | default: tl_map.default -%}
+          {%- assign verb = meta.verb -%}
+          {%- assign tag = meta.tag -%}
+          {%- assign hue = hues[meta.hue] -%}
           <a class="c-tl__row" href="{{ it.url | relative_url }}" style="--_hue:{{ hue }}">
             {%- if it.header.teaser -%}<span class="c-tl__thumb"><img src="{{ it.header.teaser | relative_url }}" alt="" loading="lazy"></span>{%- endif -%}
             <span class="c-tl__body">
