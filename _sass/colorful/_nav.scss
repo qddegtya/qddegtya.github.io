@@ -23,20 +23,39 @@
   font-weight: 600; font-size: 16px; letter-spacing: -0.01em; color: var(--c-text); padding-right: 6px; }
 .c-brand__mark { width: 22px; height: 22px; display: block; flex-shrink: 0; }
 
-.c-nav__links { display: flex; align-items: center; gap: 2px; }
+.c-nav__links { position: relative; display: flex; align-items: center; gap: 2px; }
 .c-nav__link {
-  position: relative; padding: 8px 14px; border-radius: var(--r-pill);
+  position: relative; z-index: 1; padding: 8px 14px; border-radius: var(--r-pill);
   font-size: 14.5px; font-weight: 500; color: var(--c-muted); white-space: nowrap;
   transition: color 0.25s var(--ease);
 }
 .c-nav__link:hover, .c-nav__link.is-active { color: var(--c-text); }
-// hover underline in the link's own content hue
+// hover underline in the link's own content hue - the no-JS / reduced-motion baseline
 .c-nav__link::after {
   content: ""; position: absolute; left: 14px; right: 14px; bottom: 5px; height: 2px;
   border-radius: 2px; background: var(--_hue, currentColor);
   transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease);
 }
 .c-nav__link:hover::after, .c-nav__link.is-active::after { transform: scaleX(1); }
+
+// --- Magic slider: a hue-tinted pill JS glides beneath the hovered item -------
+// JS sets --x (left px), --w (width px) and --_hue on the slider, and toggles
+// .is-ready on .c-nav__links once wired. Until then (no-JS), the slider stays
+// hidden and the ::after underline above is the graceful fallback.
+.c-nav__slider {
+  position: absolute; top: 50%; left: 0; z-index: 0; pointer-events: none;
+  height: 34px; width: var(--w, 0); transform: translate(var(--x, 0), -50%);
+  border-radius: var(--r-pill); opacity: 0;
+  background: color-mix(in srgb, var(--_hue, var(--h-codeart)) 14%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--_hue, var(--h-codeart)) 26%, transparent);
+  transition: transform 0.42s var(--ease-spring), width 0.42s var(--ease-spring),
+    opacity 0.25s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+// once JS owns the effect, retire the per-link underline so the two don't stack
+.c-nav__links.is-ready .c-nav__link::after { display: none; }
+.c-nav__links.is-ready.is-hovering .c-nav__slider { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .c-nav__slider { transition: opacity 0.2s linear, background 0.2s linear; }
+}
 
 .c-nav__right { display: flex; align-items: center; gap: 4px; }
 .c-theme-toggle {

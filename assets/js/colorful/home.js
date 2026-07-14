@@ -61,6 +61,48 @@
     });
   }
 
+  /* ---- Nav magic slider: a hue pill glides beneath the hovered item ----
+     JS owns one job: measure the target link and push its geometry + hue onto
+     the slider as custom props; CSS springs it into place. Rests on the active
+     link; fades out when the pointer leaves the group. Falls back to the CSS
+     underline when JS is absent (the .is-ready gate). ---- */
+  var navLinks = document.querySelector(".c-nav__links");
+  var slider = navLinks && navLinks.querySelector(".c-nav__slider");
+  if (navLinks && slider) {
+    var links = [].slice.call(navLinks.querySelectorAll(".c-nav__link"));
+    function moveTo(link) {
+      if (!link) return;
+      slider.style.setProperty("--x", link.offsetLeft + "px");
+      slider.style.setProperty("--w", link.offsetWidth + "px");
+      var hue = getComputedStyle(link).getPropertyValue("--_hue").trim();
+      if (hue) slider.style.setProperty("--_hue", hue);
+    }
+    function activeLink() { return navLinks.querySelector(".c-nav__link.is-active") || links[0]; }
+    function settle() {
+      var a = navLinks.querySelector(".c-nav__link.is-active");
+      if (a) { moveTo(a); navLinks.classList.add("is-hovering"); }
+      else { navLinks.classList.remove("is-hovering"); }
+    }
+    links.forEach(function (link) {
+      link.addEventListener("pointerenter", function () {
+        navLinks.classList.add("is-hovering");
+        moveTo(link);
+      });
+    });
+    navLinks.addEventListener("pointerleave", settle);
+    // position under the active link before revealing, so first paint is correct
+    moveTo(activeLink());
+    navLinks.classList.add("is-ready");
+    settle();
+    var navRaf = null;
+    window.addEventListener("resize", function () {
+      if (navRaf) cancelAnimationFrame(navRaf);
+      navRaf = requestAnimationFrame(function () {
+        if (!navLinks.classList.contains("is-hovering")) moveTo(activeLink());
+      });
+    });
+  }
+
   /* ---- Blog card/list view toggle (front-end only, never touches paging) ---- */
   var writing = document.getElementById("c-writing");
   var vt = document.querySelector(".c-viewtoggle");

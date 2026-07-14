@@ -16,7 +16,9 @@
       Colorful
     </a>
     <div class="c-nav__links">
-      <a class="c-nav__link{% if page.url == '/' %} is-active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      {%- comment -%} magic slider: a hue-tinted pill JS glides between items on hover {%- endcomment -%}
+      <span class="c-nav__slider" aria-hidden="true"></span>
+      <a class="c-nav__link{% if page.url == '/' %} is-active{% endif %}" style="--_hue:{{ hues.codeart }}" href="{{ '/' | relative_url }}">Home</a>
       {%- for item in site.data.colorful.nav -%}
       {%- assign _active = false -%}
       {%- if page.url contains item.url and item.url != '/' -%}{%- assign _active = true -%}{%- endif -%}
