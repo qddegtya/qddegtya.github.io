@@ -10,7 +10,7 @@ layout: null
 <head>
   {% include colorful/head.html %}
 </head>
-<body class="c-doc c-listpage" style="--_hue:{{ hues.writing }}">
+<body class="c-doc c-listpage c-searchpage-doc" style="--_hue:{{ hues.writing }}">
 
   {% include colorful/nav.html %}
 
@@ -24,6 +24,10 @@ layout: null
       <div class="c-searchpage__box">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="c-searchpage-input" class="c-searchpage__input" type="search" placeholder="Search posts, projects, films, books..." autocomplete="off" spellcheck="false" autofocus>
+        <button class="c-searchpage__clear" data-searchpage-clear aria-label="Clear search" hidden>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          ESC
+        </button>
       </div>
       <div id="c-searchpage-results" class="c-searchpage__results"></div>
       <p class="c-searchpage__hint" data-search-hint>Type to search across everything on the site.</p>

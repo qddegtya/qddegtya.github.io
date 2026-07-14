@@ -106,6 +106,8 @@
 .c-nav__search .kbd { font-family: var(--font-mono); font-size: 11px; color: var(--c-faint);
   border: 1px solid var(--c-hairline); border-radius: 6px; padding: 2px 6px; }
 @media (max-width: 560px) { .c-nav__search .label, .c-nav__search .kbd { display: none; } .c-nav__search { padding: 8px; } }
+// the dedicated /search page IS a search, so drop the redundant nav search trigger there
+.c-searchpage-doc .c-nav__search { display: none; }
 
 // dim scrim behind the expanding bar
 .c-search-scrim { position: fixed; inset: 0; z-index: var(--z-overlay);

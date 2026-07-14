@@ -142,22 +142,35 @@
     // --- full-page mode (/search/) ---
     if (onSearchPage) {
       var pageHint = document.querySelector("[data-search-hint]");
+      var pageClear = document.querySelector("[data-searchpage-clear]");
       var pageLast = null;
+      // the ESC/x pill only makes sense once there's something to clear
+      function syncClear() { if (pageClear) pageClear.hidden = pageInput.value.length === 0; }
       function runPage() {
         var term = pageInput.value.trim();
         if (pageHint) pageHint.style.display = term ? "none" : "";
         render(term ? query(term) : [], pageResults, term, "c-searchpage__hint");
       }
+      function clearPage() {
+        pageInput.value = ""; pageLast = ""; syncClear(); runPage(); pageInput.focus();
+      }
       // set the value from ?q= BEFORE building, then render once the index exists
       var m = location.search.match(/[?&]q=([^&]*)/);
       if (m) { try { pageInput.value = decodeURIComponent(m[1].replace(/\+/g, " ")); } catch (e) {} }
+      syncClear();
       buildIndex().then(runPage);
       pageInput.addEventListener("input", function () {
+        syncClear();
         var term = pageInput.value.trim();
         if (term === pageLast) return;
         pageLast = term;
         runPage();
       });
+      // ESC key clears (mirrors the pill); the pill click does the same
+      pageInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && pageInput.value.length) { e.preventDefault(); clearPage(); }
+      });
+      if (pageClear) pageClear.addEventListener("click", clearPage);
     }
   });
 

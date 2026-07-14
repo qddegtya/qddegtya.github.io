@@ -176,17 +176,32 @@
 
 // --- SEARCH PAGE ------------------------------------------------------------
 .c-searchpage { max-width: 760px; margin-inline: auto; }
-.c-searchpage__box { display: flex; align-items: center; gap: 12px; margin-top: 28px;
-  padding: 4px 4px 4px 18px; border-radius: var(--r-pill);
+.c-searchpage__box { display: flex; align-items: center; gap: 16px; margin-top: 28px;
+  padding: 8px 10px 8px 24px; border-radius: var(--r-pill);
   background: var(--c-surface); border: 1px solid var(--c-hairline);
-  box-shadow: var(--shadow-1), var(--hl-inset); }
-.c-searchpage__box svg { color: var(--c-faint); flex-shrink: 0; }
+  box-shadow: var(--shadow-1), var(--hl-inset);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease); }
+// focus: a quiet hue-tinted lift so the field feels alive when you're typing in it
+.c-searchpage__box:focus-within { border-color: color-mix(in srgb, var(--_hue) 45%, var(--c-hairline));
+  box-shadow: var(--shadow-2), var(--hl-inset), 0 0 0 4px color-mix(in srgb, var(--_hue) 12%, transparent); }
+.c-searchpage__box > svg { color: var(--c-muted); flex-shrink: 0; width: 24px; height: 24px;
+  transition: color 0.25s var(--ease); }
+.c-searchpage__box:focus-within > svg { color: var(--_hue); }
 .c-searchpage__input { flex: 1; min-width: 0; border: none; background: transparent; outline: none;
-  font-family: var(--font-body); font-size: 17px; color: var(--c-text); padding: 12px 0; }
-.c-searchpage__input::placeholder { color: var(--c-faint); }
+  font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em;
+  font-size: clamp(19px, 2.2vw, 26px); color: var(--c-text); padding: 10px 0; }
+.c-searchpage__input::placeholder { color: var(--c-faint); font-weight: 400; }
 // kill the browser's default (ugly blue) search clear button + decorations
 .c-searchpage__input::-webkit-search-cancel-button,
-.c-searchpage__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.c-searchpage__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
+// ESC/x clear pill - mirrors the overlay's .c-search__close so both search UIs read identically
+.c-searchpage__clear { flex-shrink: 0; border: 1px solid var(--c-hairline); background: var(--c-surface-2);
+  color: var(--c-muted); cursor: pointer; height: 36px; padding: 0 14px; border-radius: var(--r-pill);
+  display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11.5px;
+  transition: color 0.2s, background 0.2s, border-color 0.2s; }
+.c-searchpage__clear svg { color: currentColor; }
+.c-searchpage__clear:hover { color: var(--c-text); background: var(--c-surface); }
+.c-searchpage__clear[hidden] { display: none; }
 .c-searchpage__kbd { font-family: var(--font-mono); font-size: 11px; color: var(--c-faint);
   padding: 6px 10px; border-radius: var(--r-pill); background: var(--c-surface-2); }
 .c-searchpage__results { margin-top: 24px; }

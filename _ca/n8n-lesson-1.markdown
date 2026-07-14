@@ -9,6 +9,8 @@ header:
   teaser: "/assets/ca/n8n/lesson-1/n8n.jpeg"
 ---
 
+{% include video id=page.header.video.id provider=page.header.video.provider danmaku=page.header.video.danmaku %}
+
 ### 视频内容简介
 
 本期视频，带来 N8N 系列分享的前置内容。
