@@ -15,7 +15,7 @@ layout: null
   {%- when 'events' -%}{%- assign hue = hues.projects -%}{%- assign kicker = 'Out in the world' -%}{%- assign kroot = '/events/' -%}
   {%- when 'travel' -%}{%- assign hue = hues.travel -%}{%- assign kicker = 'Footprints' -%}{%- assign kroot = '/travel/' -%}
   {%- when 'ca' -%}{%- assign hue = hues.codeart -%}{%- assign kicker = 'Code & Art' -%}{%- assign kroot = '/ca/' -%}
-  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = 'Writing' -%}{%- assign kroot = '/posts/' -%}
+  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = 'Blog' -%}{%- assign kroot = '/posts/' -%}
 {%- endcase -%}
 {%- if page.tagline -%}{%- assign lead = page.tagline -%}{%- elsif page.excerpt -%}{%- assign lead = page.excerpt -%}{%- endif -%}
 <!doctype html>
@@ -160,6 +160,7 @@ layout: null
   {% include colorful/footer.html %}
   {% include colorful/search.html %}
 
+  <script src="{{ '/assets/js/colorful/lock.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/colorful/article.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>

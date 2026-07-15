@@ -84,12 +84,12 @@ body.c-menu-open .c-burger span:nth-child(1) { transform: translateY(4px) rotate
 body.c-menu-open .c-burger span:nth-child(2) { opacity: 0; }
 body.c-menu-open .c-burger span:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
 
-// full-screen overlay menu (mobile)
-// while it's open the body is pinned (JS adds .c-scroll-lock + a top offset), so
-// the page behind can't scroll - prevents iOS Safari scroll bleed-through.
-body.c-scroll-lock { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }
+// full-screen overlay menu (mobile). Scroll is frozen via the shared lock
+// (window.ColorfulLock -> html.is-scroll-locked); overscroll-behavior: contain
+// keeps touch scroll from chaining through to the page behind on iOS.
 .c-menu {
   position: fixed; inset: 0; z-index: var(--z-overlay);
+  overscroll-behavior: contain;
   background: color-mix(in srgb, var(--c-bg) 82%, transparent);
   backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%);
   display: flex; flex-direction: column; justify-content: center; gap: 6px;

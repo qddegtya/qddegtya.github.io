@@ -191,6 +191,13 @@
     var box = null, boxImg = null, closeBtn = null, lastFocus = null;
     var IMG_RE = /\.(png|jpe?g|gif|webp|avif|svg|bmp)(\?|#|$)/i;
 
+    // Freeze the page in place via the shared, non-shifting lock: no jump on
+    // open, no animated return on close. Guarded so a missing lock.js can't break
+    // the lightbox itself.
+    var LOCK = window.ColorfulLock;
+    function lockScroll() { if (LOCK) LOCK.acquire("lightbox"); }
+    function unlockScroll() { if (LOCK) LOCK.release("lightbox"); }
+
     function isImageLink(a) {
       if (!a) return false;
       if (a.classList.contains("image-popup")) return true;
@@ -201,10 +208,11 @@
     function close() {
       if (!box || !box.classList.contains("is-open")) return;
       box.classList.remove("is-open");
-      document.body.classList.remove("c-scroll-lock");
+      unlockScroll();
       var done = function () { if (box) box.setAttribute("hidden", ""); };
       if (reduce) done(); else setTimeout(done, 250);
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
+      // preventScroll: restoring focus must not re-scroll the just-restored page
+      if (lastFocus && lastFocus.focus) { try { lastFocus.focus({ preventScroll: true }); } catch (e) { lastFocus.focus(); } }
     }
     function trap(e) { if (e.key === "Tab") { e.preventDefault(); closeBtn.focus(); } }
     function open(src, alt, trigger) {
@@ -221,8 +229,11 @@
       }
       boxImg.setAttribute("src", src); boxImg.setAttribute("alt", alt || "");
       box.removeAttribute("hidden");
-      document.body.classList.add("c-scroll-lock");
-      requestAnimationFrame(function () { box.classList.add("is-open"); closeBtn.focus(); });
+      lockScroll();
+      requestAnimationFrame(function () {
+        box.classList.add("is-open");
+        try { closeBtn.focus({ preventScroll: true }); } catch (e) { closeBtn.focus(); }
+      });
     }
     prose.addEventListener("click", function (e) {
       var a = e.target.closest("a");

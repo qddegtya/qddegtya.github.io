@@ -90,10 +90,15 @@
   function open() {
     if (!overlay) return;
     document.body.classList.add("c-search-open");
+    // freeze the page behind the full-screen overlay via the shared lock (no shift)
+    if (window.ColorfulLock) window.ColorfulLock.acquire("search");
     buildIndex().then(function () { if (input) { input.focus(); if (input.value) run(); } });
     setTimeout(function () { if (input) input.focus(); }, 60);
   }
-  function close() { document.body.classList.remove("c-search-open"); }
+  function close() {
+    document.body.classList.remove("c-search-open");
+    if (window.ColorfulLock) window.ColorfulLock.release("search");
+  }
 
   function run() {
     var term = input.value.trim();

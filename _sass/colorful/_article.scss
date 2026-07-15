@@ -457,6 +457,7 @@
 .c-lightbox { position: fixed; inset: 0; z-index: var(--z-overlay); display: grid; place-items: center;
   padding: clamp(20px, 5vw, 60px); background: color-mix(in srgb, #06060a 78%, transparent);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  overscroll-behavior: contain; touch-action: none;
   opacity: 0; transition: opacity 0.25s var(--ease); }
 .c-lightbox.is-open { opacity: 1; }
 .c-lightbox[hidden] { display: none; }

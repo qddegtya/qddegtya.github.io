@@ -14,7 +14,7 @@ layout: null
   {%- when 'events' -%}{%- assign hue = hues.projects -%}{%- assign kicker = 'Out in the world' -%}
   {%- when 'travel' -%}{%- assign hue = hues.travel -%}{%- assign kicker = 'Footprints' -%}
   {%- when 'ca' -%}{%- assign hue = hues.codeart -%}{%- assign kicker = 'Code & Art' -%}
-  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = page.kicker | default: 'Writing' -%}
+  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = page.kicker | default: 'Blog' -%}
 {%- endcase -%}
 {%- comment -%} entries: paginator.posts when paginating, else the collection/site.posts {%- endcomment -%}
 {%- if paginator -%}
@@ -129,6 +129,7 @@ layout: null
   {% include colorful/footer.html %}
   {% include colorful/search.html %}
 
+  <script src="{{ '/assets/js/colorful/lock.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/colorful/home.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/colorful/search.js' | relative_url }}"></script>
 </body>

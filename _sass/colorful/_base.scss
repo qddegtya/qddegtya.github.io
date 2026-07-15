@@ -31,6 +31,12 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+// Shared scroll lock for every full-screen overlay (menu / search / lightbox),
+// toggled by window.ColorfulLock. Clips overflow WITHOUT fixing <body>, so the
+// reading position never shifts - no jump on open, no animated return on close.
+// scrollbar-gutter: stable reserves the scrollbar's width so content doesn't
+// reflow sideways when the bar disappears.
+html.is-scroll-locked { overflow: hidden; scrollbar-gutter: stable; }
 
 body {
   margin: 0; position: relative;

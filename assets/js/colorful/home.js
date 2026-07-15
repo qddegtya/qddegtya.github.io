@@ -26,25 +26,15 @@
   var burger = document.querySelector(".c-burger");
   var menu = document.querySelector(".c-menu");
   if (burger) {
-    // scroll-lock: while the full-screen menu is open, pin the body so the page
-    // behind it can't scroll (plain overflow:hidden does not hold on iOS Safari,
-    // so we fix the body at the current offset and restore it on close).
-    var lockedY = 0;
-    function lockScroll() {
-      lockedY = window.scrollY || window.pageYOffset || 0;
-      document.body.style.top = (-lockedY) + "px";
-      document.body.classList.add("c-scroll-lock");
-    }
-    function unlockScroll() {
-      document.body.classList.remove("c-scroll-lock");
-      document.body.style.top = "";
-      window.scrollTo(0, lockedY);
-    }
-    function openMenu() { document.body.classList.add("c-menu-open"); lockScroll(); }
+    // scroll-lock via the shared, non-shifting lock (window.ColorfulLock): the
+    // page freezes in place, no jump, no restore. overscroll-behavior on .c-menu
+    // stops iOS touch-scroll chaining. Guard so a missing lock.js never breaks the menu.
+    var LOCK = window.ColorfulLock;
+    function openMenu() { document.body.classList.add("c-menu-open"); if (LOCK) LOCK.acquire("menu"); }
     function closeMenu() {
       if (!document.body.classList.contains("c-menu-open")) return;
       document.body.classList.remove("c-menu-open");
-      unlockScroll();
+      if (LOCK) LOCK.release("menu");
     }
     burger.addEventListener("click", function () {
       if (document.body.classList.contains("c-menu-open")) closeMenu();

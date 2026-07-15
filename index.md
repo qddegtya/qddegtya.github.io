@@ -82,23 +82,6 @@ home:
     - dart.png
     - flutter.png
 
-  # footer -----------------------------------------------------------------
-  footer:
-    tagline: "Still the restless kid, still shipping."
-    sign: "Archer"
-    columns:
-      - head: "Content"
-        links:
-          - { label: "Writing", url: "/posts/" }
-          - { label: "Projects", url: "/projects/" }
-          - { label: "Code & Art", url: "/ca/" }
-          - { label: "Archive", url: "/year-archive/" }
-      - head: "Elsewhere"
-        links:
-          - { label: "GitHub", url: "https://github.com/qddegtya", me: true }
-          - { label: "Twitter", url: "https://twitter.com/qddegtya", me: true }
-          - { label: "Digital Garden", url: "https://www.yuque.com/chiyu-heb0t", me: true }
-
 # Moments: all photos are laid out into a scattered pile by JS
 # (assets/js/colorful/home.js), sized responsively to the container.
 photo_wall:

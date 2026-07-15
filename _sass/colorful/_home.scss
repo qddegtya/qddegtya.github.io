@@ -121,7 +121,7 @@ body.c-search-open .c-search-scrim { opacity: 1; visibility: visible; }
 .c-search { position: fixed; inset: 0; z-index: calc(var(--z-overlay) + 1);
   background: color-mix(in srgb, var(--c-bg) 94%, transparent);
   backdrop-filter: saturate(180%) blur(28px); -webkit-backdrop-filter: saturate(180%) blur(28px);
-  display: flex; flex-direction: column; height: 100dvh;
+  display: flex; flex-direction: column; height: 100dvh; overscroll-behavior: contain;
   transform: translateY(-14px); opacity: 0; visibility: hidden;
   transition: transform 0.4s var(--ease-spring), opacity 0.3s var(--ease), visibility 0.4s; }
 body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible; }
