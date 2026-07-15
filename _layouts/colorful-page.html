@@ -130,29 +130,42 @@ layout: null
       matches always outrank category matches, which outrank filler. Dedupe across
       passes, take 3. Pure Liquid, no dependency.
 
-      Robust to the legacy front matter: `tags` may be a YAML array OR a
-      space-separated string ("flask python"), and the category field is the
-      singular `category`. Normalise tags via `join: ' ' | split: ' '` (a no-op
-      join on a string, a flatten on an array) so matching works either way.
+      Robust to every front-matter form this content uses now or might later:
+        - tags as a YAML array [a, b] OR a space string "a b" OR a comma string
+          "a, b" (or mixed). Normalised by: join spaces (array -> string, no-op on
+          a string) | replace commas with spaces | split on spaces | reject the
+          empty tokens that double-spaces leave behind. Result: a clean token list
+          regardless of the authored form.
+        - the section field as singular `category` OR plural `categories` (array).
+          Concatenated then normalised the same way, so either form is matched.
+      Tokens are lowercased (downcase) before comparison, so "Python" and "python"
+      count as the same tag. The normalisation is applied identically to the
+      current doc and to each candidate, so two docs match if their cleaned,
+      case-folded token sets intersect.
     {%- endcomment -%}
     {% if page.id and page.related %}
     {%- assign pool = site.posts -%}
     {%- if page.collection and page.collection != 'posts' -%}{%- assign pool = site[page.collection] -%}{%- endif -%}
     {%- assign pool = pool | where_exp: "p", "p.url != page.url" | where_exp: "p", "p.hidden != true" | sort: 'date' | reverse -%}
-    {%- assign my_tags = page.tags | join: ' ' | split: ' ' -%}
+    {%- comment -%} normalise THIS doc's tags + categories(singular or plural) to clean token lists {%- endcomment -%}
+    {%- assign my_tags = page.tags | join: ' ' | replace: ',', ' ' | downcase | split: ' ' | where_exp: "t", "t != ''" -%}
+    {%- assign my_cats = page.category | join: ' ' | append: ' ' | append: page.categories | join: ' ' | replace: ',', ' ' | downcase | split: ' ' | where_exp: "c", "c != ''" -%}
     {%- comment -%} pass 1: shares at least one tag {%- endcomment -%}
     {%- assign by_tag = "" | split: "" -%}
     {%- for p in pool -%}
       {%- if my_tags.size > 0 and p.tags -%}
-        {%- assign their_tags = p.tags | join: ' ' | split: ' ' -%}
+        {%- assign their_tags = p.tags | join: ' ' | replace: ',', ' ' | downcase | split: ' ' | where_exp: "t", "t != ''" -%}
         {%- for t in my_tags -%}{%- if their_tags contains t -%}{%- assign by_tag = by_tag | push: p -%}{%- break -%}{%- endif -%}{%- endfor -%}
       {%- endif -%}
     {%- endfor -%}
-    {%- comment -%} pass 2: shares the category, excluding pass-1 picks {%- endcomment -%}
+    {%- comment -%} pass 2: shares a category (singular or plural), excluding pass-1 picks {%- endcomment -%}
     {%- assign by_cat = "" | split: "" -%}
     {%- for p in pool -%}
-      {%- if page.category and p.category and p.category == page.category -%}
-        {%- unless by_tag contains p -%}{%- assign by_cat = by_cat | push: p -%}{%- endunless -%}
+      {%- if my_cats.size > 0 -%}
+        {%- assign their_cats = p.category | join: ' ' | append: ' ' | append: p.categories | join: ' ' | replace: ',', ' ' | downcase | split: ' ' | where_exp: "c", "c != ''" -%}
+        {%- assign cat_hit = false -%}
+        {%- for c in my_cats -%}{%- if their_cats contains c -%}{%- assign cat_hit = true -%}{%- break -%}{%- endif -%}{%- endfor -%}
+        {%- if cat_hit -%}{%- unless by_tag contains p -%}{%- assign by_cat = by_cat | push: p -%}{%- endunless -%}{%- endif -%}
       {%- endif -%}
     {%- endfor -%}
     {%- comment -%} combine (tag first, then category); pass 3 recency top-up if still short {%- endcomment -%}
