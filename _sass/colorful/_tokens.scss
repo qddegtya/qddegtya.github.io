@@ -24,12 +24,14 @@
   --h-reading:  #22C58B;   // spring green
   --h-travel:   #2BA9F4;   // sky
   --h-codeart:  #6E76FF;   // iris
+  --h-watching: #F0508C;   // rose (movie)  - mirrors _data/colorful.yml hues.watching
   // tinted washes (for soft backgrounds / badges) - light mode
   --w-writing:  rgba(255, 90, 110, 0.10);
   --w-projects: rgba(255, 159, 69, 0.10);
   --w-reading:  rgba(34, 197, 139, 0.10);
   --w-travel:   rgba(43, 169, 244, 0.10);
   --w-codeart:  rgba(110, 118, 255, 0.10);
+  --w-watching: rgba(240, 80, 140, 0.10);
 
   // --- Soft, cool-tinted diffuse shadows (Soft Structuralism) ---
   --shadow-1: 0 2px 6px rgba(28, 28, 50, 0.04), 0 8px 24px rgba(28, 28, 50, 0.05);
@@ -109,6 +111,7 @@
   --w-reading:  rgba(34, 197, 139, 0.16);
   --w-travel:   rgba(43, 169, 244, 0.16);
   --w-codeart:  rgba(110, 118, 255, 0.16);
+  --w-watching: rgba(240, 80, 140, 0.16);
 
   // On dark, elevation reads as BRIGHTER, not darker: each shadow leads with a
   // baked white top-lit edge, keeps a tight black contact layer, and demotes the

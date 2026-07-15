@@ -8,6 +8,7 @@ layout: null
   Category -> hue mapping lives in _data/colorful.yml.
 {%- endcomment -%}
 {%- assign hues = site.data.colorful.hues -%}
+{%- assign S = site.data.colorful.sections -%}
 {%- assign home = page.home -%}
 <!doctype html>
 <html lang="en" class="no-js">
@@ -190,11 +191,18 @@ layout: null
     <div class="c-world c-reveal" id="c-world">
       {%- comment -%} Each collection is one stack-card; the section grows itself
          as collections gain entries. Newest 5 per collection. {%- endcomment -%}
-      {% include colorful-collection-card.html items=ca_items     hue=hues.codeart  icon=ic_ca   label="Code & Art"      unit="works"  url="/ca/" %}
-      {% include colorful-collection-card.html items=movie_items  hue=hues.reading  icon=ic_film label="Watching"        unit="films"  url="/movie/" %}
-      {% include colorful-collection-card.html items=book_items   hue=hues.reading  icon=ic_book label="Reading"         unit="books"  url="/book/" %}
-      {% include colorful-collection-card.html items=event_items  hue=hues.projects icon=ic_pin  label="Out in the world" unit="events" url="/events/" %}
-      {% include colorful-collection-card.html items=travel_items hue=hues.travel   icon=ic_map  label="Footprints"      unit="places" url="/travel/" %}
+      {%- comment -%} Jekyll include params can't take bracket expressions, so
+         resolve each section's hue hex into a scalar first, then pass it. {%- endcomment -%}
+      {%- assign hue_ca = hues[S.ca.hue] -%}
+      {%- assign hue_movie = hues[S.movie.hue] -%}
+      {%- assign hue_book = hues[S.book.hue] -%}
+      {%- assign hue_events = hues[S.events.hue] -%}
+      {%- assign hue_travel = hues[S.travel.hue] -%}
+      {% include colorful-collection-card.html items=ca_items     hue=hue_ca     icon=ic_ca   label=S.ca.label     unit="works"  url=S.ca.url %}
+      {% include colorful-collection-card.html items=movie_items  hue=hue_movie  icon=ic_film label=S.movie.label  unit="films"  url=S.movie.url %}
+      {% include colorful-collection-card.html items=book_items   hue=hue_book   icon=ic_book label=S.book.label   unit="books"  url=S.book.url %}
+      {% include colorful-collection-card.html items=event_items  hue=hue_events icon=ic_pin  label=S.events.label unit="events" url=S.events.url %}
+      {% include colorful-collection-card.html items=travel_items hue=hue_travel icon=ic_map  label=S.travel.label unit="places" url=S.travel.url %}
     </div>
 
     {%- comment -%} ===== Timeline view: everything, interleaved by date ===== {%- endcomment -%}

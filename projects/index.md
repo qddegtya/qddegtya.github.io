@@ -1,6 +1,7 @@
 ---
 title: "项目"
 layout: single
+section: projects
 author_profile: true
 header:
   overlay_color: "#0d1117"

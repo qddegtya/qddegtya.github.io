@@ -6,13 +6,34 @@ hues:
   reading:  "#22C58B"   # spring green
   travel:   "#2BA9F4"   # sky
   codeart:  "#6E76FF"   # iris
+  watching: "#F0508C"   # rose (movie; distinct from writing coral)
+
+# Single authoritative section table. Every layout, the nav, the home cards and
+# breadcrumbs read hue/label/url from here, so one content type wears one colour
+# and one name everywhere. `hue` is a key into `hues` above (never a raw hex, so
+# a colour edit stays in one place); `url` doubles as breadcrumb root, nav href
+# and home-card link. Keyed by section slug: collection sections use the
+# collection name as the slug (1:1 with page.collection); non-collection pages
+# (standalone / virtual) get their own slug and opt in via `section:` front matter.
+sections:
+  posts:      { hue: writing,  label: "Blog",             url: "/posts/"        }
+  movie:      { hue: watching, label: "Watching",         url: "/movie/"        }
+  book:       { hue: reading,  label: "Reading",          url: "/book/"         }
+  events:     { hue: projects, label: "Out in the world", url: "/events/"       }
+  travel:     { hue: travel,   label: "Footprints",       url: "/travel/"       }
+  ca:         { hue: codeart,  label: "Code & Art",       url: "/ca/"           }
+  projects:   { hue: projects, label: "Projects",         url: "/projects/"     }
+  guestbook:  { hue: reading,  label: "Guestbook",        url: "/guestbook/"    }
+  archive:    { hue: codeart,  label: "Archive",          url: "/year-archive/" }
+  search:     { hue: writing,  label: "Search",           url: "/search/"       }
+  notfound:   { hue: writing,  label: "Not found",        url: "/404.html"      }
 
 # Timeline ("A colorful life" > Timeline view) - per-collection copy. The layout
 # looks each entry's collection up here, so verb/tag/hue are data, not hardcoded
 # in the template. hue is a key into `hues` above. `default` covers anything else.
 timeline:
   ca:      { verb: "made",     tag: "Code & Art", hue: codeart  }
-  movie:   { verb: "watched",  tag: "Film",       hue: reading  }
+  movie:   { verb: "watched",  tag: "Film",       hue: watching }
   book:    { verb: "read",     tag: "Book",       hue: reading  }
   events:  { verb: "spoke at", tag: "Event",      hue: projects }
   travel:  { verb: "wandered through", tag: "Travel", hue: travel }
@@ -24,11 +45,14 @@ timeline:
 # are intentionally NOT here: they live in the home page's "A colorful world"
 # section, so listing them again in the nav would be redundant. Home is rendered
 # first by the nav include; these follow. hue is the key into `hues` above.
+# Ordered list of section slugs. Each resolves to a row in `sections:` above, so
+# the nav's colour/label/href are the SAME source every other surface reads. To
+# reorder or add an item, edit this list; to recolour or rename it, edit sections.
 nav:
-  - { label: "Blog",       url: "/posts/",      hue: writing  }
-  - { label: "Guestbook",  url: "/guestbook/",  hue: reading  }
-  - { label: "Projects",   url: "/projects/",   hue: projects }
-  - { label: "Archive",    url: "/year-archive/", hue: codeart }
+  - posts
+  - guestbook
+  - projects
+  - archive
 
 # Site footer - shared by home and every inner page.
 footer:

@@ -5,12 +5,13 @@
 layout: null
 ---
 {%- assign hues = site.data.colorful.hues -%}
+{%- assign meta = site.data.colorful.sections.search -%}
 <!doctype html>
 <html lang="{{ page.locale | default: site.locale | default: 'en' }}" class="no-js">
 <head>
   {% include colorful/head.html %}
 </head>
-<body class="c-doc c-listpage c-searchpage-doc" style="--_hue:{{ hues.writing }}">
+<body class="c-doc c-listpage c-searchpage-doc" style="--_hue:{{ hues[meta.hue] }}">
 
   {% include colorful/nav.html %}
 

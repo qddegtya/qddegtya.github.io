@@ -1,6 +1,7 @@
 ---
 title: "留言墙"
 layout: single
+section: guestbook
 comments: true
 author_profile: true
 header:

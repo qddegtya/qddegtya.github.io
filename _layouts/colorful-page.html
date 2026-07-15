@@ -4,19 +4,20 @@
 # post, page and collection item. Structure only; content comes from the doc.
 layout: null
 ---
-{%- assign hues = site.data.colorful.hues -%}
 {%- comment -%}
-  Accent hue + kicker come from the document's collection, so an article wears
-  the same dopamine colour it has everywhere else on the site.
+  Accent hue + kicker + breadcrumb root all come from the unified section table
+  (_data/colorful.yml `sections`), so an article wears the same dopamine colour
+  and name it has everywhere else on the site. Resolve the section slug from
+  page.section (standalone pages) -> page.collection (collection docs) -> posts.
+  The `| default: sections.posts` guard means an unknown slug never yields nil.
 {%- endcomment -%}
-{%- case page.collection -%}
-  {%- when 'movie' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Watching' -%}{%- assign kroot = '/movie/' -%}
-  {%- when 'book' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Reading' -%}{%- assign kroot = '/book/' -%}
-  {%- when 'events' -%}{%- assign hue = hues.projects -%}{%- assign kicker = 'Out in the world' -%}{%- assign kroot = '/events/' -%}
-  {%- when 'travel' -%}{%- assign hue = hues.travel -%}{%- assign kicker = 'Footprints' -%}{%- assign kroot = '/travel/' -%}
-  {%- when 'ca' -%}{%- assign hue = hues.codeart -%}{%- assign kicker = 'Code & Art' -%}{%- assign kroot = '/ca/' -%}
-  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = 'Blog' -%}{%- assign kroot = '/posts/' -%}
-{%- endcase -%}
+{%- assign hues = site.data.colorful.hues -%}
+{%- assign sections = site.data.colorful.sections -%}
+{%- assign sec = page.section | default: page.collection | default: 'posts' -%}
+{%- assign meta = sections[sec] | default: sections.posts -%}
+{%- assign hue = hues[meta.hue] -%}
+{%- assign kicker = meta.label -%}
+{%- assign kroot = meta.url -%}
 {%- if page.tagline -%}{%- assign lead = page.tagline -%}{%- elsif page.excerpt -%}{%- assign lead = page.excerpt -%}{%- endif -%}
 <!doctype html>
 <html lang="{{ page.locale | default: site.locale | default: 'en' }}" class="no-js">

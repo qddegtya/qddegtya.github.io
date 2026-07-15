@@ -6,16 +6,15 @@
 # home .c-card system. Structure only; content/config come from the page.
 layout: null
 ---
+{%- comment -%} accent hue + kicker from the unified section table (see
+  _data/colorful.yml `sections`); same resolver as colorful-page. This list layout
+  doesn't render a breadcrumb, so meta.url is simply unused here. {%- endcomment -%}
 {%- assign hues = site.data.colorful.hues -%}
-{%- comment -%} accent hue + kicker from the page's collection (blog = writing) {%- endcomment -%}
-{%- case page.collection -%}
-  {%- when 'movie' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Watching' -%}
-  {%- when 'book' -%}{%- assign hue = hues.reading -%}{%- assign kicker = 'Reading' -%}
-  {%- when 'events' -%}{%- assign hue = hues.projects -%}{%- assign kicker = 'Out in the world' -%}
-  {%- when 'travel' -%}{%- assign hue = hues.travel -%}{%- assign kicker = 'Footprints' -%}
-  {%- when 'ca' -%}{%- assign hue = hues.codeart -%}{%- assign kicker = 'Code & Art' -%}
-  {%- else -%}{%- assign hue = hues.writing -%}{%- assign kicker = page.kicker | default: 'Blog' -%}
-{%- endcase -%}
+{%- assign sections = site.data.colorful.sections -%}
+{%- assign sec = page.section | default: page.collection | default: 'posts' -%}
+{%- assign meta = sections[sec] | default: sections.posts -%}
+{%- assign hue = hues[meta.hue] -%}
+{%- assign kicker = meta.label -%}
 {%- comment -%} entries: paginator.posts when paginating, else the collection/site.posts {%- endcomment -%}
 {%- if paginator -%}
   {%- assign entries = paginator.posts -%}

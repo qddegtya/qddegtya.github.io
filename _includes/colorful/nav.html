@@ -4,6 +4,7 @@
   current URL. `search` and `theme` controls are always present.
 {%- endcomment -%}
 {%- assign hues = site.data.colorful.hues -%}
+{%- assign sections = site.data.colorful.sections -%}
 <nav class="c-nav">
   <div class="c-nav__bar">
     <a class="c-brand" href="{{ '/' | relative_url }}" aria-label="Colorful home">
@@ -19,7 +20,8 @@
       {%- comment -%} magic slider: a hue-tinted pill JS glides between items on hover {%- endcomment -%}
       <span class="c-nav__slider" aria-hidden="true"></span>
       <a class="c-nav__link{% if page.url == '/' %} is-active{% endif %}" style="--_hue:{{ hues.codeart }}" href="{{ '/' | relative_url }}">Home</a>
-      {%- for item in site.data.colorful.nav -%}
+      {%- for slug in site.data.colorful.nav -%}
+      {%- assign item = sections[slug] -%}
       {%- assign _active = false -%}
       {%- if page.url contains item.url and item.url != '/' -%}{%- assign _active = true -%}{%- endif -%}
       <a class="c-nav__link{% if _active %} is-active{% endif %}" style="--_hue:{{ hues[item.hue] }}" href="{{ item.url | relative_url }}">{{ item.label }}</a>
@@ -42,7 +44,8 @@
 
 {%- comment -%} mobile full-screen menu {%- endcomment -%}
 <div class="c-menu">
-  {%- for item in site.data.colorful.nav -%}
+  {%- for slug in site.data.colorful.nav -%}
+  {%- assign item = sections[slug] -%}
   <a class="c-menu__link" style="--_hue:{{ hues[item.hue] }}" href="{{ item.url | relative_url }}"><span class="dot"></span>{{ item.label }}</a>
   {%- endfor -%}
 </div>

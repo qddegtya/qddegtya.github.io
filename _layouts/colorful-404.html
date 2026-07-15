@@ -3,12 +3,13 @@
 layout: null
 ---
 {%- assign hues = site.data.colorful.hues -%}
+{%- assign meta = site.data.colorful.sections.notfound -%}
 <!doctype html>
 <html lang="{{ site.locale | default: 'en' }}" class="no-js">
 <head>
   {% include colorful/head.html title="Page not found" %}
 </head>
-<body class="c-doc" style="--_hue:{{ hues.writing }}">
+<body class="c-doc" style="--_hue:{{ hues[meta.hue] }}">
 
   {% include colorful/nav.html %}
 
