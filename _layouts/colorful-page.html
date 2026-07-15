@@ -118,11 +118,50 @@ layout: null
       {% endif %}
     </article>
 
-    {%- comment -%} ---------- RELATED: reuses the home .c-card system (+ placeholder) ---------- {%- endcomment -%}
-    {% if page.id and page.related and site.related_posts.size > 0 %}
-    {%- assign related = site.related_posts -%}
-    {% elsif page.id and page.related %}
-    {%- assign related = site.posts | where_exp: "p", "p.url != page.url" -%}
+    {%- comment -%}
+      ---------- RELATED: reuses the home .c-card system (+ placeholder) ----------
+      True relatedness, NOT Jekyll's site.related_posts (which without --lsi is just
+      "the latest N posts", identical on every page). Candidate pool = the doc's own
+      collection (site.posts for blog). Three ranked passes, most-specific first:
+        1. shares a tag       (same topic - the strongest signal)
+        2. shares the category (same broad section - weaker)
+        3. recency top-up      (same collection, newest, so the strip is never empty)
+      Each pass appends by date-desc; concatenation preserves pass order, so tag
+      matches always outrank category matches, which outrank filler. Dedupe across
+      passes, take 3. Pure Liquid, no dependency.
+
+      Robust to the legacy front matter: `tags` may be a YAML array OR a
+      space-separated string ("flask python"), and the category field is the
+      singular `category`. Normalise tags via `join: ' ' | split: ' '` (a no-op
+      join on a string, a flatten on an array) so matching works either way.
+    {%- endcomment -%}
+    {% if page.id and page.related %}
+    {%- assign pool = site.posts -%}
+    {%- if page.collection and page.collection != 'posts' -%}{%- assign pool = site[page.collection] -%}{%- endif -%}
+    {%- assign pool = pool | where_exp: "p", "p.url != page.url" | where_exp: "p", "p.hidden != true" | sort: 'date' | reverse -%}
+    {%- assign my_tags = page.tags | join: ' ' | split: ' ' -%}
+    {%- comment -%} pass 1: shares at least one tag {%- endcomment -%}
+    {%- assign by_tag = "" | split: "" -%}
+    {%- for p in pool -%}
+      {%- if my_tags.size > 0 and p.tags -%}
+        {%- assign their_tags = p.tags | join: ' ' | split: ' ' -%}
+        {%- for t in my_tags -%}{%- if their_tags contains t -%}{%- assign by_tag = by_tag | push: p -%}{%- break -%}{%- endif -%}{%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- comment -%} pass 2: shares the category, excluding pass-1 picks {%- endcomment -%}
+    {%- assign by_cat = "" | split: "" -%}
+    {%- for p in pool -%}
+      {%- if page.category and p.category and p.category == page.category -%}
+        {%- unless by_tag contains p -%}{%- assign by_cat = by_cat | push: p -%}{%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- comment -%} combine (tag first, then category); pass 3 recency top-up if still short {%- endcomment -%}
+    {%- assign related = by_tag | concat: by_cat -%}
+    {%- if related.size < 3 -%}
+      {%- for p in pool -%}
+        {%- unless related contains p -%}{%- assign related = related | push: p -%}{%- endunless -%}
+      {%- endfor -%}
+    {%- endif -%}
     {% endif %}
     {% if related and related.size > 0 %}
     <section class="c-related c-wrap--reading">
