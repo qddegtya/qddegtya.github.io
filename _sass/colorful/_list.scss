@@ -177,7 +177,7 @@
 // --- SEARCH PAGE ------------------------------------------------------------
 .c-searchpage { max-width: 760px; margin-inline: auto; }
 .c-searchpage__box { display: flex; align-items: center; gap: 16px; margin-top: 28px;
-  padding: 8px 10px 8px 24px; border-radius: var(--r-pill);
+  padding: 8px 12px 8px 24px; border-radius: var(--r-pill);
   background: var(--c-surface); border: 1px solid var(--c-hairline);
   box-shadow: var(--shadow-1), var(--hl-inset);
   transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease); }
@@ -194,13 +194,15 @@
 // kill the browser's default (ugly blue) search clear button + decorations
 .c-searchpage__input::-webkit-search-cancel-button,
 .c-searchpage__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
-// ESC/x clear pill - mirrors the overlay's .c-search__close so both search UIs read identically
-.c-searchpage__clear { flex-shrink: 0; border: 1px solid var(--c-hairline); background: var(--c-surface-2);
-  color: var(--c-muted); cursor: pointer; height: 36px; padding: 0 14px; border-radius: var(--r-pill);
-  display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11.5px;
-  transition: color 0.2s, background 0.2s, border-color 0.2s; }
-.c-searchpage__clear svg { color: currentColor; }
-.c-searchpage__clear:hover { color: var(--c-text); background: var(--c-surface); }
+// Clear button: a round, borderless icon that sits CONCENTRIC inside the pill
+// frame - no pill-inside-a-pill clash. Quiet by default (just the glyph), with a
+// faint disc only on hover. Balances the coral search icon on the left.
+.c-searchpage__clear { flex-shrink: 0; width: 40px; height: 40px; border: 0; padding: 0;
+  border-radius: 50%; background: transparent; color: var(--c-faint); cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: color 0.2s var(--ease), background 0.2s var(--ease); }
+.c-searchpage__clear:hover { color: var(--c-text);
+  background: color-mix(in srgb, var(--c-text) 8%, transparent); }
 .c-searchpage__clear[hidden] { display: none; }
 .c-searchpage__kbd { font-family: var(--font-mono); font-size: 11px; color: var(--c-faint);
   padding: 6px 10px; border-radius: var(--r-pill); background: var(--c-surface-2); }
