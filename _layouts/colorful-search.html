@@ -28,7 +28,7 @@ layout: null
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
-      <div id="c-searchpage-results" class="c-searchpage__results"></div>
+      <div id="c-searchpage-results" class="c-searchpage__results" data-per-page="{{ site.search_per_page | default: 12 }}"></div>
       <p class="c-searchpage__hint" data-search-hint>Type to search across everything on the site.</p>
     </div>
   </main>

@@ -75,6 +75,7 @@ atom_feed:
 search                   : true
 search_full_content      : true
 search_provider          : # lunr (default), algolia, google
+search_per_page          : 12   # lunr results per page (overlay batch size + /search page size)
 lunr:
   search_within_pages    : # true, false (default)
 algolia:
