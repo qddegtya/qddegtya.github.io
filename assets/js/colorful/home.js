@@ -334,6 +334,39 @@
     render();
   });
 
+  /* ---- Hero pointer choreography (live type) ----
+     Two live effects CSS can't express on its own: a hue spotlight that tracks the
+     cursor across the grid (--mx/--my, 0-1) and a hairline parallax tilt on the
+     giant title (--tilt-x/--tilt-y). Both are rAF-throttled, write only custom
+     props (CSS springs the visuals), and are fully gated on reduced-motion. The
+     title's colour-fill hue drift is CSS-owned (see _home.scss) - not here. ---- */
+  var hero = document.getElementById("c-hero");
+  var heroTitle = hero && hero.querySelector(".c-hero__title");
+  if (hero && !reduce) {
+    var hx = 0.3, hy = 0.42, heroRaf = null;
+    function paintHero() {
+      heroRaf = null;
+      hero.style.setProperty("--mx", hx.toFixed(3));
+      hero.style.setProperty("--my", hy.toFixed(3));
+      if (heroTitle) {
+        // small, tasteful: +-3.2deg yaw, +-2deg pitch, centred at rest.
+        heroTitle.style.setProperty("--tilt-x", ((hx - 0.5) * 6.4).toFixed(2) + "deg");
+        heroTitle.style.setProperty("--tilt-y", ((0.5 - hy) * 4).toFixed(2) + "deg");
+      }
+    }
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      hx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      hy = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
+      if (!heroRaf) heroRaf = requestAnimationFrame(paintHero);
+    });
+    // ease the tilt back to flat when the pointer leaves the hero.
+    hero.addEventListener("pointerleave", function () {
+      hx = 0.3; hy = 0.42;
+      if (!heroRaf) heroRaf = requestAnimationFrame(paintHero);
+    });
+  }
+
   /* ---- GSAP hero choreography ---- */
   if (reduce || typeof gsap === "undefined") return;
 
@@ -342,10 +375,6 @@
   if (wave) gsap.to(wave, { rotation: 18, duration: 0.5, yoyo: true, repeat: 5, repeatDelay: 2.4,
     transformOrigin: "70% 70%", ease: "power1.inOut" });
 
-  gsap.to(".c-hero__title .word-color .fill", {
-    backgroundPositionX: "300%", duration: 18, repeat: -1, ease: "none"
-  });
-
   var lines = gsap.utils.toArray(".c-hero__title .line > span");
   gsap.set(lines, { yPercent: 115 });
   var tl = gsap.timeline({ defaults: { ease: "power4.out" } });
@@ -353,9 +382,12 @@
     tl.to(ln, { yPercent: 0, duration: 1.0 }, i === 0 ? 0.15 : "-=0.82");
   });
 
-  var fades = [".c-hero__eyebrow", ".c-hero__foot", ".c-jump"];
+  // eyebrow leads, then the intro copy and actions cascade in just after the last
+  // title line lands - the giant type and the intro paragraph read as one gesture.
+  var fades = [".c-hero__eyebrow", ".c-hero__intro", ".c-hero__cta", ".c-jump"];
   gsap.set(fades, { opacity: 0, y: 20 });
   tl.to(".c-hero__eyebrow", { opacity: 1, y: 0, duration: 0.7 }, 0.0)
-    .to(".c-hero__foot",    { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
-    .to(".c-jump",         { opacity: 1, y: 0, duration: 0.7 }, "-=0.5");
+    .to(".c-hero__intro",   { opacity: 1, y: 0, duration: 0.7 }, "-=0.35")
+    .to(".c-hero__cta",     { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
+    .to(".c-jump",          { opacity: 1, y: 0, duration: 0.7 }, "-=0.55");
 })();

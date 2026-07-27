@@ -4,94 +4,188 @@
 // =============================================================================
 
 // --- HERO -------------------------------------------------------------------
-.c-hero { position: relative; min-height: calc(100dvh - 20px); display: flex; flex-direction: column;
-  justify-content: center; padding: 116px 0 48px; }
+// Typography is the whole show, staged over a soft engineering-grid texture that
+// stays dense at the centre and blurs out toward the edges. The texture is fully
+// decorative (pointer-events:none); every ounce of craft goes into the type and
+// the intro copy, not chrome. Single column - no side widget, no axis lines, no
+// drafting marks. The type is alive: it tracks the pointer and reveals on load.
+.c-hero { position: relative; overflow: hidden; min-height: calc(100dvh - 20px);
+  display: flex; flex-direction: column; justify-content: center; padding: 116px 0 64px; }
 
-.c-hero__grid { width: 100%; position: relative; }
-.c-hero__copy { position: relative; min-width: 0; }
+// ---- blueprint texture layer ----
+// Pinned across the whole hero, behind the copy. Masked to fade out near the top
+// (under the nav) and bottom edge so the grid dissolves into the page instead of
+// stopping at a hard line.
+.c-hero__blueprint { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 14% 82%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 14% 82%, transparent); }
 
-// Portrait sticker floats right; the intro paragraph below the headline wraps
-// naturally around it (classic float text-wrap - simple and rock-solid on every
-// device). A small handwritten "that's me" note tucks onto the sticker.
-.c-hero__sticker { float: right; width: clamp(180px, 22vw, 300px); margin: 6px 0 8px clamp(20px, 3vw, 40px);
-  position: relative; shape-margin: 18px; }
-// faint coral glow behind the sticker, echoing the "that's me" tag - gives the
-// cut-out a warm halo so it reads as a placed object, not a floating cut-out.
-.c-hero__sticker::before { content: ""; position: absolute; z-index: -1;
-  inset: 12% 8% 4% 12%; border-radius: 50%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--h-writing) 34%, transparent), transparent 72%);
-  filter: blur(26px); opacity: 0.9; pointer-events: none; }
-// dark: the coral halo needs a higher hue share to survive the near-black canvas
-[data-theme="dark"] .c-hero__sticker::before {
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--h-writing) 44%, transparent), transparent 72%); }
-.c-hero__portrait { transform: rotate(3deg); transition: transform 0.4s var(--ease-spring); }
-// Die-cut photo-sticker treatment for the cut-out portrait PNG. Four tight white
-// drop-shadows trace a crisp sticker border around the silhouette; two softer
-// dark shadows lift it off the canvas (a close contact shadow + a wider float
-// shadow), and a faint hue glow behind ties it to the "that's me" tag colour.
-.c-hero__portrait img { width: 100%; height: auto; display: block;
-  filter:
-    drop-shadow(2px 0 0 var(--c-sticker-edge)) drop-shadow(-2px 0 0 var(--c-sticker-edge))
-    drop-shadow(0 2px 0 var(--c-sticker-edge)) drop-shadow(0 -2px 0 var(--c-sticker-edge))
-    var(--sticker-lift); }
-// hover: peel it up a touch - lift, straighten, and deepen the float shadow
-.c-hero__sticker:hover .c-hero__portrait { transform: rotate(1deg) translateY(-6px) scale(1.02); }
-@media (prefers-reduced-motion: reduce) {
-  .c-hero__portrait { transition: none; }
-  .c-hero__sticker:hover .c-hero__portrait { transform: rotate(3deg); }
+// Two stacked grids: a fine 16px weave and a bolder 96px major grid, both from
+// hairline tokens so they auto-flip light/dark. Radially masked to concentrate
+// the texture toward the centre-left where the type sits and thin out at the far
+// edges - reads as a drawing surface, not wallpaper.
+.c-hero__grid-lines { position: absolute; inset: -2px;
+  background:
+    linear-gradient(var(--c-hairline) 1px, transparent 1px) 0 0 / 96px 96px,
+    linear-gradient(90deg, var(--c-hairline) 1px, transparent 1px) 0 0 / 96px 96px,
+    linear-gradient(var(--c-hairline-2) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, var(--c-hairline-2) 1px, transparent 1px) 0 0 / 16px 16px;
+  -webkit-mask-image: radial-gradient(130% 120% at 32% 42%, #000 46%, transparent 88%);
+  mask-image: radial-gradient(130% 120% at 32% 42%, #000 46%, transparent 88%); }
+
+// A single hue spotlight that follows the pointer across the whole hero, tinting
+// the grid where the cursor rests. --mx/--my (0-1, set by home.js) place it; it
+// idles at centre-left so it's alive even before the first pointer move. Purely
+// ambient (pointer-events:none), theme-hue coloured, and killed by reduced-motion.
+.c-hero__glow { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(38vmax 38vmax at calc(var(--mx, 0.3) * 100%) calc(var(--my, 0.42) * 100%),
+    color-mix(in srgb, var(--h-codeart) 22%, transparent), transparent 60%);
+  opacity: 0; transition: opacity 0.6s var(--ease); }
+.c-hero:hover .c-hero__glow { opacity: 1; }
+
+// copy sits above the texture; single column, left-aligned.
+.c-hero__inner { position: relative; z-index: 1; width: 100%; }
+.c-hero__copy { min-width: 0; }
+
+@media (max-width: 900px) {
+  .c-hero { min-height: auto; padding: 104px 0 56px; }
 }
-.c-hero__note { position: absolute; top: -46px; left: 8px; text-align: left; pointer-events: none; }
-.c-hero__note b { display: block; font-family: var(--font-sign); font-size: 24px; line-height: 1;
-  color: var(--c-text); transform: rotate(-5deg); margin-bottom: 2px; }
-.c-hero__note svg { width: 52px; height: auto; color: var(--h-writing); }
-// the note + arrow only make sense when the sticker sits in generous whitespace
-@media (max-width: 900px) { .c-hero__note { display: none; } }
 @media (max-width: 560px) {
-  .c-hero__sticker { float: none; width: 62vw; margin: 0 auto 18px; }
+  .c-hero__grid-lines { background-size: 72px 72px, 72px 72px, 16px 16px, 16px 16px; }
 }
 
+// eyebrow -> a glass nameplate chip: a frosted pill that sits on the blueprint
+// like a titleblock label, built from the same --c-glass + hairline + backdrop
+// language as the nav so the hero head belongs to the theme, not floats over it.
 .c-hero__eyebrow { display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.01em; color: var(--c-muted); }
+  padding: 7px 14px 7px 12px; border-radius: var(--r-pill);
+  background: var(--c-glass); border: 1px solid var(--c-hairline);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-1);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.01em; color: var(--c-muted);
+  transition: border-color 0.25s var(--ease), box-shadow 0.35s var(--ease), transform 0.35s var(--ease-spring); }
+// hover is scoped to the chip itself (not the whole hero) so it recovers the
+// instant the pointer leaves the chip - like the jump links do - rather than
+// staying lit until you exit the entire banner.
+.c-hero__eyebrow:hover { transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--h-codeart) 30%, var(--c-hairline));
+  box-shadow: var(--shadow-2); }
 .c-hero__dots { display: inline-flex; gap: 4px; }
-.c-hero__dots i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+.c-hero__dots i { width: 7px; height: 7px; border-radius: 50%; display: block;
+  transition: transform 0.45s var(--ease-spring); }
+// eyebrow dots ripple in sequence when the chip is hovered - a small sign it's a
+// live surface. They pulse in place (scale only, no vertical move) so the chip
+// stays perfectly baseline-aligned, staggered for the wave read.
+.c-hero__eyebrow:hover .c-hero__dots i { transform: scale(1.32); }
+.c-hero__eyebrow:hover .c-hero__dots i:nth-child(2) { transition-delay: 0.04s; }
+.c-hero__eyebrow:hover .c-hero__dots i:nth-child(3) { transition-delay: 0.08s; }
+.c-hero__eyebrow:hover .c-hero__dots i:nth-child(4) { transition-delay: 0.12s; }
+.c-hero__eyebrow:hover .c-hero__dots i:nth-child(5) { transition-delay: 0.16s; }
 
+// Reveal-on-load (masked line rise) + the eyebrow/intro/cta/jump fades are owned
+// by GSAP in home.js - the single source of entrance truth, with a no-JS/reduced
+// fallback of simply being present. CSS here owns the *resting* look plus the
+// live interactions GSAP doesn't do: a pointer-tracked parallax tilt on the whole
+// title block (--tilt-x/--tilt-y set by home.js) and the hover treatments below.
 .c-hero__title {
   margin-top: 24px; font-family: var(--font-display); font-weight: 600;
   letter-spacing: -0.045em; line-height: 0.9; font-size: clamp(48px, 9.5vw, 150px);
+  transform: perspective(1200px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg));
+  transform-style: preserve-3d; transition: transform 0.5s var(--ease);
+  will-change: transform;
 }
 .c-hero__title .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
 .c-hero__title .line > span { display: block; }
+
+// the colour-fill accent line: its gradient slowly drifts on its own so the hues
+// feel liquid, and snaps to a faster sweep while the hero is hovered. background
+// is 300% wide so the animation has room to travel. CSS owns this drift entirely
+// (GSAP no longer touches it) so the hover speed-up is a single clean handoff.
+.c-hero__title .word-color { display: inline-block; }
 .c-hero__title .word-color .fill {
-  background: linear-gradient(92deg, var(--h-writing), var(--h-projects) 28%, var(--h-reading) 52%, var(--h-travel) 76%, var(--h-codeart));
+  background: linear-gradient(92deg, var(--h-writing), var(--h-projects) 22%, var(--h-reading) 44%, var(--h-travel) 66%, var(--h-codeart) 84%, var(--h-writing));
   background-size: 300% 100%;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: c-hero-hue 14s linear infinite; }
+.c-hero__title:hover .word-color .fill { animation-duration: 4s; }
+@keyframes c-hero-hue {
+  to { background-position: 300% 0; }
 }
 
-// intro paragraph wraps around the floated sticker
-.c-hero__intro { margin-top: clamp(22px, 3.5vh, 38px); font-size: clamp(16px, 1.5vw, 20px);
-  line-height: 1.7; color: var(--c-muted); }
-.c-hero__intro b { color: var(--c-text); font-weight: 600; }
-.c-hero__intro a { color: var(--h-writing); text-decoration: underline;
-  text-decoration-thickness: 1px; text-underline-offset: 2.5px;
-  text-decoration-color: color-mix(in srgb, var(--h-writing) 40%, transparent);
-  transition: text-decoration-color 0.2s; }
-.c-hero__intro a:hover { text-decoration-color: var(--h-writing); }
+// intro paragraph -> a blueprint annotation block: a hue datum-rule down the left
+// edge and a whisper-faint surface backing lift the copy off the grid so it reads
+// as a callout note on the drawing, not loose text. Tokens only, so it flips
+// light/dark. (Entrance fade owned by GSAP; see home.js.)
+.c-hero__intro { position: relative; margin-top: clamp(22px, 3.5vh, 38px); max-width: 56ch;
+  padding: 4px 2px 4px 20px;
+  font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; color: var(--c-muted); }
+.c-hero__intro::before { content: ""; position: absolute; left: 0; top: 3px; bottom: 3px;
+  width: 3px; border-radius: var(--r-pill);
+  background: linear-gradient(var(--h-writing), var(--h-codeart));
+  // the rule brightens as a whole when the hero is hovered (see below).
+  transition: filter 0.35s var(--ease), transform 0.35s var(--ease-spring);
+  transform-origin: top; }
+.c-hero__intro:hover::before { filter: saturate(1.3) brightness(1.08); transform: scaleY(1.04); }
+// the two org names sit in <b>; on hover they warm to their hue and lift a hair,
+// turning the sentence into something you can touch. Each keeps a distinct hue so
+// the pair reads as two links, not one.
+.c-hero__intro b { color: var(--c-text); font-weight: 600;
+  transition: color 0.25s var(--ease); }
+.c-hero__intro a { position: relative; color: var(--c-text); font-weight: 600;
+  text-decoration: none;
+  // underline is a drawn gradient bar that wipes in from the left on hover, far
+  // silkier than a static text-decoration line.
+  background-image: linear-gradient(90deg, var(--_a, var(--h-writing)), var(--_a, var(--h-writing)));
+  background-repeat: no-repeat; background-position: 0 100%;
+  background-size: 100% 1.5px;
+  transition: color 0.25s var(--ease), background-size 0.35s var(--ease); }
+.c-hero__intro a:hover { color: var(--_a, var(--h-writing));
+  background-size: 100% 2px; }
+// second link gets the iris hue so the astack / hlang pair is visibly two links.
+.c-hero__intro a:nth-of-type(1) { --_a: var(--h-writing); }
+.c-hero__intro a:nth-of-type(2) { --_a: var(--h-codeart); }
+.c-hero__intro a:nth-of-type(3) { --_a: var(--h-reading); }
+
+// motion-reduced: no drift, no pointer tilt, no glow, no dot ripple. The type and
+// copy simply rest. GSAP's entrance is separately gated in home.js.
+@media (prefers-reduced-motion: reduce) {
+  .c-hero__title { transform: none; }
+  .c-hero__title .word-color .fill { animation: none; }
+  .c-hero__glow { display: none; }
+  .c-hero__eyebrow:hover .c-hero__dots i { transform: none; }
+}
 .c-hero__cta { clear: none; margin-top: clamp(24px, 3.5vh, 36px); display: flex; align-items: center; gap: 12px; }
 
-// clickable category strip (replaces the old dead "stars"), lives under the hero copy
-// In-page jump nav under the hero CTA. Deliberately lighter than the primary
-// CTA - a lead-in word + hue-dotted text links - so it reads as "or wander in",
-// a secondary way to roam this page, not a competing set of buttons.
-.c-jump { clear: both; margin-top: clamp(22px, 3.2vh, 34px); display: flex; align-items: center;
-  gap: 6px 16px; flex-wrap: wrap; }
+// In-page jump nav under the hero CTA -> a single frosted glass rail that echoes
+// the eyebrow chip, closing the hero head-to-foot in one material. Deliberately
+// lighter than the primary CTA (a lead-in word + hue-dotted text links) so it
+// reads as "or wander in", a secondary way to roam - not competing buttons.
+.c-jump { clear: both; margin-top: clamp(22px, 3.2vh, 34px);
+  display: inline-flex; align-items: center; gap: 6px 16px; flex-wrap: wrap;
+  padding: 9px 16px; border-radius: var(--r-pill);
+  background: var(--c-glass); border: 1px solid var(--c-hairline);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-1);
+  transition: border-color 0.25s var(--ease), box-shadow 0.35s var(--ease); }
+.c-jump:hover { box-shadow: var(--shadow-2); }
 .c-jump__lead { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em;
   text-transform: uppercase; color: var(--c-faint); }
 .c-jump__link { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px;
   font-weight: 500; color: var(--c-muted); transition: color 0.2s; }
 .c-jump__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--_hue); flex-shrink: 0;
-  transition: transform 0.25s var(--ease-spring); }
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--_hue) 60%, transparent);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.3s var(--ease); }
 .c-jump__link:hover { color: var(--c-text); }
-.c-jump__link:hover .c-jump__dot { transform: scale(1.35); }
+.c-jump__link:hover .c-jump__dot { transform: scale(1.35);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--_hue) 22%, transparent); }
+
+// on the narrowest screens the glass rail can crowd the edge - let it wrap to a
+// soft block rather than a tight pill.
+@media (max-width: 560px) {
+  .c-jump { display: flex; border-radius: var(--r-md); }
+}
 
 // --- SEARCH: nav-level trigger + top-expanding wide bar ----------------------
 // Trigger lives in the nav (primary level). A compact pill on desktop; icon-only
@@ -206,6 +300,38 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
 .c-about__p a { color: var(--h-writing); font-family: var(--font-mono); font-size: 0.8em; vertical-align: super;
   text-decoration: none; padding: 0 2px; }
 .c-about__aside { position: sticky; top: 96px; }
+
+// Portrait sticker, relocated whole from the hero. The aside is roomy and sticky,
+// so the "that's me" die-cut portrait lands here as a real placed object above the
+// tech stack. Kept full-size (not shrunk) - it now owns this column. Block is
+// centred horizontally so it always sits over the middle of the tech-stack icons
+// below it; the rotate(3deg) sticker tilt is a separate, preserved transform.
+.c-about__sticker { position: relative; width: 100%; max-width: 300px; margin: 44px auto 40px; }
+// faint coral halo behind the cut-out, echoing the "that's me" tag colour.
+.c-about__sticker::before { content: ""; position: absolute; z-index: -1;
+  inset: 12% 8% 4% 12%; border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--h-writing) 34%, transparent), transparent 72%);
+  filter: blur(26px); opacity: 0.9; pointer-events: none; }
+[data-theme="dark"] .c-about__sticker::before {
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--h-writing) 44%, transparent), transparent 72%); }
+.c-about__portrait { transform: rotate(3deg); transition: transform 0.4s var(--ease-spring); }
+// Die-cut photo-sticker treatment: four tight edge shadows trace a crisp sticker
+// border around the silhouette; the softer dark shadows lift it off the page.
+.c-about__portrait img { width: 100%; height: auto; display: block;
+  filter:
+    drop-shadow(2px 0 0 var(--c-sticker-edge)) drop-shadow(-2px 0 0 var(--c-sticker-edge))
+    drop-shadow(0 2px 0 var(--c-sticker-edge)) drop-shadow(0 -2px 0 var(--c-sticker-edge))
+    var(--sticker-lift); }
+.c-about__sticker:hover .c-about__portrait { transform: rotate(1deg) translateY(-6px) scale(1.02); }
+@media (prefers-reduced-motion: reduce) {
+  .c-about__portrait { transition: none; }
+  .c-about__sticker:hover .c-about__portrait { transform: rotate(3deg); }
+}
+.c-about__note { position: absolute; top: -40px; left: 6px; text-align: left; pointer-events: none; z-index: 1; }
+.c-about__note b { display: block; font-family: var(--font-sign); font-size: 24px; line-height: 1;
+  color: var(--c-text); transform: rotate(-5deg); margin-bottom: 2px; }
+.c-about__note svg { width: 52px; height: auto; color: var(--h-writing); }
+
 .c-about__stackhead { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em;
   text-transform: uppercase; color: var(--c-faint); margin: 0 0 14px; }
 .c-stack { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -217,6 +343,10 @@ body.c-search-open .c-search { transform: none; opacity: 1; visibility: visible;
 @media (max-width: 820px) {
   .c-about { grid-template-columns: 1fr; gap: 28px; }
   .c-about__aside { position: static; }
+  // single column: the aside now stacks directly under the intro paragraph, so the
+  // note (which floats -40px above the sticker) needs extra clearance from that text
+  // above it - hence a larger top margin than the desktop column uses. Still centred.
+  .c-about__sticker { margin: 56px auto 32px; }
 }
 
 // --- SECTION HEAD: view toggle (card / list) --------------------------------
@@ -510,7 +640,4 @@ a.c-coll__title:hover { text-decoration: underline; text-underline-offset: 3px; 
 @media (max-width: 900px) {
   .c-world { grid-template-columns: 1fr; }
   .c-col--lead { grid-column: span 1; }
-}
-@media (max-width: 620px) {
-  .c-hero__foot { flex-direction: column; align-items: flex-start; }
 }

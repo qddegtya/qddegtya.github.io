@@ -21,9 +21,19 @@ layout: null
   {%- comment -%} ---------- NAV + MOBILE MENU ---------- {%- endcomment -%}
   {% include colorful/nav.html %}
 
-  {%- comment -%} ---------- HERO ---------- {%- endcomment -%}
-  <header class="c-hero">
-    <div class="c-wrap c-hero__grid">
+  {%- comment -%} ---------- HERO ----------
+     Typography is the sole protagonist over a soft engineering-grid texture: a
+     fine coordinate grid that stays dense at the centre and blurs out toward the
+     edges. The grid is purely decorative (aria-hidden, pointer-events:none). All
+     the craft goes into the type and intro copy: the title lines rise on load and
+     tilt to the pointer, the accent line's hues drift, and a hue spotlight tracks
+     the cursor across the grid - all wired in home.js, all gated on motion prefs. {%- endcomment -%}
+  <header class="c-hero" id="c-hero">
+    <div class="c-hero__blueprint" aria-hidden="true">
+      <span class="c-hero__grid-lines"></span>
+    </div>
+    <div class="c-hero__glow" aria-hidden="true"></div>
+    <div class="c-wrap c-hero__inner">
       <div class="c-hero__copy">
         <span class="c-hero__eyebrow">
           <span class="c-hero__dots">
@@ -41,20 +51,6 @@ layout: null
           {%- endif -%}
           {%- endfor -%}
         </h1>
-
-        {%- comment -%} sticker floats right; the intro text below wraps around it {%- endcomment -%}
-        <div class="c-hero__sticker">
-          <div class="c-hero__note" aria-hidden="true">
-            <b>{{ home.sticker_note }}</b>
-            <svg viewBox="0 0 70 58" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 6 C 30 3, 56 8, 58 48" stroke-dasharray="3 6"/>
-              <path d="M49 39 L58 50 L67 41"/>
-            </svg>
-          </div>
-          <div class="c-hero__portrait">
-            <img src="{{ home.portrait | relative_url }}" alt="Archer" width="2089" height="1653">
-          </div>
-        </div>
 
         <p class="c-hero__intro">{{ home.intro }}</p>
 
@@ -75,6 +71,7 @@ layout: null
         </nav>
         {%- endif -%}
       </div>
+
     </div>
   </header>
 
@@ -94,6 +91,21 @@ layout: null
         <p class="c-about__p" data-lang="zh" hidden>{{ home.about.zh }}</p>
       </div>
       <aside class="c-about__aside c-reveal">
+        {%- comment -%} the portrait sticker lives here now (relocated whole from the
+           hero): the sticky aside is the natural home for a "that's me" portrait,
+           and it clears the hero so the giant type is the sole protagonist. Same data. {%- endcomment -%}
+        <div class="c-about__sticker">
+          <div class="c-about__note" aria-hidden="true">
+            <b>{{ home.sticker_note }}</b>
+            <svg viewBox="0 0 70 58" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6 C 30 3, 56 8, 58 48" stroke-dasharray="3 6"/>
+              <path d="M49 39 L58 50 L67 41"/>
+            </svg>
+          </div>
+          <div class="c-about__portrait">
+            <img src="{{ home.portrait | relative_url }}" alt="Archer" width="2089" height="1653">
+          </div>
+        </div>
         <p class="c-about__stackhead">Tech stack</p>
         <div class="c-stack">
           {%- for s in home.tech_stack -%}
