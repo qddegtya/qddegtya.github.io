@@ -34,16 +34,6 @@
   -webkit-mask-image: radial-gradient(130% 120% at 32% 42%, #000 46%, transparent 88%);
   mask-image: radial-gradient(130% 120% at 32% 42%, #000 46%, transparent 88%); }
 
-// A single hue spotlight that follows the pointer across the whole hero, tinting
-// the grid where the cursor rests. --mx/--my (0-1, set by home.js) place it; it
-// idles at centre-left so it's alive even before the first pointer move. Purely
-// ambient (pointer-events:none), theme-hue coloured, and killed by reduced-motion.
-.c-hero__glow { position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(38vmax 38vmax at calc(var(--mx, 0.3) * 100%) calc(var(--my, 0.42) * 100%),
-    color-mix(in srgb, var(--h-codeart) 22%, transparent), transparent 60%);
-  opacity: 0; transition: opacity 0.6s var(--ease); }
-.c-hero:hover .c-hero__glow { opacity: 1; }
-
 // copy sits above the texture; single column, left-aligned.
 .c-hero__inner { position: relative; z-index: 1; width: 100%; }
 .c-hero__copy { min-width: 0; }
@@ -86,22 +76,20 @@
 // Reveal-on-load (masked line rise) + the eyebrow/intro/cta/jump fades are owned
 // by GSAP in home.js - the single source of entrance truth, with a no-JS/reduced
 // fallback of simply being present. CSS here owns the *resting* look plus the
-// live interactions GSAP doesn't do: a pointer-tracked parallax tilt on the whole
-// title block (--tilt-x/--tilt-y set by home.js) and the hover treatments below.
+// element-local hover treatments below. The giant type is deliberately plain -
+// pure ink (or the accent gradient), no stroke/filter - so it stays crisp and
+// cheap to paint at clamp(...,150px) and reads perfectly in both themes; the
+// blueprint grid behind it is what gives the hero its texture.
 .c-hero__title {
   margin-top: 24px; font-family: var(--font-display); font-weight: 600;
   letter-spacing: -0.045em; line-height: 0.9; font-size: clamp(48px, 9.5vw, 150px);
-  transform: perspective(1200px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg));
-  transform-style: preserve-3d; transition: transform 0.5s var(--ease);
-  will-change: transform;
 }
 .c-hero__title .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
 .c-hero__title .line > span { display: block; }
 
 // the colour-fill accent line: its gradient slowly drifts on its own so the hues
-// feel liquid, and snaps to a faster sweep while the hero is hovered. background
-// is 300% wide so the animation has room to travel. CSS owns this drift entirely
-// (GSAP no longer touches it) so the hover speed-up is a single clean handoff.
+// feel liquid. background is 300% wide so the animation has room to travel. CSS
+// owns this drift entirely (GSAP no longer touches it).
 .c-hero__title .word-color { display: inline-block; }
 .c-hero__title .word-color .fill {
   background: linear-gradient(92deg, var(--h-writing), var(--h-projects) 22%, var(--h-reading) 44%, var(--h-travel) 66%, var(--h-codeart) 84%, var(--h-writing));
@@ -109,7 +97,6 @@
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
   animation: c-hero-hue 14s linear infinite; }
-.c-hero__title:hover .word-color .fill { animation-duration: 4s; }
 @keyframes c-hero-hue {
   to { background-position: 300% 0; }
 }
@@ -148,12 +135,10 @@
 .c-hero__intro a:nth-of-type(2) { --_a: var(--h-codeart); }
 .c-hero__intro a:nth-of-type(3) { --_a: var(--h-reading); }
 
-// motion-reduced: no drift, no pointer tilt, no glow, no dot ripple. The type and
-// copy simply rest. GSAP's entrance is separately gated in home.js.
+// motion-reduced: no hue drift, no dot ripple. The type and copy simply rest.
+// GSAP's entrance is separately gated in home.js.
 @media (prefers-reduced-motion: reduce) {
-  .c-hero__title { transform: none; }
   .c-hero__title .word-color .fill { animation: none; }
-  .c-hero__glow { display: none; }
   .c-hero__eyebrow:hover .c-hero__dots i { transform: none; }
 }
 .c-hero__cta { clear: none; margin-top: clamp(24px, 3.5vh, 36px); display: flex; align-items: center; gap: 12px; }

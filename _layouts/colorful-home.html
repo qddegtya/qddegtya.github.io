@@ -24,15 +24,14 @@ layout: null
   {%- comment -%} ---------- HERO ----------
      Typography is the sole protagonist over a soft engineering-grid texture: a
      fine coordinate grid that stays dense at the centre and blurs out toward the
-     edges. The grid is purely decorative (aria-hidden, pointer-events:none). All
-     the craft goes into the type and intro copy: the title lines rise on load and
-     tilt to the pointer, the accent line's hues drift, and a hue spotlight tracks
-     the cursor across the grid - all wired in home.js, all gated on motion prefs. {%- endcomment -%}
-  <header class="c-hero" id="c-hero">
+     edges. The grid is purely decorative (aria-hidden, pointer-events:none). The
+     type is deliberately plain and crisp - pure ink, with the accent line carrying
+     the drifting colour fill - and rises into place on load. All entrance motion
+     is wired in home.js and gated on motion prefs. {%- endcomment -%}
+  <header class="c-hero">
     <div class="c-hero__blueprint" aria-hidden="true">
       <span class="c-hero__grid-lines"></span>
     </div>
-    <div class="c-hero__glow" aria-hidden="true"></div>
     <div class="c-wrap c-hero__inner">
       <div class="c-hero__copy">
         <span class="c-hero__eyebrow">

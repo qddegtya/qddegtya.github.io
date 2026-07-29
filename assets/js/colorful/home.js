@@ -2,7 +2,7 @@
    Colorful theme - home interactions
    - Theme toggle (persisted, respects prefers-color-scheme)
    - Mobile overlay menu with morphing burger
-   - GSAP masked line-reveal for the hero + hue drift on the colored word
+   - GSAP masked line-reveal for the hero title
    - IntersectionObserver scroll reveals (no scroll listeners)
    - Drag-to-scroll photo strip
    All motion degrades under prefers-reduced-motion.
@@ -333,39 +333,6 @@
 
     render();
   });
-
-  /* ---- Hero pointer choreography (live type) ----
-     Two live effects CSS can't express on its own: a hue spotlight that tracks the
-     cursor across the grid (--mx/--my, 0-1) and a hairline parallax tilt on the
-     giant title (--tilt-x/--tilt-y). Both are rAF-throttled, write only custom
-     props (CSS springs the visuals), and are fully gated on reduced-motion. The
-     title's colour-fill hue drift is CSS-owned (see _home.scss) - not here. ---- */
-  var hero = document.getElementById("c-hero");
-  var heroTitle = hero && hero.querySelector(".c-hero__title");
-  if (hero && !reduce) {
-    var hx = 0.3, hy = 0.42, heroRaf = null;
-    function paintHero() {
-      heroRaf = null;
-      hero.style.setProperty("--mx", hx.toFixed(3));
-      hero.style.setProperty("--my", hy.toFixed(3));
-      if (heroTitle) {
-        // small, tasteful: +-3.2deg yaw, +-2deg pitch, centred at rest.
-        heroTitle.style.setProperty("--tilt-x", ((hx - 0.5) * 6.4).toFixed(2) + "deg");
-        heroTitle.style.setProperty("--tilt-y", ((0.5 - hy) * 4).toFixed(2) + "deg");
-      }
-    }
-    hero.addEventListener("pointermove", function (e) {
-      var r = hero.getBoundingClientRect();
-      hx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
-      hy = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
-      if (!heroRaf) heroRaf = requestAnimationFrame(paintHero);
-    });
-    // ease the tilt back to flat when the pointer leaves the hero.
-    hero.addEventListener("pointerleave", function () {
-      hx = 0.3; hy = 0.42;
-      if (!heroRaf) heroRaf = requestAnimationFrame(paintHero);
-    });
-  }
 
   /* ---- GSAP hero choreography ---- */
   if (reduce || typeof gsap === "undefined") return;
